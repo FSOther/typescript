@@ -1,214 +1,107 @@
 So when we created this first class,
-
 we used this shortcut where we added the public keyword
-
 in front of the parameter name,
-
 which should be converted into a property, so to say,
-
 or for which TypeScript should create
-
 and initialize a property behind the scenes.
-
 But the public keyword is more than just
-
 a shortcut enabler
-
 because we could have also used public
-
 for a property we created outside of the constructor.
-
 For example here, if a user also had another property,
-
 let's say hobbies, which might be a string array,
-
 then we could have used public there as well.
-
 Now, I'm just getting an error
-
 because this is uninitialized,
-
 but we can fix this by adding an empty array here.
-
 Just as a brief side note,
-
 because it makes a lot of sense here,
-
 this is also a perfect example for a place
-
 where you want an explicit type assignment,
-
 even though you have an initial value
-
 because the initial value is just an empty array.
-
 So all TypeScript would know without the explicit
-
 type assignment is that hobbies should contain some array,
-
 but it would not know which kind of values
-
 should live inside of that array.
-
 That's why adding this explicit type assignment here
-
 makes a lot of sense because now it's clear that
-
 even though it's an empty array initially,
-
 it will eventually be an array
-
 that may hold only string values,
-
 but that's just a side note.
-
 The key thing here is that we could use public here as well,
-
 even though we're not inside
-
 of the constructor parameter list.
-
 Because this shortcut that's enabled
-
 by using public here in the constructor parameter list
-
 is just a nice extra feature provided by TypeScript.
-
 The main idea behind the public keyword
-
 is a different one because the main idea is that you can use
-
 public to control how this property
-
 or this or this property may be accessed on the object
-
 that is created based on the class
-
 and properties that are marked as public
-
 can for example, simply be used with the dot notation.
-
 As you can see, if I add a dot after the object name here,
-
 so to say, and they can also be reassigned.
-
 So I can assign a new value to age like this,
-
 and that is that perfectly valid code.
-
 If you were to mark age as private with the private keyword,
-
 which is another keyword offered by TypeScript,
-
 then as you can see, you would get an error down here
-
 that the property age is private
-
 and only accessible within the class,
-
 so assigning it does not work,
-
 but printing it like this is also not allowed.
-
 In general, accessing that property outside
-
 of the class is not allowed.
-
 Instead, private properties can only be accessed
-
 from inside the class, for example, from inside a method
-
 that can be added to a class,
-
 and methods are added in TypeScript classes
-
 just as you could add them to JavaScript classes.
-
 In there you could access
-
 the age property with help of the this keyword.
-
 This would be allowed even though it's private
-
 because you're inside of the class,
-
 but outside of the class, it's not allowed.
-
 Besides public and private
-
 there also is protected, which works like private,
-
 but also makes sure that this property
-
 may be accessed in classes that inherit from this class,
-
 but we'll get back to inheritance later.
-
 And that's what public and private are actually about.
-
 The shortcut is nice to have,
-
 but the main idea is that you can control
-
 how these properties may be accessed outside of the class,
-
 and to be very clear,
-
 public and private are TypeScript exclusive features.
-
 These keywords do not exist in vanilla JavaScript.
-
 Indeed, vanilla JavaScript does have the concept
-
 of private properties as well.
-
 By default, all properties are public,
-
 but it does have the concept of private properties as well.
-
 With help of this hashtag syntax,
-
 if you add a property like this in vanilla JavaScript,
-
 it would be treated as private as well.
-
 In TypeScript you instead use
-
 the public and private keywords
-
 as you do in some other programming languages.
-
 The vanilla JavaScript approach would work here as well.
-
 As you can see, I could add such a private property
-
 like this as well, but in TypeScript
-
 you typically use public and private instead.
-
 Now, just as a final side note,
-
 if you omit public on a property that's defined here,
-
 then it is also considered as public as a default.
-
 Omitting public in a constructor is not a good idea
-
 because with that, you then lose this shortcut.
-
 TypeScript will now no longer create a name property
-
 for this name parameter.
-
 That's why you have to keep it here,
-
 but you could remove it on properties that are created
-
 outside of the constructor,
-
 and then they would be treated as public as a default.
-
 If you want it to be private, you need to add private.
-
 That's how that works.
-

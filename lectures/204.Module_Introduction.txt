@@ -1,41 +1,21 @@
 In the previous modules,
-
 we worked on a project, and there,
-
 we either had all our code in one file,
-
 which made it hard to manage,
-
 or we actually split it into multiple files
-
 either by using name spaces or by using these ES6 modules,
-
 but when using ES6 modules,
-
 whilst our code was more manageable,
-
 we actually had another disadvantage
-
 into which I'll dive again in this module again.
-
 In this module, we'll not only have a look
-
 at that disadvantage again,
-
 more importantly, we'll have a look
-
 at the solution, Webpack.
-
 So in this module, you will learn what exactly Webpack is
-
 and, of course, then we'll all use it
-
 to get a a setup, a project setup,
-
 which gives us the best of all worlds, actually,
-
 where we can write code split up into multiple files
-
 without that disadvantage
-
 and which we'll have a look at now.

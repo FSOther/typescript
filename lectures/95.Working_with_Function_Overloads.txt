@@ -1,94 +1,47 @@
 So how does function overloading look like?
-
 How does this feature work?
-
 Well, TypeScript allows you
-
 to add multiple function signatures
-
 to one in the same function.
-
 So you have one function body,
-
 but you can add multiple signatures,
-
 multiple function keywords, followed by the name,
-
 which always must be the same.
-
 And then you may define different parameter lists here
-
 as long as they all kind of work with
-
 that main definition you have here.
-
 For example, you could add a val parameter here,
-
 which is of type string, because that's in line
-
 with this more generic, more flexible parameter
-
 I got here in the main function signature,
-
 in the bottom-most function signature.
-
 But I can add this definition and,
-
 and that's the important part now,
-
 I can then also tell TypeScript
-
 what the return value type will be
-
 if this function is called like this.
-
 And here we know it'll be a string.
-
 And I can also add the other definition
-
 and make it clear that if getLength gets a value
-
 that is of type any array, we'll get back a number.
-
 So with that, this will all still work,
-
 but now I can use this code down here without typecasting
-
 because thanks to these function overloads here,
-
 thanks to these additional function signatures here,
-
 I make it very clear that yes, this function can be called
-
 with a value that's either a string or some array.
-
 But I also tell TypeScript
-
 what the return types will be in these different scenarios.
-
 So that it doesn't have to infer this union type,
-
 but so that it instead uses number
-
 or string depending on which definition is active.
-
 And which one is active
-
 simply depends on how we call the function.
-
 That's why TypeScript knows that in this case here,
-
 numOfWords will be a string.
-
 And in this case here where I'm passing an array
-
 to getLength, it'll be a number.
-
 And that's an example for function overloads.
-
 Now, I will say, as I said before,
-
 that it is a feature you might not be using all the time,
-
 but it can be very helpful in certain situations.
-

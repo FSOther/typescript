@@ -1,234 +1,117 @@
 So with static properties out of the way,
-
 let's come back to inheritance
-
 and to a concept related to that.
-
 Another way of adding methods to classes,
-
 which you plan to inherit from.
-
 Here's our Department class and as you know,
-
 we're inheriting from it on the IT Department
-
 and the Accounting Department.
-
 Now, we do have that describe method
-
 here in our Department class,
-
 and therefore we can call this on any instance,
-
 based on IT Department and Accounting Department
-
 because these classes are based on Department,
-
 and they have access to all the properties
-
 and methods of that Department base class.
-
 Now, as you learned, you can override methods.
-
 So for example, here in the Accounting Department,
-
 we could add our own describe method version,
-
 where I want to do something different,
-
 where maybe when I say Accounting Department
-
 ID, and then Access Distort ID.
-
 Now, this would not work here,
-
 because ID is a private property of Department
-
 and therefore, we need to turn this into a protected one
-
 so that it's available in classes
-
 based on this class as well.
-
 But with that, it should work.
-
 And if I now call describe on accounting,
-
 which we can do, of course,
-
 let's maybe comment out these two lines, and instead,
-
 call accounting.describe down there,
-
 we should see that new output,
-
 and indeed, we see Accounting Department ID, d2.
-
 Now, of course, we could also override the describe method
-
 in the IT Department.
-
 But sometimes you don't just want to offer the option
-
 of overriding a method because that always exists.
-
 You instead want to force the developers working
-
 with a certain class or extending a certain class
-
 to implement a certain method
-
 or to override a certain method.
-
 When would you do that?
-
 Well, whenever you wanna ensure that a certain method
-
 is available in all classes based on some base class
-
 in this case Department.
-
 But when also know at the same time that the exact
-
 implementation will depend on the specific version,
-
 so when you can provide a general method,
-
 but you want to enforce that this method exists,
-
 but the inheriting classes will need
-
 to provide their own implementation
-
 because you can't provide a default implementation
-
 in the base class.
-
 So in such a situation,
-
 you might wanna have an empty method in your base class
-
 and now force all classes based on that class
-
 to add and override this method
-
 and you can do so by adding the abstract keyword here.
-
 If you add abstract here,
-
 you see we get an error that this is only available
-
 in an abstract class.
-
 So if you have one method or more with abstract
-
 in front of the method, you have to add abstract
-
 here in front of class as well and now,
-
 we're good regarding that,
-
 but now you see I have an error here.
-
 Describe cannot have an implementation
-
 because it is marked as abstract.
-
 You have to remove the curly braces,
-
 add a semicolon, and instead add the return type
-
 this should have, in this case white.
-
 So now, you're just defining
-
 how this method should look like what its structure is,
-
 but you're not saying anything else besides this.
-
 Now, however, we get an error in the IT Department
-
 because it does not implement the inherited
-
 abstract member describe, which means ,
-
 we don't offer the describe method here.
-
 And we do have to do that because we're based
-
 on the Department class, which is abstract,
-
 and which has such abstract method.
-
 Which means this method has to be implemented
-
 by any class based on this Department class.
-
 So now here in IT Department,
-
 we have to add a describe method.
-
 And in there, we can now console log IT Department,
-
 and then do whatever we want.
-
 This can be the same implementation
-
 as we have it in the Accounting Department,
-
 but it can also be a different one.
-
 So now with that, we can save this and it re-compiles,
-
 and we get the almost same output as before.
-
 But now we have two different implementations
-
 of the describe method in our different classes
-
 based on Department.
-
 Abstract can therefore be very useful if you wanna
-
 enforce that all classes based on some other class,
-
 share some common method or property,
-
 you can also have abstract properties.
-
 But at the same time,
-
 you wanna make sure that you don't have to provide
-
 the concrete value ,the concrete implementation
-
 in the base class, but instead,
-
 the inheriting class has to do that.
-
 Also important, abstract classes.
-
 So classes marked as abstract with this keyword
-
 can be instantiated themselves.
-
 So you can't instantiate Department now.
-
 It's basically just a class that stare to be inherited
-
 from so that the inheriting classes can be instantiated,
-
 and inheriting classes are forced to provide concrete
-
 implementations for in this case to describe method
-
 following the structure you laid out here.
-
 So with this keyword referring to a Department instance
-
 or instance, somehow based on Department including inherited
-
 classes that might be in between
-
 and that it doesn't return anything
-

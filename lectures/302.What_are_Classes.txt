@@ -1,222 +1,111 @@
 To understand classes let's understand
-
 object oriented programming.
-
 Now, depending on your level of knowledge
-
 and if you worked with modern JavaScript
-
 and maybe also some other programming languages,
-
 you might be aware of what classes are there for
-
 and what OOP object oriented programming is all about.
-
 So therefore you can also skip this lecture
-
 to jump right ahead to the parts where we write code.
-
 Otherwise definitely stick with me
-
 because it is important to understand this.
-
 The idea behind object oriented programming
-
 and classes will be important for that as you will see,
-
 is that you work with real-life entities
-
 in your code you could say.
-
 So that you work with things in your code with objects
-
 that resemble real-life objects as far as possible at least
-
 to make it easier for you as a developer
-
 to reason about your code.
-
 For example, we might be building an online shop
-
 and there we might have a product list.
-
 We might wanna work with a product list object therefore,
-
 which has everything we need to manage a product list.
-
 A method to add products to the lead products,
-
 the list itself.
-
 So for example this might be an object
-
 that is responsible for rendering a list of products
-
 and for managing it,
-
 which were fetched from a service or from a database.
-
 So this product holds all the rendering and fetching
-
 and management logic.
-
 Now that's a product list.
-
 In our program into website we're building,
-
 we might also need to work
-
 with the individual product though.
-
 So we might also want an object or multiple objects;
-
 one for each product
-
 that is responsible for managing the single product.
-
 It might hold and render the details about that product,
-
 maybe allow us to add it to a cart,
-
 things like that.
-
 So when we want to draw user interface to the screen,
-
 we wanna manage that through JavaScript
-
 and therefore through TypeScript,
-
 then we could implement this with product list
-
 and a product object which holds the logic
-
 for managing the underlying data,
-
 but also for rendering the content on the screen.
-
 And of course therefore these two objects
-
 would kind of be related.
-
 We might also have a shopping cart object on our screen,
-
 which is responsible for rendering
-
 and managing the shopping card.
-
 It's of course also connected to the product.
-
 And therefore it holds all the logic we need
-
 to render our shopping card,
-
 placing orders and communicating with the server
-
 and so on.
-
 So, that would be one way of how we could think
-
 about the application we're building.
-
 How we could split it into logical pieces
-
 that make sense to us as humans.
-
 And in code in TypeScript and JavaScript,
-
 in most modern programming languages,
-
 this is actively supported because we have objects
-
 which are more complex data structures
-
 that hold properties and methods.
-
 And of course we do have that in JavaScript as well.
-
 But we might also have classes that help us with that.
-
 Now what's the idea behind classes?
-
 And what are instances?
-
 When we get these objects
-
 and when following this object oriented approach,
-
 we could consider splitting our app
-
 or our application logic into such objects
-
 which manage parts of our logic.
-
 Now connected to the idea of using these objects
-
 which of course do exist in JavaScript
-
 we can use objects there as the idea of having classes.
-
 Objects are the concrete things we work with in our code.
-
 The data structures we use to store data
-
 to store methods to execute methods on.
-
 Classes are blueprints for objects.
-
 Classes allow us to define how objects should look like;
-
 which data they should hold,
-
 which methods they should have,
-
 so that we can easily build objects based on these classes.
-
 And we then call this instances of the classes.
-
 So an object then is an instance of a class
-
 if it's based on such a class,
-
 so that we can quickly replicate multiple objects
-
 with the same structure the same methods
-
 based on the same classes.
-
 So classes help us define how objects should look like,
-
 which properties and methods they have and so on.
-
 So, classes exist to speed up the creation of objects.
-
 And it's simply an alternative
-
 to using the object literal notation you already know.
-
 They simply make it easier.
-
 Classes simply make it easier to create multiple objects
-
 which generally have the same structure
-
 and the same methods,
-
 and which might only differ in the exact data details
-
 which are stored in there.
-
 Let's say we have multiple persons
-
 we wanna represent with objects.
-
 Well each person might have a name and an age,
-
 the values will differ,
-
 the general structure is the same.
-
 So that's the theory.
-
 Let's see it in practice.
-

@@ -1,250 +1,125 @@
 To get started let's first of all
-
 go to tsconfig.json file because there we need
-
 to make sure certain things are configured.
-
 Make sure that target here,
-
 is actually set to es5 or es6, that is up to you.
-
 It depends on which browsers you plan on supporting.
-
 Because in the end webpack and the types that loader
-
 will use this target to determine
-
 how your code should be transformed.
-
 Should your types of code be transformed
-
 to Java script code that runs in older browsers as well?
-
 Or as with es6 to code that only runs
-
 in more recent browsers?
-
 Module then should be set to es2015 or es6
-
 so that setting is fine.
-
 And in addition, you also want to verify your outDir.
-
 I will keep it to dist but you could change this
-
 if you want to compile your code to a different directory.
-
 You don't need to root directory anymore though,
-
 because webpack will take over there,
-
 and webpack will determine where your root files are.
-
 So in general these settings should be fine.
-
 We can always tweak them later if something
-
 doesn't work the way we want it to work.
-
 With that lets add a new configuration file
-
 next to tsconfig.json and that's the webpack.config.js file.
-
 And make sure you do really name it like this
-
 because this is the file webpack
-
 will automatically look for and this will even tell webpack
-
 how to work with our project.
-
 Because webpack is a tool which needs to be configured
-
 to work correctly here.
-
 So what do we do in this webpack.config file?
-
 This configuration file uses JavaScript
-
 and actually it uses node.js features.
-
 So we want to use the node.js exports syntax,
-
 which looks like this to then export a JavaScript object.
-
 Which will be the configuration object picked up by webpack.
-
 So in case you never saw that before,
-
 this is how you export things in a node.js environment.
-
 And here we are exporting a JavaScript object.
-
 Now webpack needs a couple of pieces of information.
-
 Most importantly it needs to know with which file
-
 your entire project starts; so where your entry point is.
-
 In our case that's the app.ts file.
-
 This file should be executed first,
-
 and what webpack then will do
-
 is it will have a look at the imports in this file
-
 and go to these files
-
 and have a look at their imports
-
 and the imports of the imported files and so on.
-
 Until it knows all files your project uses in the end.
-
 And then it will go through the files contents
-
 like this content here and all the content
-
 in all files and compile them,
-
 with the help of the ts.loader package I mentioned.
-
 Now to make webpack work correctly here
-
 you should actually now remove all .js extensions
-
 in all the imports.
-
 We needed that before, when we used the
-
 native browser built in ts. Module functionality,
-
 but with webpack you don't need these extensions.
-
 Because webpack will actually automatically look for
-
 .js, and certain other extension files.
-
 So you don't and you shouldn't add them here,
-
 otherwise webpack will look for
-
 files with a double extension, which you don't want.
-
 So remove .js on all these imports here,
-
 and once you did that save all these files
-
 to make sure your changes are applied.
-
 Now back to webpack.config.js,
-
 there you now should add an entry property
-
 in this exported object.
-
 And point at ./src/app.ts in our example.
-
 So at the root entry file of your project.
-
 Next add a output key here.
-
 An output now is a object here.
-
 Where we first of all specify the file name.
-
 This will be the single JavaScript file
-
 which will be produced in the end.
-
 And here we'll name it bundle.js,
-
 but you could name it whatever you want.
-
 App.js, or whatever you want.
-
 You can also add dynamic parts here for example,
-
 content hash, to tell webpack to automatically create
-
 a unique has for every build which can help you
-
 with caching in the browser.
-
 But again you can learn more about that in the webpack docs.
-
 Here we don't need it so we'll just name the file bundle.js.
-
 In addition to the file name you also need to specify
-
 the path, where the output should be written to.
-
 And of course that should match the path you have
-
 in your ts.config.js file to avoid errors.
-
 So to this folder.
-
 Now unlike in the ts.config,js file,
-
 you shouldn't write ./dist here.
-
 Webpack wants an absolute path here.
-
 And to build one we can use a node.js module.
-
 For that we can use the node.js import syntax,
-
 which uses the required keyword,
-
 and import the path module.
-
 You don't need to install this as a library
-
 this is a core node.js module which you already have
-
 if you got node.js installed, which you do
-
 because we did it earlier in the course.
-
 Now you can use path to call the resolve method there
-
 which allows you to build an absolute path
-
 to a certain folder.
-
 For that we use a special constant,
-
 the __dirname constant,
-
 which is available globally in a node.js environment.
-
 And webpack as I said uses node.js to execute your files.
-
 And then as second argument dist,
-
 in the end dist just constructs an absolute path
-
 to the dist folder which webpack then
-
 uses to write your out-put there.
-
 And with that you got an entry point and a out-put point,
-
 but you don't tell webpack what to do
-
 with your TypeScript files.
-
 Because by default webpack doesn't know that,
-
 by default it's just a bundler.
-
 Any extra functionality,
-
 like compiling TypeScript to JavaScript
-
 has to be taught to webpack.
-
 We'll do that in the next lecture.
-

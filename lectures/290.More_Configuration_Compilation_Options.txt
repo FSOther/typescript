@@ -1,80 +1,40 @@
 Now, all the interesting is
-
 allowJs.
-
 With allowJs and by the way all the way we have
-
 checkJs you can always include JavaScript
-
 files in the compilation.
-
 Now with allowJs a JavaScript file will be
-
 compiled by type script so even if doesn't end
-
 with .ts, type script will compile it
-
 with checkJs it will not compile it but it
-
 will still check the syntax in there and
-
 report potentially errors.
-
 This could be nice if you don't really wanna use
-
 type script but you wanna take advantage
-
 of some of its features and as far as
-
 type script can help you with the any type only
-
 which is effectively what you have in
-
 JavaScript it will do so if you enable
-
 these options.
-
 Now we don't need it for this project
-
 and for this project we would want to
-
 make sure we don't double compile these
-
 JavaScript files which do stem from
-
 type script files so we would have to tweak
-
 the include and exclude settings a bit
-
 but you could use that in projects where you don't
-
 wanna use type script at all or where for whatever
-
 reason you have some vanilla JavaScript files
-
 next to your type script files and you wanna
-
 check the vanilla JavaScript files as well.
-
 Now let's fast forward a bit, jsx is an option
-
 that can help you with react js which does not really
-
 matter for us here, declaration and declarationMap
-
 is also not important here.
-
 Dts files are an advanced concept which matter
-
 to you if you're shipping your project as a
-
 library to other people and you need basically
-
 a manifest file which describes all the
-
 types you have in your project, that's such
-
 a .d.ts file.
-
 Source map is an interesting one though.
-

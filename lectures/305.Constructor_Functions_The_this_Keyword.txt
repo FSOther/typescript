@@ -1,334 +1,167 @@
 Now classes
-
 and all the constructor functions which have been around
-
 for longer do not just have properties which you can use
-
 to define the general structure of the object.
-
 You can also add methods.
-
 We do actually do have the constructor method there.
-
 But that's just a utility function,
-
 which is called, when you do instantiate the class.
-
 Remember, in the past, we only had constructor functions,
-
 now we have that syntactic sugar
-
 but we still have the construct a function which we can add
-
 to run any initialization code.
-
 You might also wanna add a couple of functions
-
 or methods they're then called
-
 which you can call on the created object.
-
 For example, a describe method here
-
 on our department class.
-
 Now a method is added like this,
-
 the name of the method,
-
 then no colon, no equal sign instead,
-
 parentheses and then curly braces.
-
 The parentheses take any arguments you might need.
-
 Now let's say here, we don't need any,
-
 otherwise you could add parameters just as you do it
-
 in a regular function.
-
 And what you typically always need though,
-
 is a function body or a method body
-
 between the curly braces.
-
 Here you now define the logic of your method.
-
 And there we might wanna output the name of the department
-
 with a little bit of extra information maybe.
-
 We can do this of course here with console.log, for example,
-
 department, colon and then maybe name.
-
 However, this would not work.
-
 This would look for a variable name,
-
 which has to exist inside of this described method,
-
 or outside of the class as a global variable.
-
 And as you see if it chose age,
-
 I get an error for name I don't do this,
-
 I don't get this because there actually is
-
 a global name variable in the browser in the window object.
-
 Nonetheless, this would not refer to this name property here
-
 but to some global name variable outside of this class.
-
 To refer to a class property or
-
 method from inside of the class,
-
 we have to use the this keyword
-
 as we do it here in the constructor.
-
 This then typically refers back to the
-
 concrete instance of this class that was created.
-
 And there with the dot notation,
-
 we can access all the properties and methods
-
 off this instance.
-
 In this case, this.name.
-
 So if I now, down there, call accounting.describe like this.
-
 The this keyword, when this executes will refer
-
 to this concrete accounting object
-
 that was built based on this class.
-
 So if I now save that,
-
 and we reload, we should see this output here,
-
 of which of course has a typo,
-
 but generally it works.
-
 Let's now fix the typo here.
-
 So this is how we can add a method.
-
 Now what important word about this keyword.
-
 As you probably know, if you've worked
-
 with JavaScript a bit, the this keyword can be tricky.
-
 For example,
-
 if I would add another
-
 object here accounting copy
-
 and this is our object which just has
-
 the describe method and dare I point at accounting.describe.
-
 Then if I call accountingcopy.describe as a method,
-
 what do you think will happen?
-
 Do you think we'll get an error?
-
 We certainly get no compilation error
-
 that compiles just fine.
-
 But at runtime, we see department undefined.
-
 And the reason for that is that what I'm doing
-
 is I'm adding a describe property to this object
-
 which is created with the object literal,
-
 not based on this class, but just as a dummy object
-
 not based on any specific class you defined.
-
 And then the value for this describe property
-
 is a pointer at the describe method in my accounting object.
-
 So I'm pointing at this method here
-
 to find for this concrete object.
-
 I'm not executing it.
-
 So I'm not passing the value of
-
 this function execution to describe.
-
 I'm really passing the function itself to describe here.
-
 So when I then call describe here on the copy,
-
 it does indeed execute the method
-
 this all works correctly.
-
 The problem just is, when this method executes,
-
 this will not refer to this object
-
 this method was part of originally,
-
 so not to the accounting object.
-
 Instead, this,
-
 and that's a good rule of thumb you can memorize,
-
 typically refers to the thing which is responsible
-
 for calling a method.
-
 And responsible for calling the describe method
-
 here in this case, is accounting copy.
-
 Because we call describe on accounting copy.
-
 So this will refer to the thing in front of the dot here,
-
 which is accounting Copy.
-
 That however, is an object which has no name property.
-
 So when I access this.name,
-
 I get an error because of this does not refer
-
 to an object with a name property.
-
 So name yields us undefined indeed.
-
 And that's why I'm getting this strange output.
-
 That's one thing you have to keep in mind,
-
 not just in TypeScript, it's a JavaScript thing.
-
 And of course, therefore it can happen to you
-
 in TypeScript as well.
-
 Now, to work around this, "this" problem,
-
 you can add a parameter
-
 to the describe method,
-
 which is called this.
-
 That's a special parameter,
-
 a special instruction understood by TypeScript.
-
 If you add a parameter named this here,
-
 it's not really a parameter which is expected,
-
 you still can call describe without passing in any value.
-
 Instead, this is interpreted by TypeScript,
-
 to be a hint regarding what this should be referred to.
-
 And now it's important to assign a type to this.
-
 And the type here, in this case should be
-
 our class type here so department.
-
 What I'm saying with this is,
-
 when describe is executed
-
 this inside of describe, so in this case here,
-
 should always refer to an instance
-
 that's based on the department class.
-
 So an object which in the end would be of type department.
-
 And therefore now we actually get an error down there,
-
 we get an error here,
-
 because what we got here is that
-
 when we call describe here on accounting copy,
-
 we're not calling it on an instance of department.
-
 So therefore this will be violated.
-
 This in this case, will not refer
-
 to an object of type department.
-
 So here we add some extra type safety
-
 by adding this dummy parameter,
-
 because now if I try to save this,
-
 I do get an error related to this line here.
-
 Because now Indeed, we would execute some code
-
 that would not work as expected.
-
 So we have to fix this, for example,
-
 by adding a name property here
-
 for that to work because now TypeScript sees Okay,
-
 the object on which you're calling describe,
-
 now has a name property just like this expects it to have
-
 because this is based on the department object,
-
 which also has a name property.
-
 So now here, TypeScript would be happy
-
 because we added name.
-
 If I remove it, we get the error back with name
-
 however this works, and we avoid this
-
 undefined output from before.
-
 So that's important to understand about this.
-
 And it's important to be aware of this improvement
-
 you could add to your code to make sure
-
 that you catch unwanted behaviors
-
 like we had down there before.
-

@@ -1,412 +1,206 @@
 Okay, enough about generic functions.
-
 We will always use them throughout this course,
-
 all the course project.
-
 So that should be getting clearer and clearer,
-
 the more we work with it.
-
 The general idea hopefully is clear by now already.
-
 Generic functions aren't everything we can use though,
-
 we've also got generic classes
-
 and therefore, lets see
-
 how we would create such a generic class
-
 and why we could do that,
-
 why that could be useful for us.
-
 We could be creating a storage class here.
-
 A class lets say, which has a private property data.
-
 Which in the end will hold an array of data.
-
 Then it has an addItem method,
-
 which takes our item and that should be added to data
-
 with push, let's say.
-
 And we have a removeItem method,
-
 which takes our item,
-
 where we could say this.data.splice
-
 and then we just need to get the indexOff(item) here
-
 and splice one element.
-
 This is how we can remove an element from an array.
-
 And of course getItems,
-
 where return, let's say a copy of this.data,
-
 like that with the spread operator you learned about.
-
 Now we can do that
-
 and we are getting a bunch of errors here.
-
 We are getting a bunch of errors,
-
 now for one because the name Storage is a reserved name,
-
 so let's name it Datastorage.
-
 That's easy to get rid of.
-
 Now we also get an error here
-
 because we are not saying anything about
-
 the kind of data we are storing,
-
 and which type item has here.
-
 And that's exactly where we can turn this into generic class
-
 because you might not care about the type of data.
-
 We want to make sure it's uniform data,
-
 so it's either just strings,
-
 or just numbers, or just objects.
-
 But other than that, I don't care about it.
-
 So here we could turn this into generic class,
-
 by adding angle brackets after the class name
-
 and then again T, U, whatever you want to use
-
 as an identifier, and add this here as a generic type.
-
 Now here we can say,
-
 this here is an array of type T,
-
 so it stores data of that generic type in it.
-
 Therefore, here we add such data,
-
 and we try to remove such data here.
-
 And therefore, here we get items correctly is inferred
-
 to return an array of generic types.
-
 And now we can create different storage's,
-
 we can have our sting or our textStorage here,
-
 by calling new DataStorage, setting that generic type
-
 to type string here.
-
 And then here in textStorage,
-
 I can call addItem,
-
 and if I try to add a number I get an error
-
 because I am saying that this will be
-
 a DataStorage which only stores stings.
-
 So, I can indeed store Max here, and maybe also store Manu,
-
 and then call textStorage.removeItem('Max')
-
 and then console.log.textStorage.getItems.
-
 And this should all work if we save that
-
 because it's a generic type,
-
 and indeed at the end we just have Manu in there.
-
 So this would be one simple generic class we can create.
-
 Now, why would we build such a generic class?
-
 Well just as I said,
-
 because maybe we don't just want to store texts,
-
 I might also want to store some numbers
-
 in a different data storage.
-
 So then I could create such a DataStorage,
-
 and setting this to number ensures that now
-
 we can only add numbers to that storage.
-
 Of course, we could also set up a storage
-
 where we allow both by using a union type.
-
 So, we've got full flexibility there,
-
 but we give type some extra information,
-
 that makes this both a flexible
-
 and still strongly typed class.
-
 Just as we had with functions.
-
 Really flexible and still perfect types support.
-
 That's the whole idea behind generic types.
-
 So, here we can do that with the DataStorage class
-
 by storing strings,
-
 or by storing numbers,
-
 or whatever we want.
-
 We'll have one problem about our dataStorage class though.
-
 Let's say here I have my object storage,
-
 now I can create new DataStorage
-
 and say in there I want to store objects, right,
-
 I want to store objects
-
 and of course we can go to object storage and add an item.
-
 Let's say an object I have names Max in there.
-
 Let's also store another object,
-
 where I store Manu.
-
 Then, let's say we are doing some stuff in our code
-
 and then at a later point of time here,
-
 I will want to remove the item,
-
 I want to remove the item with name: 'Manu' here.
-
 And then, I want to console.log.objStorage.getItems.
-
 Like that.
-
 If we save that,
-
 we see we've got an object in there that's Max.
-
 So that looks good right.
-
 Now, it's not really good.
-
 Let's say here, I want to remove Max now,
-
 so now we should have Manu left in the data storage.
-
 Hence, if I reload, a well, it's still Max.
-
 Now the problem is that we are working with objects here,
-
 as you know objects in JavaScript are reference types.
-
 Now, attach to find an additional resource,
-
 which allows you to dive into reference.
-
 Whereas primitive values,
-
 here I assume you know the difference
-
 because it is a core JavaScript thing,
-
 totally unrelated to typescript.
-
 Here the problem is,
-
 the way our class is built
-
 with this logic on how data is removed and identified,
-
 we are not really doing a good job
-
 when we work with non-primitive values.
-
 So, when we work with objects or arrays,
-
 because indexOf, if we pass in an object here,
-
 it will not work because technically this is a new object.
-
 It might look like this one but it doesn't work
-
 because this technically is a brand new object in memory
-
 and has a different address.
-
 And indeed here, JavaScript will look for the address
-
 and basically not find it, so what it then does is
-
 it removes the last element in the array here,
-
 because this in the end returns -1.
-
 IndexOf returns -1 even if it doesn't find anything.
-
 Which means it starts at the end of the array,
-
 that's normal Javascript behavior
-
 and removes the last element of the array.
-
 That's why it worked for Manu,
-
 it didn't really work it accidentally worked,
-
 but why it does not work for Max,
-
 we are always removing
-
 the last element of the array for now,
-
 since we can't identify it.
-
 Now, one work around to at least fix that is
-
 to check if we find our item,
-
 so we can check if this code here,
-
 if that is equal to -1, which means we did not find it.
-
 Then we can return
-
 and make sure we don't accidentally remove the wrong item.
-
 But of course now we just fixed that bar,
-
 but we still don't have this inner state
-
 where it would work with objects.
-
 Well the only way it could work with objects,
-
 is if we pass the exact same object again.
-
 So here if I had my max object stored in a constant,
-
 like this, and in here I pass the max object.
-
 And I do the same here, then I am really using the same,
-
 the exact same object, the exact same object in memory,
-
 and therefore, now it would work.
-
 This would be the only way to make this work.
-
 So therefore, here, the better idea might be to make sure
-
 that this really only works with primitive values.
-
 So, we could say that T extends string,
-
 number, maybe all the boolean's adds on.
-
 So now we basically say that DataStorage
-
 should only work with these types.
-
 Therefore objects are not allowed anymore.
-
 This might be better here because,
-
 we would need a more specialized DataStorage,
-
 which then probably only works with objects in turn,
-
 and not with primitive values.
-
 To fine tune our retrieval logic here,
-
 to maybe check for some iD in the item
-
 that should be removed.
-
 The way it works here,
-
 it really only works for primitive types,
-
 so setting such a constraint is definitely a good idea.
-
 And with that if we saved it, after commenting this out,
-
 it again works, of course.
-
 Now needless to say, hopefully,
-
 that of course you could have more than one
-
 generic type here as well.
-
 You are not limited to one type
-
 when you work with classes.
-
 And you can also have methods,
-
 which have their own generic types instead of classes.
-
 So you could introduce new generic types in class methods,
-
 if you have some generic type,
-
 which only is needed in a certain method,
-
 and not in the entire class.
-
 So you are really flexible there.
-
 You can use constraints everywhere
-
 and in general, generic types are there
-
 to make your life easier
-
 and to give you that perfect combination
-
 of full flexibility.
-
 We can use any primitive value you want here
-
 and type safety,
-
 because we know perfectly well
-
 what is stored in this DataStorage
-
 and what is stored in this DataStorage.
-
 So this combination is the awesome thing
-
 generic types give us.
-

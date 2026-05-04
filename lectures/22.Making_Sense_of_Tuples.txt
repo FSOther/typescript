@@ -1,118 +1,59 @@
 Related to array types,
-
 there also is another kind of array type in TypeScript.
-
 There is the so-called tuple type.
-
 Let's say you have a variable, possibleResults,
-
 and you know that this variable should eventually store
-
 an array that accepts exactly two values
-
 with clearly defined types.
-
 So let's say eventually we wanna store an array in there
-
 where we have one or minus one, these two values.
-
 If that's the case, you could, of course,
-
 set the type of possible results to number array like this.
-
 Now, you could store one minus one
-
 like this in this variable,
-
 but you could also store, let's say,
-
 five, 10, 12 in that variable.
-
 Now you might wonder why you would do that
-
 if that's your code.
-
 After all, you are in control of this code,
-
 but imagine that you're working in a bigger team
-
 and not every colleague knows which kinds of values
-
 or which kind of structure should go into this variable.
-
 So you might wanna be a bit more clear than just accepting
-
 any array full of any numbers.
-
 Well, that's where a tuple can come in handy.
-
 Instead of defining possible results to be a number array,
-
 you could define a tuple type by, again,
-
 using square brackets,
-
 but now you put your types into the square brackets.
-
 By doing that, you're telling TypeScript
-
 that possible results is a tuple, which is an array
-
 of a fixed length with clearly defined types.
-
 And here in this example, you're telling TypeScript
-
 that possibleResults will be in array
-
 with exactly two values,
-
 where the first value will be of type number,
-
 and the second value will be of type number,
-
 which is why this value here is accepted,
-
 but this one here is rejected.
-
 Of course, you could also have a mixture of types here
-
 and say that the first value must be a number,
-
 the second one must be a string.
-
 Now this would be rejected as well.
-
 Now with that, you could still pass in
-
 any kind of numbers here, but it could at most be two
-
 and it must be numbers,
-
 which clearly is already an improvement
-
 compared to what we had before.
-
 Now, TypeScript would even give you a feature
-
 of being even more precise
-
 so that you could clearly tell TypeScript
-
 that not any kind of number is allowed here,
-
 but one or minus one,
-
 but that's a feature we'll take a look at
-
 a little bit later.
-
 For now, it's just important to know about tuples,
-
 which can be helpful if you are dealing
-
 with fixed length arrays
-
 where you clearly know which element at a certain position
-
 in the array should have which type.
-

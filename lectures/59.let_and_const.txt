@@ -1,298 +1,149 @@
 Lecture resource: https://compat-table.github.io/compat-table/es6/
-
 So to get started in this section here,
-
 I'll start by exploring the let and const keywords
-
 supported by JavaScript.
-
 And just as a side note, you'll find a link
-
 to this page here, which gives you a good overview
-
 of these modern JavaScript features, like const and let,
-
 if you still want to call them modern,
-
 and you can see which browsers support them
-
 and also whether TypeScript supports these features.
-
 So whether you can compile these features with TypeScript
-
 and whether TypeScript is able to handle these features.
-
 And after compiling them with TypeScript,
-
 when targeting an older JavaScript version,
-
 as you will see later in this section,
-
 you could also write modern JavaScript code
-
 and still run it in older browsers,
-
 which mostly means Internet Explorer.
-
 Probably not too many people
-
 are still targeting that browser nowadays,
-
 but occasionally in some internal systems
-
 or for specific applications you might need to.
-
 And in that case it's useful to know which features
-
 are and are not supported
-
 and that you can use TypeScript to still make the code work.
-
 And with that, let's start with one of the most important
-
 and obvious and often used introductions
-
 Next Gen JavaScript added.
-
 By the way, with Next Gen JavaScript,
-
 I mean ES6 or more recent.
-
 And that's let or const, what I'm talking about.
-
 It allows you to define constants or variables.
-
 The difference is that constants,
-
 so variables defined with the const keyword,
-
 cannot be changed.
-
 If you would try to assign a new value here,
-
 even if it has the correct type,
-
 you'll get an error because it's a constant.
-
 Now this is by the way, an error
-
 that is thrown by TypeScript.
-
 In vanilla JavaScript, you would get an error
-
 by the browser when you run your code.
-
 Here, and that's the idea behind TypeScript,
-
 as you learned, we get an error
-
 already whilst we're writing the code
-
 because that of course is better for us as a developer.
-
 It allows us to fix this code earlier
-
 before testing it in the console.
-
 So therefore here if we remove that
-
 or comment out this line, now it recompiles
-
 and therefore we get no error in the browser as well.
-
 So that's const, let is a variable which can be changed,
-
 and therefore of course it's similar to var.
-
 var also still exists
-
 because JavaScript works such that features
-
 aren't suddenly taken away because then older browsers
-
 and their scripts might break.
-
 But you shouldn't use var anymore.
-
 And why should you not use var anymore?
-
 I mean it makes sense that we have const
-
 because that really adds a new feature: constants.
-
 But why let, why did they introduce a new keyword here?
-
 Why didn't they stick to var?
-
 let and const have one important difference to var.
-
 Well, the obvious difference for const
-
 is that the value can't be changed,
-
 but for let we all get a difference,
-
 and that's the scope in which this variable is available.
-
 Now you should know this concept of scopes in JavaScript.
-
 And with var you have a global and a function scope.
-
 That means that variables that you define
-
 outside of functions are available everywhere
-
 in your scripts, variables defined inside functions
-
 are only available in that function.
-
 For example here, if I had a function add
-
 and there I might get two numbers, A and B,
-
 then we can add a variable in there with var,
-
 result, let's say.
-
 And we set result equal to A plus B then
-
 and then we return result.
-
 And of course we could have written this in a shorter way,
-
 but I want to show what var does.
-
 And this would be fine and the result
-
 would only be available inside of this function.
-
 So if I tried to console.log result here,
-
 that would fail because it's only available
-
 in the scope of this function.
-
 If I define it outset of there, however,
-
 everything works because now it's available globally,
-
 therefore here I can access it.
-
 And also the way JavaScript works,
-
 you can access variables on a higher level.
-
 So inside of a function you can work with variables
-
 scoped to this function, but also variables
-
 having a higher scope like the global scope here.
-
 So that's var.
-
 Now for let, the behavior is generally the same.
-
 This works and this works.
-
 So it's generally the same for let,
-
 but an important difference is that for var
-
 you really only have global and function scope.
-
 What about if statements?
-
 If we check age greater 20 here,
-
 and then in there we create a variable,
-
 isOld and set this to true.
-
 Then if a console.log isOld here,
-
 we get an error in TypeScript,
-
 but actually we would not get one in JavaScript.
-
 This code here, if we grab it just to see that it works
-
 and move to the JavaScript developer tools,
-
 and there in the console, and we paste it in there
-
 and hit enter, you see true is getting printed here.
-
 And indeed if you try to access isOld, you get true.
-
 So this isOld variable is registered globally
-
 and not just inside of the if statement.
-
 Because with var, JavaScript doesn't know any other scopes
-
 than functions and global.
-
 And that changes with let.
-
 Now, as I said, TypeScript complaints nonetheless
-
 because this is not good code to write,
-
 but technically it would work.
-
 With let, that changes.
-
 Now with let, this really is only available
-
 inside of these curly braces
-
 because let and const introduced a new concept
-
 called block scope, which means a variable or constant
-
 is always available in the block
-
 in which you define it or in any lower blocks.
-
 And a block is basically always a snippet
-
 surrounded with curly braces,
-
 as you have it for a if statement, in a for loop,
-
 in a function, or even, that's possible,
-
 if you just add curly braces like this.
-
 Any variable defined in here
-
 would only be available in that block.
-
 And that's a good thing
-
 because it forces you to write cleaner code
-
 and avoid situations like this.
-
 So just to also prove that there is a difference
-
 in the browser, if I copy this code using let,
-
 and I reload my page here and now enter this here,
-
 you see I get an error, that isOld is not defined.
-
 We didn't get an error before.
-
 Indeed, if I try to output isOld, I get that error again.
-
 So that's the difference.
-
 and therefore let and const is better,
-
 not just because we get this constant feature,
-
 but also because we are forced to write cleaner code.
-
 So let me comment this out to make it work again.
-

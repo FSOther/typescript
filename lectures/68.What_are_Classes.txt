@@ -1,50 +1,25 @@
 Now, before we dive into any code,
-
 I first wanna clarify what exactly classes are,
-
 so that we're all on the same page.
-
 As I mentioned, classes are not a TypeScript exclusive
-
 or a specific feature.
-
 Instead, they exist in Vanilla JavaScript 2.
-
 TypeScript just enhances this feature.
-
 And indeed, classes or the concept of classes,
-
 exists in many other programming languages as well,
-
 just as a side note.
-
 And classes, in the end, are simply blueprints
-
 for objects, you could say.
-
 The idea is that you can create a class definition once
-
 and then create multiple objects,
-
 multiple object instances, as they're also called, based on
-
 that class, so that you have multiple objects
-
 that will have the same shape, the same methods,
-
 but different data, different values for their properties,
-
 because they're all based on that same class definition.
-
 And you can learn more about classes
-
 with the link you find attached.
-
 More about Vanilla JavaScript classes, I should say,
-
 because in the next lectures, we'll dive deeply
-
 into TypeScript classes
-
 and how they differ from Vanilla JavaScript classes.
-

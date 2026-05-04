@@ -1,120 +1,60 @@
 With our basic class if we now go to
-
 the dist folder and we inspect the app.js file,
-
 we see what is generated in JavaScript,
-
 and there you see we have essentially the same code.
-
 Two important differences are, that the name field
-
 which we have here does not exist like this
-
 here in the class.
-
 This would actually be supported in modern JavaScript
-
 but it depends on the version of JavaScript
-
 you're building for.
-
 So in ES6 alone, it's not supported actually.
-
 And of course what's awesome is seeing
-
 is the type assignment.
-
 We do have our constructional logic though,
-
 and indeed this is how you do add properties
-
 to the to be created objects in Vanilla JavaScript
-
 when not using the latest version of JavaScript
-
 where this field syntax would also be supported.
-
 So this is what I have in JavaScript.
-
 Now it gets interesting however if we go to the
-
 tsconfig.json file and we switch the target from
-
 ES5 to ES6 and comment out lib here.
-
 So that the correct and recommended libraries
-
 are added by TypeScript automatically.
-
 If you now save this config file, and you go back to app.js
-
 you see something totally different.
-
 And that's pretty interesting what we see here.
-
 What do we have here?
-
 Well what we in the end have here is a
-
 so called constructor function.
-
 Constructor function is something which is built into
-
 JavaScript which has basically been there
-
 for ever you could say,
-
 and this is Vanilla non-modern JavaScript's
-
 way of creating object blueprints.
-
 It's a function which is called with the help
-
 of the new keyword and then all of a sudden, magically,
-
 this function even though it has no return statement
-
 inside of it does return something
-
 as you see when we call it here.
-
 It returns an object.
-
 A new object which will have a name property.
-
 So this concept is not new,
-
 it's not introduced by modern JavaScript or by TypeScript.
-
 The idea of having blueprints for objects has been around
-
 in JavaScript for a very long time.
-
 In the past however, we had to use constructor functions
-
 and since this could be a bit un-intuitive
-
 especially to developers who might have worked
-
 with different programming languages.
-
 Modern JavaScript introduced the idea of classes of
-
 this cleaner syntax, and TypeScript supports this as well.
-
 And because of TypeScript's powerful compilation,
-
 you can choose wherever you wanna compile it into,
-
 older style which of course works in more browsers
-
 or into this more modern ES6 style which we saw before.
-
 Which looks very much like this here.
-
 The key take away is that we have this feature built
-
 into JavaScript and supported by TypeScript
-
 that we can define object blueprints.
-

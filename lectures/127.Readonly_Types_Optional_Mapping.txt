@@ -1,270 +1,135 @@
 Now, mapped types, of course,
-
 like all the features we cover in this section here,
-
 are a feature you won't need all the time
-
 for all your projects,
-
 but they can come in handy in certain situations.
-
 They also allow you to do more than just map some properties
-
 to some value type as we're doing it here.
-
 Specifically, they also allow you to, for example,
-
 make properties optional,
-
 even though if they're not optional
-
 in the original type you're mapping from or vice versa.
-
 They allow you to make properties non-optional
-
 if they have been optional before,
-
 and I'll start by showing you
-
 how to make properties optional.
-
 Right, now we're simply mapping all the properties
-
 of the incoming type, so of the operations type,
-
 for example, to this new object,
-
 and since none of these two properties, add and subtract,
-
 are optional here, none of them are optional here either,
-
 so that means that when we define the math results,
-
 omitting subtract gives us an error,
-
 because subtract is missing, but required.
-
 Now, what if we want more flexibility in our results?
-
 Sure, we might want to enforce
-
 that all these operations are defined,
-
 but we might not want to force the developer
-
 that uses the results type
-
 to also perform all these operations.
-
 We might be fine with just storing the result
-
 of adding or subtracting numbers.
-
 Well, you can simply add a question mark here
-
 in your mapped type,
-
 and that makes all these properties you're mapping
-
 into this object type here optional.
-
 So by adding this question mark here,
-
 it is now valid to omit subtract or, of course, add.
-
 That is now allowed.
-
 Now, the opposite would also work.
-
 Let's say add and subtract were actually optional methods.
-
 Now we get an error down here,
-
 because we're calling a method
-
 that potentially doesn't exist,
-
 so we would need to handle this,
-
 but let's ignore this for now.
-
 Let's instead say that we want to enforce the add
-
 and subtract keys, for whatever reason, in this object.
-
 At the moment, since they're optional in operations,
-
 they would be optional here in results as well
-
 because we're mapping those properties
-
 with all their configuration, so to say,
-
 into this object type.
-
 So as a consequence, we don't need to define add
-
 or subtract in math results.
-
 Defining neither of these would be fine,
-
 since add and subtract are optional up here.
-
 Now, if you wanna remove that optionality,
-
 you can do so by adding minus question mark here.
-
 Now, this definitely looks weird,
-
 but this is TypeScript's syntax
-
 for removing the optional flag
-
 when working with mapped types, as we're doing it here.
-
 With that minus question mark added here,
-
 you see I'm getting an error down here telling me
-
 that I am missing add and subtract,
-
 these two required properties,
-
 and only if I add them like this,
-
 only then is this error gone.
-
 Now, I got the error again that I'm calling methods
-
 that potentially don't exist,
-
 but we can ignore this for this example.
-
 The key takeaway here
-
 is that you can remove the optional flag like this.
-
 Here, however, I'll remove the question mark
-
 in the operations type
-
 and instead map these required method types here
-
 to be optional properties in the results type,
-
 as we had it before.
-
 Now, one other kind of mapping you can perform
-
 is that you can make properties read only
-
 or remove the read only flag when working with mapped types.
-
 For example here,
-
 they're currently not read only in operations,
-
 which means we could overwrite the value stored in add.
-
 We could assign a new function for this add property
-
 or the subtract property,
-
 but if we want to make the results read only
-
 so that they can't be changed once they have been set,
-
 we can do so by adding the read only flag
-
 in front of this property here.
-
 Now, as a little side note,
-
 you can always add the read only flag
-
 when defining an object type
-
 to make a property or method read only
-
 so that it can't be overwritten once it has been defined.
-
 This is not exclusive to mapped types,
-
 but what is exclusive to mapped types,
-
 or what is a mapped type specific feature, so to say,
-
 is that you can map properties or methods
-
 that were not read only to be read only by adding read only
-
 in front of your property mapping syntax here.
-
 And by doing so, this works as before,
-
 but if we then would try to change add to something else,
-
 we would get an error that we can't do so
-
 because it's a read only property.
-
 And just to make sure that this really works,
-
 if we were to remove the read-only modifier here
-
 in this mapped type, you would see that now down there,
-
 the error went away, so that really makes a difference.
-
 Now, you can also remove the read only flag,
-
 so let's say we already had read only here
-
 on the add and subtract method.
-
 In that case, we would have read only properties
-
 in the mapped type as well, because when we map properties,
-
 we always also take their flags
-
 and use them, too, in the mapped type,
-
 so the add and subtract properties in this type
-
 would be read only if they are read only
-
 in the original type, and therefore,
-
 we would get this error.
-
 But now let's say we wanna remove
-
 the read only configuration.
-
 Well, you can do so,
-
 just as you could with the question mark,
-
 you can add minus read only here,
-
 which again, might look weird,
-
 but this is TypeScript's way of saying
-
 that the read only flag should be removed
-
 for these mapped properties.
-
 So they are read only here in the original type,
-
 but we removed this flag in the mapped object type,
-
 and as a result, we can overwrite add here.
-
 Now, not something I need here,
-
 but something you should know,
-
 which is why I showed it to you.
-

@@ -1,184 +1,92 @@
 So now that we have a understanding
-
 of how we can manage our files with the compiler,
-
 let's dive into the compiler options,
-
 because that's really interesting.
-
 This allows us to control
-
 how our TypeScript code is compiled,
-
 so not only which files,
-
 but also how the files which are getting compiled
-
 are treated by TypeScript.
-
 And there you see we have a bunch of options.
-
 You got short explanations next to these options.
-
 Some explanations arguably are a big cryptic.
-
 Others are quite clear.
-
 And I will say that a lot of these options,
-
 most of these options will not matter in most projects.
-
 So, you'll not set all of these options, not even close.
-
 You typically can ignore a lot of these options.
-
 Now I will pick up on the important options here
-
 throughout this course,
-
 because some options only make sense
-
 when we learn about a certain feature.
-
 And I want to dive into some options
-
 right now already though.
-
 And for that, let's go through the file from top to bottom
-
 and see what we got there.
-
 Let's start with the target option.
-
 As you see, this actually is set by default.
-
 It's not commented out.
-
 And what you do with this option
-
 is you tell TypeScript for which target JavaScript version
-
 you want to compile the code.
-
 Because what TypeScript does is
-
 it does not just compile new features
-
 like the type annotations
-
 that don't exist in JavaScript to JavaScript code.
-
 So it does not just take care that
-
 this here works.
-
 It also compiles the code to JavaScript
-
 that runs in a certain set of browsers.
-
 And you basically define which browsers
-
 support the compile code by setting the target.
-
 The default target here in this project as you see,
-
 the initial target which is getting set up is es5,
-
 which means all types of code is compiled down.
-
 We can actually see that.
-
 If I run TSC here to compile all my files,
-
 we see in app.ts I'm using let and const,
-
 but in app.js, we se var.
-
 And that happens because we got a target of es5
-
 and in es5 world, we don't have let and const.
-
 So the good thing here is that we can use TypeScript
-
 to generate code that works in older browsers as well.
-
 But it's totally up to use if we want to do that.
-
 Maybe we don't want to do that with TypeScript,
-
 because maybe we got some other build tool
-
 that will then take care about the JavaScript transpilation
-
 and therefore we don't want to have TypeScript do that,
-
 or maybe we wanna ship code
-
 that only works in modern browsers
-
 because we know our app only will run in modern browsers.
-
 And therefore, alternative options can be seen here
-
 if you delete the value
-
 and then here in vscode at least,
-
 if you hit Control + Space to get the auto-completion,
-
 you see a bunch of suggestions
-
 and you see all available values here.
-
 Now over time, this of course will change
-
 because we have got new JavaScript versions released.
-
 You saw we set this to es5 before.
-
 If you don't specify target at all,
-
 then right now, TypeScript compiles to es3 even,
-
 so it supports an even older version.
-
 But you can also go with es6, which is more modern,
-
 which, for example, supports const and let
-
 or take an even more recent version,
-
 es6 is equivalent to es2015, just for the record.
-
 So if we set this to es6, for example,
-
 and I rerun the tsc command
-
 after changing the tsconfig.json file,
-
 you will see that now in app.js, we got let and const,
-
 because now that is supported there.
-
 So that is up to you.
-
 Of course, the more modern
-
 of a JavaScript version you pick here,
-
 the more concise your generated code is
-
 because TypeScript has to compile less and less code,
-
 or it has to work around non-existing features
-
 in less situations, and therefore,
-
 the compiled code typically is done
-
 more concise and shorter.
-
 So that's target.
-
 What about the other options?
-

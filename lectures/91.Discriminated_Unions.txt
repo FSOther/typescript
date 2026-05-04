@@ -1,170 +1,85 @@
 So here, I'm using the IN operator
-
 to find out whether my incoming argument
-
 by parameter has a path property,
-
 which is an absolutely fine way of dealing with this here.
-
 But there also would be another way
-
 of riding this type guard.
-
 In general though, I'll say that you can become creative,
-
 you can write any if check,
-
 any condition that makes sense to you,
-
 if it helps you find out whether you're dealing
-
 with a File Source or a Database Source.
-
 But one common pattern
-
 you'll also see in many TypeScript projects
-
 is to work with so-called discriminated unions.
-
 And the idea is that instead of checking for the existence
-
 of certain properties like path or connection URL,
-
 which might be changed in the future,
-
 I mean, the property names might be changed in the future.
-
 Instead of using them,
-
 you could use some shared property
-
 which exists in both types
-
 that are combined with the union type.
-
 You could have a type property for example,
-
 though the name is up to you.
-
 But here I'll go with type,
-
 and I'll set the type here to file for my FileSource.
-
 So here I'm still inside of the type definition,
-
 but I'm using this literal type feature here
-
 to set this type property, not to any string,
-
 but to the specific string file.
-
 And then for DBSource, I'll also add a type property,
-
 but I'll set it to db.
-
 So again, this is a type definition,
-
 but here, I'm using a literal type to set this type property
-
 to exactly the type DB string.
-
 Now of course, we also must adjust the actual values now
-
 and set type to file here and set type to db here
-
 to make sure that we're correctly building an object
-
 of those respective types.
-
 Now, source is still either the FileSource or the DBSource,
-
 but it will, therefore, be an object
-
 where the type is either file or DB.
-
 We can take advantage of this here.
-
 Instead of checking for the existence of the path property,
-
 we could add an alternative if check
-
 where we check if source.type,
-
 which is guaranteed to exist because both types,
-
 the FileSource and the DBSource both have a type property.
-
 So we can safely access this here
-
 because source, no matter which source it will be,
-
 will definitely have a type property.
-
 But the value of the type property,
-
 as you can see here in the inferred type,
-
 is either file or db.
-
 So it's a string that either says file or db.
-
 And you see that TypeScripts inference is really powerful
-
 because it correctly inferred this union type
-
 of file or DB due to how we configured these types up here.
-
 And therefore, we can check if the type is file.
-
 And then here, we can access source.path
-
 with autocompletion without an error
-
 because TypeScript understands
-
 that inside of this if check,
-
 we're dealing with the FileSource value type.
-
 We're dealing with the value of this type
-
 because the type property is set to file,
-
 and we're checking for this here.
-
 And TypeScript also understands
-
 that after this if check where I return,
-
 we definitely will have a connection URL
-
 because we must be dealing with a value of type DBSource
-
 after the if check,
-
 because we're checking for the FileSource case
-
 inside of this first if check.
-
 And this is, therefore, another way of checking
-
 for different value types.
-
 Here, we're using the so-called discriminated union pattern
-
 where we add a shared property
-
 to all the types that we're combining in a union.
-
 And we're using the values of these properties,
-
 which will be different for the different value types
-
 to find out with which concrete value type
-
 we're dealing down here.
-
 So we're discriminating based on that shared property,
-
 we're running different code based on that shared property.
-

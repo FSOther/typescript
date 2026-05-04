@@ -1,42 +1,21 @@
 [Maximilian Schwarzmüller] And that's already it
-
 for this section on Generic types.
-
 Generics or Generic types
-
 can be a feature that can definitely look intimidating
-
 and hard to grasp at first,
-
 but as you can hopefully tell from all these examples,
-
 in the end,
-
 it's a really useful feature
-
 that isn't actually that complex.
-
 Now, of course, as everything,
-
 it'll take practice to find out when exactly
-
 you want to use this feature,
-
 and it can definitely be confusing at times,
-
 but in a nutshell,
-
 it's really only about being able to build flexible types,
-
 where multiple value types work together.
-
 Now, there is more you can do with Generics
-
 and with types in TypeScript in general,
-
 and we'll explore that in the next section.
-
 For the moment you know, what Generics are
-
 and why this is a useful feature.
-

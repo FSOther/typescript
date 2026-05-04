@@ -1,292 +1,146 @@
 So, to get started
-
 with Node.js and TypeScript,
-
 I'll create a brand new project.
-
 Node-typescript sounds like a fitting name.
-
 Of course, the name is up to you though.
-
 And then I opened this project here with Visual Studio Code.
-
 And currently, it's an empty project, as you can tell.
-
 Now, in here,
-
 I'll go to my terminal and just run npm init -y
-
 to create a standard package.json file,
-
 which in the end tells VS Code
-
 that this will be a Node.js project,
-
 and which will then also be used by Node.js
-
 to manage the dependencies and so on.
-
 Now, in this file, I'll make one tweak.
-
 I'll set type to module
-
 to use the more modern import/export syntax
-
 supported by Node.js, but that will be it for now.
-
 Well, and then we could create app.js file,
-
 or any other file.
-
 The name is entirely up to you.
-
 And in there, write our Node.js code.
-
 But I will not do that.
-
 Instead, I want a .ts file
-
 because, of course, I want a TypeScript project here.
-
 And the question now is,
-
 how can we support TypeScript in this project?
-
 Well, to support it,
-
 what we can do and what we should do
-
 is install TypeScript into this project.
-
 Now, if you have the TypeScript compiler
-
 installed globally on your system,
-
 you technically don't need to install TypeScript
-
 into this project here,
-
 but it is a good idea to still do that,
-
 to have a TypeScript version specific to this project
-
 so that globally you could be using a different version
-
 than you do in this project.
-
 I'll also add -d or --save-dev.
-
 It's the same to mark this as a development-only dependency
-
 to make it clear that this TypeScript dependency
-
 does not have to be installed
-
 when running this app in production.
-
 So, that's one thing.
-
 I will also add a tsconfig.json file here
-
 to configure that TypeScript compiler.
-
 And in package.json, in that scripts area,
-
 I'll delete that test script
-
 and instead add a compile script,
-
 though the name is up to you, where I will run tsc.
-
 So, invoke the TypeScript compiler.
-
 Now, when it comes to invoking that TypeScript compiler,
-
 it will use that locally installed version,
-
 whatever that may be for you.
-
 And it will take that tsconfig.json file into account.
-
 And therefore, we of course should tweak this file
-
 a little bit and add some settings.
-
 Now, which settings should you add here?
-
 While adding a target makes sense
-
 to define to which JavaScript version
-
 you want to compile your code,
-
 and here, I'll set this to es2022
-
 to use a fairly recent version of JavaScript
-
 and not compile it down to some super old version.
-
 Because ultimately,
-
 we will run this compiled JavaScript code with Node.js.
-
 And unless you're using an extremely old version of Node.js,
-
 you can, of course, target a JavaScript version
-
 that is supported by the Node.js version you're using.
-
 So, it simply depends on which Node.js version
-
 you got installed.
-
 I will also add the esModuleInterop setting here
-
 and set this to true.
-
 This will ensure that in our Node.js TypeScript project,
-
 we won't run into any problems related to import statements
-
 or import statements that might be used
-
 by third-party libraries we're using.
-
 Because Node.js actually supports
-
 two different kinds of import statements,
-
 esModules and CommonJS.
-
 And this will simply ensure
-
 that we don't run into any problems there.
-
 I'll also add skipLibCheck and set this to true,
-
 and this setting will ensure
-
 that TypeScript won't check the types
-
 of any third-party libraries we might be using our project,
-
 which will ultimately speed up compilation
-
 in our code editor.
-
 I will also add the module option here
-
 and set this to NodeNext,
-
 which is essentially the value you should use
-
 for this option when using TypeScript in a Node.js project
-
 to ensure that all those import/export statements work.
-
 I'll add an outDir option and set it to dist
-
 to put the compiled code into a dist folder.
-
 And add a lib setting here and set this to es2022
-
 to make sure that TypeScript is aware of some base types
-
 that we'll use throughout our code.
-
 I'll also add the strict setting
-
 and set to true to enable strict type checking,
-
 where TypeScript doesn't allow us to be too loose
-
 and flexible with our types,
-
 which would mean that we would lose
-
 some of types typescripts advantages.
-
 Now, of course, all these options
-
 should actually go into our compiler options,
-
 so I'll actually move them there.
-
 And with that, we got a proper tsconfig.json file.
-
 Okay, so with that, we should have everything set up.
-
 One last thing I'll do here
-
 is I will add a start script here
-
 to my scripts part in the package.json file
-
 and target the app.js file in the dist folder here.
-
 And that is a file that should exist after running compile
-
 because due to our tsconfig.json settings here,
-
 we should have a dist folder
-
 that contains the compiled code.
-
 We can therefore now give this project a try
-
 by simply adding a console.log statement here,
-
 'Hello World!',
-
 which, of course, is not very TypeScript-specific.
-
 But nonetheless, it allows me to catch one error here.
-
 We actually should go to the tsconfig.json file
-
 and also add dom here to the lib array.
-
 Even though we're not building for the DOM,
-
 this is required to enable the console object,
-
 or to make sure that TypeScript
-
 is aware of this object and its types.
-
 With that though, we now finished the tsconfig.json file
-
 and we now have this statement here,
-
 let's now try compiling this.
-
 So, if now I run npm run compile,
-
 the TypeScript compiler should be invoked
-
 and a dist folder should therefore be created.
-
 And in that folder, we should have an app.js file,
-
 which contains our compiled code,
-
 which of course is essentially the same
-
 as the TypeScript code,
-
 though this extra export statement here was added.
-
 But it should therefore also be runnable.
-
 So, if I run npm start,
-
 you should see, "Hello World!," here.
-
 And that proves
-
 that our basic project setup here is working.
-
 Now, we can, of course,
-
 turn this into a more useful Node.js application.
-

@@ -1,70 +1,35 @@
 Now, besides these
-
 different import and export syntaxes,
-
 which are good to know, there is one other thing
-
 which you have to understand and know.
-
 In project state, we're not just exporting a class
-
 or an interface, as we're doing it in all the other files,
-
 but we're actually exporting a constant project state.
-
 Now, the thing is, we're importing this constant
-
 in multiple other files.
-
 We're importing it in the project-list.ts file,
-
 we're also importing it in the project-input.ts file.
-
 So we import from the same file multiple times.
-
 The question is does this code in this file,
-
 namely the creation of this constant here,
-
 does this run once or twice or how often does it run?
-
 Once per import statement or once for the entire app?
-
 Well, turns out it runs once when the file is imported
-
 for the first time by any other file.
-
 If another file then imports that same file again,
-
 it does not run again.
-
 We can also validate this by adding
-
 a console log statement here.
-
 Running.
-
 We'll see this only will get printed once
-
 even though we're importing project-state.ts both here
-
 in the project-list.ts file
-
 and in the project-input.ts file.
-
 Still, this will only be printed to the console once.
-
 You see it here.
-
 Running.
-
 It will never be printed a second time,
-
 no matter what we do.
-
 So this only runs once.
-
 This is how it behaves and this is just something you have
-
 to know so that you can plan your app appropriately.
-

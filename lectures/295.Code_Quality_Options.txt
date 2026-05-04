@@ -1,206 +1,103 @@
 Now if you move on,
-
 we got more options, noUnusedLocals,
-
 noUnusedParameters, noImplicitReturns.
-
 This helps you with code quality, basically.
-
 TypeScript will complain if you have
-
 certain unused variables and so on.
-
 So if we turn these three options on, for example,
-
 this option helps you with Switch statements,
-
 where you might forget the break keyword.
-
 But if we turn these three options on,
-
 what TypeScript will complain about is, for example,
-
 if you had a username variable here,
-
 locally in this function, and you don't use it.
-
 You see, this has yellow squiggly lines
-
 because it's not an error, really.
-
 It's more like a warning or a hint.
-
 So if I compile here,
-
 you'll see now, however, I do get an error
-
 because TypeScript only knows errors.
-
 And there we see that the username is declared,
-
 but its value is never read because we made sure
-
 that we don't want unused local variables.
-
 Unused global variables,
-
 so if I had something like appId here,
-
 are allowed though because TypeScript can't know
-
 if you maybe need that globally defined value
-
 in another script file.
-
 So therefore this is allowed,
-
 but in a function where there is no other place
-
 where you could need it, TypeScript will complain now
-
 if you have unused code.
-
 And that's generally a good idea.
-
 Allows you to strip out such unused code.
-
 Same goes for unused parameters.
-
 If you would take a H here
-
 where one, of course, bind is broken now,
-
 but even if we pass this in this works,
-
 but now, again, TypeScript and therefore the ID tells us
-
 that this is unused and either this,
-
 so maybe you should remove it or start using it.
-
 So that's noUnusedParameters.
-
 And noImplicitReturns means that we'll get an error
-
 if we have a function that sometimes returns something
-
 and sometimes it does not.
-
 Let's say we have another function, add,
-
 where we get two numbers.
-
 Number and n2 is a number.
-
 And, of course we can return n1 plus n2.
-
 But let's say we're, for some reason,
-
 checking if n1 plus n2 is greater than zero,
-
 because we only want to return if we have a result
-
 greater than zero.
-
 Then we want a returned value.
-
 Otherwise we want to return nothing.
-
 We don't want a return.
-
 Well, then we get a warning because of that extra setting
-
 with noImplicitReturns.
-
 TypeScript detects that not all branches in this function
-
 lead to a return statement
-
 and because of our setting, that's not allowed.
-
 We at least have to deliberately not return anything here
-
 by adding the return keyword.
-
 Just omitting it is not allowed here.
-
 It is allowed if you have a function
-
 that does not return anything, in no branch,
-
 but if you have at least one case
-
 where your function does return something,
-
 then you have to make sure that you return something
-
 in all cases.
-
 And with that, we're nearing the end
-
 of this config walkthrough.
-
 We can ignore the moduleResolution here.
-
 All these options actually are pretty advanced,
-
 that don't matter to us here,
-
 don't matter to you in a lot of projects.
-
 Source Map Options allow you to tweak these source maps
-
 we had a look at earlier.
-
 So these translation files from JavaScript to TypeScript.
-
 Typically default settings should be fine here,
-
 so if you don't know what you're changing
-
 and why you're doing it,
-
 you typically don't need to change anything here.
-
 And regarding these experimental options,
-
 I'll have a look at them,
-
 specifically at experimentalDecorators,
-
 later in the decorators module.
-
 This basically enables certain features to be used
-
 in TypeScript which are really experimental,
-
 where it's not sure if they will end up in JavaScript
-
 at some time in the future
-
 and where you still might wanna work with them.
-
 Then you explicitly have to tell TypeScript
-
 that you want to work with these features
-
 and you can do that with that configuration.
-
 But again, I will come back to that.
-
 And therefore now, we walk through this file,
-
 lot of options you can set there.
-
 And as TypeScript grows, you typically also get
-
 more and more options added here,
-
 therefore the official docs always are a great place
-
 to dive deeper and to make sure
-
 that you don't miss an interesting option
-
 that might help you in your project.
-

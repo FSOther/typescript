@@ -1,254 +1,127 @@
 So, TypeScript
-
 can help you catch errors earlier.
-
 However, there's one big disadvantage of TypeScript,
-
 and that is that this code,
-
 this TypeScript code stored in this .ts file
-
 does not run in the browser.
-
 You can write TypeScript code in your projects,
-
 but you can't run it like this in the browser.
-
 Now, it's different if you're building for the backend,
-
 for Node.js because there are tools and runtimes
-
 that do allow you
-
 to run TypeScript code without any extra build step.
-
 But when it comes to running it in the browser,
-
 it does not work there.
-
 Instead, what you need to do with TypeScript code like this
-
 to make it work in the browser is you need to compile it.
-
 You need to convert this code from TypeScript code
-
 to pure JavaScript code.
-
 A compilation step is needed.
-
 And that's why TypeScript
-
 is not just about writing TypeScript code,
-
 but it's also about compiling that TypeScript code.
-
 That's why the official documentation page
-
 also has a download area where you find instructions
-
 on how to download the TypeScript compiler,
-
 a tool that will convert the TypeScript code
-
 to JavaScript code.
-
 Now, you can simply follow
-
 the instructions here on this page.
-
 I will follow this instruction here,
-
 which will install TypeScript globally on my system.
-
 Or to be precise,
-
 which will install the TypeScript compiler globally
-
 on my system, so that I can use it anywhere in any project.
-
 Later in the course, I will also show you
-
 how you can add TypeScript to individual projects
-
 and how you can implement this compilation step into
-
 a more general project-built process.
-
 For the moment,
-
 let's focus onto this global approach, though.
-
 Now, this approach here uses npm to install TypeScript
-
 as a global tool onto your system.
-
 And npm is a package manager
-
 that comes together with Node.js.
-
 Therefore, you should visit nodejs.org, and from there,
-
 download the latest LTS version of Node.js
-
 since this will include this package manager,
-
 this npm tool.
-
 Once you did install Node.js, and with it, npm,
-
 you can run this command here in your system command prompt
-
 or terminal to install TypeScript globally on your system.
-
 So here, I'm on Mac OS, so I opened up my terminal,
-
 and I'll run npm install -g
-
 to install it globally, typescript.
-
 On Windows, it's exactly the same command,
-
 you just use your default command prompt to run it.
-
 Now, you will need to make sure
-
 that you got Node.js installed as mentioned,
-
 and on Mac OS analytics,
-
 you might need to add sudo in front of this command
-
 to give it the right permissions.
-
 You might get a permission error without sudo,
-
 on Windows, this will not work and will also not be needed.
-
 Now, you might be prompted for your password,
-
 but thereafter, this will go ahead and install TypeScript,
-
 or to be precise, the TypeScript compiler onto your system.
-
 And with it installed, you can go to your project
-
 where you're using TypeScript,
-
 open up your system terminal there as well.
-
 Either the one integrated into your code editor
-
 as I'm doing it here using the terminal
-
 that's integrated in Visual Studio Code,
-
 or you use your default command prompt
-
 or terminal outside of the editor,
-
 and you navigate into your project folder
-
 via the CD command.
-
 Either way, you must make sure
-
 that you have your terminal open,
-
 and that you navigate it into this project folder,
-
 so that in there, you can start
-
 the compilation process of this calculator.ts file
-
 by running tsc,
-
 and then the name of the file, of the TypeScript file
-
 that contains the to be compiled code.
-
 tsc is a command that will be available
-
 since you did now install TypeScript globally.
-
 This will invoke the TypeScript compiler,
-
 and it will go ahead
-
 and produce a calculator.js file in this case.
-
 And if you inspect this file
-
 and you compare it to the TypeScript file,
-
 you'll see that it's pretty much the same code,
-
 there have only been some minor changes.
-
 Most importantly, these TypeScript features
-
 like this explicit type assignment here,
-
 have been removed
-
 since that was non-standard JavaScript code.
-
 It wasn't code that would run in the browser
-
 or in any other JavaScript environment.
-
 And it's then this compiled JavaScript file
-
 that you would import into your
-
 HTML file.
-
 For example, since this file
-
 now does contain executable code.
-
 By the way,
-
 if you had an error in your TypeScript code.
-
 If you remove this plus here,
-
 for example, you don't just get a warning
-
 and an error here in your IDE, which is very convenient,
-
 since that helps you catch the error early.
-
 Instead, if you save this, you would also get an error
-
 if you try to compile this TypeScript file.
-
 You get this error message here as well then.
-
 However, since you also get it in the editor,
-
 you typically can find and fix such problems
-
 without even starting the compilation process,
-
 which is very convenient.
-
 But that's how you can compile,
-
 and then also run that TypeScript code in an environment
-
 that no built-in TypeScript support.
-
 As mentioned, later, I'll also show you
-
 how you can automate this compilation step
-
 for more complex projects
-
 that consist of multiple TypeScript files,
-
 because you don't want to individually compile these files
-
 step by step, file by file manually there.
-
 But we'll get there later.
-

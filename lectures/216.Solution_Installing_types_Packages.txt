@@ -1,180 +1,90 @@
 So what's the problem here?
-
 Well, the problem here is that indeed,
-
 lodash is a JavaScript-only library,
-
 it's written in JavaScript.
-
 And therefore, TypeScript doesn't really understand
-
 what's inside that library.
-
 It doesn't understand that there is a chunk method in there.
-
 It's not happy with us using this library
-
 since it's JavaScript in a TypeScript project.
-
 So what can we do in situations like this?
-
 Can't we use the library here?
-
 Well, actually a suggestion regarding how to fix
-
 that error is presented here
-
 right inside of that error message I'm getting in VS Code.
-
 I can install an extra package, another package,
-
 a package under the @types alias to add a declaration file,
-
 a .d.ts file to this project.
-
 And that's indeed what you'll typically do
-
 when you're using a JavaScript library
-
 in a TypeScript project, you'll install an extra library
-
 that contains the type definitions
-
 for that JavaScript library from that @types repository.
-
 Now, what is that @types repository?
-
 Well, it in the end refers
-
 to this definitely typed repository here,
-
 which maintains a huge number of type definitions
-
 for all kinds of libraries,
-
 for essentially all libraries
-
 you could potentially ever use.
-
 So in there, if we search for it,
-
 we will also find lodash,
-
 though actually it's so far down there
-
 that it's not even loaded when I try to find it.
-
 Now if I search for lodash here, I can find it though.
-
 And then I find this folder
-
 in that definitely typed repository,
-
 which is the repository, this @types alias here
-
 with npm install is referring to.
-
 So this repository contains the code of the thing
-
 that will be installed when npm installing @types something.
-
 And that something is then one of the types
-
 supported by that repository,
-
 so the lodash types for example.
-
 And what will be installed with that
-
 is a bunch of type definition files,
-
 which end with .d.ts.
-
 But we'll take a look at those files a little bit later.
-
 For the moment, let's just try that fix.
-
 So let's grab this command here
-
 and then run npm i --save-dev to install it
-
 as a development dependency, @types/lodash.
-
 Now once you do that,
-
 after a couple of seconds, this error here should disappear
-
 because now we added type definitions
-
 for this JavaScript-only library
-
 into this TypeScript project.
-
 And indeed TypeScript does allow you
-
 to use JavaScript libraries in TypeScript projects,
-
 it's totally fine with that.
-
 It just wants to know about the types
-
 that are being used by that library in the end.
-
 And that's exactly what we did now install
-
 with help of this @types library name,
-
 lodash in our case, package here.
-
 So with that added, this error here went away,
-
 and now I'm also getting great auto-completion here.
-
 I can see that there is a chunk method,
-
 and I then get this information
-
 that the first argument here is an array,
-
 and the second argument is the size,
-
 which must be of type number.
-
 Now all that information exists here,
-
 so now I can use this.
-
 And with that, create a chunked array like this,
-
 which will be an array full of number arrays
-
 because that is what chunk produces.
-
 We can also see that if we hover over it,
-
 we can see that the return type
-
 is an array of number arrays.
-
 So that's lodash in this example here
-
 doing its job, but now supported by TypeScript
-
 since TypeScript knows about its types
-
 thanks to this @types package.
-
 And that's in general how you can use
-
 JavaScript libraries in TypeScript projects,
-
 you simply install the respective @types package.
-
 If you're using jQuery, you install @types/jquery,
-
 if you're using lodash, you install @types/lodash,
-
 if you're using React, you're installing @types/react,
-
 and so on.
-

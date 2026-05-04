@@ -1,116 +1,58 @@
 You can also implement
-
 inheritance in interfaces.
-
 Let's say we have another interface, Named,
-
 and this is the interface which actually makes sure
-
 that we have a name property.
-
 So now, here in Person, we could implement
-
 Greetable and Named to be forced
-
 to have both a greet method and a name.
-
 That is something we could do.
-
 Or, if we know that Greetable thinks greetable objects
-
 always need to have a name,
-
 we could make sure that this Greetable interface
-
 actually extends the Named interface,
-
 so that together, they form a new interface,
-
 which forces every object based on Greetable
-
 to have a greet method, but also to have a name.
-
 And to do that, we can add extends here,
-
 on the interface as well, and we extend Named.
-
 Now therefore as I said, this forms a new interface,
-
 which is in the end, a interface that forces us
-
 to have a greet method, but not just that,
-
 it also forces us to have everything
-
 the Named interface defines.
-
 In this case, a name property.
-
 So if I would remove name here,
-
 I would already get an error, because this class
-
 now incorrectly implements the interface Greetable,
-
 because the property name is missing.
-
 So that's also how we can combine interfaces.
-
 Why would we split an interface like this?
-
 Well, maybe you have an application
-
 where on some objects, you only want
-
 to force them to have a name, and not a greet method,
-
 whereas on other objects, you need both greet and name.
-
 With this split, this is possible.
-
 Some objects, or some classes can just implement Named,
-
 and others can implement Greetable
-
 and are forced to have both greet and a name.
-
 So extending interfaces is possible.
-
 And there you can also extend more than one.
-
 So you can merge multiple interfaces
-
 into one single interface.
-
 We could merge another interface if we had it.
-
 Simply separated with a comma.
-
 Remember that for a classes, this was not possible.
-
 When you use classes in inheritance,
-
 you can only inherit from one class.
-
 You can't inherit from multiple classes.
-
 For interfaces that is different.
-
 For interfaces, you can indeed inherit
-
 from multiple interfaces, because in the end
-
 they're all just getting merged together,
-
 and in this pure TypeScript feature,
-
 which is actually not translated
-
 to JavaScript as you will see,
-
 we can therefore break the rules
-
 set up for JavaScript classes,
-
 and extend multiple interfaces.
-

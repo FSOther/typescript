@@ -1,300 +1,150 @@
 So that's classes, properties,
-
 and inheritance with Typescript.
-
 And as I mentioned,
-
 these features although generally
-
 are supported in Javascript,
-
 in modern JavaScript,
-
 of course with the exception of type assignments,
-
 and also with the exception of protected private public.
-
 These keywords are really only available in Typescript.
-
 Now it's not all what you can do with classes though.
-
 Whenever need feature,
-
 which you also have in vanilla JavaScript,
-
 in which is also supported in Typescript,
-
 are getters and setters.
-
 Now let's see that here on the accounting department
-
 for example,
-
 let's say we have a last report, property.
-
 Which is a private property, and it's a type string,
-
 so we have that.
-
 And then here we initialize this,
-
 to be our reports property orders argument
-
 we're getting here and they're the first value.
-
 Which of course is basically undefined if we pass in
-
 and empty report array.
-
 Now when we add a report, then I wanna set this last report,
-
 equal to text.
-
 Which is what we add to our reports array.
-
 Now last report is private,
-
 so we can access it from inside this method,
-
 but we won't be able to access it from outside
-
 with the dot notation.
-
 Now we can add a getter, to still make it accessible.
-
 A getter is basically a property,
-
 where you execute a function or method,
-
 when you retrieve a value
-
 and that allows you as a developer
-
 to add more complex logic.
-
 Here, you create a getter by using the get keyword,
-
 and then any name of your choice.
-
 Typically closely related to the property
-
 you're trying to control the access to.
-
 For example here we could name it most recent report.
-
 Anything like that.
-
 Now important this is defined like a method.
-
 So you add parenthesis and then curly braces.
-
 And now in here, you have to return something,
-
 that's important a getter method, has to return something.
-
 So you could return this last report,
-
 and then we kind of encapsulate this,
-
 because this is publicly accessible now.
-
 But often you want to have more complex logic here.
-
 So here we could check if we have a value here,
-
 so if this is truth.
-
 If it's not undefined,
-
 then we want to return last report,
-
 otherwise we might want to return some different logic,
-
 for example let's say otherwise we throw an error message
-
 with throw new error, no reports found.
-
 So now we added more logic, more complex logic,
-
 to this property and when we want to retrieve it,
-
 we can't directly retrieve this property through
-
 the dot notation, but we can use this as a property
-
 to the end run this logic.
-
 So how would this work?
-
 Well down there, where I create my Accounting department.
-
 Before I add my report, if I tried to Console log,
-
 accounting.mostrecentreport,
-
 and now important.
-
 Oops, accounting.mostrecentreport.
-
 And now important you access this as a property.
-
 So no parenthesis here.
-
 You don't execute this as a method.
-
 You just access it like a normal property,
-
 and behind-the-scenes,
-
 this will execute this method up there.
-
 So if I tried this now before we added our report,
-
 We'll see that this rebuilt without errors,
-
 recompiled without errors,
-
 but of course here an error is thrown it's our
-
 custom no report found error,
-
 because no report was added yet,
-
 and since using this as a getter,
-
 accesses this method and executes it.
-
 If we have no report we don't make it to this IF check,
-
 or into this IF statement,
-
 and therefore this line here, kicks in.
-
 As an alternative if we would move that down,
-
 after we added a report,
-
 then of course we can save that,
-
 and we no longer get an error,
-
 but instead we output this last report.
-
 So that's a getter.
-
 And you can also add a setter.
-
 A setter is added almost in the same way.
-
 You use the set keyword,
-
 and then again any name of your choice.
-
 typically a name related to the property
-
 which should be set.
-
 So here I will reuse most recent report.
-
 So that we can use this both to read a value
-
 and to set a value.
-
 And then again,
-
 you defined this like a method.
-
 But now, this needs to take an argument.
-
 The value which the user would have passed in.
-
 In here there should be a string value,
-
 and now in here you can run any logic you want
-
 to store this.
-
 Now here since were passing in a value for
-
 the most recent report, I in the end want to execute
-
 add report.
-
 So here a setter could simply be an alternative
-
 to the add report method.
-
 So in here we can access this add report.
-
 This is required since we're inside of the class.
-
 We refer to the class, and then to this class method here.
-
 And now we can just forward value here.
-
 Now we could add a more complex logic,
-
 and also check if value is maybe not defined if it's false,
-
 and then just return or throw a new you error,
-
 where we say please pass in a valid value.
-
 That is something we could also do.
-
 And now we're using a setter here as well.
-
 With that added we can test it.
-
 Down there, I could add
-
 most recent report.
-
 I could access this on accounting,
-
 and just like this we would read from it,
-
 but now by adding an equal sign,
-
 we're trying to set a value to that,
-
 and that will trigger this setter method.
-
 Again just before we don't execute it as a method,
-
 but simply access it like a property.
-
 Now here if I pass in an empty string,
-
 then we technically do pass in a string,
-
 but an empty string will be treated as false, see here.
-
 And therefore, we should now get an error.
-
 So if I save this line of code,
-
 if I save the code with this line of code added,
-
 we did get this error please pass in a valid value.
-
 If I do pass in a valid value though,
-
 if I say year-end report here for example,
-
 and I now save this.
-
 Now you will see this all works and year-end report
-
 is part of our reports list.
-
 So these are getters and setters,
-
 which can be great for encapsulating logic,
-
 and for adding extra logic,
-
 that should run when you try to read a property,
-
 or when you try to set a property.
-

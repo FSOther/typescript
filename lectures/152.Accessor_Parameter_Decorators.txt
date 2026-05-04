@@ -1,240 +1,120 @@
 Now besides properties,
-
 you can also add decorators to accessors
-
 and there I will create a new decorator function
-
 because this will now receive free arguments.
-
 Log2, it will also get the target which again
-
 is either the prototype,
-
 if we're dealing with an instance accessor,
-
 or if we're dealing with a static one,
-
 it will be the constructor function
-
 so we don't know we will be of type any.
-
 Then we'll have the name of the member we're dealing with.
-
 So the name of the accessor in the end.
-
 And we'll also have the property descriptor here,
-
 which will be of type property descriptor.
-
 That's the type built into TypeScript.
-
 So in there, let's log accessor decorator
-
 and then I will also console log the target here,
-
 then maybe new lines to make them more readable
-
 in the output, the name and also the descriptor.
-
 Now let's add log2 to the setter here like this
-
 and let's see what we get.
-
 If we save that, you see down there
-
 you got the accessor decorator which executes here.
-
 We got our prototype again, same as a buff for the property.
-
 Then we got the name of our accessor, price in this case.
-
 Not underscore price,
-
 so not the property with which it deals internally.
-
 Instead really the name of the accessor itself.
-
 And we got a property descriptor here where we see
-
 that a setter function is defined for example,
-
 a getter function is not,
-
 because for price I only have a setter, no getter.
-
 And we see that it's not enumerable,
-
 but that it is configurable.
-
 So that we can change this definition here
-
 for example that we can delete it and so on.
-
 This all exists and this is how we can add a decorator
-
 to an accessor, and what we then can access
-
 inside of this decorator.
-
 Now besides properties and accessors,
-
 we also got methods and can add decorators to methods.
-
 So here I'll add Log3, and add that to my method down there
-
 to get price with text.
-
 And now the question of course
-
 is which arguments does such a method decorator receive?
-
 A method decorator also receives free arguments,
-
 the target again which if it's an instance method,
-
 is the prototype of the object.
-
 If it's a static method, the constructor function
-
 just as before, then the name of the method here,
-
 so a string or a symbol actually.
-
 And also the descriptor at the end, property descriptor.
-
 These are the free arguments we get here,
-
 and you see these are the same arguments
-
 as in our accessor.
-
 So indeed we could also re-use this,
-
 but I will create a new one so that here
-
 I can print method decorator.
-
 Now with that if I saved this,
-
 this executes and you see here our method decorator
-
 executes and then here we get our prototype,
-
 same object as before.
-
 We get the name of the method here
-
 and we get this descriptor of this method here.
-
 So the very same behavior as before basically,
-
 just a descriptor is a little bit different
-
 since it's a method descriptor
-
 and not an accessor descriptor.
-
 We got a value and a writeable property here.
-
 Previously on the accessor descriptor,
-
 we had get and set.
-
 But that's just a java script difference,
-
 nothing TypeScript specific.
-
 So, here we do have our third decorator function
-
 which we now added to the method.
-
 The last decorator we can add is to a parameter.
-
 So let's do that now.
-
 For that, I'll create one more function here,
-
 Log4 and I want to add Log4
-
 to this one parameter I'm getting here,
-
 tax and you could add one
-
 to every parameter you get of course.
-
 You don't have to but you can add them independently
-
 to any parameter you want to add a decorator to.
-
 Now what does a parameter decorator get as arguments?
-
 Well, it gets the target same as before.
-
 The next argument we get is the name,
-
 and not the name of the parameter,
-
 but the name of the method in which we used this parameter.
-
 So basically, the same as in the method decorator thus far.
-
 But the last argument is different.
-
 This is now not the property descriptor,
-
 but instead this is the position of this argument,
-
 so the number of the argument.
-
 Here for example, this would be the first argument.
-
 So now again, let's copy that here
-
 and put all of that into Log4 parameter decorator.
-
 And let's output position here as well
-
 so that we can see what's in there.
-
 If we now saved it, we see our parameter decorator up there,
-
 not the very last output because execution order
-
 is different but we see our parameter decorator
-
 here and then here.
-
 We got the prototype as before.
-
 We got the name of the method
-
 where we used this parameter,
-
 and then the index of that argument,
-
 and that starts at zero,
-
 so the first argument has a number of zero here,
-
 an index of zero,
-
 and that's our parameter decorator.
-
 So these are all the places where we can add
-
 decorators and TypeScript,
-
 and we can do various things with them.
-
 Now I will show you a couple of examples
-
 in this module here,
-
 and I'll also show you libraries or frameworks
-
 that make heavy use of decorators.
-
 And I'll show you what they do with decorators
-
 to give you an idea of the power that decorators can have.
-

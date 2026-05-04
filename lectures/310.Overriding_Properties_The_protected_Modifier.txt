@@ -1,122 +1,61 @@
 So, now, that's the basics about inheritance.
-
 We can also override methods
-
 or properties of our base class.
-
 So, let's say in the accounting, I want to add my own
-
 addEmployee method.
-
 We can do that.
-
 We can add our own method here,
-
 and get the name here.
-
 Let's say.
-
 And now, here, I want to have a different
-
 logic for adding that.
-
 An extra if check or an if check if name=Max,
-
 well, then I want to return,
-
 and not add Max as an employee,
-
 because Max is totally unsuited for that.
-
 Otherwise, if the name is not Max,
-
 I want to add the employee.
-
 Now, however, we face another issue.
-
 If I try to add these two employees,
-
 we see employees is not a known property.
-
 The reason for that is that employees is private.
-
 Now, that's important.
-
 Private properties are really only accessible
-
 from inside the class in which they're defined,
-
 not classes that inherit from that class.
-
 So, employees is available inside of the department,
-
 but not in classes based on department.
-
 So, accounting department doesn't have direct access
-
 to the employees properties.
-
 If we want to grant that access, and still make sure that
-
 it's not a property that can be changed from outside,
-
 we can switch it to protected.
-
 Protected is like private, but unlike private,
-
 it's now not just available in this class,
-
 but also in any class that extends this class.
-
 So, now we can access employees from
-
 inside our accounting department.
-
 Here, I can now add an employee if it's not Max.
-
 Therefore, now, if I go down there,
-
 and on my accounting,
-
 I want to add an employee of the name Max.
-
 This should not work.
-
 If I try to add Manu, this should work.
-
 So, if we now save that, and we also output print employee
-
 information here, and then save that,
-
 we should see that, indeed,
-
 we have one employee there, which is Manu,
-
 because of my own accounting method logic for AddEmployee,
-
 Max was not added.
-
 So, the key takeaway here is that you
-
 A) can override methods of your base class.
-
 You can add your own implementation,
-
 and then that implementation is used,
-
 instead of the base class's implementation.
-
 And B) you also have to control access to
-
 properties with protected.
-
 Because if you use private,
-
 you're really restricted to this class,
-
 whereas protected still makes it inaccessible from outside,
-
 but makes it accessible from inside of classes
-
 that extend the base class.
-

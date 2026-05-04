@@ -1,436 +1,218 @@
 So we're able to gather our title input value
-
 and print it to the console,
-
 but of course, that's not ultimately the idea.
-
 Instead, the idea is that we gather all our input values,
-
 quickly validate them,
-
 and then do something with them.
-
 For that, I'll add yet another new method,
-
 another private method,
-
 because I'm only going to call it from inside the class,
-
 and that's the gatherUserInput method.
-
 Name is totally up to you.
-
 My idea is that this method gets called here.
-
 After we prevented the default,
-
 this should basically reach out to all our inputs here,
-
 gather the user input there,
-
 validate it, and then return it.
-
 So that here, I got my userInput,
-
 which could be a tuple with the title, the description,
-
 and the people, as the free tuple values.
-
 Actually, I like that idea.
-
 So, let's already define a return type here.
-
 The return type is a tuple.
-
 Now do you remember how a tuple is defined?
-
 How the type of a tuple is defined?
-
 It's not string, square brackets.
-
 That means you're returning an array of strings.
-
 Instead, I want to say that I return
-
 an array of exactly X elements
-
 of exactly these three types.
-
 And for that, you set the return type here,
-
 two square brackets, and then inside of the square brackets,
-
 you add the different elements, and element types.
-
 For example, string, string, and number.
-
 With that, you are saying this method here returns a tuple,
-
 which has three elements,
-
 where the first element is a string,
-
 second element is a string,
-
 and third element is actually a number.
-
 And now we can add some logic to this method
-
 to make that become true.
-
 So for that, let's first of all get the entered title
-
 from this titleInputElement.value.
-
 And we can repeat that.
-
 We also want the entered description of course
-
 from this descriptionInputElement.value,
-
 and the enteredPeople amount, or just enteredPeople
-
 from this peopleInputElement.
-
 Now I stored this in constants
-
 so that I don't always have to repeat
-
 these longer expressions.
-
 Now, we can validate this.
-
 A trivial validation would be to check
-
 if enteredTitle.trim,
-
 So removing X's wide space at the beginning and end.
-
 Length is equal to zero,
-
 or if enteredDescription.trim
-
 length is equal to zero,
-
 or if enteredPeople.trim
-
 length is equal to zero.
-
 That would check that no input is empty.
-
 Now, it does not check everything
-
 we might wanna check though.
-
 We are not checking whether entered people is,
-
 let's say, a positive number.
-
 We're not able to set a minimum length.
-
 We would have to add more and more conditions here,
-
 and whilst we can do this,
-
 this would not really be a scalable solution.
-
 If we have our parts in the application
-
 where we also wanna validate user input,
-
 we always have to repeat long if statements.
-
 So I will come up with a smarter validation solution
-
 or a more scalable validation solution soon.
-
 For now, we can leave it like this.
-
 You can already think about this though,
-
 and of course after this lecture here,
-
 pause and think how you could outsource this
-
 into a separate validation function
-
 which is configurable, and how types could help you there.
-
 There are definitely many possible approaches,
-
 and I will share mine with you in the next lecture.
-
 But before we make it there,
-
 let's actually use this trivial approach here
-
 and do something if all these conditions are satisfied.
-
 Now if we make it into this if block,
-
 we know at least one validation failed,
-
 and then we can through in alert,
-
 where we say Invalid input, please try again.
-
 Else,
-
 if we don't make it in there,
-
 we know we do have a valid input,
-
 else, I want to return my tuple.
-
 So here, I want to return the entered title,
-
 the entered description,
-
 and also entered people.
-
 Now as you can tell though,
-
 types group is not happy,
-
 because entered people should be a number,
-
 not text.
-
 And actually, everything you extract
-
 from the value property
-
 of an input element will be text by default.
-
 So to turn this into a number,
-
 we can call parseFloat, for example,
-
 or simply add a plus in front of it,
-
 and this will convert it to a number,
-
 and still types group is not happy
-
 because, well, we not always return a tuple.
-
 What about this part here?
-
 If we make it into the if block
-
 we're showing an alert,
-
 but we're not returning a tuple.
-
 Well, there are various things we could do instead.
-
 We can just return nothing, like this.
-
 Alternatively, we could throw an error.
-
 Then, we would actually not return anything,
-
 but we'll throw an error in that case.
-
 Now, I don't wanna throw an error here
-
 because I don't really wanna implement error handling,
-
 so what I'll do is I'll just add a return statement,
-
 but of course this is not a tuple.
-
 So actually, the return type up here is a tuple,
-
 or it's actually undefined.
-
 Now however, as you learned,
-
 you shouldn't use undefined here
-
 as a return type on functions.
-
 Instead use void.
-
 It's almost the same,
-
 but exclusive to functions,
-
 and this tells TypeScript that this is a function
-
 which has at least a branch which does not return any value
-
 like this one does.
-
 Here we also of course use a union type
-
 because we have both possibilities.
-
 We might return nothing,
-
 or we actually return a tuple.
-
 So now, we have gatherUserInput
-
 and userInput there for all is
-
 either undefined in the end
-
 or it is that tuple.
-
 So now, before we move on and improve validation,
-
 let's build up on that userInput.
-
 When we gather the userInput down there,
-
 we now have that userInput thing,
-
 and now we can check if it is a tuple.
-
 Now the problem is at runtime,
-
 we have no way of checking whether it is a tuple.
-
 There is no instanceof we could use.
-
 There is no Tuple type we could check.
-
 We can also not check if typof
-
 userInput is equal to tuple
-
 because that does not exist in Vanilla JavaScript.
-
 String does exist for example,
-
 but tuple is not a JavaScript type.
-
 So to check whether it is a tuple,
-
 we have to remember that tuples
-
 in the end are just erased.
-
 They are special in TypeScript,
-
 but once we're in JavaScript land
-
 they're just erased
-
 because the idea of a tuple
-
 where the number of elements
-
 and the types of elements is fixed
-
 really only exists in TypeScript.
-
 So, during runtime,
-
 all we need to check here is whether it's an array,
-
 and for that, we can use the array object in JavaScript,
-
 and there the isArray method.
-
 That's a method built into Vanilla JavaScript
-
 which allows us to check whether this here is an array.
-
 We know it's either undefined or a tuple.
-
 A tuple is an array,
-
 so if this returns true,
-
 we got the tuple.
-
 And then here, we can use the structuring for example
-
 to get the title, the description, and the people
-
 out of user input,
-
 and then do something with that input.
-
 For example for now,
-
 console.log title, description, and people.
-
 If we do all of that and we save it all,
-
 it compiles with no errors,
-
 and if we go back here,
-
 and I click at project like this,
-
 I get invalid input.
-
 If I enter Hello,
-
 still get it because we got no description.
-
 This is a description.
-
 We still get it of course,
-
 but if I now also enter something into people,
-
 this works and we print this here.
-
 Now that's of course a nice step in the right direction.
-
 We're not entirely there yet.
-
 As I said we can improve validation.
-
 Just one thing I wanna do right away before we do that,
-
 I wanna clear all the inputs after we click ADD PROJECT.
-
 So I wanna empty all the inputs again.
-
 Now for that, we can add a new private method,
-
 clearInput or clearInputs,
-
 and there, we can set this titleInputElement.value
-
 equal to an empty string
-
 and repeat that for the other inputs as well.
-
 So here, we have the descriptionInputElement,
-
 and here, we have the peopleInputElement,
-
 and now, if we call this.clearInputs here,
-
 we should make sure that the form is cleared
-
 once it is submitted.
-
 So if we try this again,
-
 enter something here,
-
 you see it's printed here,
-
 and the form is cleared.
-
 With that, I'm generally happy with how we handled this,
-
 but now I wanna improve validation
-
 and write this in a more reusable, scalable way.
-
 As I mentioned,
-
 definitely feel free to do this on your own first.
-
 In the next lecture,
-
 we'll do it together.
-

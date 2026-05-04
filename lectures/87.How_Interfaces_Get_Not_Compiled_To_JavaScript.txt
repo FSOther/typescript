@@ -1,36 +1,18 @@
 Now to complete this interfaces part
-
 and therefore, also, this module in the end,
-
 I also wanna show you what happens
-
 if we compile this file here.
-
 If I run the TypeScript compiler,
-
 I get this interfaces.js file,
-
 and in there you'll see that I got my class in there.
-
 I got my authenticate function, my user object,
-
 but you won't find the interface keyword
-
 anywhere in this JavaScript file
-
 because as I mentioned earlier in this section,
-
 this interface keyword is a pure TypeScript feature.
-
 It does not exist in vanilla JavaScript.
-
 So it simply gets compiled away.
-
 It gets lost during the compilation step.
-
 It's really just a feature that exists in TypeScript world
-
 to help you with the use cases described
-
 in the previous lectures.
-

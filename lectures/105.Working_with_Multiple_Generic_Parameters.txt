@@ -1,76 +1,38 @@
 I did mention earlier
-
 that when working with generic types,
-
 when defining generic types,
-
 or generic functions, doesn't matter.
-
 You're not limited to just one placeholder.
-
 If you're building a more complex type,
-
 or a more complex function,
-
 you can have multiple placeholders here,
-
 as many as you need.
-
 For example, what if you want to allow users
-
 to pass in different kinds of values here?
-
 At the moment, that's not possible.
-
 If the first argument is a number,
-
 the second one must be a number as well,
-
 because we're using the same placeholder
-
 for both parameters, so they must be using the same type.
-
 As a result, if I add a string here as a second value,
-
 I'm getting an error that this is not a number, essentially.
-
 That is a scenario where multiple placeholders can help.
-
 So here we could simply add a comma
-
 between those angle brackets
-
 in the place where we're defining
-
 the generic type or function.
-
 And then after the comma, we can add a second placeholder.
-
 For example, U, and again, you can add as many
-
 as you need, but here I only need two.
-
 T and U.
-
 And that allows us to use T for the first parameter
-
 and U for the second parameter,
-
 so that different types can be used.
-
 And with that, the arrow down here went away.
-
 As you can tell.
-
 Again, you could also explicitly set the concrete values
-
 that should be used instead of the placeholders.
-
 Like this, by simply using a comma here as well.
-
 But as I also mentioned before,
-
 that's really not necessary here.
-
 TypeScript is able to infer those types.
-

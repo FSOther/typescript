@@ -1,224 +1,112 @@
 So we're using ES modules.
-
 Turns out there are some variations
-
 of that export and import syntax
-
 which you should be aware of.
-
 For example, you can bundle imports.
-
 Lets say here in project input,
-
 where I'm importing two things
-
 from the validation file here.
-
 You might want to group that all into one object
-
 where you then can call dot validatable and dot validate,
-
 so that you don't have to call validate like this.
-
 Maybe you want to call it like this,
-
 but if you had let's say a function of the same name
-
 and year or anything like that
-
 and you want to avoid a name clash
-
 or you want to make it clear
-
 that this belongs to some kind of package,
-
 you could group that.
-
 To group imports you don't import them like this
-
 with the curly braces, but instead you use a star here
-
 which means import everything from that file,
-
 as and then any alias of your choice,
-
 for example, validation.
-
 Now you have to go to the places
-
 where you use something from that file
-
 and use it like an object validation.validatable.
-
 So everything which is exported in that file
-
 which you now group under this name here
-
 is accessed through the dot notation.
-
 So validation.validatable all the way
-
 and then also down there where we have the validate function
-
 it's of course validation.validate, validation.validate,
-
 and validation.validate.
-
 And with that you will see, well validation works.
-
 So grouping is one thing you can do.
-
 That alias thing here is also
-
 something you can do in general.
-
 You're not liking autobind like this,
-
 you want to have a capital character at the beginning?
-
 Well, you can simply assign alias with the as key word here.
-
 Inside of the curly braces you can use it as well.
-
 Then you rename this import and only this import.
-
 You don't rename it in the original file of course.
-
 It's only imported under a different name in this file here.
-
 So now instead of using autobind with a lower case a
-
 here we now have to use our alias name with the uppercase A.
-
 So that can be another nice feature to avoid name clashes
-
 if you had another thing named autobind
-
 with the lower case a in the same file, for example.
-
 You can also work with default exports.
-
 If you have a file which only exports one thing,
-
 let's say base-component.
-
 Actually we have a lot of files that only export one thing.
-
 But let's say here in this file
-
 we don't want to export it like this,
-
 a so-called named export,
-
 because we imported by name here in the curly braces.
-
 We need to use the exact name we used here.
-
 If you don't want to do that,
-
 you simply add another keyword, default.
-
 And this tells JavaScript that this is the main,
-
 well, the default export of this file.
-
 You could still have other named exports here
-
 that would be allowed.
-
 Whoops, for example a constant here
-
 that would be allowed.
-
 You can have named and default exports mixed
-
 in the same file,
-
 but if you use a default export,
-
 you can only have one default export per file.
-
 So here I have my default export and now in the files
-
 where I imported, you don't import it by name.
-
 You can only import named exports by name.
-
 For example, that something constant added.
-
 Instead you import your default
-
 simply by choosing any name of your choice now,
-
 which doesn't have to match the name you used
-
 in the exported file.
-
 So you don't have to use component now.
-
 You could use just Cmp for example here now.
-
 And import it like this, without curly braces.
-
 There also is no star, so I'm not importing everything.
-
 I'm just importing the default.
-
 Therefore this is only available if the file
-
 you're importing from has a default export.
-
 Because this tells JavaScript,
-
 hey, I wanna use the default export of that file.
-
 Then here I can name this Cmp, of course.
-
 Or, I have to use Cmp, of course now.
-
 Component is not allowed anymore
-
 because I'm not importing it by that name.
-
 Of course, we now also need to tweak this in project-item
-
 and project-list.
-
 We use the default export.
-
 I will stick to component here,
-
 but you don't have to, as I just showed.
-
 You could use any name you want here,
-
 but for simplicity, I will use component here.
-
 Default exports can be nice if you only have
-
 one thing per file.
-
 I personally prefer named exports though,
-
 because you get auto-completion,
-
 you enforce a clear naming pattern,
-
 if another developer imports your class
-
 or your exported thing, he has to use your name,
-
 which typically is good
-
 because that allows you to enforce
-
 certain naming conventions across a team or organization.
-
 And therefore, I personally like named exports,
-
 but of course you should be aware
-
 of the default export as well,
-
 which you can use like that.
-

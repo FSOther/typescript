@@ -1,308 +1,154 @@
 Loosely related to the idea of a Tuple
-
 is the idea of having a couple of specific identifiers,
-
 global constants you might be working with in your app,
-
 which you want to represent as numbers,
-
 but to which you want to assign a human readable label.
-
 And for that, you have the Enum type.
-
 Again, that does exist in some upper programming languages.
-
 JavaScript doesn't know it though.
-
 It looks like this.
-
 This is how you create a enum.
-
 You use the enum keyword, which only exists
-
 in TypeScript world, not in JavaScript,
-
 there after you have curly braces,
-
 and then your identifiers.
-
 And this type, which is added by TypeScript
-
 gives you an enumerated list.
-
 So these labels are in the end, just translated to numbers
-
 starting at zero, where you have human readable labels
-
 you can work with in your code.
-
 To show you an example, let's go back here
-
 to our person with its role.
-
 I'll copy that code and then comment it out
-
 because I'm going to change it a bit.
-
 And then here, I'll get rid of that
-
 explicit type assignment and instead go back to inference,
-
 because I'll now change role.
-
 And now let's say we want to have a admin, an author
-
 and maybe a read only user.
-
 The admin should have an ID of zero,
-
 read only user has one, author has two.
-
 Now of course, we can store that exactly like this
-
 with these numbers.
-
 One downside is that we can always add a number
-
 for which we might not have a role
-
 and if we then later in our code, try to extract the role
-
 and using the if check does might lead to errors.
-
 And in addition, we, as a developer have a hard time
-
 to understand which role this user has.
-
 Was it to the author?
-
 Or was it the read on the user?
-
 You might forget this after making longer pauses,
-
 when working in bigger teams, and so on.
-
 So as a developer, you might want
-
 human readable identifiers, something like ADMIN,
-
 and READ ONLY USER, something like that.
-
 Now, of course, we could use that,
-
 we could work with such string values.
-
 The problem is if we then later needed an if check,
-
 we check if person role is equal to, was it READ_ONLY_USER?
-
 Or was it one word?
-
 Was it with underscores?
-
 You see, then we have to remember
-
 how we wrote these strings,
-
 which exact text we have in there.
-
 Because this string with the dashes between the words
-
 is of course, not the same as this string.
-
 So here, we would never make it in there,
-
 is read only if you try to compile and print that,
-
 because, well, the check simply doesn't yield true.
-
 We don't have that as a role on person, hence, we don't get
-
 the output here in the console.
-
 So string identifiers, also have downsides.
-
 Now for such scenarios, it's quite common in JavaScript
-
 to define global constants.
-
 For example, admin, which then hold certain values
-
 like numbers or strings,
-
 both as possible.
-
 Numbers, of course can save us
-
 some extra code and bits in memory.
-
 And there we might have ADMIN, READ_ONLY and AUTHOR
-
 like this and down there,
-
 we then just have to use that role.
-
 Now the advantage of that is that we can use this everywhere
-
 in our code.
-
 And therefore here for example, if I run this code,
-
 if I compile it
-
 and then we let this reload, we see as admin here,
-
 so this works and this is a common pattern in JavaScript.
-
 Downside is that now again, role is inferred
-
 to be just a number, so we could store any number in there
-
 even a number which we don't support.
-
 And in addition, we have to define all these constants,
-
 we have to manage them.
-
 This is where a enum can save us work.
-
 This is totally fine, but a enum makes it easier.
-
 We create a enum with the enum keyword,
-
 we can name it Role, convention is to start
-
 with the uppercase character
-
 because the enum also is a custom type.
-
 It's your first custom type, we're going to write many more
-
 in this course, this is the first one.
-
 And then after the name of the type you want to assign
-
 to this enum, you add curly braces, just like that,
-
 no colon, no equal sign, just curly braces after the name.
-
 Then a semicolon.
-
 And now in here, you can assign your values like admin,
-
 read only,
-
 and author.
-
 And behind the scenes this here receives the number zero,
-
 this here number one, this here number two.
-
 And then here, you can access Role.ADMIN,
-
 like on an object, you access your identifier.
-
 And you can use that anywhere else in your code as well,
-
 here we can check if the role is AUTHOR,
-
 and then print author and of course, we shouldn't see that
-
 if I run that now because we assigned a role of ADMIN here.
-
 But the key takeaway is that we did all of that
-
 with the help of the enum, which assigns labels to numbers.
-
 If we have a look at that in JavaScript.
-
 So in the compiled code, we see this is how it's rebuilt.
-
 In the end, it's rebuilt with an if here.
-
 So function which executes itself.
-
 And Role here simply is managed as an object in the end,
-
 which has admin property a read only property
-
 and AUTHOR property, where we then store
-
 our number values here, you could say.
-
 So it's a bit more complex than that, but that's what
-
 TypeScript in the end does here to replicate
-
 this enum construct in JavaScript code,
-
 when it compiles the code.
-
 Here as a developer, we simply have
-
 these conveniently created numbers.
-
 If you hover over them, you'll see the number
-
 which we'll store it in there and you can use
-
 these numbers here in a human readable way.
-
 Now for enums, you're also not restricted
-
 to the default behavior.
-
 Let's say for some reason, you don't want to start with zero
-
 as a starting number, then you can add an equal sign here
-
 after your identifier and enter any other number
-
 and now admin is assigned to the number five
-
 and the other identifiers after the identifier
-
 where you assign the value, pick up on that,
-
 and simply increment this starting value.
-
 So now we have fine, six, seven, instead of zero, one, two.
-
 You of course, also can assign your own values
-
 to all these identifiers, if you need your own numbers.
-
 You're also not restricted to numbers,
-
 you can also go with text here, or even mix it
-
 like I'm doing it here, anything goes there,
-
 but often the default of incrementing numbers
-
 that start at zero is what you want, but if you need
-
 a different behavior, if you want to use a string in here,
-
 and then a number here, and here a number as well
-
 or maybe a number string, then you can absolutely
-
 do that, the advantage is, you define it up there,
-
 and then thereafter, you always just refer to your Role type
-
 to this custom type you created,
-
 to this custom enum you created.
-
 And you use that in your if checks
-
 and your type assignments, and you're good.
-
 That's the power of the enum and it's a great construct
-
 whenever you need identifiers that are human readable
-
 and have some mapped value behind the scenes.
-

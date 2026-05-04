@@ -1,70 +1,35 @@
 So the any type gives you flexibility,
-
 but it also basically gets rid
-
 of the main advantage TypeScript has to offer.
-
 And for that reason, there is a better alternative,
-
 which you should consider using instead of any.
-
 You can use a so-called union type.
-
 If age should be either a string or a number,
-
 but not a boolean, not an object, not an array,
-
 you can replace any with string,
-
 and then the pipe symbol and then number.
-
 This creates a so-called union type,
-
 and you could add another pipe symbol here
-
 and accept another kind of type if you wanted to.
-
 You can add as many as you need.
-
 This union type in the end tells TypeScript
-
 that H will store a value
-
 that's either a string or a number,
-
 which is why assigning that initial value of 36,
-
 which is a number, is okay,
-
 just as assigning this string, 37 is okay.
-
 But as you see, I'm getting errors
-
 when trying to assign false an object or an array.
-
 In all these cases, I'm getting an error
-
 that a boolean is not assignable,
-
 that this object thing here is not assignable
-
 and that this array is not assignable.
-
 We can ignore the never part for now.
-
 So that's therefore the TypeScript feature you should use
-
 if you do need extra flexibility.
-
 Of course, on the other hand, if you have a situation
-
 where you only want one specific kind of value,
-
 like here in these first examples,
-
 you should be as specific as possible.
-
 But if more flexibility is needed,
-
 union types are the perfect solution.
-

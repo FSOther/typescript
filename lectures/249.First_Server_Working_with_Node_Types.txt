@@ -1,114 +1,57 @@
 So, to make this node application here
-
 a bit more useful, I wanna turn it into a node web server.
-
 So in the end, an application that accepts
-
 incoming requests and sends back responses.
-
 Therefore, what we might wanna do here
-
 is set up a basic node JS web server.
-
 We can do this by importing from node HTTP,
-
 and from there import the createServer function.
-
 But as you can already see, I'm getting an error here.
-
 createServer is declared, but its value is never read,
-
 sure, but cannot find module node, HTTP
-
 or its corresponding type declarations.
-
 In short, TypeScript does not know
-
 what this here is about, what this library here should be.
-
 It does not understand that this is node JS itself,
-
 which we should have installed on our system.
-
 And to work around that, we have to do something
-
 you already learned about earlier in the course.
-
 When using third party libraries,
-
 or in this case the node JS runtime,
-
 which might not have great built-in TypeScript support,
-
 you need to install extra types packages.
-
 And that is what I'll do here, as a development dependency,
-
 I'll install @types/node.
-
 And this will install node specific types
-
 into my project here, and as soon as this is done,
-
 you see that this error goes away.
-
 So now TypeScript has all the type information
-
 about node JS it needs,
-
 and therefore we can now import createServer.
-
 We can then create a server here by calling createServer.
-
 And then to createServer, we need to pass a function
-
 in the end, which will receive a request
-
 and a response object, where we could use the request object
-
 to access information about the incoming request,
-
 something like the request method,
-
 and where we can use the response object
-
 to send back a response.
-
 In this case, I'll do that with the end method,
-
 not send, but end and send back the text, "Hello World".
-
 Now we just need to start that server,
-
 which we can do by calling the list method
-
 and defining a port on which we wanna listen
-
 for incoming requests.
-
 Well, and with that we can again run compile.
-
 And then once we did that, run NPM start
-
 to start that server.
-
 And if you now visit local host 3000,
-
 you should see "Hello World", on the screen.
-
 By the way, here, I just zoomed in quite a bit,
-
 which is why it's so big.
-
 And in your terminal where you started the server,
-
 you should see the request method being locked,
-
 due to this line of code here.
-
 So that is now a basic node JS server up and running
-
 after being compiled by TypeScript,
-
 thanks to this types node package which we installed.
-

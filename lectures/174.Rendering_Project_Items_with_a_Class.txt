@@ -1,512 +1,256 @@
 With all our inheritance work out of the way,
-
 let's come back to rendering list items,
-
 let's render more details there.
-
 And as I mentioned, let's also make sure
-
 we render them differently.
-
 Thus far we followed an object oriented approach,
-
 and for example, for our project list we have a class
-
 and when we instantiate that class such a box
-
 gets rendered here.
-
 And the same for the input, we have a project input class,
-
 and when we instantiate that, this project input area here
-
 at the top gets rendered.
-
 Now why don't we do the same for our project item
-
 and then inside of project list in rendered projects
-
 instead of creating a list item like this,
-
 we would just instantiate our project item class
-
 and in the constructor of that project item class
-
 we would then do all the initialization and so on.
-
 That is my idea at least.
-
 Now as always, you can pause the video here
-
 and try this on your own first,
-
 but after a short break, which I give you to pause
-
 the video if you want to, we'll do it together.
-
 So let's do that together, and for that above the
-
 project list class, I will add the project item class,
-
 and this will be the class responsible for rendering
-
 a single project item.
-
 Now the project item class should always extend
-
 the component, because it will be a class that is
-
 responsible for rendering something on the screen,
-
 and that is what we have our component class for, right,
-
 that is what we build it for.
-
 So that we pass a template, a host element and so on.
-
 So in project item, we of course need a constructor,
-
 a constructor where we then also have to call super.
-
 And actually before we call super, let's set these generic
-
 types for the base class for inheriting.
-
 Keep in mind, the first type we pass in there
-
 is the host element, so where we wanna render something.
-
 The second generic type we pass in,
-
 is the element we do render.
-
 So in the case of the project item,
-
 that means that the first element we pass in is,
-
 since it's the place where we want to render something,
-
 is an HTML U List,
-
 an unordered list,
-
 because every project item will be rendered inside
-
 of our, well unordered list.
-
 And the second element will be a HTML LI Element,
-
 so the concrete list item element which will be created.
-
 Now choose super, we need to provide the Id of the element
-
 where the project item should be rendered in.
-
 And of course that Id
-
 is not fixed,
-
 because we have two lists
-
 where the item could be rendered to.
-
 So I expect to get that Id here in the constructor,
-
 there I wanna get the host Id,
-
 let's say,
-
 which should be a string, we can forward that to super.
-
 However the first thing we forward to super,
-
 is the template Id, for a single list item,
-
 and that is this template here.
-
 So we can just wrap that.
-
 Now of course that's a very simple template,
-
 you could argue whether you really need that,
-
 it's just a list item, we could create that in code
-
 with document create element as well,
-
 but in order to be able to reuse our component base clause
-
 which relies on templates, we will use this approach.
-
 So single project is the template Id, host Id,
-
 then it's the Id I wanna forward to the
-
 base clause constructor.
-
 Then to answer the question, whether this should be
-
 rendered at the beginning or at the end.
-
 Well, every new list item should actually be added to the
-
 end of the list, though that is totally up to you,
-
 you can also add it to the beginning if you want to,
-
 but here I'll go with the end and therefore
-
 I will pass false here.
-
 And then for the new element Id,
-
 sell the Id that should be assigned to the
-
 newly created element.
-
 I expect to get that from outside as well,
-
 because that will also differ for every project item,
-
 we will render multiple such items after all.
-
 So here I expect to get the Id which it all
-
 to be a string, in which I then just forward.
-
 So that's now the constructor.
-
 Now it would all make sense to store the project
-
 that belongs to this project item in this
-
 project item class.
-
 And with project I mean the project based on our
-
 project class, which we created up there.
-
 This is basically what we work with, the data we work with.
-
 And I wanna store the project which belongs to this
-
 rendered project item in that project item class.
-
 So therefore here we can add a private property project
-
 for example, but should be of type project like this.
-
 In the constructor we then do get the Id
-
 and we can simply change this to actually
-
 get the project here like this,
-
 and then simply say this project equal project,
-
 and here since every project has a Id property,
-
 we just forward project.id.
-
 I think that set-up makes a bit more sense.
-
 Now we always need to add a couple of methods,
-
 we need to add a configure method of course.
-
 We need to add render content method, that is required
-
 by our base class which we're extending.
-
 And it always call configure and render content here
-
 at the end of the constructor.
-
 Now regarding the configuration, there is nothing
-
 we need to do right now for the content we wanna render,
-
 there definitely is work to do.
-
 Now we have a very simple template here,
-
 and we could actually change this here
-
 in the index HTML file to be a bit more complex,
-
 so that every project has a h2 tag,
-
 has a h3 tag below that let's say,
-
 and also has a paragraph,
-
 so that we can output the title of the project,
-
 the number of persons assigned maybe,
-
 and then the description.
-
 And then here in app ts in render of content,
-
 we just need to reach out to these different elements
-
 in our element,
-
 so to the h2 tag and so on,
-
 and then insert some content.
-
 So there we can reach out to this element,
-
 which is our rendered element,
-
 so which is our rendered LI Element.
-
 And in there we now need to select these different things.
-
 So we can use query selector h2,
-
 and set the text content here.
-
 Let's say to this.project.title to render the title there.
-
 Of course we should add an exclamation mark here to
-
 make it clear that we'll always get this element
-
 which we know with certainty
-
 because it's part of our template.
-
 Well then actually, we can just repeat this,
-
 but now look for the h3 tag,
-
 and there I wanna output the number of persons,
-
 however where people is the property name,
-
 however I'll tweak this a little bit.
-
 Now for one this here, is a number,
-
 and this one's a string,
-
 so actually I'll call to string here.
-
 But that's not the main problem, actually I wanna tweak
-
 this so that it outputs more than just a number here,
-
 but I'll come back to that.
-
 First of all, let's repeat this one more time,
-
 and query for the paragraph here.
-
 And set this equal to this project.description.
-
 Now, again I will tweak this later,
-
 for now let's leave it as it is.
-
 And with that we have a project item
-
 that should be rendered,
-
 and that should then set out all it's content.
-
 So now we need to use the project item,
-
 and the place to use it is the project list,
-
 because that renders the list of projects.
-
 And there specifically in render projects,
-
 this is where we need to make sure that we render
-
 our project items.
-
 Here we do go through all the project items
-
 in assigned projects.
-
 And assigned projects is this property here,
-
 which has a list of or an array of projects.
-
 So now here in this loop, instead of creating
-
 a list item manually and so on,
-
 I will get rid of all of that and simply say
-
 new project item here,
-
 and now two project item.
-
 We need to pass the idea of the host,
-
 now that of course is the Id that was sat on our
-
 list item here.
-
 So basically this.element.id,
-
 that's the Id of the host element,
-
 because this element which is is the unordered list
-
 should be the host.
-
 Then second argument here,
-
 is the project and that's purged item here basically.
-
 So this constant which we get inside of the loop.
-
 And now the attachment will happen
-
 inside of project item or inside of the base clause
-
 of the component class, which project items extends.
-
 And instantiating project item should be all we need to do.
-
 So if we save that and we go back and we have this
-
 code here again, or we have this input again.
-
 You see, this gets rendered, and this doesn't look too bad.
-
 Now there are two things which I don't like,
-
 of course that bullet point here, not too fond of that.
-
 And just having the free here,
-
 all is not super happy about this.
-
 So how can we fix this now?
-
 To fix the bullet point, let's inspect our content.
-
 And what we see there is that the list item actually
-
 is rendered outside of the unordered list.
-
 So it's not inside of it.
-
 If it were inside, then it would work properly,
-
 but I can't drag it there.
-
 So we need to make sure it gets rendered inside
-
 of the unordered list.
-
 So let's find out why that's not the case.
-
 It's probably not the case because in project item,
-
 I pass false here, to the base clause constructor,
-
 and passing false here means it's not getting inserted
-
 at the start, and that in turn means that in attach
-
 we have before and as a value here,
-
 where it's getting inserted.
-
 This is however what we want to have happen,
-
 so that's probably not the problem.
-
 Well, the problem still is that of course we're
-
 inserting it in the host element.
-
 And now let's think again, what's the host element
-
 of project list?
-
 And that's in the end what matters here,
-
 because when we render our projects,
-
 we create a new project item,
-
 and I forward the Id of our element here,
-
 of the rendered element
-
 in the project list to project item.
-
 So that will then be the idea of the host element
-
 of a single project item.
-
 But what is this element here?
-
 This element here is not the unordered list
-
 we have in that box,
-
 it's the box itself it's our section.
-
 If we inspect the template we see, the section here
-
 is what actually gets rendered for our project list class.
-
 It's not just the list,
-
 it's the section which also includes a header.
-
 So we actually need to access to the list
-
 inside of our element here,
-
 and then get access to the idea of that list,
-
 because here, we do actually set an Id on that list,
-
 so there will be an Id, we just have to
-
 grab the right one.
-
 So getting the idea of the element itself
-
 is simply not correct.
-
 Instead here, we should get the idea
-
 of the unordered list in our element,
-
 and we know with certainty that there will be
-
 an unordered list,
-
 so we can skip the null check
-
 by adding the exclamation mark.
-
 Now with that added, if we add a new element here,
-
 this looks better, now the bullet point is gone,
-
 because now the proper styling is applied,
-
 since the LI, the list item is now really added
-
 inside of the unordered list as you can see.
-
 Now that's one thing, now let's move on to that five,
-
 because just out putting a five here
-
 is not really what I wanna do.
-
 How about outputting a bit more useful information.
-

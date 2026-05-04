@@ -1,116 +1,58 @@
 Now to dive into these TypeScript Essentials,
-
 I'm in a brand new empty project folder
-
 and actually in this section,
-
 we're not going to build a website or anything like that.
-
 Instead, we'll write our TypeScript code
-
 in simple TypeScript files.
-
 We'll compile those files
-
 and we'll execute them with Node.js,
-
 because building a website with a UI and styling it,
-
 all these things are not related to TypeScript.
-
 So unless we need a website, we won't create one here
-
 so that we can really just focus on TypeScript
-
 and its core features.
-
 Of course, what you'll learn here will apply no matter
-
 if you then use TypeScript with Node.js,
-
 with Bun or in a website.
-
 The core features and syntax will always be the same.
-
 Therefore, here, I'll start by adding a new basics.TS file,
-
 and I'm using .TS, of course,
-
 because I'm going to write some TypeScript code
-
 in that file and the convention
-
 is to name your TypeScript file so the code files
-
 that will contain TypeScript code .TS.
-
 So that's what I'm doing here.
-
 Well, and then in that file,
-
 as you learned in the previous section already,
-
 you can of course also write simple JavaScript code
-
 because as you learned there,
-
 TypeScript is in the end just JavaScript
-
 with some extra features.
-
 So you could write hello world here like this
-
 and lock that to the console.
-
 Now if you do that, you have a code file
-
 that contains no TypeScript specific code,
-
 but since it's in a .TS file, it will be treated
-
 as TypeScript code nonetheless.
-
 So of course you can compile that file
-
 just as you learned it in the previous section as well.
-
 And if you do so, you'll get a JS version of that file,
-
 which in this case contains exactly the same code
-
 because as mentioned,
-
 there was nothing TypeScript specific in this file,
-
 but that will of course change throughout this section.
-
 But that's how you can then convert this TypeScript code
-
 to JavaScript code.
-
 And of course, you could then execute that JavaScript file,
-
 for example, with Node.JS if you have Node.JS
-
 installed on your system.
-
 And that will then execute
-
 that file in the Node.JS environment.
-
 Alternatively, you could also import it into an HTML file
-
 and create a website.
-
 But here, as mentioned before, we'll keep it simple
-
 and we'll use Node.JS to execute that code.
-
 And with that, I'll delete this JavaScript file,
-
 but that's the setup we'll use here.
-
 And with that,
-
 we'll now dive into these essential TypeScript features.
-

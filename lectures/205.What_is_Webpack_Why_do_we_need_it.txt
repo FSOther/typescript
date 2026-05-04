@@ -1,232 +1,116 @@
 So which disadvantage do we have?
-
 This is the project we worked on,
-
 split up into multiple files
-
 using these ES6 module imports here.
-
 Now, lets actutally built this project
-
 and for that, as we did before,
-
 we can run npm-start to bring up the lite-server.
-
 And of course, very important in a new tab,
-
 all the run tsc-dash
-
 to start up TypeScript compilation in watch mode.
-
 This gives us our project and if we now open the Network tab
-
 in the browser developer tools and we reload this file,
-
 we will see the disadvantage we have here
-
 or the problem we have with this setup.
-
 We see a bunch of HTTP requests.
-
 Now you can ignore the last ones here
-
 these are coming from our development server.
-
 But all these our requests here to app.js,
-
 project-input.js, project-list.js, base-component.js
-
 and on that's the problem.
-
 You'll notice that all these files are not that large,
-
 they're relatively small.
-
 So that of course is fine
-
 but we have a lot of HTTP requests here.
-
 Now what's the problem with that?
-
 The problem with that can be seen if we have a look
-
 at that waterfall here on the right.
-
 Every HTTP request that needs to be made
-
 of course takes a little time.
-
 It takes time to download the files
-
 but since they're not that big, that's not a issue.
-
 But every HTTP request has like a base overhead,
-
 a base duration it always takes.
-
 This little box you see in front of these graphs here.
-
 That's near the time it requires the browser
-
 to set up that request and send it.
-
 So whilst the actual downloading of the file
-
 might be relatively fast, setting up the request,
-
 doing the work on the server, which serves the file and on
-
 that all takes some time.
-
 And now here we have a very fast setup
-
 because it's all happening on our machine.
-
 We got a local development server ofterall.
-
 If you deploy that to the web, having that many requests
-
 can really introduce a lot of latency
-
 and slow down your project just because
-
 of the sheer amount of HTTP requests made.
-
 So if we can find a solution to reduce
-
 that amount of HTTP requests, that would be amazing.
-
 And that's where webpack comes into play.
-
 You can go to webpack.js.org, to learn more about it.
-
 In the end webpack is a tool
-
 that will help us bundle our files together.
-
 And I can really recommend their extensive
-
 and comprehensive documentation you find on their page.
-
 If you wanna learn all about webpack.
-
 In this course, we'll use some selected features
-
 that help us with TypeScript.
-
 So what exactly is webpack?
-
 It's a bundling, and you could say build orchestration tool.
-
 It's a tool that helps us reduce the amount
-
 of HTTP requests by bundling code together.
-
 So that we write code split up across multiple files
-
 but webpack then takes all these files
-
 and bundles them together.
-
 And in addition webpack is capable of doing more.
-
 It will also optimize our code and it also allows us
-
 to add more build steps, more build tools, for example,
-
 to help us with CSS files and so on.
-
 That's not what we'll have a look at in this module though,
-
 because I wanna focus on webpack and TypeScript.
-
 So let's first of all have a look at our normal setup
-
 where we don't use webpack.
-
 There we have multiple TypeScript files
-
 but if we then use these imports,
-
 we get multiple HTTP requests,
-
 which is not that great for the reasons I mentioned.
-
 In addition, a topic I haven't had a look at before
-
 is we also very likely have unoptimized code,
-
 which means it's not as small as possible.
-
 We can certainly optimize code more
-
 by shortening function names and so on.
-
 And of course, we want a tool that does this automatically,
-
 so that we don't have too manually work
-
 with unreadable code.
-
 We wanna write perfectly readable code as a developer.
-
 But it would be great if we had a tool
-
 that then shortens this code and really makes it
-
 as small as possible, uses as short as possible variable
-
 and function names, so that we ship
-
 as little code as possible.
-
 Because less code means that users can download it faster,
-
 which means our application can start up faster
-
 on our machines.
-
 And in addition, our current setup,
-
 we have this extra development server, lite-server
-
 which is a extra package installed,
-
 which we have to spin up.
-
 It wouldn't be a little bonus, a nice bonus
-
 if we had one command and that would do everything,
-
 build our project, but also spin up such a server,
-
 which automatically reloads our website
-
 whenever we change a file in our project.
-
 Well, and that's where webpack can help us.
-
 It bundles our code so that we have less imports
-
 instead we have some, well code bundles that we ship,
-
 it helps us optimize our code, minify it as it's called,
-
 so that we ship less code
-
 and our users have less code to download.
-
 And we can also easily add more build steps
-
 if you want to, we can add such a development server
-
 but we can also do many other things if we realy want to
-
 and the official webpack docs are the place to go
-
 if you wanna learn all about it.
-
 With that, let's see an example setup in our project
-
 and let's learn how we could use webpack there.
-

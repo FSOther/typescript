@@ -1,426 +1,213 @@
 So now it's time to add
-
 all those other routes this project should have
-
 because, of course, adding todos is not all we wanna do.
-
 Instead, there also should be a get route to todos
-
 that simply returns all todos that exist.
-
 So again, I have my handling function here
-
 and then I'll get my todos
-
 by calling the getTodos function,
-
 which also is imported from data.js, of course.
-
 Here, I then get my todos
-
 and then again, I send a JSON response
-
 by calling the JSON method,
-
 and I'll have a todos key in there
-
 which holds these todos.
-
 Pretty straightforward.
-
 There also should be a route for getting a single todo
-
 for /todos/:id.
-
 That is the Express.js way
-
 of defining a dynamic path parameter.
-
 And then we can get our todo by calling getTodo,
-
 passing our req.params.id to it
-
 and then sending back a response,
-
 but there are a couple of gotchas here.
-
 We can already see one here.
-
 We're getting an error that this is of type string,
-
 but getTodo actually wants an argument of type number.
-
 Now, this params property on the request object
-
 allows you to extract the actual values
-
 that have been part of the incoming request
-
 for placeholders like this here.
-
 And then we can access .id on this params object
-
 because I have id here after the colon.
-
 That's just how Express.js works.
-
 Now actually, unlike with the body,
-
 here, TypeScript will actually understand
-
 that ids, for example, would be invalid
-
 because it's able to parse
-
 this name here from this string.
-
 So that's pretty nice.
-
 Nonetheless, we're getting this error
-
 regarding the fact that we have a string here
-
 instead of a number in a place where we want a number.
-
 And the reason for that is that your request path
-
 will always be a string
-
 and any value you extract from there
-
 will always be a string.
-
 So you have to convert it to a number,
-
 for example, by adding a plus in front of that.
-
 Again, we're seeing the advantage of TypeScript here.
-
 It's making sure that we don't accidentally
-
 run into some problem here,
-
 but that's, of course, not the only gotcha.
-
 getTodo could also throw an error
-
 if we're trying to get a todo with an invalid id.
-
 So we should also handle that scenario
-
 and there are different ways of handling that.
-
 Of course, we could wrap this code here with try catch.
-
 But alternatively, we can also rely on a mechanism
-
 built into Express.js.
-
 We can set up a global error handling middleware,
-
 which is a special middleware,
-
 registered like any other middleware,
-
 which is special due to the number of parameters it receives
-
 because it will receive an error,
-
 a request, a response, and a next parameter.
-
 The next parameter here will hold a function
-
 that you can call to continue to the next
-
 middleware in line, if there would be one other.
-
 So by calling next in a middleware,
-
 you would invoke the next middleware in line.
-
 But that is all just Express.js, not TypeScript.
-
 So if you wanna learn more about that,
-
 the official Express.js documentation
-
 or courses like my Node.js course are the place to go.
-
 Now as you see here,
-
 TypeScript does actually not infer the proper types.
-
 This is a valid middleware,
-
 but still TypeScript does not infer the proper types here.
-
 So we should add some type definitions here,
-
 some type declarations.
-
 And for this error here, the correct type is error.
-
 So the error object we're getting here
-
 will be the standard built-in error.
-
 For req, it will be Request.
-
 For response, it will be Response.
-
 And for next, it will be this NextFunction type.
-
 So Request,
-
 Response,
-
 NextFunction.
-
 That's how we can define the types
-
 for these parameters in this middleware.
-
 And this middleware will now be invoked by Express.js
-
 whenever somewhere else in your Express app,
-
 in some other middleware, an error is thrown
-
 as it might happen here when we call getTodo.
-
 If this function throws an error,
-
 Express.js will automatically invoke this middleware.
-
 And therefore here,
-
 we can send back a proper response,
-
 a response with a status code of 500, for example,
-
 where we have a message of, "An error occurred."
-
 Now, of course, you could fine-tune this
-
 to be more specific,
-
 differentiate between different kinds of errors.
-
 That's a basic error handling middleware you could add.
-
 And with that, we're also handling this error use case.
-
 So with that handled,
-
 we can send back a JSON response with our todo.
-
 And now, we just also need routes for updating
-
 and deleting todos.
-
 So starting with the update middleware,
-
 I'll listen to patch requests
-
 sent to /todos/:id
-
 because again, we'll be targeting
-
 a specific todo id, of course.
-
 And then I'll call updateTodo,
-
 pass my req.params.id to it and convert this to a number
-
 and pass req.body.text as a second argument to it.
-
 And then updateTodo will return the updated todo,
-
 so I got that here,
-
 and I can send back a JSON response
-
 where I'll say "Todo updated," and add my todo
-
 and set it to this updatedTodo.
-
 That should work.
-
 For deleting, we can listen to delete requests
-
 using the delete request method.
-
 Also assuming that we get an id here.
-
 And then, of course, we simply invoke removeTodo.
-
 And just as updatedTodo and all these other functions,
-
 these imports must all be added up here, of course.
-
 And to removeTodo,
-
 we pass req.params.id converted to a number.
-
 And then we can send back our response
-
 where we say "Todo deleted"
-
 and that should be it.
-
 That should be all the request methods we need to handle.
-
 In app.ts, we should also have everything set up
-
 the way it needs to be set up,
-
 including this error handler.
-
 And therefore, we can now try these different routes.
-
 So I'll add a get-todos.http file
-
 where I wanna send a GET request
-
 to localhost:3000.
-
 And with that added,
-
 I'll compile the updated code
-
 and then start that server again and keep it running.
-
 And, of course, now initially,
-
 that should yield an empty array,
-
 though actually it gives me not found,
-
 which makes sense because the correct path would be /todos.
-
 With that added, I get back a valid response
-
 with an empty todos array
-
 because the todo we added earlier is lost
-
 because we only stored it in memory
-
 and we restarted the server.
-
 And therefore, if we sent that post request again
-
 so that the todo is added
-
 and we then send this get request again,
-
 we should get the updated array which includes that todo.
-
 However, here I can see
-
 that the text was not stored somehow.
-
 I'm only getting back an object with the id.
-
 When I added it, I wanted to have the text in there as well,
-
 but looks like it was missing there as well too.
-
 So that's actually something we should fix.
-
 And actually, the error is related
-
 to the way I wrote my header here.
-
 These single quotes need to be removed.
-
 It should be written just like that.
-
 With that done,
-
 if I restarted server,
-
 if I sent this request, we can see the text is here.
-
 And if I now get my todos, we can see the text here as well.
-
 So the app worked,
-
 I just had my request formatted incorrectly.
-
 So with that out of the way,
-
 we can also try those other routes like get-todo.http
-
 and send a GET request to localhost:3000/todo/
-
 some specific id.
-
 And, of course, for that to work, I need to know some ids.
-
 So I'll first of all grab this id, which I know exists,
-
 and then use that here and change this to todos.
-
 And if I send this request, I get this todo.
-
 If I try this with some invalid id like abc,
-
 I instead get that 500 error from my own error handler.
-
 So that also works. Error handling works.
-
 For updating a todo,
-
 we can send a patch request
-
 to localhost:3000/todo/ my id,
-
 set the content type here also to application/json
-
 because, of course, I'm attaching some new data,
-
 my Updated text.
-
 With that, this looks good.
-
 And to confirm that this really worked,
-
 we can, of course, also get all todos again
-
 and we see the updated text here as well.
-
 Finally, for deleting,
-
 we send a delete request
-
 to localhost:3000/todo my id.
-
 If I send this request, I get "Todo deleted."
-
 And to confirm that it's really gone,
-
 if I get all todos again, I get my empty array.
-
 So that all works. These routes all work.
-
 And that's it for how you can build a basic
-
 Node Express app with TypeScript.
-
 Now as you see, and as I mentioned before,
-
 there's not so much TypeScript-specific code in there,
-
 but you get some help here and there.
-
 You can use these TypeScript concepts
-
 and features you learned about throughout this course.
-
 And, of course, the more complex your app becomes,
-
 the more you can take advantage
-
 of these various TypeScript features.
-

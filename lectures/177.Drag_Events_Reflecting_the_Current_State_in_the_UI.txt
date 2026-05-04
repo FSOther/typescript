@@ -1,238 +1,119 @@
 To make it droppable,
-
 we have to go to the clause,
-
 or to the component in our application,
-
 which should in the end act as a drag target.
-
 So here Project List class is the right clause
-
 and there we can implement our second
-
 interface which we added,
-
 the Drag Target interface.
-
 Now, just as the draggable interface,
-
 this forces us to add certain methods.
-
 To be precise here, we need to add the drag over handler,
-
 the drop handler, and the drag leave handler.
-
 So, let's do that.
-
 Maybe all right here below the constructor above configure.
-
 The exact place is up to you,
-
 the order of methods does not matter.
-
 So here I will add the drag over handler,
-
 where we get our drag event.
-
 I will then add the drop handler here,
-
 where we also get our drag event.
-
 And last but not least, the drag leave handler,
-
 where we also get a drag event.
-
 Now these events, by the way, hold different kinds of data,
-
 but they're all based on the case core event type.
-
 Now we get a couple of different things to do.
-
 Let's start with the drag over handler maybe.
-
 In the drag over handler, I wanna change the appearance
-
 of my box or of the unordered list in there,
-
 to visualize that this is a droppable area.
-
 Because right now when we drag around element,
-
 we get no clue of where we can drop it, right?
-
 Nothing changes on the UI, so I wanna change this.
-
 To change this I'll add a certain css clause
-
 to the unordered list, which you you find in app.css.
-
 The droppable clause which will change the background color
-
 and therefore in here, for a start,
-
 we just need to get access to our unordered list element.
-
 We can do so by reaching out to this element, querySelectror
-
 uL and add an exclamation mark because there will
-
 always be an unordered list there, even if
-
 it hold no elements yet.
-
 We just have to make sure that this key word works here
-
 and we can do so by autobinding this here
-
 to make sure that this keyword is bound
-
 to the surrounding clause.
-
 Then with the list elements selected, we can use
-
 the clause list property of dom elements,
-
 so this is Vanilla JavaScript here again,
-
 and call the add method there to add the droppable clause
-
 to it.
-
 Now with that, we of course have to make sure that
-
 the dragOverHandler actually is fired when we drag something
-
 over this element here, over this rendered section.
-
 To do that in the configure method, where we already have
-
 one listener here, listening to our state changes,
-
 I will also register listeners on the element itself.
-
 The first EventListener there is, of course, the drag over
-
 event and I'll bind this
-
 to the dragOverHandler, unsurprisingly.
-
 Then I'll repeat this because I also want to listen
-
 to the dragLeave event and bind this
-
 to the dragLeaveHandler and to the drop event
-
 and bind this to the dropHandler
-
 because we'll also need that later.
-
 So, with that, we've got this drag over event listener
-
 and the dragOverHandler connected,
-
 but we also got some errors in the code now.
-
 Well, that should be the unused event objects here,
-
 so for the moment, to satisfy typescript,
-
 let's just blank them out.
-
 We'll need them later, but for the moment,
-
 to make this work, let's blank them out
-
 by using underscores here to tell typescript,
-
 "We're fine not using them at the moment."
-
 Now this compiles
-
 and now back in the project, when we add a new project here,
-
 and I drag this, you see when I drag this
-
 over finished projects, the background here got light blue.
-
 Here over active projects, it got light rose,
-
 like a slight pink color.
-
 Just to show this again, if I reload, you see now
-
 we have white backgrounds in the projects, whoops,
-
 and as soon as I start dragging, this here gets light pink
-
 background and when I drag it over finished projects,
-
 the box background changes to light blue.
-
 Now it never changes back to white because we never
-
 removed that droppable clause, but it is a first step.
-
 Of course, dropping still does not work.
-
 Dropping it here does not add the project
-
 because how would it?
-
 We haven't added any logic for this.
-
 So let's make sure to also update the styling when we stop,
-
 when we leave the element.
-
 When we basically drag it over here and then go away.
-
 Make sure that the blue background goes away in that case,
-
 that's what I want to do next.
-
 For that we can use the dragLeaverHandler here
-
 because that will fire whenever we leave this element
-
 with our dragged element.
-
 Now there I of course also want to get access
-
 to my unordered list, so I'll copy that code,
-
 but then there, I wanna remove the droppable clause.
-
 We should now also autobind this so that the this keyword
-
 here refers to the surrounding clause.
-
 If we save that, we add a new element here.
-
 Let's give it a try.
-
 If I start dragging, you see we have our background here
-
 and if I leave, it goes away.
-
 So now the background really is updated.
-
 You see some flickering here because the dragLeave event
-
 also fires if you go from having the mouse cursor
-
 over the background to having it over a rendered element,
-
 but that should be fine here.
-
 It's no big deal here.
-
 So actually, we got the desired effect, I would say.
-
 So the UI is updated just the way it should now,
-
 but of course we're not able to drop
-
 and really transfer data,
-
 so that will be the next step.
-

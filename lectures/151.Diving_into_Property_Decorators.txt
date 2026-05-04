@@ -1,216 +1,108 @@
 Now before we explore more useful
-
 use cases or a scenarios for some decorators.
-
 I wanna briefly show you all the other places
-
 where you can add decorators.
-
 Well obviously we can add decorators to classes
-
 but there are more places where we can add them.
-
 For that I'll create a new class, because we need a class
-
 for any decorator we wanna use,
-
 but we don't have to add all decorators
-
 directly to the class.
-
 Let's say we have a product class here
-
 and in the product class, we have a title maybe,
-
 which is a string.
-
 And we can assign a value here with the constructor.
-
 Of course we could always use the shortcut
-
 and do it all in one step in a constructor
-
 as you learned earlier.
-
 Here I'll take the longer route.
-
 We can have a method here, get price with tax.
-
 For that I expect to get a tax rate which is a number
-
 and for that to work we should also store a price here.
-
 Price property which we also get as part of the constructor.
-
 Again we could use the shortcut here,
-
 but I'll do it like this.
-
 And then in this method I will return,
-
 This.price times one plus tax.
-
 So we have this utility method
-
 and we can also add a getter and a setter
-
 if you want to.
-
 For example, we can add a setter for the price here,
-
 where we get the value which should be a number
-
 and where we control that we can only set certain values.
-
 Now to make this work, I'll re-name price up here,
-
 to underscore price and make it private actually,
-
 so that we can't directly reach it.
-
 And here I will set this underscore price
-
 and here I will use this underscore price.
-
 And with these changes in the setter,
-
 we can set this underscore price equal to the value we get.
-
 But before we do so, we can check if value
-
 is greater than zero,
-
 so that we don't accept negative prices.
-
 So with that, we only set the price
-
 if it's greater than zero, otherwise we don't do anything.
-
 Indeed we could throw an error in the other case.
-
 Invalid price should be positive.
-
 So that's something we can do, now we have a class
-
 with two properties, with an accessor
-
 and also with method here
-
 and this method has a parameter.
-
 Now to all these things we can add decorators
-
 and let's start with a good old friend,
-
 a log decorator.
-
 Here I'll name it log to not clash with logger up there,
-
 because this log decorator,
-
 will not be added to a class
-
 and therefore it will get different arguments.
-
 It will get arguments though,
-
 and which arguments decorator gets,
-
 depends on where you add it.
-
 Which is why I can't reuse logger,
-
 because that was fine-tuned to only work with classes.
-
 Now here I don't have a decorator factory actually,
-
 I just have to decorate a function like this,
-
 but still, which arguments this decorator function gets,
-
 depends on where we use it.
-
 For example, we can add a decorator to a property.
-
 Here I can add log like this
-
 and if you add a decorator to a property,
-
 the decorator receives two arguments.
-
 The first argument, is the target of the property
-
 and for an instance property like this one,
-
 which we call on a instance if you work with it.
-
 This will be the prototype of the object that was created.
-
 If we had a static property here,
-
 target would refer to the constructor function state.
-
 So here I'll say any because I don't know exactly
-
 which structure does object will have.
-
 The second argument we get, is the property name simply.
-
 That could be a string here,
-
 could of course also be a symbol.
-
 We don't know what we use as a property identifier.
-
 And then here I will log property decorator,
-
 so that we can see when this runs
-
 and I wanna a console.log target and also property name.
-
 So that we see what's in these two values.
-
 With that if we save so that it compiles without errors,
-
 and if we go to our server,
-
 we see, property decorator gets printed down there.
-
 And this is our output we get.
-
 We see here that's the prototype of our object
-
 because we're not seeing title and price here.
-
 But we do see get price with tax
-
 and indeed methods are registered
-
 on the prototype of an object.
-
 So that's the prototype of our object
-
 and we see title over here on the right,
-
 that's the property name we're working with.
-
 Now when exactly does this logger execute though?
-
 Well as you can tell, since I never instantiate any product,
-
 it executes basically when your class definition
-
 is registered by JavaScript.
-
 So it executes when you define this property
-
 basically to JavaScript,
-
 as part of your class here,
-
 as part of this constructor function.
-
 Which is created here in the end.
-
 This is when this property decorator executes.
-

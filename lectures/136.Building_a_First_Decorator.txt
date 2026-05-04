@@ -1,322 +1,161 @@
 So let's get started building a decorator.
-
 And for that, I'm in a brand new, basically empty project
-
 with a standard confiscation file.
-
 And with my decorators.ts file, which is an empty code file.
-
 Regarding the confiscation file
-
 it's just important to note
-
 that the experimental decorators setting is not set to true.
-
 It's commented out here.
-
 If it were set to true,
-
 we would be building those older kinds of decorators.
-
 But as mentioned, that will be covered
-
 in a different section.
-
 So here for this section, this is not set to true.
-
 Well, and with that, in this decorators.ts file,
-
 let's build a first decorator.
-
 And since it is an object oriented programming
-
 related feature, I'll actually start by adding a class
-
 because we need a class to then attach a decorator to it.
-
 And I'll build a simple person class
-
 with let's say a name property, a public name property,
-
 and a greet method where I simply say with console.log
-
 hi, I am this.name.
-
 So a very simple class because it is just a demo.
-
 We're just getting started here.
-
 And now let's build a decorator, let's say a decorator
-
 that should be attached to the entire class
-
 to interact with it, to interact with that code,
-
 if you wanna call it like this.
-
 And for that, we create a function
-
 because decorators in JavaScript
-
 are just functions.
-
 That's super important.
-
 A decorator is just a function,
-
 but it is a function written in a certain way
-
 receiving a certain amount of arguments and so on.
-
 But it is just a function in the end.
-
 And I'll name my function logger here,
-
 but the name is up to you.
-
 I'll just name it logger,
-
 because I plan on creating a decorator that can be attached
-
 to this class here
-
 to log information about it, just to get started.
-
 Now, this here is of course not a super useful function,
-
 but it is a valid function.
-
 And as I mentioned, decorators are functions.
-
 So we can try attaching this function
-
 as a decorator to this class.
-
 And how do we do that?
-
 Well, by adding something in front of this class,
-
 either in the same line in front of it
-
 or in the line before it, that's also fine.
-
 And you then add something as a decorator
-
 by adding the @ symbol.
-
 That's an important symbol.
-
 You have to use the @ symbol in order to add a decorator
-
 to a class, a field, a method, or a getter or a setter.
-
 And after this @ symbol,
-
 you put the name of the function
-
 you want to use as a decorator,
-
 like logger here.
-
 You don't execute it, you just point at it, so to say.
-
 And you do add a decorator like this to a class,
-
 for example, because decorators are a feature
-
 as mentioned before, that's meant to interact with our code.
-
 So it's code interacting with our code.
-
 It's the logger function here, in this case,
-
 interacting with the person class, potentially changing it
-
 or changing its behavior.
-
 That's the kind of things you could be doing
-
 with decorators.
-
 For example, there is an entire library called
-
 class validator, which you could install
-
 into your TypeScript project that exposes
-
 a bunch of decorators,
-
 which you can add to class properties, for example,
-
 to add validation to those properties
-
 so that whenever you assign a value
-
 to one of these properties,
-
 the validation rules you attach to that property
-
 with help of the decorators provided by this library
-
 will be executed.
-
 That's the kind of things you can do with decorators,
-
 and that's the idea behind decorators.
-
 You can use this feature to attach logic to your code.
-
 So that code interacts with other code
-
 and the syntax for attaching a decorator
-
 to the thing you want to interact with
-
 through that decorator is that @ symbol
-
 followed by the decorator name.
-
 That's the general idea behind decorators.
-
 Now, as you can tell, I'm getting an error here
-
 that logger accepts too few arguments
-
 to be used as a decorator.
-
 So actually a pretty clear error message.
-
 We have a function, that's good,
-
 but it is not a valid decorator function.
-
 It accepts too few arguments.
-
 So we need to change this
-
 and we need to accept more arguments here.
-
 But how many, well, actually two,
-
 if you're building an ECMAScript decorator.
-
 For the experimental decorators, that will be different.
-
 But you'll see that later.
-
 For an ECMAScript decorator, it's two arguments.
-
 And the first argument is the target of the decorator,
-
 the thing you're attaching it to.
-
 So in this case, this class.
-
 Now, the type of target is a bit more complex
-
 for the moment, I'll simply set it to any
-
 to save some time here and we'll type it properly later.
-
 Now as you can see, the error went away,
-
 but actually you typically accept two arguments
-
 because the second argument is a context object
-
 that gives you extra information about the thing
-
 you're attaching the decorator to.
-
 So the target is the thing you're attaching it to.
-
 So that is the class in this case.
-
 The context is an object with information about that thing.
-
 And that context object is of type class decorator context.
-
 A type that's built into TypeScript.
-
 And as you see, it's now still used
-
 as a valid decorator without an error.
-
 So that is now how we can define a valid class decorator.
-
 And now we can do stuff in there,
-
 for example, to get started.
-
 We can console.log target,
-
 and we can console.log context
-
 to get an idea of what's inside of these two arguments.
-
 I'll also add another console.log
-
 and simply output logger decorator here.
-
 And now let's save that.
-
 And please note that I'm not instantiating that class.
-
 I'm just defining it.
-
 I have no other code in that file.
-
 I'm not instantiating it.
-
 I'm not doing anything else.
-
 So theoretically, this program isn't too useful
-
 and isn't doing much
-
 because defining a class on its own doesn't do too much.
-
 You typically need to use it to do useful stuff.
-
 But here I'm just defining it
-
 and I'm attaching this decorator.
-
 But even though I'm not doing anything else,
-
 you'll see that if I compile this code here,
-
 if I execute this JavaScript file that's generated,
-
 I get some output here.
-
 I get logger decorator printed here, of course,
-
 and then the class is printed here
-
 because that's my target.
-
 And then this context object here.
-
 And as you see, that's an object that has a kind property
-
 that tells me that the kind of target
-
 I'm attaching the decorator to is class.
-
 But the name of that class is person.
-
 A metadata object, which could hold extra information
-
 about the thing you're attaching the decorator to.
-
 But that's not the case here.
-
 And an add initializer function,
-
 which will become important later.
-
 So that's now a first decorator created and added.
-
 But what can we now do with such a decorator?
-

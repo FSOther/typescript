@@ -1,48 +1,24 @@
 Up to this point in the course,
-
 we mostly worked with individual TypeScript files
-
 and a fairly limited number of TypeScript files.
-
 So therefore, of course, if you wanted to compile them
-
 to JavaScript in order to execute them,
-
 you could just do that by using the TSC command
-
 and targeting those individual files.
-
 It's not too much effort.
-
 But of course, the bigger your projects get
-
 and the more source code files they contain,
-
 the more annoying it would be to individually compile files.
-
 And you also might wanna configure
-
 how these files are compiled
-
 and which rules TypeScript follows,
-
 because it turns out you can configure how TypeScript
-
 and its compiler behaves, and your IDE, your code editor
-
 or most code editors, will actually pick up
-
 that configuration and make sure that they show errors
-
 according to that configuration.
-
 Therefore, in this section here, we'll explore
-
 how you can manage projects with TypeScript,
-
 and most importantly, how you can configure
-
 how TypeScript behaves, how type checking works,
-
 and how the code gets compiled.
-

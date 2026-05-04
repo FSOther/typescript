@@ -1,88 +1,44 @@
 You might have already seen it
-
 in the previous lectures I showed you demo code
-
 in Visual Studio Code.
-
 That's the IDE, the code editor I'm using
-
 throughout this course.
-
 Now, you can of course follow along
-
 with any code editor of your choice.
-
 Visual Studio Code however is a great choice,
-
 because it's free to use
-
 and because it has great TypeScript support built in.
-
 So in case you're not sure which editor to use,
-
 that would be my recommendation.
-
 You can download it for free from code.visualstudio.com.
-
 It's available for all operating systems.
-
 And after installing it,
-
 you can of course configure it by adding extensions
-
 and tweaking the settings to your liking,
-
 though you won't need any special extension
-
 to follow along with this course
-
 and learn all about TypeScript.
-
 Now, it's also worth mentioning
-
 that when it comes to project setups
-
 and writing code in this course,
-
 we'll often start with an empty folder
-
 and just add a bunch of TypeScript files to it
-
 to play around with the various TypeScript features
-
 you'll learn about throughout this course.
-
 And very often, we won't even bother to compile
-
 the TypeScript code we write,
-
 because Visual Studio Code, like many other editors,
-
 has great TypeScript support built in.
-
 And therefore, if you make an error in there,
-
 if you do something that makes TypeScript sad, so to say,
-
 you will typically get an error
-
 right inside of Visual Studio Code.
-
 And that's what we'll use quite a lot
-
 as you will see throughout this course.
-
 Now, there also are some sections
-
 where I prepared a project setup for you.
-
 And in those cases, you'll find it attached to the lectures
-
 where we get started with that project setup.
-
 But as mentioned, in most sections,
-
 it'll essentially be an empty or almost empty folder
-
 to which we then gradually add more and more files.
-

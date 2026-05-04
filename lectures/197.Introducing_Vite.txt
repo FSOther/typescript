@@ -1,90 +1,45 @@
 So you could configure your own project
-
 with ESBuild or Webpack to handle all these different files.
-
 But as I mentioned, you typically don't need to do that.
-
 And if you do, well,
-
 these tools definitely are worth their own courses
-
 and are beyond the scope of this course.
-
 But there is Vite.
-
 A super popular tool
-
 for building all kinds of web dev projects
-
 that are already set up to support TypeScript,
-
 file optimization, CSS optimization and much, much more.
-
 Now, you can learn more about Vite
-
 in their official documentation.
-
 A link can be found attached to this lecture.
-
 But in the end, Vite is a tool that you can use
-
 to create projects that come with ESBuild
-
 or a similar build tool built-in
-
 and that handle all the copying
-
 and optimization of the various code files
-
 you might be working with in your project.
-
 So in the end, Vite sets up ESBuild
-
 or a similar build tool for you
-
 and then gives you even more features on top of that.
-
 Again, you can learn all about the features supported
-
 by Vite in their official documentation.
-
 And there, under Getting Started, you can also learn
-
 how to create different projects with Vite,
-
 that then also can be created such
-
 that they support TypeScript.
-
 So for example, if you know that you'll work with React,
-
 a popular frontend JavaScript library,
-
 which also supports TypeScript
-
 or which you can also use with TypeScript,
-
 if you know that,
-
 well, you can use this preset here supported by Vite
-
 to create a React project where you can use TypeScript
-
 and where you can then run one simple command
-
 to get a deployable JavaScript-based React project.
-
 Now, we'll take a look at React TypeScript
-
 a little bit later in this course
-
 as one example of using TypeScript.
-
 For now, we'll stick to Vanilla JavaScript
-
 and we'll see how we can create a project
-
 that supports more than just .TS files,
-
 for example, also HTML files with Vite.
-

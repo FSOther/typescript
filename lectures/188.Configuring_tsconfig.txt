@@ -1,8 +1,5 @@
 Configuring tsconfig
 As explored in section 4 "The TypeScript Compiler (and its Configuration)", there are quite a few options you can set & adjust in your tsconfig.json file.
-
 When working with ES Modules, you should strongly consider using a tsconfig.json file that looks something like this (or is based on this configuration).
-
 Specifically, for most projects, you should set "module" to "NodeNext" (when building a Node.js application) or "ESNext" (when building for the browser).
-
 Depending on your project setup, build tool and target environment other settings can be used.

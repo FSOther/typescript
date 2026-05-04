@@ -1,208 +1,104 @@
 [Maximilian Schwarzmüller] So, that's working.
-
 Now, I want to update these goals
-
 and potentially remove a goal
-
 if that delete button is pressed here.
-
 Now, since the delete button is inside
-
 of the CourseGoals component,
-
 but the goals are inside of the App component,
-
 I need to propagate that information
-
 that the button was clicked up to the App component.
-
 And you can do that with help of props as well.
-
 So, in React, what you commonly do is you go to your props
-
 of the nested of the child component,
-
 in this case, the CourseGoals component.
-
 And in there, we could add a prop named onDelete.
-
 The name, of course, is up to you,
-
 but the type of this prop is now actually a function type.
-
 And you learned about function types earlier
-
 in the course, of course.
-
 We define them like this for example.
-
 Now, the return type void is actually correct here,
-
 onDelete does not need to return anything,
-
 though it could if you needed to.
-
 But it should actually be a function
-
 that needs one parameter,
-
 the idea of the goal that should be deleted,
-
 which should be of type number.
-
 So, onDelete, on the CourseGoals component will be a prop
-
 that wants a function as a value
-
 where the function receives one parameter of type number.
-
 So, now, we can use that prop here
-
 and pull it out of the props object in CourseGoals
-
 and trigger it whenever this button is clicked.
-
 We can do that by adding the onClick prop here,
-
 which is supported by this built-in button element.
-
 And I'll set this equal to a function,
-
 an anonymous arrow function here in this case
-
 to keep things simple
-
 where I will call onDelete and pass goal.id to onDelete.
-
 Because again, this is a function
-
 that expects to get the ID of the item
-
 that should be deleted.
-
 So, that's why I'm calling it like this.
-
 Now, that's again, a standard React pattern,
-
 which you'll often use when working with React.
-
 The only TypeScript-specific part,
-
 is that we're defining the type
-
 of this onDelete parameter here.
-
 We could also make it optional if we wanted to.
-
 But here, I don't want to
-
 and therefore, back in App.tsx to CourseGoals,
-
 we have to add this onDelete prop
-
 and set this equal to a function that has this shape.
-
 So, in App.tsx,
-
 we can define such a function either anonymously here,
-
 or as a named function here,
-
 handleDeleteGoal could be the name
-
 where I expect one parameter, which is of type number.
-
 That's important because that is our function shape.
-
 And then, we can pass handleDeleteGoal
-
 as a value to onDelete.
-
 Not executing it, just passing it as a value.
-
 And inside of handleDeleteGoal,
-
 we can now update our goals list
-
 by using this setGoals state-updating function here.
-
 So, we can and should call setGoals here,
-
 pass a function to it,
-
 because I'm updating my state based
-
 on the old version of that state,
-
 based on the previous state.
-
 And if you do that in React, you should update the state
-
 by passing a function to the state-updating function.
-
 That function will automatically receive the old state,
-
 so, the old goals array.
-
 React will make sure that this is passed into this function.
-
 And TypeScript understands this
-
 and understands that prevGoals will be an array full
-
 of objects of this shape.
-
 And then, you should return to new state,
-
 which is, in the end, my old list filtered
-
 by using the built-in filter method
-
 to not include the goal that we want to delete anymore.
-
 Now, filter takes a function as an argument.
-
 This function here will be executed
-
 for every element in this array.
-
 And if we return true, an item will be kept.
-
 If we return false, it will be dropped.
-
 So, I wanna return false for the item
-
 where the ID is equal to my ID.
-
 So, I'll check for the opposite.
-
 So, if we have matching IDs,
-
 this will return false and the item will be dropped.
-
 This will ensure
-
 that the ID with the ID we are receiving
-
 as a parameter will be removed from this new array
-
 and therefore, from this new state.
-
 And that's how we can delete a goal from this array.
-
 And that should be all
-
 and that's how we can handle this in TypeScript.
-
 So, if we save this and I now click delete here,
-
 this was removed.
-
 The same here for Learn TS.
-
 So, that's working the way it should.
-
 And that is how we can pass functions as props to components
-
 and how we can handle this in TypeScript.
-

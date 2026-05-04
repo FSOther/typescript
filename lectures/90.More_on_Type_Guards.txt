@@ -1,212 +1,106 @@
 Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/07-advanced-types/guards.ts
-
 In certain situations
-
 when working with TypeScript,
-
 you might be working with multiple possible types
-
 like here in this guards.ts file,
-
 which I created for you and which you find attached.
-
 Here I have a load data function
-
 and this function wants a data source,
-
 which is of type source,
-
 which is this type here.
-
 And as you can tell, this type is a combination of two types
-
 or to be precise, it's one of these two types.
-
 It's either a file source or a database source.
-
 And these are types that are defined up here.
-
 The file source type here in this basic example
-
 is simply an object with a path property.
-
 Whereas the database source type is an object
-
 with a connection URL property.
-
 So these two types have different properties,
-
 they have different shapes.
-
 Now inside of load data, we of course want
-
 to load data from these sources,
-
 but the code we have to write in here
-
 depends on which source we get,
-
 if it's a file source or a database source.
-
 Because if it's a file source we need to use this path
-
 to open the file.
-
 If it's a database source,
-
 we need to establish a connection to this URL
-
 and therefore we can't write just one piece of code
-
 inside of load data.
-
 Instead we need to find out which kind of argument,
-
 which kind of parameter type we got here.
-
 Put in other words, we need to add a so-called type guard.
-
 And if check that ensures
-
 that the proper piece of code is executed
-
 depending on which kind of value we get.
-
 And there are different kinds
-
 of type guards you could write in TypeScript.
-
 You actually already saw a quite complex type guard
-
 way earlier in the course
-
 when I introduced you to the unknown type.
-
 There you saw that we could check the runtime type
-
 of the incoming value
-
 and that we could look for the existence
-
 of certain properties.
-
 Here in this example, it's again the existence
-
 of certain properties
-
 or of a certain property in this basic example
-
 that we could utilize
-
 because if we know that we want
-
 to open a file at a certain path,
-
 we also know that we need to check for the existence
-
 of the path property in order to do so.
-
 So in this if check, we could check
-
 if the path property exists in source
-
 and if that's the case,
-
 we can access source.path
-
 and then use that to open the file,
-
 if we were writing real code here.
-
 Unlike in that more complex example
-
 from earlier when I introduced you to the unknown type,
-
 we don't need to check if the type
-
 of source is equal to object here.
-
 We could add this check, but it's actually redundant
-
 because here our argument,
-
 our parameter type is not unknown, it's source.
-
 So we know it's either file source or database source
-
 and both types are guaranteed to be object types
-
 'cause that's how we defined them here.
-
 So this check here is redundant
-
 because yeah, source will always be an object.
-
 We already know that.
-
 The question just is which kind of object will it be?
-
 Will it be this object with the path property
-
 or this object with the connection URL property?
-
 That's why this check suffices.
-
 And then here we could return
-
 after we're done executing the code.
-
 And therefore after this if check,
-
 TypeScript actually already figured out
-
 that will have a connection URL available
-
 to reach out to the database
-
 because TypeScript understands
-
 that source is either a file source or a database source.
-
 And it thankfully understands that due to this if check,
-
 the file source case will have been handled here
-
 and since we returned,
-
 there is no way we make it past this if check,
-
 if it is a file source,
-
 and therefore TypeScript understands
-
 that after this if check,
-
 we must be dealing with a value of type DB source,
-
 which is why it allows us access
-
 to the connection URL property.
-
 And that's the offer,
-
 another example for a type guard here,
-
 not used with the unknown type,
-
 but instead with a union type where we're dealing
-
 with different types that are not fully compatible
-
 with each other,
-
 which is another super common use case
-
 for working with type guards.
-
 And you see how easy it is in the end or how easy it can be.
-
 Also, thanks to TypeScript understanding how our code works
-
 and how we're evaluating the types.
-

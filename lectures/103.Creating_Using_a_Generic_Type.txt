@@ -1,233 +1,117 @@
 So let's build our own
-
 generic type now, shall we.
-
 For that I'll use the type keyword,
-
 and I'll name it DataStore.
-
 That will be the name of my type.
-
 And my idea here is to, in the end,
-
 set up an object type here.
-
 And in that object type, I want to allow the user
-
 to put all kinds of properties
-
 so that we can use this as a DataStore.
-
 So when we're using this DataStore type in our code,
-
 I want to allow us the developer to add
-
 as many properties with any names we want to this object.
-
 And you learned earlier in the course how you can do that.
-
 You can use this index type feature
-
 where you use square brackets here.
-
 Then any placeholder of your choice like prop
-
 or a key, then you describe what the type
-
 of the key name will be.
-
 And often that will be a string,
-
 but it could also be a number
-
 or a symbol as you learned earlier.
-
 But here I'll go for a string.
-
 And then you describe the kind of value
-
 that can be stored under that key.
-
 And that's not a part
-
 where this generic type feature can come in handy
-
 because earlier in the course I showed you that you could,
-
 for example, allow the storage of strings and numbers.
-
 And with that we could create a new value
-
 of type DataStore, which would be an object.
-
 And there I could add my name property, for example,
-
 and store Max.
-
 But if I wanted to store a Boolean like is instructor,
-
 that would give us an error
-
 because this here is only configured to accept strings
-
 and numbers, not Booleans.
-
 And that's exactly where this generic type feature
-
 can help us now.
-
 Because we can make this DataStore type here
-
 a bit more flexible by turning it into a generic type.
-
 And we do turn this into a generic type, so into a type
-
 that works together with other types
-
 by adding angle brackets here after the type name.
-
 So after DataStore in this case.
-
 And that's of course the same notation you saw up here,
-
 but there is an important difference.
-
 Here in this array scenario,
-
 I'm using an existing generic type,
-
 the array type.
-
 Here, this is how it's defined internally,
-
 and I'm telling it which concrete other type
-
 we'll use for this specific value for this array here.
-
 Now down here,
-
 I'm not using an existing generic type
-
 to tell it with which kind of data it will work together.
-
 Instead, I'm setting up a custom generic type.
-
 And therefore here between those angle brackets,
-
 we don't pass string or number,
-
 but instead here we set up a placeholder
-
 for the concrete type
-
 with which this DataStore type can then be used later on
-
 when we use it as we do here in line 7.
-
 Here I'm using my custom type, here I'm defining it.
-
 So here when we're defining it, I'm using a placeholder.
-
 And very often you'll see an uppercase T
-
 being used as a placeholder, T for type,
-
 but you could use anything here.
-
 So that would be a valid placeholder as well
-
 as would be any other character.
-
 But T is a common convention.
-
 By the way, you can also accept multiple placeholders here
-
 if you're building a more complex type
-
 that needs to work together with multiple other types.
-
 But to get started, we'll just use one, one placeholder, T.
-
 And it's now this placeholder, which you can use inside
-
 of this type definition.
-
 So for example, here, instead of hard coding this
-
 to string or number, we can use this placeholder here.
-
 And with that I'm simply saying
-
 that DataStore can now be used with some other type
-
 and it's then this other type that will be the type
-
 of the value that's stored under that property.
-
 And what this allows me to do is it allows me
-
 to go down here to the place where I'm using my type.
-
 And now we add the angle brackets here as well,
-
 just as we did with array.
-
 When using the type, you also add the angle brackets.
-
 But here between these angle brackets,
-
 we now put in the concrete type value we want to use.
-
 Here we have the placeholder,
-
 but now here we put in the concrete type
-
 we want to use like for example, string.
-
 If we want to have a DataStore full of strings.
-
 Or if we as in this example, want to allow strings
-
 or Booleans, we can use a union type string or Boolean.
-
 And with that, the error goes away.
-
 And the benefit we now have due to us using
-
 this generic type is that we got this
-
 very flexible DataStore type,
-
 which we can use on as many stores as we want.
-
 And it's always then the place where we create that store
-
 where we can then decide which concrete values will store
-
 here in that object.
-
 For example, here, I would have a DataStore
-
 that only accepts string values .
-
 Here, it's strings or Booleans.
-
 And you can set up any store based on any
-
 internally stored type you want.
-
 And that is the benefit of generic types.
-
 You can simply create more flexible types
-
 where you don't have to decide about all the types
-
 that will interact with the type at the point
-
 where you're defining it,
-
 but where you can instead decide such things
-
 at the point where you're using it.
-
 And that's sometimes a useful pattern.

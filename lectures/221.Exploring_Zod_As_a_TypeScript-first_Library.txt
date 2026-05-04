@@ -1,304 +1,152 @@
 [Maximilian Schwarzmüller] So what is Zod?
-
 Well, first, it's important to understand
-
 that it's just an example for a library
-
 that's written for TypeScript, In the end,
-
 it's not the only one.
-
 For example, the class-validator library
-
 would be another library that's written for TypeScript,
-
 in the end.
-
 It's a library that allows you to use decorators
-
 inside of a class to add validation logic
-
 to the various class properties,
-
 to ensure that in this example, for example, title,
-
 this property on this Post class here,
-
 must be set to a string that is at least 10 characters long,
-
 but no longer than 20 characters.
-
 So that could be a useful library
-
 if you are working with classes,
-
 and you want to add TypeScript-powered validation logic
-
 to your properties.
-
 Zod is also about validating data,
-
 because that's one of the strong advantages
-
 of TypeScript in general,
-
 ensuring that things have the right type.
-
 I mean that is TypeScript's overall thing,
-
 and Zod takes that to the next level,
-
 just like Class Validator does for classes, for example.
-
 Because Zod is all about you defining the structure
-
 of values, the types of values,
-
 and Zod ensuring that the actual values
-
 you're working with have that shape and structure and type.
-
 And it might not be immediately obvious what exactly I mean
-
 by that, because TypeScript in general
-
 is about ensuring that the correct types
-
 are used in the right places.
-
 So it's best to simply dive into Zod
-
 and explore how it works.
-
 And for that, we'll start with the installation.
-
 Now here we learned that we must have TypeScript installed,
-
 and that we should have strict set to true.
-
 And then with that we can run npm install zod
-
 to install that package.
-
 So let's do that here.
-
 Now, as mentioned, Zod is built for TypeScript.
-
 So you don't need to install an extra types package,
-
 and instead you can simply start using it,
-
 and import something from 'zod'.
-
 And that something is the z constant,
-
 in the end.
-
 Which, in the end, holds an object
-
 that exposes a broad variety of methods
-
 you can call on it.
-
 And to understand which methods you can call it,
-
 it's important to understand what exactly Zod does for you.
-
 And what it does for you,
-
 is it allows you to define a schema
-
 for any kind of data you might be receiving.
-
 For example, for the data you might be receiving
-
 for an incoming request, if you're building a web server.
-
 But it could be any other kind of data.
-
 It could also be data read from a JSON file.
-
 And that is what I'll do here.
-
 I'll add a data.json file, simply a little dummy file
-
 where I'll have a "title": "Test",
-
 and an "I'd": which is a number, 5,
-
 and then I wanna have a "values": key,
-
 which is an array of strings,
-
 Strings that contain numbers, but still strings.
-
 Like this.
-
 So that's just some dummy data
-
 that we might wanna to use in our project.
-
 And in our code, we might be well aware of the shape
-
 of data we expect to get, but we might not be so sure
-
 if the actual data we get matches that shape,
-
 because it's user-generated
-
 or because maybe the shape changes from time to time.
-
 That's where Zod then comes in.
-
 Because with, so you can define the shape of your data
-
 and then perform runtime validation for that data,
-
 or for that defined shape.
-
 And that's the difference to TypeScript,
-
 because TypeScript is of course compiled to JavaScript.
-
 So at runtime it's JavaScript.
-
 So, TypeScript does not allow you to validate anything,
-
 any type of value at runtime.
-
 It's a compilation thing instead.
-
 Zod, on the other hand,
-
 allows you to transfer the advantages of TypeScript,
-
 which you have during compilation to the runtime.
-
 And here's how that works.
-
 You can define your schema, your data schema,
-
 let's call it like this, dataSchema.
-
 And then use the set object here
-
 to call various utility methods.
-
 For example, if you expect the dataSchema
-
 to simply be a string, you could call the string method.
-
 And with that you would tell Zod
-
 that you expect data to, in the end, be a string.
-
 If you now get some data,
-
 so if we now import,
-
 let's import from node:fs
-
 to use the node file system module.
-
 And actually here I get an error.
-
 So I need to install @types/node
-
 and do that as a development dependency like this.
-
 That allows me to use those built-in node modules
-
 without problems in TypeScript.
-
 And if I now use that to read a file synchronously,
-
 and I wanna read that data.json file,
-
 and then get the content like this, that will give me,
-
 in the end, a string, you could say.
-
 Now I could use dataSchema,
-
 and call the parse method and parse my content to it.
-
 And what that will do, is it will use Zod
-
 to parse whatever value I'm passing to parse,
-
 in this case, the content I read from the file,
-
 and check if it's in line with my defined dataSchema.
-
 And it will do that at runtime, again, with just TypeScript.
-
 If I were saying that something is a string, like this,
-
 that will get compiled away,
-
 it will not be available at runtime.
-
 Zod, on the other hand,
-
 uses names similar to what we know from TypeScript,
-
 like string, and it will run at runtime
-
 because we're not using TypeScript features here,
-
 we're calling methods from the library instead.
-
 So that will then give me the parsed data,
-
 which is a string.
-
 But if data turns out to be something else,
-
 I'll get an error.
-
 So for example, if I expect to get a number here,
-
 if I change that to number, parsed data will be number.
-
 But if I run this file and content turns out to be something
-
 that's not a number, I'll get an error.
-
 So if I compile my project here, for example,
-
 and I therefore get this app.js file
-
 here in the dist folder,
-
 if I run node dist/app.js
-
 I'll get a ZodError, that I expected to get a number,
-
 but I actually got an object,
-
 because content is a buffer here,
-
 which can be converted to a string,
-
 but which is raw form is an object,
-
 and it's definitely not a number.
-
 And that's the idea behind Zod.
-
 You can define expected schemas,
-
 and you can then use your schemas to parse data
-
 where you want a certain shape,
-
 where you need certain types to be used,
-
 but where you are not sure whether these types
-
 are actually being used because it's user-generated,
-
 or because it changes from time to time
-
 or for any other reason.
-

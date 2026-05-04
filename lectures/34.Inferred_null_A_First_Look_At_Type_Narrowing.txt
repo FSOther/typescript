@@ -1,130 +1,65 @@
 And to make these null
-
 and undefined types a little bit less abstract,
-
 here's an example where they might come in handy.
-
 Let's say you have an HTML file, a very simple HTML file
-
 with a simple form that has an input and a button.
-
 And then you import some script, form.js like this.
-
 Doesn't really matter.
-
 Now of course, you can create such a form.ts file
-
 and then compile it to JavaScript
-
 as shown earlier in the course
-
 by running the TypeScript compiler.
-
 And in there you might wanna reach out to this input field
-
 and get the value that's stored in there.
-
 To do that, you could reach out to that input here
-
 via its ID, and store it in a constant or variable.
-
 So here I'll use document.getElementById,
-
 a regular JavaScript method,
-
 and then get my input here, which has an ID of username.
-
 And now I want to access
-
 and output the stored value like this.
-
 Now as you'll see, I'm getting a bunch of errors here.
-
 And the first error is that inputEl is possibly null.
-
 Because if you hover over inputEl up here,
-
 TypeScript infers it to either be of type HTML element,
-
 which is a type that ships together with TypeScript,
-
 or it's null.
-
 And if you think about it, that makes a lot of sense
-
 because document.getElementById
-
 aims to give you an HTML element.
-
 That's what this method does.
-
 It reaches out to the DOM
-
 and fetches an HTML element, so to say.
-
 But of course, what happens if there is
-
 no element with this ID?
-
 In that case, this method fails
-
 and it does not fail by throwing an error.
-
 That's just not how it works.
-
 Instead, it will simply return null
-
 if it fails to get an element with that ID.
-
 So therefore, here you have a scenario
-
 where the inferred type could be null.
-
 So where we have two types
-
 that are inferred in a union type.
-
 And because of that we have to deal with the possibility
-
 that this here might be null.
-
 Now there are different ways of dealing with that.
-
 One way would be to add a if check
-
 and check, if not inputEl.
-
 So if this is falsey, which it would be if it is null.
-
 And in that case we could throw a new error,
-
 element not found, something like this.
-
 And as you see, and that's a bit more advanced,
-
 but it's also important to understand,
-
 TypeScript is super smart about your entire code
-
 and it understands that here in line seven
-
 after this if statement, inputEl can no longer be null.
-
 And as you see it narrowed, as it's called,
-
 the type down to just HTML element
-
 at this point in your code.
-
 It narrowed it down to this element here
-
 because if it were null,
-
 we would not make it past this if check.
-
 Now we still got some other error,
-
 which we'll take a look at in the next lectures,
-
 but that is a place where the null type is super important.
-

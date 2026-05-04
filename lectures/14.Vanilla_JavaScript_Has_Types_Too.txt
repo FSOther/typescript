@@ -1,108 +1,54 @@
 So type assignments like this
-
 are TypeScript specific, and as mentioned,
-
 TypeScript has built-in types like string,
-
 number, or Boolean.
-
 By the way, it's important
-
 that you have string all lowercase
-
 and not with an uppercase character.
-
 You don't get an error here,
-
 but actually the lowercase version is the correct one,
-
 which you should use.
-
 That's just a side note.
-
 Now it is worth noting
-
 and really important to understand, though,
-
 that even though this here is a TypeScript specific feature
-
 types, value types, are not TypeScript specific.
-
 Vanilla JavaScript also has the concept of value types.
-
 It just does not have the concept
-
 of explicit type assignments as we have them here.
-
 But if I quickly create a JavaScript file here,
-
 vanilla-js-types.js, for example,
-
 the name doesn't matter.
-
 And in there I create a variable username
-
 and I store max in there just as before,
-
 now just in one step.
-
 If I do that and I then console log type of username,
-
 the type of value that will be stored
-
 in that username variable will be locked to the console
-
 because this type of operator here
-
 is a standard JavaScript operator.
-
 It's not TypeScript specific,
-
 which is why we can use it in a .js file.
-
 It's a JavaScript operator
-
 that will take a look at a variable,
-
 take a look at the value in that variable,
-
 and then return the type of value
-
 as a value to the place where you're using it.
-
 So in this case, to console lock.
-
 Therefore, if you run node,
-
 and I got a typo here, this should be vanilla.
-
 So if you run node vanilla-js-types.js,
-
 you'll see that string gets locked here to the console
-
 because the type of username is string.
-
 And this, again, all works without TypeScript
-
 because JavaScript knows the concept of types.
-
 It knows that different values are of different types.
-
 It just doesn't know the concept
-
 of explicit type assignments as we have them here.
-
 And that's really important to understand
-
 that types themselves are not TypeScript specific.
-
 Just this idea of enforcing types
-
 and setting types explicitly
-
 and getting type related errors at the point of time
-
 where you're writing code,
-
 these things are TypeScript specific.
-

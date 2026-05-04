@@ -1,200 +1,100 @@
 So we created a first decorator
-
 and we added it to this class,
-
 and we're logging information about the class
-
 at the point of time where it's defined in the end,
-
 but what else can we do with that logger decorator here?
-
 Well, you can also use decorators
-
 to change the thing you are attaching them to.
-
 So to change the class, for example,
-
 and how do you do that?
-
 Well, by returning a new class,
-
 a new class that's based on the old class in the end,
-
 and you can do that with a syntax that might look strange,
-
 but that is valid JavaScript code.
-
 You can return an anonymous class
-
 by using the class keyword here after the return keyword
-
 and then "extends target."
-
 So I'm not giving my class a name here.
-
 Instead, I just extend the target
-
 and I'm not giving my class a name here
-
 because it's an anonymous class,
-
 which I'm just creating temporarily to return it,
-
 but then just as down here, you add curly braces
-
 and between those curly braces,
-
 you can put your extra class information.
-
 For example, an age property which you set to 35.
-
 However, as soon as I do that,
-
 you'll see that I get an error down here,
-
 a pretty complex error that in the end tells me that
-
 the kind of class I'm returning
-
 is not in line with the class I have here,
-
 but we can fix this by improving our types up here
-
 and by not using any.
-
 What we should do instead is use a generic type,
-
 maybe called "T" as we did before in this course
-
 and this type must be based,
-
 it must extend some other type, a class type.
-
 So the thing we're using logger on should be a valid class
-
 and in TypeScript, you can express that by writing "new"
-
 and then a function type thereafter.
-
 Might look weird using the new keyword here,
-
 but that's how you can tell TypeScript
-
 that you want to interact with a class
-
 and then here, this function type in the end
-
 represents the class constructor
-
 and there, I want to be able to use my logger decorator
-
 on any kind of class,
-
 so I'm fine with accepting any amount of arguments,
-
 which we can express like this,
-
 using this rest parameters syntax here,
-
 which yet means we have any amount of arguments
-
 which are of any type.
-
 That's what this syntax means.
-
 It's a way of defining a function type
-
 that does not care about how many arguments
-
 of which type it receives
-
 and it also will return any kind of value because again,
-
 I don't know in advance to which kind of class
-
 I want to attach this logger decorator.
-
 So that's how you can express
-
 that you wanna base your type "T" on some class
-
 that accepts any kind of arguments in its constructor
-
 where you then return any kind of value
-
 and now it's this "T" type, this generic type,
-
 which I use for target.
-
 With that, you should see that
-
 this arrow down here goes away.
-
 So now we have this properly typed,
-
 and now we're returning a new class
-
 here inside of the logger function,
-
 which means we're trying to replace this class
-
 with our logger decorator here.
-
 Now, in order to see if that works,
-
 we can instantiate this class here
-
 and then console log it,
-
 and now let's compile this code and then execute it
-
 and what you should see is that down here,
-
 you indeed also have an age now
-
 in that object that is created when instantiating the class,
-
 age 35,
-
 and of course, we don't have that in the person class here.
-
 Instead, that's coming from this change here.
-
 It's also worth noting of course, that as you can see,
-
 the original class does not get replaced by that class here,
-
 but in the end, we merged them, you could say.
-
 So this age property is added
-
 in addition to the name property,
-
 and we therefore should also still be able
-
 to call greet here.
-
 If I compile that
-
 and then run this code, this greeting is also printed here,
-
 and that's where decorators can come in handy
-
 because you can manipulate
-
 the code to which you attach them.
-
 Of course, this is just a demo here, just an example
-
 and typically, you'll only need decorators
-
 in more complex use cases
-
 when writing more complex kinds of applications,
-
 or libraries with classes,
-
 but in certain situations,
-
 that's why decorators can be a useful feature.
-

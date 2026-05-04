@@ -1,46 +1,23 @@
 Now, when working in a project like this,
-
 where you are actively working on the code,
-
 you can also not just invoke the compiler manually
-
 whenever you made a change to your code,
-
 but instead, you could also run tsc --watch
-
 to run it in watch mode.
-
 And what this will do is it will watch your project,
-
 your source files, essentially,
-
 the files you have in your rootDir.
-
 And whenever you save a change to them,
-
 it will re-trigger compilation.
-
 So, for example, here,
-
 if I call add with two numbers
-
 and console.log the result, whatever, doesn't matter.
-
 If I save this, you maybe saw it.
-
 This ran again.
-
 And in the dist folder, we got the updated output file,
-
 which contains this newly added code.
-
 And this watch mode, therefore,
-
 can, of course, be pretty convenient
-
 if you're actively working on a project
-
 and you don't wanna manually re-trigger compilation
-
 every time you make a change just to preview it.
-

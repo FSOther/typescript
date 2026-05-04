@@ -1,100 +1,50 @@
 Let's come back to arrays,
-
 which are also objects in JavaScript in the end.
-
 And let's say you have a roles array
-
 which contains a couple of user roles, for example.
-
 Like this.
-
 Now here, I'm initializing a variable with this array
-
 and TypeScript therefore infers
-
 that the type of roles is string array,
-
 an array full of strings because that's what
-
 we're assigning here.
-
 In many scenarios, that's exactly the behavior you want.
-
 You want TypeScript to infer that this might be
-
 an array of strings.
-
 But in certain situations,
-
 you might want TypeScript to be a bit stricter
-
 and to not have it infer such a broad type.
-
 Because string array is pretty broad,
-
 it means that you can add as many strings as you want
-
 to this array and any strings of your choice.
-
 Sometimes you might want to force TypeScript
-
 to infer a bit of a more narrow type
-
 and you can do so by adding as const here
-
 after your value assignment.
-
 Now, this is a TypeScript feature,
-
 not a JavaScript feature.
-
 And this simply tells TypeScript hey,
-
 when inferring the type for this variable,
-
 be as narrow as possible or do it as narrowly as possible.
-
 Don't infer a broad type like string array,
-
 but try to be more specific.
-
 And as a result, you'll see that indeed,
-
 now, roles is inferred to be a readonly array
-
 where we have admin, guest, and editor
-
 as allowed values.
-
 And as a result, I, for example,
-
 can't push some other string into this array,
-
 which would've worked without as const.
-
 But with as const, it's not allowed
-
 because it's a readonly array which means
-
 it must not be edited.
-
 And if we, for example, extract the first row like this,
-
 TypeScript knows that this will not be any string,
-
 but instead, it will be the string admin.
-
 Because of as const.
-
 And that's definitely another important feature
-
 which can help you if you are in a situation
-
 where you want to use TypeScript's type inference feature
-
 but where you don't want to get some broad,
-
 pretty generic type but instead a super narrow type.
-
 And therefore, this can also be a useful feature.
-

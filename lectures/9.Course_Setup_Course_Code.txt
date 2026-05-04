@@ -1,6 +1,4 @@
 Course Setup & Course Code
 You find all course code snapshots on GitHub: https://github.com/mschwarzmueller/understanding-typescript-resources
-
 For some parts of this course, to run small demo projects, you'll also need Node.js installed on your system. You can install it from here: https://nodejs.org/en.
-
 For following along with this course, you can use VS Code - a free, extensible IDE that works on all operating systems.

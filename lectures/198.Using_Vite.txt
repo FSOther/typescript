@@ -1,306 +1,153 @@
 Now to create a new Vite project,
-
 you can run disc command, which requires NPM
-
 to be installed on your machine,
-
 which you should already have installed anyways.
-
 So you should go to your terminal
-
 or command prompt on your machine,
-
 navigate into the folder where you want to create
-
 your new TypeScript-based web project,
-
 and then run npm create vite@latest.
-
 That's the command you see here
-
 in the official documentation.
-
 When you run this command,
-
 you'll have to confirm this most likely,
-
 and then you'll be asked how you want to name your project.
-
 And here I'll name it vite-demo-ts.
-
 But of course the name is entirely up to you.
-
 Thereafter, you have to choose which preset you want to use,
-
 and that's essentially that list I showed you here.
-
 So these kind of presets
-
 that you can create easily with help of Vite.
-
 So in my case, I want to use a vanilla JavaScript project,
-
 so a frontend web project that uses just JavaScript,
-
 no extra framework or library like React.
-
 But I want to write TypeScript code during development.
-
 And then of course I want to have that code compiled
-
 to JavaScript code for production.
-
 So I'll choose TypeScript here.
-
 With that, I get a new folder created,
-
 in my case named vite-demo-ts,
-
 since that's the name I chose.
-
 And we can navigate into this folder,
-
 then install a bunch of the dependencies
-
 that are needed to build and run this project
-
 and then run a development server,
-
 which allows us to easily preview the website
-
 we're working on and which will update
-
 whenever we make changes to our code,
-
 which is super convenient.
-
 Now, I will not run these commands here, however,
-
 instead I opened that project here
-
 with VS Code, my code editor.
-
 So that's the folder that was created by Vite.
-
 And as you can tell, it doesn't look that different
-
 from the folder I had before.
-
 I have a package.json file, a tsconfig.json file,
-
 a gitignore file, then an HTML file here,
-
 right on the root level of my project, that's new.
-
 But then I have a source folder
-
 with a bunch of TypeScript files and also a CSS file,
-
 an SVG icon
-
 and this .d.ts file, to which I'll get back.
-
 I also have a public folder which stores another image.
-
 That just happens to be the folder structure Vite gives you,
-
 the folder structure Vite forces on you
-
 if you want to call it like this.
-
 But then in the package.json file,
-
 you can see that there are two dependencies,
-
 development dependencies, that are specified.
-
 One of them is TypeScript and one of them is Vite.
-
 So this build tool in the end,
-
 which under the hood will invoke ESBuild
-
 or something similar to build these files
-
 and do a bunch of other things as well.
-
 And I'll get back to why TypeScript
-
 is specified here in a second.
-
 But then we also got these scripts here
-
 which we can execute with help of NPM.
-
 For example, a build script which will make sure
-
 that this project gets built.
-
 And you see it does actually
-
 invoke the TypeScript compiler here,
-
 but it then also invokes another command
-
 based on the Vite tool,
-
 which will essentially make sure
-
 that all the files get handled
-
 and get prepared for deployment.
-
 If we take a look at the ts.config.json file,
-
 we also see that here we got a bunch of settings
-
 and typically you can keep those the way you are
-
 unless you know what you're doing.
-
 You could, for example, change the target
-
 if you wanted to target a more modern version of JavaScript.
-
 But other than that, these are the settings Vite needs
-
 to effectively compile
-
 and then use the compiled TypeScript code.
-
 So with all that, what you have to do
-
 to build this project is first of all, run NPM install.
-
 This will ensure that all the dependencies
-
 mentioned here in the package.json file
-
 get actually downloaded
-
 and stored in this folder,
-
 in the node modules folder,
-
 so that these third party packages,
-
 TypeScript and Vite are available.
-
 And Vite is needed here
-
 to make this Vite build command work, for example,
-
 they offer after running NPM install,
-
 you could start that development server I mentioned
-
 with NPM run dev.
-
 And that would then open up a website
-
 which you could visit in your browser
-
 and start a process which watches your code files
-
 to update that website whenever you make changes.
-
 But here I'll instead run that build script.
-
 So this script here to build this project for production
-
 to get a deployable folder.
-
 And if I do that, you'll see
-
 that a dist folder gets created
-
 just as it was the case in my custom project.
-
 But this dist folder now does not just contain
-
 the compiled TypeScript files.
-
 Instead it has a totally different structure
-
 than the source folder.
-
 It, for example, contains the index HTML file,
-
 which is not even part of the source folder,
-
 but which is part of the root folder.
-
 Nonetheless, this file here, in the end
-
 gets copied into the dist folder by Vite
-
 so that we can take the contents of the dist folder,
-
 put them onto a server
-
 and have our running website there.
-
 And it's then in the assets folder
-
 where we got this weirdly named JavaScript file,
-
 which in the end contains the compiled TypeScript code.
-
 You might say that there is some HTML code in there,
-
 but in the, that's just some markup
-
 that is defined here
-
 as a string in the TypeScript files as well.
-
 So in the end, this is JavaScript code here,
-
 which we got here just already optimized for production.
-
 So pretty unreadable,
-
 but therefore also as small as possible.
-
 And we got this weird name to help with caching
-
 so that browsers and potentially CDNs
-
 could cache this file.
-
 And if you build and deploy a new version of your project,
-
 the file would have a different name.
-
 This part here would be different
-
 and therefore the old cache files would be invalidated.
-
 That's why we have this weird file.
-
 We can also see the CSS file here, by the way,
-
 which has a similar name
-
 and contains the optimized CSS code.
-
 And that is what Vite does for us here
-
 and why you would typically use a tool like Vite
-
 because it helps with building projects
-
 that you can then easily build for production
-
 and which you can then also deploy,
-
 even if they don't just consist of just TypeScript files.
-
 Because as you saw before, the TypeScript compiler,
-
 which you invoke with tsc,
-
 is not really a suitable tool
-
 if you want to do more than just compile TypeScript code.
-

@@ -1,114 +1,57 @@
 So as a next step,
-
 I want to make sure that we can add elements
-
 to this LinkedList.
-
 So I'll add a add method here to my LinkedList class,
-
 which allows me to add a new value to this LinkedList.
-
 That value should then be stored in such a node,
-
 and we, of course, have to update the chain of nodes
-
 to make sure that this new node is inserted
-
 such that the node that was inserted before it
-
 points to that new node,
-
 so it is linked to that new node.
-
 So that we built the kind of data structure
-
 I described before.
-
 Now, therefore, of course, we need to accept a value here,
-
 the actual value that should be stored in that node.
-
 And here I am, of course, happy with any kind of value.
-
 I don't care whether it's a string or a number
-
 or anything like that.
-
 So we can use the any type.
-
 But of course, you know that if you use the any type,
-
 you lose a lot of TypeScript advantages if you didn't work
-
 with that value anywhere else in your code.
-
 And I don't want to lose these advantages.
-
 So, what we could do instead is either use unknown,
-
 but then we would have to add a bunch of type guards
-
 every time we try to use this value.
-
 So I don't want to do that either.
-
 And instead, we can go for a generic type.
-
 So a type that is flexible but clearly defined
-
 when we start using the LinkedList.
-
 So this must become a generic class,
-
 which it does by adding these angle brackets
-
 after the class name, and between those angle brackets,
-
 the type placeholder, T in my case,
-
 which I'm then also using down here.
-
 So with that, I got a generic class,
-
 and that allows me to, for example,
-
 create one LinkedList here, a numberList,
-
 which is full of numbers like this,
-
 by assigning a concrete value
-
 for this type of placeholder down here.
-
 And at the same time,
-
 I could also add a nameList,
-
 which stores a bunch of string values,
-
 for example, like this.
-
 So I'm using the same class with different data types,
-
 which are defined at the point of time
-
 when I instantiate the class
-
 instead of defining them when I define the class.
-
 Here I am working with a flexible type, a generic type.
-
 So, that's the kind of value I want to store.
-
 And that is a great example for a use case
-
 where using this generics feature makes a lot of sense.
-
 Now, we, of course, must store this value
-
 in such a ListNode, and then add that ListNode
-
 to the LinkedList.
-
 That's the next step.
-

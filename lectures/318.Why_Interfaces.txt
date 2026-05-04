@@ -1,72 +1,36 @@
 So now that we know about these powerful features,
-
 an obvious question is, why would we use that?
-
 Why is that helpful?
-
 Well, it is useful in situations like this,
-
 where we know we want to have
-
 a certain set of functionalities.
-
 Let's say a greet method, and we want to ensure
-
 that a clause has such a greet method,
-
 and another clause has it maybe as well,
-
 well, then, we can implement an interface
-
 which forces the existence of this method.
-
 Then we can easily share functionality amongst clauses,
-
 and every clause has to add its own implementation,
-
 the exact code that should execute
-
 when the method is called,
-
 but we enforce a certain structure
-
 with the help of interfaces.
-
 This can be useful if we don't have other parts of our code
-
 which rely on that structure.
-
 Here, we set user1 to be of type Greetable,
-
 and with that we say we don't care what's inside user,
-
 but what has to be in there is a greet method,
-
 and we know that it has to be in there
-
 because whatever we store in user1 has to be greetable.
-
 That allows us to write truly powerful and flexible code
-
 where we don't have to know everything about a object,
-
 or everything about a clause,
-
 but we just know whatever I'm getting here in user1
-
 has to have a greet method.
-
 We don't care whether Person has anything else,
-
 here we're interested in greet,
-
 hence we sent us to Greetable,
-
 and therefore we can't store anything in user1
-
 which would not have a greet method,
-
 because Greetable forces whatever you base on it
-
 to have such a greet method.
-

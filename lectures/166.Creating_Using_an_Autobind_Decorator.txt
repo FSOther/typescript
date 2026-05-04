@@ -1,210 +1,105 @@
 I'm talking about a decorator, which we can add
-
 which automatically binds the "this" keyword
-
 so that we don't have to call bind here.
-
 Now obviously calling bind here is not a big thing
-
 if there's nothing wrong with it,
-
 but we also wanna practice what we learned and
-
 if we have to do this in many many places across our app
-
 having a decorator, which we just can add
-
 might actually be easier.
-
 So, let's get rid of bind this here.
-
 And instead, above the class here,
-
 I'll add the auto bind decorator
-
 and I'm just adding some comments here
-
 to keep this file organized, at least a bit.
-
 ProjectInput Class
-
 So, what is a decorator?
-
 A decorator is a function, right?
-
 And you can find it either with
-
 the function decoration here or as a function expression.
-
 So, here I'll use a function decoration,
-
 and I'll name it autobind, name is up to you.
-
 And this decorator will receive free arguments
-
 the target,
-
 the method name to which it is bound,
-
 because I am going to create a method decorator here.
-
 And also the descriptor
-
 of that
-
 method.
-
 Uh, property descriptor because methods in the end
-
 are just properties, properties which hold functions.
-
 Now, why is this a method decorator?
-
 Because the idea is that we can add it to submitHandler
-
 like this, and be done with it.
-
 That's the idea.
-
 Now, we're not entirely there yet,
-
 but this is how it should work in the end.
-
 Now, to make it work, let's go back to our function up there
-
 and what has to go into the function body then?
-
 Well, in there, I first of all
-
 want to get access to the original method.
-
 With descriptor.value so that we store the method
-
 with which we originally defined.
-
 Then I wanna create my adjusted descriptor here
-
 which is a object.
-
 I'll type PropertyDescriptor, actually.
-
 Where configurable should be set to true,
-
 so that we can always change it.
-
 And where we then need a getter.
-
 And in that getter, here, which should be executed
-
 when you try to access the function.
-
 We will set up the bound function here,
-
 by using the original method
-
 which we are extracting up there.
-
 And calling bind this on it.
-
 Then,
-
 I want to return that bound function,
-
 and that should be all.
-
 And overall of course,
-
 I will therefore return the adjusted descriptor
-
 in that method decorator.
-
 Now we get an error with that, on the submitHandler.
-
 That, experimental support for decorators is a feature
-
 which basically needs to be enabled.
-
 So we should go to the tsconfig file,
-
 and in there just scroll down.
-
 You should find that "experimentalDecorators" option
-
 just comment that in.
-
 And add a comma in front of it.
-
 Save that, and then restart the types compilation process.
-
 Now, it still shows me some errors here,
-
 if I expand this,
-
 the methodName is declared, but its value is never read.
-
 In app.ts line four.
-
 It's referring to this here,
-
 I got this argument, which I received here
-
 which I actually never used.
-
 Same is true for target, I never used that.
-
 Now, there are two ways to solve this.
-
 One way, is to go to the tsconfig,
-
 and loosen our strictness rules, here.
-
 noUnusedParameters, if we set this to false
-
 we're actually allowing unused parameters.
-
 So, this would be one thing,
-
 or you use special names
-
 underscore,
-
 and underscore two.
-
 This actually is, a hint for typescript and javascript
-
 that you are aware that
-
 you are not going to use these values,
-
 but you need to accept them
-
 because you need the argument they're after.
-
 If you now save this, this compiles without errors
-
 and if we go back and enter hello here
-
 and submit this, it still works
-
 now thanks to our auto bind decorator.
-
 Which hopefully also shows that this decorator
-
 can have some real use.
-
 Now of course here is actually a bit more work,
-
 than just calling bind.
-
 But imagine this being used on more and more methods
-
 which all have to be bound.
-
 Not having to call bind this manually,
-
 can then re-save you some time,
-
 and also prevent some potential errors
-
 in cases where you just forgot it.
-

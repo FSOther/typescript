@@ -1,74 +1,37 @@
 So we saw Typescript's typeof operator,
-
 which allows you to derive types from values,
-
 TypeScript types from values,
-
 so that you can work with them in TypeScript land.
-
 TypeScript also has a keyof operator,
-
 which we'll explore in a separate keyof.ts file
-
 and what does this operator do now?
-
 Well, imagine you have a type user,
-
 so not a value, but a type which is a object type
-
 where you might have a name which is of type string,
-
 and a age which holds a value of type number.
-
 So you might have an object type like this
-
 and now let's say you want to create a second type,
-
 which holds all property names as string literal types
-
 that are supported by that user type.
-
 So you might want to create a UserKeys type.
-
 You could do that with the keyof operator,
-
 which now, unlike the typeof operator,
-
 does not exist in Vanilla JavaScript,
-
 but which instead exists exclusively in TypeScript land
-
 and keyof should then, unlike typeof,
-
 be followed by another type.
-
 So not by a value from which you want to infer a type,
-
 but by another type like the user type
-
 and UserKeys then is actually a union type of all the keys
-
 that are defined in this object type.
-
 So if I had a variable, validKey,
-
 which should be of type UserKeys,
-
 I could assign age or name as values,
-
 as the auto completion here also understands,
-
 and I can assign age and name
-
 because these are the two keys that are defined
-
 in that object type up here.
-
 Now, why could this be a useful feature though,
-
 this keyof operator?
-
 Where could you use that?
-
 I'll show you a more realistic example in the next lecture.
-

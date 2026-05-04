@@ -1,66 +1,33 @@
 Now here, it's also worth noting
-
 that we essentially now built our own
-
 a bit less flexible version of the record type,
-
 which I showed you earlier in the course
-
 in the essentials section.
-
 You might recall that the record type could be used
-
 to tell TypeScript that you wanted to store some object
-
 in a given variable or constant or argument of a function,
-
 and that you could use the built-in records type for that
-
 and that record was a so-called generic type.
-
 We'll learn more about that later, which in the end,
-
 is a type that uses other types to work correctly
-
 or uses other types to fully describe the overall type.
-
 Here, for example, we tell record which types we'll use
-
 for the keys of the object
-
 and which types we'll use for the values of the keys.
-
 And that's just what we did here as well.
-
 Here, we're saying that we'll have string key types
-
 and that will store numbers or Boolean as values.
-
 So instead of defining our own data store type here,
-
 which we can of course also do,
-
 and it's great to know
-
 how record in the end works internally,
-
 we could also define the type like this.
-
 So this is essentially the same as this type.
-
 This allows us to store objects where we have keys
-
 that can be treated as strings, and where we store numbers
-
 or Boolean as values for those keys.
-
 Exactly what we also define here.
-
 So that's just an important side note here.
-
 Of course, it's totally up to you
-
 whether you wanna define your own type
-
 or use the record type or mix and match these features.
-

@@ -1,204 +1,102 @@
 If you were using vanilla JavaScript,
-
 the code would instead look like this.
-
 So, it would actually be shorter
-
 than if you were using TypeScript.
-
 And for that reason, to not make it harder for you
-
 to create classes than it would be in vanilla JavaScript,
-
 TypeScript offers a convenient shortcut.
-
 You could create your class like this,
-
 but alternatively, you could also create it
-
 with a little shortcut where you don't create
-
 those properties up here,
-
 but where you instead add a certain keyword
-
 in front of your parameters here in the constructor.
-
 And that keyword, which you wanna add,
-
 is the public keyword in front of a
-
 and in front of n.
-
 Now, I'll get back to public
-
 and alternative versions like private a little bit later.
-
 For now, we just added to tell TypeScript
-
 to immediately create a property in that class
-
 that has the same name as this parameter.
-
 That's the shortcut we're using here.
-
 That's a shortcut offered by TypeScript
-
 when you add public or private,
-
 but again, I'll get back to that later.
-
 If you add that in front of a parameter in the constructor,
-
 TypeScript will go ahead
-
 and create a property of the same name
-
 behind the scenes in that class.
-
 And it does even more than that.
-
 It will not just create a property
-
 of that name in that class,
-
 it will also assign the value
-
 that's received on this parameter
-
 to that automatically created property.
-
 This allows you to get rid of this code as well.
-
 And now, I'll just use more meaningful names here again,
-
 because now, properties will be created automatically,
-
 and they will carry those names,
-
 so I wanna have more meaningful names here.
-
 But that's now how short this class can be
-
 when using this TypeScript shortcut.
-
 So, we started here
-
 and that is all something you could also do with TypeScript,
-
 but that's the alternative version,
-
 which is now super concise
-
 and definitely shorter than what you would have
-
 with vanilla JavaScript.
-
 The constructor method body is empty here
-
 and, still behind the scenes, properties of these names,
-
 name and age, will be created
-
 and they will be populated with the values
-
 that are received on those parameters.
-
 Therefore, here, you could create a new User,
-
 maybe called max, and store it in a constant or variable,
-
 and then pass values for these two arguments here
-
 to the constructor,
-
 so. between those parenthesis here.
-
 That's how you create a concrete instance of this class
-
 and that is exactly the same way
-
 as you would do it in vanilla JavaScript.
-
 This is now no longer TypeScript-specific.
-
 This is standard JavaScript code.
-
 So, here, I'll pass Max as a name
-
 and 36 as a value for age for example.
-
 By the way, just to be very clear,
-
 since the constructor is in the end also just a function,
-
 you can use all the features you learned
-
 about functions earlier.
-
 You can make age optional by adding a question mark.
-
 You could set an initial value if you wanted to.
-
 This all works just as you learned it before,
-
 just to be clear about that.
-
 But with that, I now have a first user
-
 and I can now easily create a second user
-
 by repeating that code,
-
 but by then passing different input values
-
 to the User class constructor here.
-
 And if you then were to console log Max and Fred here,
-
 like this, you should see an object with this shape,
-
 so with a name and a age property
-
 with these values being printed to the console.
-
 We can of course give this a try.
-
 We can run tsc since I have a tsconfig.json file,
-
 and this will produce a basics.js file.
-
 And if you explore that file, you'll see that in there,
-
 we have this class definition
-
 using this JavaScript code I mentioned.
-
 name and age are actually referenced as properties here,
-
 but you could delete them
-
 and it would still work in vanilla JavaScript.
-
 And here, you have the same code
-
 as in the TypeScript file, essentially.
-
 If you now run this code,
-
 so if you run the basics.js file with node,
-
 you therefore get this output here
-
 where the Max and Fred User data,
-
 these objects here, are printed to the console.
-
 And that's how you can create classes with TypeScript
-
 and how you can use some TypeScript-specific features
-
 to write only very little code
-
 to create these basic blueprints.
-

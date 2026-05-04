@@ -1,126 +1,63 @@
 Now, I mentioned
-
 that interfaces are used
-
 to define the structure of an object.
-
 Now, interfaces can also be used
-
 to define the structure of a function.
-
 So basically as a replacement for the function types
-
 you already learned about.
-
 Just as quick refresher,
-
 we can define the type of a function,
-
 for example, with a custom type with the type keyword.
-
 AddFn for add function
-
 which then could hold a function definition like this.
-
 It should return a number
-
 and it should take two arguments
-
 where each argument also is of type number.
-
 Now, we could create a new function add here
-
 which is of type AddFn and when we don't initialize it
-
 but assign our function later,
-
 then of course, we have to make sure
-
 that this function takes two arguments
-
 which are of type number
-
 and that in there, we also return a number.
-
 This is something that we can do.
-
 This is what you already learned.
-
 Now, you can also use an interface as an alternative
-
 to this custom type.
-
 Interfaces are there to define the structure of an object
-
 as I taught you but in the end,
-
 functions are just objects
-
 and therefore this is a little exception.
-
 You can create function types with interfaces.
-
 For that you create an interface, name it AddFn
-
 to still keep that name here.
-
 And now in there, you define the bit of function
-
 by just adding parentheses with your arguments,
-
 a: number, B:number, for example,
-
 and then a colon, not an arrow
-
 but a colon here with the return type.
-
 So in the end, like you would define a method
-
 as we're doing it here with greet,
-
 with the exception that we're now not adding a method name.
-
 So we have an anonymous function
-
 if you wanna call it like this
-
 in the AddFn interface
-
 and TypeScript understands this special syntax
-
 of this anonymous function in your interface
-
 and understands that you wanna use this interface
-
 as a function type
-
 and this is how your function should look like.
-
 So now we can use AddFn here
-
 and indeed, if I would try to accept a string here,
-
 we would get an error
-
 because this is not assignable,
-
 we need to have a number instead of a string.
-
 So it's simply an alternative to this custom type.
-
 Of course, here I would argue using the custom type
-
 is probably a bit more common,
-
 it's also a bit more shorter
-
 but it's a nice alternative syntax
-
 to be aware of, especially if you encounter this
-
 in some project and you're otherwise lost what this means,
-
 this strange anonymous method.
-
 Well, it's in the end just a custom function type.
-

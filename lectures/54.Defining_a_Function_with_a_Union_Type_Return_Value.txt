@@ -1,136 +1,68 @@
 Okay, so now with that,
-
 I have set up this input data
-
 or the input data type to be precise.
-
 Next, I wanna set up the output data type.
-
 Now, as I mentioned,
-
 calculate investment should return an array
-
 of result objects or something like this.
-
 Therefore, I'll start by actually defining the shape
-
 of such an investment result entry,
-
 or however you want to call it.
-
 Here, I'll just name it investment result.
-
 And then again, in my case here should be an object
-
 because here I wanna describe the result
-
 of the investment at the end of every year.
-
 So for every year I wanna create such an object.
-
 I want to have all the data
-
 that belongs to a year grouped together in an object.
-
 Hence I'm going for a number object type here.
-
 And there in this investment result object,
-
 I then want to have a year identifier, you could say,
-
 and that actually should be of type string, in my case.
-
 You could also go for number, of course,
-
 to have one for the year one,
-
 two for the year two, and so on.
-
 But here I'll go for a string.
-
 Then I want to have the total amount
-
 at the end of that year, and that should be a number.
-
 I wanna have the total contributions
-
 up to the end of this year,
-
 so including the contribution that belongs to this year
-
 and all prior contributions.
-
 So that should also be a number.
-
 And I wanna have the total interest earned,
-
 which also should be a number, like this.
-
 And calculate investment should now yield an array
-
 of such investment result objects.
-
 So, we can add this type annotation here
-
 to describe the return type of this function
-
 and use investment result array here.
-
 And of course, I'm getting an error now
-
 because at the moment,
-
 this function is not returning this kind of result yet,
-
 but we'll change this soon.
-
 And actually here, I'll even tweak this a bit,
-
 and I didn't mention this before,
-
 so you probably did not do that, and that's absolutely fine.
-
 But here I'll actually use a union type
-
 and return either such an array
-
 of investment results or a string,
-
 and I wanna return a string
-
 if some invalid investment data has been fed
-
 into this function.
-
 For example, if a duration of zero would've been set up,
-
 then instead of throwing an error,
-
 I wanna return some text, some error message as a string
-
 here in calculate investment.
-
 Hence, I'm using such a union type.
-
 And again, to save some space here,
-
 I'll actually outsource this into a custom type.
-
 I'll assign a type alias, so to say,
-
 and I'll name it calculation result.
-
 That's my type alias, and that will be this union type.
-
 So therefore, calculate investment will return a value
-
 of type calculation result.
-
 But we still get an error
-
 because currently we're not returning anything.
-
 And therefore, the next step is to work on that logic
-
 that belongs to this calculate investment function here.
-

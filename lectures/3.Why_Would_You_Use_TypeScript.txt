@@ -1,208 +1,104 @@
 Now, to answer the question
-
 why you would use TypeScript,
-
 I prepared a basic website.
-
 A website which consists of three files,
-
 an HTML file, which in the end contains a form,
-
 a form with one input field and a button
-
 and that same HTML file then also imports a script file,
-
 this calculator.js file,
-
 which in the end contains some logic to reach out to a form,
-
 listen to the submit event, extract some user input,
-
 in this case, some price value
-
 that can be entered on the website,
-
 and to then also add some tax,
-
 in this case, 19% to that price
-
 and output that final price on the screen thereafter.
-
 As a result, if you visit this website
-
 and you enter a price and you click calculate final price,
-
 this price shows up here, but does this look all right?
-
 Given the fact that I mentioned that we add 19% tax,
-
 does it make sense that I get this value here
-
 for an input price of 15?
-
 That does not look right.
-
 So it looks like this website has a bug
-
 and indeed it has a bug.
-
 I'm having some problems with the types
-
 of values I'm working with here,
-
 but it is a problem that could have been avoided
-
 if we were using TypeScript,
-
 because here's that same project
-
 with a calculator.ts file instead of js.
-
 This file contains essentially the same code,
-
 but if you take a closer look,
-
 you'll spot some subtle differences, like this part here
-
 or very important for this example, this part up here.
-
 This is a so-called type annotation
-
 and it's one of the most important features
-
 TypeScript adds to JavaScript.
-
 It allows you, the developer, to explicitly define
-
 which kind of value you want in a certain place.
-
 In this case, which kind of value you want to accept
-
 as a parameter in this deriveFinalPrice function here.
-
 And due to this addition here,
-
 we get an error if we don't convert this input price,
-
 which we extract from that form in the end, to a number,
-
 because by default in JavaScript,
-
 all values you extract from an input field,
-
 like from this input field here,
-
 are strings in JavaScript.
-
 You're dealing with values of type string.
-
 That's just how the web and JavaScript works.
-
 This will always give you a string in JavaScript.
-
 However, here we need a number for this calculation to work
-
 and that's why I'm explicitly stating
-
 that we need a value of type number for this parameter here.
-
 And just to be very clear what the problem is,
-
 in JavaScript, no matter if you're using TypeScript or not,
-
 if you add a number to something that's a string,
-
 even if it looks like a number,
-
 but if it's a string, JavaScript will go ahead
-
 and produce a longer string where it simply concatenates
-
 these two values and treats both values as strings.
-
 And that's the problem we're getting
-
 with this application here
-
 if we don't convert the extracted input
-
 to a number before using it.
-
 If we don't convert it, it'll be a string
-
 and it'll be concatenated with any other number
-
 we try to add to a longer string.
-
 So we need to use the right value types
-
 to work around this issue
-
 and TypeScript can help us with that
-
 since it allows us to explicitly define
-
 which kind of value we want to use where
-
 and since it will scream at us
-
 and show us an error if we're accidentally passing
-
 the wrong kinds of values around.
-
 That's why I'm explicitly stating here
-
 that we need a parameter of type number
-
 and thanks to TypeScript being used here,
-
 TypeScript recognizes that the extracted value
-
 will be a string and not a number,
-
 and therefore we'll get an error here.
-
 We'll get an error that the argument of type whatever
-
 is not assignable to a parameter of type number.
-
 So the data type we're trying to pass to this function
-
 is not the data type we're expecting and that's one
-
 of the main benefits TypeScript adds to JavaScript,
-
 because it's this functionality that allows you
-
 to catch certain kinds of errors earlier
-
 so that you can fix them without even testing your code.
-
 So without testing the website,
-
 we can detect and fix this error.
-
 That's one of the biggest benefits TypeScript adds
-
 to JavaScript.
-
 It can tremendously speed up your development flow
-
 and help you avoid unnecessary errors and bugs,
-
 and that's pretty useful in my opinion.
-
 Now of course, all these TypeScript features
-
 you see in this file here are pretty new
-
 and don't make a lot of sense yet,
-
 but you'll learn about all of them step-by-step
-
 throughout this course.
-
 This was just a first example
-
 to show you why using TypeScript could be a good idea.
-

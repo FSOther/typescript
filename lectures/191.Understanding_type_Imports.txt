@@ -1,86 +1,43 @@
 So now that you learned a lot
-
 about splitting code, importing and exporting code,
-
 and that you learned a lot about ES modules
-
 over the last lectures, there's one other ES module
-
 and TypeScript related feature
-
 or syntax you also should be aware of.
-
 Take a look at this import here
-
 where I import DragTarget from models, drag and drop js.
-
 Now DragTarget is an interface,
-
 an interface enforcing the existence of certain functions.
-
 Now, an interface per definition
-
 is a TypeScript only feature.
-
 Once the code is compiled, nothing will be left off
-
 that interface because there is no JavaScript equivalent.
-
 If you are importing an interface
-
 or also
-
 a type defined with the type keyword,
-
 if you are importing an interface or a type
-
 in the place where you are importing that thing,
-
 you can annotate that import a thing, with the type keyword.
-
 If you're only importing types
-
 or interfaces from some source,
-
 you can also put that in front of the curly braces,
-
 so that all the things between the curly braces
-
 are interpreted as types.
-
 Now, actually, in most projects,
-
 adding this annotation is not necessary and not recommended,
-
 but depending on the build tool you are using,
-
 this annotation can help the build tool understand
-
 what's a type and what's an actual thing
-
 that should be converted to JavaScript code.
-
 And depending on your project setup,
-
 this can make the compilation step a bit more efficient,
-
 or it may even be required to make the project compilation
-
 or running the project work.
-
 If you do need this annotation,
-
 the project set up documentation,
-
 typically will let you know,
-
 but it's worth knowing about this annotation.
-
 It simply adds some extra information for TypeScript
-
 and potential build tools, whether some import a thing
-
 is just a TypeScript only feature
-
 or an actual thing that can be converted to JavaScript code.
-

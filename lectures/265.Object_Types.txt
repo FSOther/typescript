@@ -1,334 +1,167 @@
 Let's dig deeper into
-
 the core types TypeScript supports.
-
 The next type that's interesting is the object type.
-
 Now, you know objects in JavaScript, they look like this.
-
 You have curly braces and then you have
-
 key value pairs in there
-
 and such values would also be treated as object types
-
 in TypeScript, so any JavaScript object
-
 is of type object.
-
 Though I will already say there are more specific versions
-
 of objects in TypeScript
-
 so that you can say this is not just any object,
-
 this is a object which has to has these properties
-
 or which has to be based on
-
 this or that constructor function.
-
 But we'll get there step by step.
-
 To dive into objects, I'll first of all rename app.ts here
-
 and I'll rename this to basics.ts here.
-
 And add a new app.ts file,
-
 which will then override the old app.js file
-
 once we compile it, where we can now dive into objects.
-
 And let's start by creating a basic object here,
-
 let's say a person with curly braces here.
-
 And we give this a name.
-
 Here I'll go with Maximilian because that is my name
-
 and a age of 30.
-
 Now, of course we can console.log person here
-
 and if we do so, and we compile this
-
 unsurprisingly, we should see that object being printed here
-
 in the console.
-
 Now, what we also can do in JavaScript
-
 is we can try to access, let's say, nickname,
-
 a property which does not exist here.
-
 Now you immediately see that TypeScript is not too happy
-
 about that, and hence my IDE tells me.
-
 It tells me that property nickname does not exist
-
 on that type.
-
 So if we save that and I try to compile that,
-
 we indeed get that same error down there.
-
 The TypeScript compiler does not like this
-
 and it tells me that we have no nickname property
-
 on this object.
-
 It finds out that we don't have this nickname property
-
 because if we hover over person it inferred,
-
 we can see there is a colon after person,
-
 so after the variable or constant name.
-
 It inferred that this is the type of data
-
 which is stored in there.
-
 Now that's not just object, as you can tell.
-
 That is a concrete object.
-
 It's a object with a name key,
-
 where then the type, in turn, has to be a string.
-
 And the age key, where the type has to be number.
-
 And actually, this can be confusing here.
-
 This, here, obviously looks like a JavaScript object.
-
 Curly braces, key value pairs.
-
 Well, the first important thing to see here
-
 is that we have a semicolon here after each line.
-
 We don't have that in a JavaScript object.
-
 We have a comma here.
-
 And indeed, this is not a JavaScript object here
-
 which is created somewhere.
-
 This is the object type inferred by TypeScript
-
 and object types are written almost like objects,
-
 but of course we don't have key value pairs there,
-
 but key type pairs.
-
 Object types are there to describe, well,
-
 the type of object that is getting used somewhere.
-
 We could be more generic.
-
 I could explicitly assign a type here
-
 to the constant of object.
-
 Object is one of the built-in types,
-
 just like number and string,
-
 and now if I hover over this we see persons of type object
-
 and now TypeScript really only cares about the fact
-
 that this is a object type.
-
 Now, still, is we compile this
-
 we get that error though, because TypeScript still analyzes
-
 our code and sees that we try to access something
-
 which doesn't exist there,
-
 but it's important to understand that it all starts
-
 with this most generic object type.
-
 But often you want to be more specific than that.
-
 You don't just want to work with that generic object type.
-
 You really want to get the full support.
-
 For example, right now, if I add a dot here
-
 and I have a look at my auto-completion,
-
 I get no help there at all by my IDE.
-
 Reason for that is that all we tell the IDE
-
 is that we have a value here, in person,
-
 which is of type object.
-
 Indeed now we actually also get an error
-
 if I try to access name.
-
 Name exists here, right?
-
 But what we tell TypeScript here
-
 is that we just have an object where we don't give
-
 any of our information to TypeScript.
-
 So actually, TypeScript doesn't support any type
-
 of property because we don't tell it anything
-
 about the object.
-
 So we should be more specific.
-
 And we are more specific by setting a specific object type.
-
 The thing which TypeScript also inferred automatically.
-
 We do this by adding curly braces here
-
 after the colon, after our const or variable name.
-
 So this here does not create a new JavaScript object.
-
 This will actually be stripped out
-
 of the compiled JavaScript code.
-
 Instead this is just TypeScript's notation
-
 of a specialized object type, so to say.
-
 So of a object type where we provide some information
-
 about the structure of the object.
-
 Now, by assigning just an empty pair of curly braces
-
 as a type, we essentially do the same as with object.
-
 We tell TypeScript that this is some object.
-
 Now we can be more specific though.
-
 We can add key value entries here,
-
 however not key value, but key type instead.
-
 So here we could say the object which should be stored
-
 in person should have a name property
-
 and the value of that name property
-
 should be of type string.
-
 So here we describe the type of value
-
 which will eventually be stored in name.
-
 Now, by the way, you see I'm getting an error here.
-
 Because what I'm telling TypeScript now
-
 is that my person should have an object
-
 with exactly one key value pair,
-
 where the key is name and the value of that key is string,
-
 but we didn't assign an object with two key value pairs.
-
 Name, which holds a string, that is fine,
-
 but age, which holds a number, and that would not be fine.
-
 So here we have to adjust this by adding a semicolon
-
 and then adding another key value pair here
-
 where we say age should be of type number.
-
 So not 30 here, that actually would be supported
-
 in TypeScript, that we restrict it to one specific number,
-
 but then we'll run into issues as soon as we change that.
-
 Instead, here I just want to say age should be some number.
-
 And now we basically are explicitly assigning
-
 the same TypeScript inferred before.
-
 As you learned, that's not a good practice,
-
 but to understand object types
-
 I wanted to do it here.
-
 Still this is something you can do.
-
 It's better to let TypeScript infer this
-
 as we did before, like this.
-
 Now, just to show something interesting,
-
 if I switch back to these sub-optimal code,
-
 where we explicitly assign a type TypeScript
-
 would be able to infer,
-
 if we compile this code, of course it works.
-
 We can access the name property,
-
 but if we then have a look at app.js we see
-
 this type assignment is removed here.
-
 And that, of course, should be something expected.
-
 As I mentioned, types and type assignments
-
 are not part of JavaScript.
-
 They're TypeScript only.
-
 I just wanted to show this again
-
 to make it really clear that this syntax here
-
 is not creating some JavaScript object,
-
 which is somewhere in our code.
-
 This is just TypeScript's representation of an object type
-
 that helps TypeScript understand the objects
-
 you're working with.
-
 Better syntax, of course, is this syntax, as you learned.
-

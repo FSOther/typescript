@@ -1,158 +1,79 @@
 So, for this section,
-
 I'm in another basic starting project
-
 with a basic tsconfig.json file.
-
 And here, I'll start by adding an intersection.ts file
-
 because we'll start by exploring intersection types.
-
 And what is an intersection type?
-
 Well, let's say we have two custom types
-
 created with the type keyword.
-
 Let's say we have a FileData type,
-
 which is an object type where we have a path
-
 to some file, let's say, which is of type string.
-
 And then maybe the file content,
-
 which is also of type string.
-
 And then let's also say that we have a Status type,
-
 which is another object type,
-
 where we maybe have a isOpen property,
-
 which is a boolean, so true or false,
-
 and an errorMessage property, which maybe is optional,
-
 hence, the question mark here,
-
 and which would be a string if it is set.
-
 So therefore, ultimately, it's a string
-
 or undefined if it's not set.
-
 And now let's say we want to create a third type,
-
 which combines the two.
-
 AccessedFileData type or anything like that.
-
 Of course, here, we could create a new object type
-
 and manually add these four properties into this object.
-
 But of course, that would be quite a bit of annoying work.
-
 So instead, we could use TypeScript's
-
 intersection type feature, which works like this.
-
 You simply combine two types,
-
 like the FileData and Status type here,
-
 by using the ampersand character, the and symbol.
-
 Like this.
-
 And now AccessedFileData would be the combination
-
 of these two types.
-
 So it would be an object type that has all four properties.
-
 And of course, we could have simply defined
-
 one type that has all these four properties
-
 instead of splitting that information across two types,
-
 but what if you also had a DatabaseData type,
-
 which maybe has a connectionURL property
-
 and credentials property,
-
 and you then also wanted to have
-
 your AccessedDatabaseData here?
-
 Well, now working with just one type
-
 that has all these properties would not make sense
-
 because you either have a FileData source
-
 or a DatabaseData source.
-
 But either way, you might want to combine those types
-
 with this shared information here.
-
 And that's where this intersection type feature
-
 really shines because it allows you to outsource
-
 these shared information into one type,
-
 the Status type in this example,
-
 and then combine that with all the other types
-
 that need this shared information,
-
 like the FileData and the DatabaseData here.
-
 So that's where this intersection type feature
-
 can be very useful.
-
 Now, it is worth noting that we could have solved
-
 the same problem with interfaces.
-
 If FileData were an interface like this,
-
 and DatabaseData were an interface like this,
-
 and Status were an interface like this,
-
 then we could have defined AccessedFileData
-
 and AccessedDatabaseData as interfaces as well
-
 by extending from the other interfaces.
-
 So by extending with the extends keyword
-
 from FileData and Status.
-
 Like this.
-
 And the same could have been done down here.
-
 We could extend from DatabaseData and Status here.
-
 So that would be the alternative approach
-
 using interfaces, which is also absolutely fine.
-
 But if you don't want to work with interfaces,
-
 if you want to create custom types
-
 with the type keyword instead,
-
 you can use this intersection type feature instead.
-

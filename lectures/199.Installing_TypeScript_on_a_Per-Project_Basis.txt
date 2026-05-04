@@ -1,72 +1,36 @@
 So Vite is useful,
-
 but there are a couple of interesting things
-
 about this project, which I always want to talk about.
-
 Like for example,
-
 why we have the TypeScript development dependency
-
 here specified in this package.json file.
-
 After all, we did already install TypeScript globally,
-
 so why is it a dependency of this project here again?
-
 Well, simply because that is a good practice,
-
 a good thing to do because by adding TypeScript here
-
 as a dependency of this project,
-
 you achieve two important things.
-
 One, you can run this buildscript
-
 and invoke this compiler
-
 without installing TypeScript globally on your system,
-
 so you would be able to build this project
-
 even if you did not install TypeScript on your system
-
 because it is installed into this project so to say,
-
 but just into that project.
-
 And this then in addition, which is the second advantage,
-
 also allows you
-
 to use different TypeScript versions in different projects.
-
 Now, of course, you might always want
-
 to use the latest version,
-
 but if you had some project
-
 that uses an older TypeScript version,
-
 and that wouldn't work
-
 with the most recent TypeScript version
-
 in which you can't fix right now
-
 because you don't have the time to make it work
-
 with that latest version, in such a scenario,
-
 it is of course very helpful if you're able
-
 to pin an older version like this, version 4 something,
-
 and make sure that this project uses this older version.
-
 That's another advantage of specifying TypeScript
-
 as a dependency on a per project basis.
-

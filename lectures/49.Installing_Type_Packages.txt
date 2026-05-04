@@ -1,208 +1,104 @@
 repository location: /home/admin88/2_learning/type-script/DefinitelyTyped
-
 Now when working in TypeScript projects,
-
 like in this very, very simple one here,
-
 it's also quite common that you might wanna work
-
 with libraries or with Node.js APIs
-
 that are not natively supported by TypeScript
-
 so where the types,
-
 the related types are not built into TypeScript.
-
 For example here, if I wanted to build a Node.js application
-
 and I wanted to import the file system module
-
 from node like this so that I can open files
-
 or read from files, write to files and so on,
-
 you'll see I'm getting an error.
-
 I'm getting an error that
-
 TypeScript in the end can't find a module
-
 with the name node:fs
-
 or its corresponding type declarations.
-
 So it doesn't know what that is and it doesn't know
-
 what's provided by this module
-
 and which types of values are provided by this module.
-
 Now of course, if you have Node.js installed on your system,
-
 this is something you can import
-
 without installing any other extra packages
-
 and nonetheless, this doesn't work.
-
 Now, one reason why this also wouldn't work
-
 in vanilla JavaScript is that this is not a Node.js project.
-
 There isn't a package.json file.
-
 But that's something you can easily change
-
 by running npm init -y to confirm all the default choices
-
 so that you got a package.json file.
-
 In there, I'll now just change the type of this project
-
 to module so that I can use imports like this
-
 instead of the require imports,
-
 though this syntax would actually always work in TypeScript.
-
 But I'll get back to that
-
 and how to build node TypeScript projects later
-
 in a separate course section.
-
 Either way, this should now work
-
 from a JavaScript perspective, but nonetheless,
-
 I'm still getting this type related error
-
 and I'm getting this error because unlike those core DOM
-
 and browser site types like HTML element,
-
 unlike those types, those Node.js types are not built
-
 into TypeScript.
-
 That's just how it is.
-
 And that's why TypeScript out of the box doesn't know
-
 what to do with this import here, for example.
-
 And the same would be the case
-
 if you were using a third party library like lodash
-
 or Moment.JS or any other library like React and so on.
-
 For all those libraries,
-
 TypeScript also wouldn't know their types.
-
 And that's why you often need to install extra type packages
-
 into your projects that use TypeScript
-
 so that TypeScript and therefore also the IDE is made aware
-
 of the types of certain third party packages
-
 or Node.js APIs.
-
 And the package you must install is called @types/node.
-
 And similar packages exist for React or for lodash
-
 and for all those other libraries
-
 you could possibly work with.
-
 There is this huge GitHub repository definitely typed,
-
 which in the end manages all these packages
-
 and all these type declarations as they're called.
-
 And on the GitHub page of that package,
-
 which you find attached to this lecture,
-
 you'll learn more about all those packages,
-
 about this project and so on.
-
 So by running this command,
-
 you would install type declarations
-
 that help TypeScript understand these Node.js APIs.
-
 Now here I'll add --save-dev to this command
-
 to install this as a development only dependency
-
 because it's not needed during runtime
-
 because TypeScript is a pure development tool here,
-
 the runtime code will be the compiled JavaScript code
-
 and the type packages are not needed there.
-
 But with this package installed now,
-
 you see this error goes away in my IDE.
-
 And now I can interact with this FS module
-
 with all the methods provided by it
-
 and I got proper TypeScript support.
-
 So if I call readFileSync now, for example,
-
 then I can see that this wants a path argument,
-
 which is of this type, which is a quite complex custom type
-
 provided by this type package.
-
 But in the end it's a type.
-
 Here you see that flag, for example, is a union type,
-
 which is either string or undefined.
-
 So it is what you learned throughout this course thus far,
-
 now just for this built-in API.
-
 And it's just important to be aware of this fact
-
 that many types are not built into TypeScript,
-
 but that for this reason,
-
 you can install these type packages
-
 into your Node.js projects so that you can use TypeScript
-
 with those packages and APIs.
-
 As mentioned before, there is a separate Node.js
-
 and TypeScript section later down this course
-
 where we'll dive a bit deeper into this
-
 and where we will build
-
 a basic Node.js TypeScript application.
-
 But it's important right now already to be aware of the fact
-
 that you can install these type packages.
-

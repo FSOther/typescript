@@ -1,292 +1,146 @@
 So of course,
-
 our goal is not to just log that ID.
-
 Instead, I wanna extract the project ID here in the log,
-
 in the drop handler.
-
 And with that, the goal is to really move the project now,
-
 or change the project status, to be precise.
-
 Now, how can we do that?
-
 Well, in our state, I would say, in our project state,
-
 where we currently have an addProject method,
-
 we also need a moveProject method.
-
 And the goal of this method will be
-
 to basically switch the status of a project.
-
 Of course, you could also therefore name it,
-
 SwitchProjectStatus, or whatever you want,
-
 but since we're doing drag-and-drop
-
 I'm calling it MoveProject.
-
 So, in MoveProject the goal is to move a project
-
 from the list it's currently in, to a new list.
-
 Now, this doesn't always mean
-
 that we just have to flip the project status
-
 from active to finished and the other way around.
-
 After all, a user could be doing this,
-
 drag-and-drop in the same box.
-
 So, if we then always trigger a method
-
 that switches the status, we would have an unexpected effect
-
 where dropping in the same box
-
 still switches the project to the other box.
-
 So instead, in MoveProject, we really have to know
-
 which project to move, and which box the new box is.
-
 So, which status the new status is.
-
 So, I expect to get the project ID here,
-
 which should be a string, and the new status.
-
 And the new status here, of course,
-
 can be of type ProjectStatus.
-
 And then inside of MoveProject,
-
 I want to find a project with that ID
-
 in my array of projects.
-
 So here, in this array of projects,
-
 and then flip its status.
-
 So for that we can reach out to this project's,
-
 find a project in there,
-
 and the find method is perfect for that.
-
 It runs on every element in this array,
-
 gives us access to every element,
-
 and then we have to return true
-
 if it's the element that we're looking for.
-
 And I wanna return true
-
 if the ID of the element we're currently looking at
-
 is equal to the projectId I'm getting as an argument here,
-
 then we have the element which should change,
-
 and there on this element,
-
 we just have to change the status to the new status.
-
 Now this might be null,
-
 so here I'll call this, project,
-
 stored as now constant called project,
-
 and check if project exists.
-
 And if it exists, then I wannna set the status
-
 equal to the new status here. Simple as that.
-
 This will already change the object in the array
-
 and we're basically done with it.
-
 Of course, however, we're not entirely done.
-
 We now need to let everyone know,
-
 all our listeners, that something changed about our project,
-
 and that they should rerender.
-
 So we have to go through all listeners again,
-
 and since we would repeat code here,
-
 I will outsource this in a new private method,
-
 updateListeners could be a viable name,
-
 and in there I'll have this for loop,
-
 where we go through all listeners and then do something.
-
 And then I will call this updateListeners
-
 both from the addProject,
-
 and also from the moveProject method.
-
 Here, only if we did change something.
-
 So now all listeners will be triggered.
-
 And if you remember, a listener in our app here,
-
 basically leads to the list to rerender its items.
-
 So that will work exactly as it should,
-
 or it should work exactly as it should.
-
 So now we have that moveProject method,
-
 down there in the drop handler, we can now use this.
-
 There we can now use the projectState,
-
 call moveProject, and pass in the project ID,
-
 and now the new project status.
-
 And the new project status
-
 depends on the list on which we drop this.
-
 So, I wanna autobind
-
 my drop handler,
-
 so that the this keyword in the drop handler
-
 refers to the surrounding class,
-
 and this surrounding class is a project list
-
 which, if you remember,
-
 will have a type property here,
-
 we're storing it here, we're having a type, property,
-
 and that is active or finished.
-
 So now we just have to translate active or finished
-
 to our enum values.
-
 So here, I pass in this.type,
-
 and I check if it's equal to active,
-
 in which case, we pass in ProjectStatus.Active,
-
 as the new status of the project,
-
 because that is the status of the list
-
 we moved the project to.
-
 Otherwise, we pass in ProjectStatus.Finished,
-
 and let me reformat that to make it easier to read.
-
 With that let's give it a try.
-
 Let's save all, and add a new project here,
-
 and now drag it to finished projects and it switches,
-
 and the same and if I move it back.
-
 If I let go here in active projects, nothing changes.
-
 Now you will see, if you inspect the DOM,
-
 that technically it rerenders, which might not be ideal,
-
 so we could think about coming up with some solution
-
 which checks whether the status actually did change,
-
 and if it didn't, we don't update,
-
 that's something we can do.
-
 But from a UI perspective, it updates just as it should.
-
 Now let's also add a second project
-
 and see if that destroys something,
-
 if everything still works,
-
 and I would say that looks decent,
-
 that looks pretty good to me.
-
 Everything seems to work exactly the way it should.
-
 So dragging and dropping works just fine here
-
 but there is this one improvement I mentioned
-
 back in the project state, in moveProject,
-
 when I called this updateListeners, we can actually check
-
 if we did really change the status.
-
 So here we can check if project,
-
 so if we did find one, and if then project status,
-
 is different from the new status,
-
 and only then we change the status and update the listeners.
-
 If the status is the same we don't do this
-
 and we avoid the unnecessary rerender cycle.
-
 So now with that,
-
 if we saved it and we quickly add a new project,
-
 you will see if I inspect the elements here
-
 and you watch the L-I and check whether this flashes,
-
 which means it would rerender, it does not flash here,
-
 only droppable flashes, the class we just added,
-
 but the L-I does not flash if I drop in the same box,
-
 it only flashes if I move it to a different box.
-
 And it should flash then because then we really did move it.
-
 So now we optimize this a bit,
-
 and now we have working drag-and-drop here,
-
 all built and powered with and by TypeScript.
-

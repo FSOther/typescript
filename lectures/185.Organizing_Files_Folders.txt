@@ -1,352 +1,176 @@
 So we get started with names bases,
-
 let's continue on that route,
-
 and let's split it into more files.
-
 For that here, the project state management.
-
 We could put that into a separate file as well.
-
 So I'll grab everything
-
 including this creation of the project state instance here,
-
 cut it from the app.ts file and create a new file,
-
 project-state.ts.
-
 Move that in there and just as before,
-
 put it into a namespace.
-
 Namespace app, name is important, it has to be App
-
 because that's where the rest of our code is in.
-
 Put it all in there and now important,
-
 export what you need outside of this file as well,
-
 which in this case is the projectstate class,
-
 we need that in the rest of our application,
-
 and also this constant down there,
-
 we need to export this as well.
-
 You don't need to export the Listener here,
-
 and also not that state, because both things
-
 are only used in this file and therefore,
-
 don't need to be exported.
-
 Now, we have to import our projectstate.ts file,
-
 so in App.ts, time for another import up there.
-
 Project dash state, just like that.
-
 If we save that, it should compile without errors.
-
 Now, I will continue and the validation part here
-
 could go into a separate file as well,
-
 so I'll grab all of this,
-
 create a new file, validation.ts,
-
 add the namespace App here, put my validation logic in there
-
 and export the validatable interface
-
 and all the devalidate function here, of course.
-
 And then, back in App.ts, you know how it is,
-
 we go back here to the top
-
 and add an import to validation.ts.
-
 Now, the decorator also can be moved into a separate file.
-
 Autobind dash decorator.ts, for example.
-
 Again, add the namespace with the name App to it,
-
 put the function in there and export it, of course,
-
 to make it available outside of this file as well
-
 and then here in app.ts, time for another import
-
 where I import autobind dash decorator.ts.
-
 Now we got more things to export,
-
 we got our component and then all these classes.
-
 I wanna have each class in a separate file
-
 so that each file is relatively small and easy to manage.
-
 Now, we're getting into a new problem here, though.
-
 We add more and more files on the same level
-
 and for now, I'm using the dash thing here
-
 to provide some hint or help on what's in the file,
-
 autobind dash decorator shows us that there's probably
-
 a decorator in there.
-
 Here, we probably have interfaces.
-
 Here, a model and so on.
-
 Now, if you only have three or four files,
-
 that is perfectly fine but if you have more files,
-
 you end up with a very hard to understand
-
 folder structure here.
-
 So what I like to do is I want to create subfolders.
-
 I'll add a decorators subfolder,
-
 move my autobind decorator in there, and re-name it
-
 to just autobind, because it's already in
-
 the decorators folder.
-
 Of course there's a decorator in there.
-
 Then, I'll add my models folder,
-
 and actually, here, I'll move both drag and drop interfaces
-
 and project model in there,
-
 simply because I think the drag and drop interfaces
-
 all in the end are just definitions of how draggable
-
 and droppable classes should look like.
-
 Just as the project model is the definition
-
 of how a project class should look like
-
 or how our project object should look like.
-
 So I'll name this drag and drop and this here just project
-
 and then here I'll add a util folder for utility
-
 and add my validation in there
-
 and then a state folder and add project state to that.
-
 Here I will keep the name project-state
-
 just to avoid confusion with this project.ts file here.
-
 Technically, that would not be a problem
-
 but I want to also make it clear here in this course
-
 so that you have an easier time seeing
-
 in which file I'm working.
-
 You could definitely rename this to just project.ts here
-
 if you wanted to.
-
 Now, with that re-factoring and these sub-folders,
-
 of course our imports here are broken,
-
 so we should fix them.
-
 Drag and drop interfaces is found in the models folder
-
 and now is name just drag-drop.ts.
-
 And the project model also is found in the models folder
-
 and is now just named project.ts.
-
 Project state is found in the state folder,
-
 validation is found in the util folder,
-
 and autobind decorator is found in decorators
-
 and is just named autobind.
-
 With that, if we save that, it compiles without errors
-
 and now we have a more manageable
-
 and readable folder structure, I would argue.
-
 With that, let's continue, we're not done.
-
 We have our component here,
-
 now for that, I'll add a components sub-folder
-
 and in there I want to have my base dash component ts file
-
 and then my project item ts file, my project list ts file
-
 and also the project input ts file.
-
 Of course, you can always organize this differently,
-
 but I think this keeps related files together.
-
 So we can grab this abstract component base class here,
-
 cut it from app ts and move it into base component.
-
 Like this, and of course, also just as before,
-
 add it into a namespace with the name App.
-
 And then move it into this namespace.
-
 Of course, I'll adjust this before we need to export it
-
 so that we can use it in another file.
-
 That other file, however, will not be app.ts
-
 because the files or the classes where I used the component
-
 will also be moved.
-
 The project item class here, for example,
-
 I'll grab that and move it into project item.ts,
-
 to be precise, in there I'll also add a namespace app
-
 and move it into the namespace app in there
-
 and then export this class as well.
-
 Now, important, this relies on component,
-
 and the other, if I now saved this, we would get an error
-
 that component isn't found in the end
-
 so here we again, need to add this import
-
 where we have reference path equals
-
 and then here it's base-component.ts.
-
 This is always a relative import here,
-
 so since this is in the same folder,
-
 we don't have to say components slash here,
-
 because we don't need to go into the components folder first
-
 this file, the project item file,
-
 is already in the components folder
-
 so relative from this file
-
 base component is imported just by using its name here.
-
 So now the project item is here.
-
 Now, of course, in app.ts, we also got the project list.
-
 Let's grab that, move it to the project list ts file here
-
 and there into a namespace App, and then also here
-
 to project input
-
 let's grab this, cut it from here, from the namespace app
-
 in the app.ts file,
-
 and move it into the project input ts file
-
 and there into a app namespace.
-
 Now, important just as before, export this class here,
-
 project item and also project list, of course,
-
 all needs to be exported,
-
 with that we get a bunch of errors
-
 because of course, still there are missing imports.
-
 In app.ts, we should import all these components now,
-
 so here we should import project-input.ts,
-
 project-list.ts, and then save this.
-
 Now, of course, it still crashes because we got more things
-
 that are missing,
-
 in project-input we are using component
-
 just as we are in project list,
-
 so just as we did it in project item,
-
 we need to add that import of base component
-
 in the project input ts file
-
 and also in the project list ts file.
-
 And with that, it compiles without errors
-
 and let's see if it also works,
-
 if we reload here and I add this,
-
 is draggable and droppable,
-
 and that all seems to work just as it should,
-
 and now we split this across multiple files.
-
 We still get one file in the end,
-
 but when we work on our code,
-
 it's now much more manageable.
-
 Because we have smaller focused files
-
 where we can quickly find what we're looking for
-
 and where we don't have to scroll through a huge file
-
 to find the place we wanna work on next.
-

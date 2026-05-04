@@ -1,172 +1,86 @@
 So, typeof and keyof
-
 are both pretty useful.
-
 Another pretty useful TypeScript feature
-
 is its indexed-access-types feature,
-
 which again, sounds pretty complex,
-
 but thankfully isn't.
-
 And here's how it works.
-
 Let's say you have a custom type,
-
 AppUser, where again,
-
 you might have a name and an age
-
 and then let it say a list of permissions.
-
 Which in the end, should be a list of objects,
-
 an array of objects and that is how you could write this
-
 in TypeScript, an array of objects,
-
 where every object should have an ID,
-
 which then again should be a string,
-
 let's say a title which should be a string,
-
 and a description which should be a string.
-
 You could have a type like this
-
 and by the way, instead of defining the type like this,
-
 you could of course also derive it
-
 from a value with help of the type of operator.
-
 So, if you have a constant or variable,
-
 maybe called appUser, where you have a name
-
 and where you have an age
-
 and where you then have permissions
-
 like this, for example, here.
-
 If you had a concrete JavaScript value,
-
 so this is not a type, this is a JavaScript value,
-
 if you had a value like this,
-
 you could, of course, also get this AppUser type
-
 by using the typeof operator on AppUser.
-
 So, on the AppUser constant.
-
 And now, this would be the same object type
-
 we manually defined down here
-
 just inferred from that existing value.
-
 It simply depends on what you have in your application.
-
 If you have a value, you can derive the type.
-
 If you don't have a value yet,
-
 you can simply define it like this.
-
 But that's just a side note.
-
 Now, we have an object type.
-
 What's an indexed access type now?
-
 Let's say you wanna add a new type,
-
 Perms for permissions,
-
 and that should be this object array type here.
-
 Of course, you could just copy and paste it.
-
 Now, you would have the Perms type,
-
 which has the same shape as the type for
-
 the permissions key in that object type here.
-
 But, copy and pasting is always annoying
-
 and if we ever change the type here,
-
 we also have to change it here,
-
 which we typically want to avoid as developers.
-
 That's where indexed access types can come in handy.
-
 If you want to extract a part of an object type
-
 into a separate type, you can do so
-
 by referring to that object type here,
-
 AppUser, in this case,
-
 and by then using square brackets thereafter,
-
 followed by the name of the property
-
 that stores the type you want to extract.
-
 In my case here, permissions.
-
 So, this is now not JavaScript code.
-
 I'm not accessing some value stored under
-
 the permissions key here.
-
 Instead, I'm interacting with the AppUser type.
-
 We're in TypeScript world here.
-
 And I'm extracting the type that's stored
-
 or that's set up for this permissions key
-
 in this app user object type.
-
 That's what I'm doing here
-
 and consequently, Perms now has this object array type
-
 stored in it.
-
 So, I used the Perms type alias
-
 on this custom type now.
-
 And that's simply a more convenient way of storing
-
 a supp type or part of an object type
-
 in a separate type alias
-
 or under a separate type alias, for example.
-
 But again, you can use this feature
-
 in any place where types are defined,
-
 not just in conjunction with the type keyword,
-
 but for example, also when defining the types
-
 for function parameters or anywhere else
-
 where types are defined.
-

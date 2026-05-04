@@ -1,18 +1,9 @@
 Now with the core basics
-
 or with the getting started section out of the way
-
 lets dive into the core type script syntax,
-
 the core features and that of course means
-
 we'll dive into the types,
-
 which type script offers and supports,
-
 and how we work with these types.
-
 How we assign types, how we can reap the benefits
-
 of using types and all that fun stuff.
-

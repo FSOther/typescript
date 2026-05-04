@@ -1,102 +1,51 @@
 When learning about functions
-
 and types related to functions,
-
 you learn about the void type,
-
 which means that a function does not return anything.
-
 Now there are two kind of related types
-
 which are not specific to functions though,
-
 and the first one is the null type, for example.
-
 So let's say if I have a variable, A,
-
 I can set the type to null,
-
 and this means that this variable will hold a value of null.
-
 So I can set A to null, that works,
-
 but to nothing else.
-
 So why would this be helpful?
-
 Why would we need a null type
-
 if we can only store a null in there?
-
 Well, this indeed is not helpful,
-
 but combined with other types in a union type,
-
 this can be helpful because this then means
-
 that a variable can hold some other value,
-
 but it might also hold null.
-
 For example, if I say that this may hold null
-
 or a string, then I can store a string in there,
-
 but also null.
-
 Now if I just set this to type string,
-
 storing null would not be allowed,
-
 but of course, you do have programs
-
 where you, at some point, might want to clear a variable,
-
 so to say, where you wanna reset it.
-
 So where you maybe have a string initially
-
 and then some other code, and then you want to clear it
-
 and remove that string from that variable
-
 by setting the variable to null.
-
 This does not work if you set the variable to type string,
-
 but it does work if you also take advantage
-
 of this special null type,
-
 and that's therefore a type to be aware of.
-
 Kind of related is the undefined type,
-
 which is not the same as null though,
-
 as you can tell by the fact
-
 that I'm now getting an error again.
-
 Undefined simply means that this variable can hold,
-
 in this case here, a string or the value undefined,
-
 which is a special value in JavaScript, just like null,
-
 and just to be very clear, null and undefined indeed
-
 are regular JavaScript feature, not specific to TypeScript.
-
 Here I'm just presenting their related types.
-
 So in this case, we could store undefined in there,
-
 but not null.
-
 And there is a difference between null and undefined
-
 in JavaScript, not specific to TypeScript as mentioned.
-
 So undefined as another type to be aware of.
-

@@ -1,160 +1,80 @@
 So back in our project, if you want to use webpack there,
-
 I will first of all quit my compilation and that current
-
 development server, and then stat,
-
 make sure we can use webpack there.
-
 Now since this is already a file of the package dot json
-
 file, we can use NPM to install more dependencies
-
 into this project.
-
 So simply, more third party libraries
-
 we need in this project.
-
 And here I don't mean third party libraries which provide
-
 a certain functionalities using our code,
-
 but instead third party libraries that help us
-
 set up a project workflow and configuration
-
 that makes development very efficient for us.
-
 We do this with NPM installed, dash dash safe dash dev
-
 to indicate that it's a development only dependency,
-
 and then webpack webpack dash CLI,
-
 webpack dash dev dash server typescript and ts loader.
-
 So that's a bunch of packages and I will say
-
 what they do in a second.
-
 So let's first of all hit enter and make sure
-
 these are all now all getting installed
-
 into our project here, and thereafter we'll have a look
-
 at each package and see why we installed it,
-
 so let's wait for this to finish.
-
 So it did finish installing for me here,
-
 and now with that, let's analyze what we installed.
-
 In package dot json, the new dev dependencies section,
-
 or it already existed, but now we have a lot
-
 of new packages there I should say,
-
 these packages were added.
-
 Now what do all these packages do?
-
 Let's start with webpack.
-
 Webpack is the tool I just talked about,
-
 it's the heart of this entire setup
-
 we're now going to create.
-
 It is a tool that allows us to
-
 plug in certain functionalities to bundle our code
-
 and also to transform our code.
-
 And that transform our code part is important,
-
 we're having a typescript project here right?
-
 Now of course we could certainly use webpack
-
 to then bundle together all the JavaScript output,
-
 but it would be even nicer if webpack would do both.
-
 Transform our typescript code to JavaScript,
-
 and then actually emit a bundled Javascript file,
-
 and webpack is able to do that thankfully.
-
 We need the webpack CLI to run webpack commands
-
 in our project, and the webpack dev server
-
 to have that built in development server,
-
 which starts webpack under the hood,
-
 which watches our files for changes,
-
 automatically triggers webpack to recompile
-
 when something changes, and which auto serves our page.
-
 And then we got typescript and typescript loader,
-
 the ts loader here.
-
 Now we already installed typescript globally on our machine,
-
 which is why we are able to run tsc dash w.
-
 Now it is a good practice to auto install a copy of
-
 typescript per project, so that for this project,
-
 you got a specific typescript version.
-
 The advantages that if you ever change your
-
 global typescript version, you don't break your project
-
 version, your project setup if there we're breaking
-
 changes in typescript itself,
-
 so we can lock in a specific version of typescript
-
 for a project, that's why we installed it separately here.
-
 And the ts loader now is a package which will
-
 work together with webpack.
-
 The ts loader is a package that tells webpack
-
 how to convert typescript code to Javascript,
-
 so that webpack is able to do both, compile our code,
-
 with the help of typescript loader,
-
 which in turn of course uses the typescript compiler
-
 under the hood, and then webpack also is able to bundle
-
 our emitted javascript files into a bundled js file
-
 into one bundled code file.
-
 Well, and with that, let's simply get started
-
 and let's set up a webpack project so that we can use
-
 webpack for all these nice things.
-

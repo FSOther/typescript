@@ -1,306 +1,153 @@
 So what are decorators
-
 and what's the idea behind them?
-
 Well, decorators, not just in TypeScript,
-
 but in programming in general,
-
 because this feature exists
-
 in other programming languages as well,
-
 are a metaprogramming feature.
-
 And metaprogramming is simply code that you write
-
 that interacts with other code,
-
 and that other code then makes up the actual application,
-
 so to say.
-
 And typically decorators look something like this.
-
 For example, this is how they are used in TypeScript.
-
 They start with an @ symbol
-
 or you have to add such an @ symbol
-
 in front of the decorator name.
-
 They may take arguments, but they don't have to.
-
 And they can then be attached to things,
-
 so for example, to a property of a class here.
-
 But I'll get back to
-
 what kind of things you can attach decorators to later.
-
 And the idea then is
-
 that the decorator that's attached to a thing
-
 changes that thing.
-
 For example, here, this length decorator
-
 is coming from a third party library called Class Validator,
-
 and it adds validation logic to the property
-
 to which it is added,
-
 ensuring that this title in this class
-
 has a certain min and max length.
-
 But you can, of course, implement any kind of logic
-
 with decorators.
-
 The core idea, however, and that's important,
-
 is that decorators are a feature
-
 that allow you to write code
-
 that changes the behavior of other code.
-
 Like here, where a decorator
-
 changes the behavior of the title property
-
 by adding validation logic to it
-
 and potentially rejecting values
-
 that you might wanna assign to that property.
-
 Another very popular example for using decorators
-
 would be the angular framework, for example,
-
 where you use decorators to decorate classes
-
 and other things
-
 to turn those classes into reusable
-
 HTML elements kind of and do other things.
-
 This is, of course, not an angular course.
-
 I have a separate course on that
-
 if you wanna learn more about this framework.
-
 But it is another great example for a library, a framework
-
 that's using decorators
-
 to change the behavior of other parts of your code,
-
 to change the behavior of a class, for example,
-
 and to turn it into something more than a simple class.
-
 Decorators are also a totally optional features,
-
 and you'll typically write many applications
-
 that don't use decorators at all, but they can be useful.
-
 And that's why, of course,
-
 I also want to cover them in this course.
-
 The end. The idea behind decorators is
-
 that you write code in a certain way
-
 so that you can alter the behavior of some other code
-
 to which you attach these decorators.
-
 That's the idea.
-
 Decorators are things you have written
-
 that can be attached to our code
-
 to manipulate how that code works.
-
 And again, if that's not entirely clear yet,
-
 it will become much clearer
-
 once we wrote our first decorator.
-
 But before we do that, it's important to understand
-
 that TypeScript actually supports two kinds of decorators.
-
 There are two different approaches
-
 or ways of writing decorators,
-
 of building them in TypeScript.
-
 Because in TypeScript, you can build both ECMAScript
-
 and experimental decorators.
-
 And both kinds of decorators can be built with TypeScript.
-
 The difference is that the ECMAScript decorators,
-
 the official decorators, if you want to call 'em like this,
-
 are actually also a JavaScript feature.
-
 So you could build them without TypeScript as well.
-
 You don't need TypeScript to build ECMAScript decorators.
-
 Or to be precise,
-
 at the point of time where I'm recording this,
-
 the decorators feature
-
 is not yet implemented into JavaScript,
-
 it has not yet been implemented
-
 by all the browser engines and so on,
-
 but it will be in the future.
-
 And when you are viewing this, it already might be.
-
 Currently when I'm recording this,
-
 it is a stage three proposal, which in the end means
-
 that the proposal has been recommended for implementation,
-
 so that browser engines and all the other engines
-
 that in the end execute JavaScript code
-
 should support that feature, you could say
-
 or should support it in the future.
-
 And once that's the case,
-
 you'll be able to build such decorators
-
 with just JavaScript without TypeScript.
-
 But TypeScript also supports this feature,
-
 and it does so already actually.
-
 So even before all the different engines
-
 implement this feature,
-
 and for the time being,
-
 also depending on your compilation target
-
 set in the TS config file,
-
 TypeScript will simply compile this decorator code
-
 to code that will work in older engines,
-
 other browsers and so on as well.
-
 So you can use this feature today with TypeScript
-
 at some point in the future.
-
 You can also theoretically use it without TypeScript.
-
 And then there are these experimental decorators,
-
 and these decorators are built with a different syntax
-
 and they're only available in TypeScript.
-
 These decorators simply reflect
-
 an older version of that implementation proposal
-
 for decorators.
-
 So a version that did not make it
-
 to stage three, you could say,
-
 a version that's not going to be implemented
-
 in plain Vanilla JavaScript.
-
 But TypeScript started supporting this old proposal
-
 many, many years ago already,
-
 and it still does and will for the foreseeable future.
-
 But this proposal did not make it into JavaScript,
-
 that's why it's only available in TypeScript.
-
 And that's why in TypeScript,
-
 you can build both kinds of decorators
-
 with their difference syntaxes
-
 because TypeScript does support both.
-
 However, if you do want to build
-
 such experimental decorators,
-
 you must tweak your TS config,
-
 and you must make sure that the experimental decorators flag
-
 is set to true there.
-
 That's important.
-
 But we'll cover experimental decorators,
-
 so this older approach, as you could say,
-
 in a separate section in this course,
-
 and it is definitely still a feature that's worth learning
-
 because all existing projects
-
 that use decorators in TypeScript
-
 will be using that old approach.
-
 But again, we do cover that in a separate section.
-
 In this section here,
-
 I'll get you started with the EXMAScript decorators,
-
 and I'll introduce you to them,
-
 show you how you can build decorators
-
 and how you can use them.
-

@@ -1,134 +1,67 @@
 Okay, let's add more components to this app.
-
 Ultimately, it should be a demo app
-
 that allows you to manage your course goals.
-
 That's why in components,
-
 I'll add a CourseGoals.tsx file,
-
 and I'll also add a NewGoal.tsx file.
-
 And these should be two additional components we need.
-
 Now let's start with the CourseGoals.
-
 In that file, I'll export
-
 a default function called CourseGoals,
-
 which you guessed it, should display a list of course goals.
-
 Now I expect to get my list of goals as a prop value.
-
 So I'll add an interface, CourseGoalsProps,
-
 where I wanna get my goals.
-
 And the type of my goals here should be an array,
-
 of CourseGoals or of goals.
-
 So I'll add another type or interface named Goal.
-
 And here I'll use a type to mix it up
-
 and to show you that you can use both.
-
 But of course, you could also use an interface here.
-
 And every Goal should have an id,
-
 which should be of type number, let's say,
-
 a title, which should be a string,
-
 and a description, which should be a string.
-
 And then goals here should be an array of such goals.
-
 I will add more props or at least one other prop
-
 to this props interface later.
-
 But for now, that's it.
-
 The CourseGoals component function
-
 now will again receive a props object,
-
 which is of type CourseGoalsProps,
-
 or I can again use destructuring
-
 and directly pull out my goals.
-
 And then here we can return an unordered list
-
 where we use this goals array to map through all the items
-
 and output the list items for all those goals.
-
 So output a list item, add the special key prop
-
 that is required by React and set it to goal.id,
-
 which is unique for every goal.
-
 And then let's say inside of that list item,
-
 we have an article element and in there a div, let's say.
-
 And in that div, an h2 element with the goal.title.
-
 And below that, a paragraph with the goal.description.
-
 And of course you could structure this however you want,
-
 but this should work nicely
-
 with the styles I provided to you earlier in this section.
-
 I'll also add a button below that div
-
 which we can later use for deleting a goal,
-
 but for now it won't do anything.
-
 So that's a new component.
-
 Now we can use it in App.tsx.
-
 And there below the Header, I'll put CourseGoals
-
 and pass a value for this goals prop to it.
-
 And here I'll add a hard coded array of goals,
-
 where I will add one goal object
-
 with an id of one let's say,
-
 with a title of Learn TS
-
 and a description of Learn TS from the ground up.
-
 And maybe let's add a second goal here with id: 2,
-
 Practice TS, Practice working with TypeScript.
-
 Something like this so that we have two goals
-
 that we hopefully should see right from the start.
-
 Of course, you also must import
-
 the CourseGoals component again.
-
 And with it all done,
-
 you should see the course goals here.
-
 The Delete button won't do anything as of now.
-

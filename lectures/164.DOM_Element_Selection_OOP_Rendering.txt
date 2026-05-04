@@ -1,532 +1,266 @@
 To get started,
-
 here I'll run npm start to bring up that development server.
-
 Which serves the HTML file and the menu tab,
-
 tsc-w to start types of compilation in watch mode
-
 so that our app JavaScript file is continuosly rebuilt
-
 and we can view it in the running application.
-
 Right now, of course our application doesn't look too fancy.
-
 It's an empty page.
-
 So to get started,
-
 there are many ways of doing that.
-
 Now, I wanna start with making this form visible.
-
 And now, there are many ways,
-
 I will actually write this application in
-
 an object oriented approach.
-
 Which is 100% optional but since
-
 we learned about classes and so on,
-
 I wanna actually show how this works
-
 and therefore I will use this approach.
-
 So in the app key,
-
 I'll add a new class and I'll name it Project Input
-
 though the class name of course is entirely up to you.
-
 Now in this class,
-
 our goal has to be, to get access to this template
-
 and to the form in it and to get access to this div here,
-
 and then render our template in that div in the end.
-
 So the content of the template, the form in that div.
-
 That has to be our goal.
-
 Now to achieve this,
-
 here in Project Input,
-
 I'll add a constructor where I in the end
-
 wanna get access to my template and
-
 to the place where it should be rendered.
-
 And for this here, I'll add two properties on the fly
-
 with this, the template element property
-
 and then also the host element property.
-
 The names are 100% up to you.
-
 In the end my idea's that host element,
-
 holds a reference to the element
-
 where I wanna render my template content in the end
-
 and well, template element gives me access to
-
 the template that holds this content.
-
 Now to get access to that template,
-
 let's have a look at index html and see how we can identify
-
 the template which holds the form.
-
 Well it has this project-input ID,
-
 so that looks like a good strategy.
-
 So here we can use document
-
 getElementById project-input.
-
 This gives us access to this template element.
-
 Now, a couple of important things.
-
 Here we get an error that template element is a property
-
 which does not exist on project-input.
-
 Now to get rid of this, we actually should add it
-
 as a new field here directly in the class.
-
 Then we can safely assign to it.
-
 Now here, I also wanna be clear about the type
-
 which would be stored in there.
-
 And that will be a HTML template element.
-
 This type is globally available
-
 because in the tsconfig js file, I added the DOM as a lib
-
 and that adds all these DOM types,
-
 all these HTML element types as typescript types
-
 to the entire project.
-
 Now this infuses a new error here however,
-
 you see that in the end this could be null
-
 when we get the element by ID,
-
 of course we know that it won't fail but typescript
-
 has no chance of knowing this
-
 because it's not going to analyze our html file.
-
 So maybe no element with this ID exists
-
 and therefore this would yield null.
-
 Now here, we say we don't store null in there,
-
 we just store HTML template element.
-
 So, to eliminate this danger,
-
 we have to tell typescript, that this will never be null.
-
 And you know how you can do this?
-
 You can add an exclamation mark here.
-
 An alternative of course,
-
 just to also show this,
-
 if you would not be sure,
-
 is to store it as let's say in a constant
-
 and then check if template element is truthy,
-
 so if it's not null
-
 and then store it inside of that if check here.
-
 Now, we're still getting an error
-
 but that will be a different error,
-
 which I'll come back to later.
-
 For now this would do the trick
-
 if we're not sure.
-
 Now here, however, I am sure.
-
 And by the way,
-
 if you're not sure,
-
 you should provide a fallback in the else case of course.
-
 But here I am sure that we'll get such element
-
 and therefore we can simply add
-
 an exclamation mark thereafter to tell typescript,
-
 "All good.
-
 We will get access to an element with that ID."
-
 Now as I mentioned,
-
 we still have another error though.
-
 Property content is missing in type HTML element.
-
 The problem here is that we're telling typescript
-
 that we're going to store a template element which is
-
 of type html template element.
-
 And indeed that will be the case.
-
 Now of course, getElementById doesn't know
-
 which element it will return eventually.
-
 It just knows it would be some html element
-
 but not which specialized version of it.
-
 If its a div, a paragraph, a button
-
 or like in this case a template element.
-
 getElementById has no chance of knowing that.
-
 So in order to tell typescript about the type
-
 which we of course also know with certainty.
-
 We can use type casting.
-
 You learned about this as well.
-
 There are two syntaxes you can use.
-
 The angle brackets at the beginning
-
 and then the type you wanna cast this to
-
 with that you're telling typeScript,
-
 "Hey!
-
 The thing, the expression coming after this here,
-
 this will be of that type."
-
 or alternatively, you add as HTML template element
-
 which is the approach I would use.
-
 And with that, you guarantee to typescript
-
 that what you fetch here will not be null
-
 and will be of this type.
-
 A lot of talking about selecting this
-
 but it is a common task
-
 and it is important to get this right.
-
 Now lets continue with the host element.
-
 Here, we should also add host element as a field
-
 and we know that the host element,
-
 when we actually wanna render our project-input
-
 will in the end be this div here.
-
 That's where I wanna render my form.
-
 So, here we can say HTML div element.
-
 That's the type of element we're going to add this to.
-
 We could also be a bit less specific
-
 and just say HTML element,
-
 because here I really don't care whether its a div or not.
-
 But since we know it with certainty,
-
 why not add it?
-
 Now, I wanna get access to that div of course
-
 where this should be added
-
 and if we have a look at the index.html file,
-
 we see we can identify this div by the ID again.
-
 The app ID in this case.
-
 So now, back in app ts, we can use document getElementById
-
 one more time and reach out to the element with the id app.
-
 Now, we have the same problems as before,
-
 this can be null, so we have to add the exclamation mark
-
 because again, we know with certainty that it won't,
-
 and getElementById does not know that
-
 this will be a HTML div element so,
-
 we should cast this here as well.
-
 And with that we can now find how we get access
-
 to all the elements we need to.
-
 Well, that was a lot of talking about that.
-
 With that unfortunately we haven't achieved much.
-
 We have access to these elements
-
 but we are not rendering anything there.
-
 So let's continue with that.
-
 For that, we need to import the content
-
 off this template element,
-
 so basically import what's inside the template tags
-
 and render this to the DOM.
-
 We can do this right here in the constructor
-
 because my idea and of course,
-
 that's just my idea,
-
 you could set this up differently.
-
 But my idea is that when we create
-
 a new instance of this class,
-
 I immediately wanna render a form
-
 that belongs to this instance.
-
 So we'll do it right in the constructor.
-
 There we can get our imported node
-
 or imported HTML content or however you wanna name it,
-
 which we can get with document importNode
-
 and that is a method provided on the global document object
-
 and to importNode you pass a pointer
-
 at your template element.
-
 So this template element in the end,
-
 or to be precise not the element but dot content there.
-
 Content is a property that exists on HTML template elements
-
 and it simply gives a reference
-
 to the content of a template.
-
 So to the HTML code between the template text.
-
 ImportNode also takes a second argument
-
 which defines whether it should import this
-
 with a deep clone or not.
-
 So all levels of nesting inside of the template
-
 and I definitely wanna do that so I will provide true here.
-
 Now, we have the importedNode and as you'll see,
-
 this is of type document fragment
-
 which typescript assumed or inferred automatically.
-
 Now we can use that importedNode,
-
 and of course I wannna use it to render some content.
-
 For that I will add a new method,
-
 a private method which I'll name attach.
-
 You don't need to do that,
-
 I just wanna split my selection and rendering logic.
-
 Inside of attach,
-
 I will reach out to the host element,
-
 so the place where I do want to render my content
-
 and call insertAdjacentElement which is
-
 a default method provided by
-
 the browser in the end in JavaScript.
-
 To insert the HTML element an insert adjacent element,
-
 first of all takes a description of where to insert it,
-
 so there you can insert it after the beginning of
-
 the element you're targeting,
-
 so right after the opening tag of host element,
-
 before the beginning or before the opening tag,
-
 before the end tag or after the end tag.
-
 And here I'll go for after begin to insert it right
-
 at the beginning of the opening tag.
-
 And then the thing I wanna insert is my importedNode
-
 however, first of all that's a constant only available
-
 in the constructor and second,
-
 that's a document fragment.
-
 We couldn't insert it like this.
-
 Instead we need to get access to
-
 the concrete HTML element in there,
-
 which we can store in another property element.
-
 Which we also have to add as a field up there
-
 which can be of type HTML element or in our case actually,
-
 we know it will be inside of the template here,
-
 so it will be a form.
-
 That's the first element in the template.
-
 So here we can say it will be
-
 a HTML form element, and then here,
-
 this element is equal importNode firstElementChild,
-
 now we just have to tell typescript again,
-
 that this will be a HTML form element.
-
 Now this element is now the concrete property
-
 that points at the node we wanna insert.
-
 So down there, in insertAdjacentElement,
-
 we insert this element here.
-
 Now we just need to make sure
-
 that here in the constructor,
-
 at the end of it that we call attach,
-
 so this private attach method,
-
 so that this code also executes.
-
 And now with all the formatting,
-
 this is how my code looks like.
-
 So that now is the project input class,
-
 and theoretically, when we instantiate it,
-
 it should render the form.
-
 Now lets give it a try.
-
 Below the class, let's simply create a new constant,
-
 prjInput for example, name is up to you.
-
 And call new project Input like this.
-
 And if we now save that,
-
 it should recompile and reload
-
 and if you go back to the browser,
-
 indeed you should see that form here.
-
 So that's pretty neat,
-
 because with that, we made out first very important step.
-
 We have our form rendered
-
 and even though a lot is missing,
-
 that's better than nothing.
-
 This form, is coming from the index html file
-
 and it's rendered with the help of our object oriented
-
 typescript code up there.
-

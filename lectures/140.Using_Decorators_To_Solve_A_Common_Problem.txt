@@ -1,148 +1,74 @@
 So let's make this autobind decorator
-
 a bit more useful.
-
 And let's also understand why I named it autobind
-
 because this decorator should solve a certain kind
-
 of problem you could sometimes encounter when working
-
 with classes and objects in JavaScript.
-
 And that's a problem related to the this keyword
-
 and how JavaScript works.
-
 Let's say I'm creating one object here, max.
-
 And let's say for some reason I wanna store a pointer
-
 to that greet method in a separate variable or constant.
-
 We can do that like this, for example.
-
 So I don't execute greet here, I just point at it,
-
 and I store that pointer in a new constant here.
-
 And this is something I might need to do in order
-
 to then pass this method, this pointer at this method
-
 as an argument to another function,
-
 as a callback function, for example.
-
 So that is something you sometimes need to do in JavaScript,
-
 but you'll face a problem if you try to do it like this
-
 because if I now execute greet, I will execute this method
-
 because I'm pointing at it
-
 but you will see that will not output the name.
-
 Instead, if I try to execute greet like this
-
 and I compile this and run this code,
-
 I'm getting an error here.
-
 Cannot read properties of undefined
-
 when trying to read the name.
-
 So when trying to access the name on this,
-
 I'm getting an error.
-
 And I did not get that before when using this kind of code.
-
 So what is the problem here?
-
 Well, the problem is related
-
 to how the this keyword works in JavaScript.
-
 It's not TypeScript specific at all.
-
 Instead, the this keyword, in the end,
-
 points to the thing on which this method is executed
-
 or on which this function here is executed, I should say.
-
 And when executing it like this,
-
 then greet is executed on max.
-
 So this refers to this instance of the Person class.
-
 But when executing it like this,
-
 greet is not directly executed on something
-
 as it was before, and therefore, this is undefined,
-
 and is not pointing at the max instance or anything else.
-
 That's just how JavaScript works.
-
 Now, you can solve this problem by binding this
-
 to this Person class here,
-
 and to all the objects that are created based on it.
-
 JavaScript has a solution for that.
-
 For example, in the Person class, you can add a constructor
-
 and then in there say this.greet = this.greet.bind(this).
-
 Might look a bit weird,
-
 but with that you're saying,
-
 "Hey, this greet method is always bound to this class
-
 and the instances that are created based on it
-
 because bind is a function that's built into JavaScript
-
 that allows you to, you could say, pre-configure a function
-
 for future execution.
-
 And it allows you to define what this inside
-
 of that function will refer to
-
 when this function gets executed in the future.
-
 And with this code added, for example,
-
 this code down here will now work.
-
 So if I now compile this and then run this,
-
 you see now I'm not getting an error.
-
 Instead I am outputting "Hi, I am Max."
-
 So that's one way of solving this.
-
 But, of course, it's a bit annoying if you have
-
 to add code like this for every method
-
 of every class you add to your application.
-
 And that's where this decorator can come in handy
-
 because you can solve this problem with this decorator,
-
 as you will see.
-

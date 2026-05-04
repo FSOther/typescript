@@ -1,60 +1,30 @@
 Okay, so we got this config file
-
 with all these settings.
-
 Nonetheless, as I showed you before,
-
 if you target and compile a file with the tsc command,
-
 like now in the src folder, the app.ts file,
-
 then these settings seem to be ignored.
-
 I mean, the app.js file was created in the src folder,
-
 not in the dist folder,
-
 and it still contains this old JavaScript syntax.
-
 So what's wrong here?
-
 Well, what's wrong is that if you target
-
 an individual file with the compiler, as I'm doing it here,
-
 then, indeed, this file gets compiled
-
 without these settings being considered.
-
 Because these settings kind of refer to the overall project
-
 and you ignore the overall project
-
 if you target a single file.
-
 What you should do instead is simply run the compiler
-
 without targeting a file, just like this,
-
 tsc in the terminal or command prompt
-
 that's navigated into your project folder.
-
 So in the same folder as the tsconfig.json file resides.
-
 And if you now hit Enter,
-
 now you'll see the dist folder is populated
-
 with a source MAP file and a JavaScript file.
-
 And this file now does contain more modern JavaScript code.
-
 And that's the offer.
-
 How you compile your code,
-
 how you trigger the TypeScript compiler
-
 in a project that uses the tsconfig.json file.
-

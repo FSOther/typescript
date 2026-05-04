@@ -1,100 +1,50 @@
 So you did learn about
-
 explicit type assignments, about type inference,
-
 and where you can assign types or infer types.
-
 But up to this point in all these basic examples here,
-
 we always worked with exactly one type, one kind of value.
-
 Username must be a string.
-
 User age must be a number.
-
 But you sometimes have situations
-
 where you need more flexibility
-
 and that's why TypeScript also offers more flexible types
-
 that you can use in cases
-
 where you need the extra flexibility.
-
 For example, let's say we have an age variable
-
 and initially, that age variable is a number.
-
 But then somewhere in our program we might assign
-
 an age as a string, so a number in a string, so to say.
-
 Now this will fail because due to this initial value,
-
 TypeScript infers that age is of type number.
-
 If we then try to assign a string to that variable,
-
 we therefore get an error as expected and as you learned it.
-
 But what if you do want to accept both a number
-
 and a string?
-
 Well, in that case, you could add
-
 an explicit type assignment, even though we could infer
-
 a type here.
-
 But if the inferred type is not the type you want,
-
 you could add an explicit type assignment in addition
-
 and then assign the any type,
-
 which is another type built into TypeScript.
-
 And this any type really does what the name applies.
-
 It accepts any kind of value.
-
 As you see, the error down here went away
-
 because now we can store both a number and a string in age.
-
 However, we can also store a bullion, an object, an array,
-
 and any other kind of value in that variable now,
-
 and that's not necessarily what you want,
-
 because any really does allow any kind of value
-
 and therefore, using this any type kind of defeats
-
 the purpose of using TypeScript.
-
 Because the idea behind using TypeScript
-
 was that you could define which kinds of values may be used
-
 where in your code, and with any,
-
 you are allowing everything.
-
 You are essentially back to Vanilla JavaScript with that.
-
 And that's why you should typically use this any type
-
 really only as a last resort if you really can't
-
 or don't want to be more specific.
-
 But if you can be more specific,
-
 there is a better alternative to any,
-
 which still gives you more flexibility than a single type.
-

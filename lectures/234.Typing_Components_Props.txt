@@ -1,236 +1,118 @@
 So, let's get started with
-
 using TypeScript and React here.
-
 And for that I prepared a new index.css file,
-
 which you find attached.
-
 And you should replace all the styles in your index.css file
-
 with the ones of the attached index.css file.
-
 You can then also delete the App.css file
-
 and in the App.tsx file,
-
 and I'll get back to this weird extension,
-
 in that file you can delete all the imports,
-
 this useState code
-
 and simply return
-
 just Hello World here, for example.
-
 So have a very simple App.tsx file.
-
 Last but not least, attached you find a goals.jpg file,
-
 which you can copy into your Assets folder
-
 and get rid of that .svg file.
-
 That's an image we'll use
-
 for this demo app we'll build here.
-
 And with that, we have a very lean basic setup
-
 where we can now get started with React and TypeScript.
-
 And I wanna get started by adding a new component
-
 because ultimately React is, of course,
-
 all about building components.
-
 For that I'll add a new components folder
-
 and in there I'll add a header.tsx file
-
 because I wanna add a header component.
-
 But what's up with this weird .tsx extension?
-
 Well, as you probably know, as you should know,
-
 since basic React knowledge is expected for this section,
-
 React uses JSX code in its components.
-
 That's this HTML like code in your component functions.
-
 And therefore in regular React apps
-
 that do not use TypeScript, your files typically end
-
 with .jsx to indicate that they include JSX code.
-
 Well, in TypeScript it's the same,
-
 but since we're using TypeScript, it's .tsx, that's all.
-
 And in the header.tsx file, we can now export a new
-
 default function that could be called Header,
-
 for example, just like that.
-
 And that's of course a regular function
-
 with nothing TypeScript specific about it.
-
 In there we can return the header element,
-
 the built-in header element,
-
 and then let's say in there an image.
-
 And the image should be this image.
-
 Now in this app,
-
 I'm only using this header component in one place
-
 and it will always display the same image,
-
 so we could just link to that image
-
 from right inside that header.
-
 But of course this section is about teaching you
-
 how to use TypeScript with React,
-
 and therefore I wanna make it a bit more fancy,
-
 and I wanna accept a prop here,
-
 which I pull out with object destructuring.
-
 So I get my props argument here, my props parameter,
-
 which will be an object,
-
 and I'll use object destructuring here with this syntax.
-
 And I expect to get an image prop, let's say,
-
 though the name is up to you.
-
 It's your component, you can name it whatever you want.
-
 But now of course we have a problem here
-
 in this React and TypeScript app,
-
 because TypeScript does not know which type
-
 of value image will be.
-
 And consequently we get an error message
-
 that the element image implicitly has the any type.
-
 So we should give TypeScript some hints regarding
-
 the type of value we're getting here.
-
 Now, as I said, overall this will be a props object,
-
 but what's the type of that?
-
 Well, in the end, it's just an object
-
 with the key value pairs you wanted to have.
-
 It's your component.
-
 You can accept any props you want.
-
 So what you can do is you can define a type
-
 or an interface, that's totally up to you,
-
 that could be named HeaderProps,
-
 but that name is also up to you.
-
 There is no rule here that tells you
-
 that this must be named HeaderProps.
-
 It is up to you.
-
 But then in there you could say
-
 that your HeaderProps object should be an object
-
 that has a image property, which is of type string,
-
 or maybe it's a nested object.
-
 So your image property holds an object
-
 or is an object with this object type
-
 where there should be a source property,
-
 which is of type string,
-
 and an alt property, which is of type string.
-
 It is entirely up to you because it is your props object.
-
 And now we can set our props parameter here,
-
 which I'm destructuring to the type HeaderProps, like this.
-
 That is how you can assign a prop type.
-
 It's just like that.
-
 It's a regular function with a regular parameter
-
 for which I'm setting my type here.
-
 The only difference is that I know that this will be treated
-
 as a component and that I'll pass the values for those props
-
 by using react props mechanism.
-
 But here from the functions point of view,
-
 it's a regular parameter, which will be an object type,
-
 which holds a image property,
-
 which holds yet another object type as a value,
-
 which will have this shape.
-
 Now I'm still getting an error,
-
 but only that I'm not using image.
-
 But we can change this.
-
 To be precise,
-
 we can now spread image onto this built-in image element.
-
 And since image will be an object, I'm spreading the source
-
 and alt properties as props onto this image,
-
 which will work because the built-in image tag
-
 does want a source and an alt prop.
-
 So spreading these properties
-
 as props onto this element will just work.
-

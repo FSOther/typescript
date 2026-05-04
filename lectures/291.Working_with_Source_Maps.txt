@@ -1,82 +1,41 @@
 SourceMap helps us with
-
 debugging and development.
-
 So to show what this does let me compile everything
-
 without that sourceMap setting.
-
 If we now go to the browser and we want to understand
-
 what our code does, we can go to the sources tab here
-
 in developer tools and there we find our JavaScript files.
-
 Now we can dive into these files
-
 and the good thing is these files
-
 are fairly readable to us, humans of course
-
 because they contain JavaScript code in the end.
-
 Now that's good but what if we had more complex
-
 TypeScript code and we want to debug our TypeScript code
-
 and not the compiled JavaScript code.
-
 In other words it would be nice if we would
-
 see the TypeScript files here and not the JavaScript files.
-
 With the sourceMap option you can get there.
-
 If you set this to true and you run the tsc command again
-
 then you see we got these .js, .map files being
-
 generated as well.
-
 Now if we look at them they're pretty strange files
-
 but what they do is they basically act as a bridge
-
 which is understood by modern browsers
-
 and the developer tools there to connect
-
 the JavaScript files to the input files.
-
 So with these files generated if I reload here
-
 you see in the sources tab we now not just have our
-
 JavaScript files we also see our TypeScript files there.
-
 And we can even place break points in the TypeScript files
-
 and if I now click on the button for example
-
 it now pauses in the TypeScript file.
-
 Which is of course super, super convenient.
-
 Because that really takes our debugging process
-
 to the next level because we can work directly
-
 in our input files basically, in our TypeScript files
-
 instead of the JavaScript files.
-
 Now nonetheless here I'll comment this out because
-
 we have a fairly simple project here and I don't want
-
 to have these extra .map files lie around here.
-
 But this is super useful in projects
-
 because it simplifies debugging.
-

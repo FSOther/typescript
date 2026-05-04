@@ -1,60 +1,30 @@
 So, as you learned over the last lectures,
-
 you can run your node TypeScript code with just Node.js
-
 if you are using a recent version of Node.js.
-
 But Node.js isn't the only option you have.
-
 Instead, there also are alternative run times,
-
 alternatives to Node.js like Deno or Bun.
-
 And these are simply alternatives you can install
-
 on your system,
-
 and then you can use them to run your Node.js code
-
 with those run times instead of native Node.js,
-
 if you wanna call it like this.
-
 Now, these alternative runtime, Deno and Bun,
-
 do not just support Node.js code
-
 that you could also run with Node.js.
-
 Instead, they typically also come
-
 with extra features built-in,
-
 and you can learn more about these runtimes
-
 and what they offer
-
 on their respective homepages and documentation pages.
-
 But here, I at least wanna show you that with Bun installed,
-
 so I did install Bun as described on that Bun homepage.
-
 I can also run that app.ts file with Bun instead of Node.js.
-
 And you see, that runs without any problems or warnings.
-
 And that's simply an alternative to Node.js.
-
 And I just wanna highlight here that both Deno
-
 and Bun have that built-in TypeScript support.
-
 And unlike Node, it's also not that strip only support,
-
 but instead, they do support all TypeScript features.
-
 So, that's just also something to keep in mind.
-
 You have these alternatives if you're interested in them.
-

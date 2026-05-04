@@ -1,10 +1,7 @@
 Fixing a Validator Bug
 In the current form, our validation logic is not entirely correct. It's not working as intended.
-
 At the moment, only one validator value is stored in the array (e.g. 'required') - of course that's not what we need. Multiple values should be stored instead - at least potentially.
-
 Here's how you can adjust the code to make that work:
-
 const registeredValidators: ValidatorConfig = {};
  
 function Required(target: any, propName: string) {

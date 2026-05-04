@@ -1,234 +1,117 @@
 For that attached you find our good old starting project,
-
 I already started the server with NPM start.
-
 And the TypeScript watch process with TSC-W.
-
 And the very first thing we need to configure there
-
 is in a tsconfig file, make sure your target is set
-
 to es6 and then, if you scroll down,
-
 make sure that you add this
-
 experimental decorator's line here.
-
 And add a comma in front of this
-
 and then you can AutoFormat to format this all correctly.
-
 This is important otherwise you won't be able
-
 to use decorators in your project.
-
 So make sure you tweak your
-
 tsconfig.json file appropriately.
-
 And with that we can dive right in
-
 and write our first decorator here in the app.ts file.
-
 And I wanna start with a decorator we can add to a class.
-
 Now decorators in general are all about classes,
-
 but this is a decorator which we will add
-
 to the class as a whole.
-
 For that, let's say we have a class, Person,
-
 a very trivial class, where we have a name.
-
 Maybe with a value of Max, pre-initialized here.
-
 Where we have a constructor function where I just log
-
 Creating person object,
-
 so that we see that this is executed.
-
 And then of course we can create a new person here,
-
 with a new keyword, like this.
-
 And if we want to, we can
-
 of course log this created person.
-
 And this should hold no surprises,
-
 if we save all of that,
-
 it compiles without errors.
-
 And if we visit our page then,
-
 on Localhost: 3000, in the JavaScript console,
-
 we see Creating person object which
-
 is coming from the constructor.
-
 And we, of course, all see the Person itself here.
-
 Now there, in this example we got no decorators involved.
-
 Let's change this.
-
 At the top of the file let's add a decorator.
-
 And a decorator, and that's really important to understand,
-
 is in the end just a function.
-
 A function you apply to something, for example,
-
 to a class in a certain way.
-
 So let's create a function here,
-
 with the function keyword, and I will name it Logger.
-
 Now this is a function, the only special thing here is
-
 that I start with a capital character.
-
 This is not a must do by the way, you don't have
-
 to use a capital starting character,
-
 you can use a lowercase one as well,
-
 you just see a lot of decorators out there
-
 in libraries which you might use
-
 that use uppercase starting characters
-
 and therefore, I'll do the same here.
-
 So, the Logger function here is a function
-
 and we can apply this as a decorator as it will turn out.
-
 Now let's add a console log in here, Logging,
-
 so that we can see when this function runs.
-
 Because I will not call it directly.
-
 Instead I wanna add it as a decorator to this class.
-
 And we do so by adding a @ symbol here
-
 in front of the class and then our function here.
-
 Just like this.
-
 Now a couple of special things here.
-
 The @ symbol here is a special identifier
-
 TypeScript sees or recognizes.
-
 And then the thing directly after the @ symbol
-
 should point at a function.
-
 Not execute it, but point at it,
-
 which should be your decorator.
-
 Now here you see that Logger then
-
 accepts too few arguments to be used as a decorator here.
-
 So the good thing is, TypeScript understands that
-
 I want to use it as a decorator here.
-
 The bad thing is we don't pass enough arguments.
-
 And indeed, decorators receive arguments.
-
 How many arguments depends on where you use the decorator.
-
 Here, for a decorator we add to a class we get one argument.
-
 That's the target of this decorator
-
 so to say, which is our constructor function.
-
 So we can say we get a function here
-
 as an argument in the end.
-
 We can also name it constructor,
-
 because in the end we will get our constructor function
-
 of this class, or whichever class we add this decorator
-
 to as a argument.
-
 Let's also console.log that so that we can get some insight
-
 into this constructor argument here.
-
 And let's save this.
-
 And as you see it compiles without errors.
-
 And if we now have a look at our output,
-
 we see the old code from before,
-
 but we also see the Logging output,
-
 and this constructor function being logged.
-
 Well we actually see the whole class here,
-
 but classes in the end are just some
-
 tactical sugar over constructor functions.
-
 Please also note that our decorator output, Logging,
-
 and this class or this constructor function log here
-
 is printed first, before we see Creating person object
-
 and our Person object.
-
 Because, indeed, decorators and that's really important,
-
 decorators execute when your class is defined.
-
 Not when it is instantiated.
-
 You don't need to instantiate your class at all.
-
 We could remove that code for instantiating the class,
-
 and we would still get that decorator output.
-
 So the decorator runs when JavaScript finds your
-
 class definition, your constructor function definition.
-
 Not when you use that constructor function
-
 to instantiate an object.
-
 That's really important to understand.
-
 So this is our first decorator.
-
 It's not the only way
-
 of how we can create a decorator though.
-

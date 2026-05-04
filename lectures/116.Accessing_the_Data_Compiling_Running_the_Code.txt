@@ -1,140 +1,70 @@
 So we did now work on this linked list
-
 quite a bit already.
-
 We're not done yet, but we added some features
-
 and most importantly, we practiced working with classes,
-
 properties, and generic types.
-
 Now, I also want to be able to output some information
-
 about this linked list.
-
 And since root, tail, and the length are all private,
-
 I can't do this from outside the class.
-
 I can't learn anything about this number list here.
-
 I can only call add.
-
 So in order to get some information,
-
 I'll add some helper methods here that give me information,
-
 like get number of elements, that could be a method
-
 which should simply return this length.
-
 Of course, we could also simply make length public,
-
 but to show you the difference between private
-
 and public properties, this is a good practice
-
 because this here allows me to use a private property
-
 because I'm inside in the class.
-
 But I'll then be able to use this method
-
 outside of the class because this here
-
 is a public method since it
-
 hasn't been annotated with private.
-
 Now it would be a private method,
-
 now it's public again.
-
 So that's one piece of information I want to get.
-
 Another piece of information is simply
-
 the list of all values, let's say.
-
 And for that we could add a print method here,
-
 which has the job of going through all the nodes
-
 and outputting all the values of all the nodes.
-
 And for that, I'll use the approach I showed you earlier
-
 because now I wanna loop through all nodes
-
 and I'll start with the root node
-
 and store it in a variable called current.
-
 And then I'll loop through current,
-
 not current next year, but instead current
-
 because I want to keep on looping
-
 until current itself is false,
-
 because now in here I'll console log current.value
-
 and I'll update current to current.next
-
 until that is undefined and then the loop will stop.
-
 And with that added, we can now use that number list here
-
 and call add and add 10,
-
 and maybe thereafter 5,
-
 and then maybe -3.
-
 And then console log number list,
-
 get number of elements
-
 followed by calling numberlist.print.
-
 And if we do all that, we should be able to compile
-
 and run that code
-
 and at least add some values to our first linked list here.
-
 So for here, I'm opening my terminal.
-
 I'm running TSC, which I can,
-
 because we have the tsconfig.json file here
-
 that compiles the code.
-
 And that compiled code, again, looks pretty similar
-
 to what we had before.
-
 But for example here, the private keyword is gone
-
 because as I mentioned, that was a TypeScript feature.
-
 The generic type annotation is also gone
-
 because that also was TypeScript.
-
 But with that, we can run this linked-list.js file.
-
 And we got our length being locked here
-
 because that's the first thing I output here.
-
 And then we got the list elements being locked here
-
 due to the print method.
-
 And we add 10, 5, and-3 in this order.
-
 So the order is correct here, as you can tell.
-

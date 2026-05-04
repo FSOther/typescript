@@ -1,218 +1,109 @@
 Now there is one last interesting feature
-
 which I also want to introduce,
-
 and that would be private constructors.
-
 And what's a private constructor and which use does it have?
-
 There is a pattern in object oriented programming
-
 which is called the singleton pattern.
-
 The singleton pattern is about ensuring
-
 that you always only have exactly one instance
-
 of a certain class.
-
 This can be useful in scenarios where you somehow
-
 can't use static methods or properties
-
 or you don't want to,
-
 but at the same time you want to make sure
-
 that you can't create multiple objects based on a class
-
 but that you always
-
 have exactly one object based on a class.
-
 Let's say for our AccountingDepartment
-
 we wanna make sure that we can only create exactly
-
 one object based on this class,
-
 because we have exactly one accounting department
-
 in our entire company.
-
 We might have more than one IT department
-
 but we have exactly one accounting department.
-
 Now to enforce this and to avoid
-
 that we manually call new AccountingDepartment
-
 multiple times, we can turn the constructor
-
 of the AccountingDepartment class
-
 into a private constructor by adding the private keyword
-
 in front of it.
-
 Now what this does is,
-
 it ensures that we can't call new on this.
-
 Here you see I'm getting an error
-
 because the constructor is private
-
 so it's only accessible from inside the class,
-
 which sounds strange because how do we get inside
-
 of the class if we can't create objects based on it anymore.
-
 The answer is, well, static methods.
-
 A static method can be called on the class itself
-
 so you don't have instantiate it for that.
-
 So here we can add a static method which
-
 we could call getInstance,
-
 the name is totally up to you though.
-
 Now getInstance will check if we already have an instance
-
 of this class and if not, return a new one.
-
 For that we can add a new static property instance,
-
 a static private property
-
 so you can put private in front of static
-
 called instance which will be of type AccountingDepartment.
-
 So in there we'll store an AccountingDepartment instance.
-
 So that's what I'm saying here,
-
 I have a static property
-
 which is accessible on the class itself,
-
 but only from inside the class
-
 and the value we store in there will be
-
 of type AccountingDepartment, so of the class itself.
-
 Now we can use this instance property here in getInstance
-
 and check if this.instance is set here inside
-
 of static, if we use this, it will refer to the class itself
-
 and then we can access all other static properties on that.
-
 The alternative to that would be to use the class name.
-
 And now if this is set I want to return this.instance,
-
 or again classname.instance but this inside
-
 of a static method works, it gives us access
-
 to the class itself then,
-
 unlike this in a non static method which gives us access
-
 to the instance with which we're trying to work,
-
 not what we're doing here.
-
 If however we don't make it in here then
-
 we have no instance yet,
-
 then I set this.instance, so this static instance property
-
 equal to new AccountingDepartment,
-
 we can use this from inside here
-
 because now we're inside of this class method,
-
 so here we can access the private constructor
-
 and pass in our ID,
-
 and our reports array
-
 and then return this.instance here.
-
 So now we're either returning the one instance
-
 we might already have,
-
 or if we don't have it yet we create a new one.
-
 But this code, the marked code here,
-
 can only run once because once we have an instance
-
 we make it into we make it into this if block
-
 and we return the existing instance.
-
 So now if you wanna work with the AccountingDepartment,
-
 instead of creating it like this we could call,
-
 const accounting AccountingDepartment.getInstance,
-
 and this returns us a new instance
-
 of the AccountingDepartment.
-
 But if I do this again I will get the same instance as
-
 you will see if I console log accounting,
-
 and accounting2 here.
-
 You will see that the two should be exactly equal,
-
 if we save that and reload,
-
 you see down there are my two AccountingDepartment objects,
-
 they have the same ID, the exact same setup,
-
 they are the same object, the same instance
-
 because we only have one instance
-
 with this singleton pattern which is created
-
 with the help of the private keyword in front
-
 of the constructor.
-
 Now this is, arguably, an approach which
-
 you won't use all the time.
-
 The singleton pattern can sometimes be useful,
-
 you don't need it all the time,
-
 but it's definitely worth to know about it
-
 because it is something interesting which
-
 you can easily implement with TypeScript thanks
-
 to private constructors.
-

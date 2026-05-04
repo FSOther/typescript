@@ -1,184 +1,92 @@
 Now, there is another useful
-
 TypeScript feature or type I want to show you
-
 and I'll show you in this advanced.ts file,
-
 though of course, as always you can create
-
 and name the file however you want.
-
 But let's say you have a scenario where you want
-
 to define a custom object type called storage
-
 or anything like that,
-
 or data store doesn't matter,
-
 which should actually be
-
 a relatively flexible object type.
-
 Instead of having some clearly predefined properties,
-
 like name, and age, or anything like that, you might want
-
 to allow the developers who work with that type to add
-
 as many properties as they want to this object
-
 as long as they have a certain shared value type.
-
 And to achieve this and to build such a flexible type,
-
 TypeScript offers the so-called index type feature.
-
 When defining an object type, as we're doing it here,
-
 you can put the property definition, so to say,
-
 the property name, between square brackets
-
 and you could name it key or prop,
-
 it doesn't matter, because prop here is now actually not
-
 the name of a property that exists in this object type,
-
 but instead it's a placeholder
-
 since it's between the square brackets here.
-
 This tells TypeScript that this is a placeholder
-
 for any property with any name
-
 and actually any amount of properties with any names
-
 of the choice of the developer
-
 who later uses this object type.
-
 So it's a placeholder for a dynamic property
-
 where we don't know the name in advance
-
 and where we don't even know
-
 how many dynamic properties might be added in the future.
-
 You do need to add a colon
-
 after this placeholder name here, though,
-
 because you must define which kind
-
 of value this property will be of.
-
 And this can now be confusing,
-
 but I'm not talking about the value
-
 that will be stored under that property,
-
 so that can be accessed through that property,
-
 but I'm talking about the value type
-
 of the property name itself.
-
 And in most cases this will be string.
-
 But JavaScript objects also do allow symbol
-
 or number properties.
-
 So you could add a number as a property to an object
-
 or you could use the special symbol value.
-
 And that is all just vanilla JavaScript,
-
 nothing TypeScript specific.
-
 But by using string here you make it clear
-
 that any properties of any name can be added
-
 to this object in the future
-
 as long as the property names can be identified
-
 or treated as strings.
-
 And then you must add a colon
-
 after the square bracket to now define which types
-
 of values can be stored
-
 under those dynamic properties in the future.
-
 For example, booleans, or numbers,
-
 or numbers or booleans, whatever you need.
-
 You can use union types here, as well.
-
 You can use object types here, array types,
-
 whatever you need.
-
 Now this might look weird,
-
 but you could now use this type here
-
 like this to initially maybe even create an empty object
-
 and then run some other code.
-
 And then eventually you could add more properties
-
 to that store here.
-
 Like for example, id, which could be five
-
 or is open, which could be false.
-
 And this is something TypeScript normally wouldn't allow.
-
 You can't just add properties
-
 to an object without defining them in the object type first.
-
 But it is allowed if you use this index type feature here
-
 so that you tell TypeScript that there may be
-
 as many properties as needed with any names you want.
-
 TypeScript doesn't care as long as they only contain
-
 number or boolean values.
-
 So here if I add a name property like this that fails
-
 because now here max, this string, is not assignable
-
 to, well. the number or boolean union type.
-
 And that stands for another pretty important
-
 TypeScript feature because it allows you, the developer.
-
 to create very flexible
-
 and dynamic object types without losing type safety.
-
 You just have more flexibility
-
 than with standard object types.
-
 And sometimes you need that extra flexibility.
-

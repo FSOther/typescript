@@ -1,154 +1,77 @@
 So we now saw field decorators,
-
 method decorators, and class decorators,
-
 and you'll see even more decorators later
-
 and more use cases
-
 once we dive into experimental decorators.
-
 But before we go there,
-
 I wanna dive into another important concept
-
 that you'll often see in conjunction with decorators,
-
 and that's the concept of decorator factories.
-
 And a decorator factory in the end is just a function
-
 that produces a decorator.
-
 And why would you do that?
-
 Well, let's say here for my field logger decorator,
-
 where I'm changing the default value,
-
 I actually want to be able to set the default value,
-
 the field value should be changed to
-
 from this place in my coat here.
-
 So when attaching the decorator.
-
 And for that, I'll also change the name to replacer,
-
 which makes a bit more sense if I'm replacing the value.
-
 But that still doesn't give me
-
 any way of changing the value.
-
 So what I would want to do is execute this decorator
-
 as a function here
-
 and pass my new default value as a argument,
-
 that would be nice to do.
-
 Now, of course, I could also set it just here,
-
 but we just have a basic example here.
-
 So that's what I would like to be able to do.
-
 Imagine that we're building a decorator
-
 that sends AHTDP request.
-
 In that case, I might wanna set my URL here.
-
 But to keep things simple, I just wanna be able
-
 to directly set the default value,
-
 this value should be changed to.
-
 However, this is not how I can use it,
-
 because these decorator functions like logger, auto bind,
-
 and replacer should not be executed by you in your code.
-
 Instead, you should just point at them
-
 and then JavaScript will in the end execute them for you.
-
 So in order to be able to use this decorator like this,
-
 you must wrap it in another function
-
 into a factory function.
-
 So for that, I'll add another function,
-
 name it replacer too
-
 and rename this replacer here to replacer decorator.
-
 And I'll move this replacer decorator
-
 into the replacer function now,
-
 and I'll return it there
-
 because by doing it like this,
-
 when I execute this function,
-
 I actually get the actual decorator function
-
 that should be added here.
-
 So I again point at a function that's added as a decorator
-
 simply by wrapping it in another function.
-
 I'm executing the outer function
-
 and the returned value, the inner function,
-
 the actual decorator function is therefore,
-
 again, placed here, you could say,
-
 standard Java script in the end.
-
 And now here I can accept my in it value
-
 of type string or of type any to be more flexible.
-
 And then use this in it value down here,
-
 or actually use a generic type here
-
 to get a bit more type support.
-
 And with that, I can set my initial value here.
-
 So if I now save this, compile this,
-
 and execute it, I got the same behavior as before,
-
 I changed the name to an empty string,
-
 and I did that now with help
-
 of such a decorator factory function.
-
 And in the end, it's just my decorator being wrapped
-
 and returned inside of another function.
-
 And it's that other function which I execute here,
-
 to then get the actual decorator that's added to this field.
-
 And of course, you cannot just do that for field decorators,
-
 but also for method and clause and the other decorators.
-

@@ -1,49 +1,35 @@
 Câu hỏi 1:
 Which of the following snippets could be simplified by using an enum type?
-
 A)
-
 const users = ['Max', 'Michael', 'Julie'];
 B)
-
 const userA = { name: 'Max' };
 const userB = { name: 'Michael' };
 C)
-
 const ROLE_ADMIN = 0;
 const ROLE_AUTHOR = 1;
-
 x A 
 x A + B 
 v C
-
 Câu hỏi 2:
 Will the following code throw a compilation error?
-
 type User = {name: string; age: number};
 const u1: User = ['Max', 29];
-
 v Yes.
 x No, the data types (string and number) are both used. 
 x Only a runtime error will be thrown.
-
 Câu hỏi 3:
 Will this code make it through compilation?
-
 type Product = {title: string; price: number;};
 const p1: Product = { title: 'A Book', price: 12.99, isListed: true }
-
 x Yes! 
 v No, isListed is not part of the "Product" type.
 x No, a runtime error will be thrown.
-
 Câu hỏi 4:
 Will this code make it through compilation?
-
 type User = { name: string } | string;
 let u1: User = {name: 'Max'};
 u1 = 'Michael';
-
 v Yes!
 x No, because 'Michael' is a different name than 'Max'.
 x No, we can't switch from an object to a string once the object has been assigned.

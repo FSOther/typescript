@@ -1,28 +1,14 @@
 And that's it for this section, essentially.
-
 Of course, as I mentioned,
-
 there is more you can do with Vite,
-
 you can configure all kinds of things.
-
 And you could also configure everything from scratch
-
 without even using Vite
-
 by directly using build tools like webpack or esbuild.
-
 But most of the time, as a developer,
-
 you will work with projects that have been set up for you,
-
 for example, by tools like Vite, which is extremely popular.
-
 That's why it's important to know about such tools
-
 to understand what they do and how you can use them
-
 to create TypeScript-ready projects.
-
 And that's exactly what we had a look at in this section.
-

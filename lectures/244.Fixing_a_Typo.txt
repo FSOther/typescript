@@ -1,6 +1,5 @@
 Fixing a Typo
 In the last lecture, I made a small typo - handleSubmit should look like this:
-
 function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
  

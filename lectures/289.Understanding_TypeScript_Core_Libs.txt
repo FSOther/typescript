@@ -1,258 +1,129 @@
 We also got module here.
-
 Now, module is an option I'll skip for now,
-
 because it really only makes sense
-
 once we learn about modules in TypeScript
-
 and how we can connect multiple files.
-
 So let's ignore that for now.
-
 Lib is an interesting one though.
-
 Lib is an option that allows you to specify
-
 which default objects and features TypeScript knows.
-
 With that I mean things like working with the dom.
-
 Let's say in index.html we have a button
-
 and on this button we say, "Click me."
-
 Now, when we click this button
-
 we just want to print the message.
-
 Now, in app.ts we can select this button.
-
 We can get access to this button
-
 with document.querySelector.
-
 For example, selecting the first button we find.
-
 Now if we do that then this works.
-
 We get no types of error here.
-
 So if I go to my button and I add an EventListener here,
-
 I get an error here actually because TypeScript
-
 doesn't know for sure whether we find a button here.
-
 For now we can work around that with an exclamation mark,
-
 after this line and I'll come back
-
 to what exactly this does in the future.
-
 It basically tells TypeScript, "Don't worry,
-
 "such a button will exist.
-
 "We will get a value here."
-
 So now we can add a click event here.
-
 And then find some anonymous function
-
 maybe where a console.log clicked.
-
 Now, the interesting thing here
-
 is not so much that I had to add the exclamation mark,
-
 as I said I will come back to that,
-
 but that if I run tsc this just compiles.
-
 Now, shouldn't TypeScript complain that document
-
 is unknown here?
-
 How does it know that we have such a document,
-
 constant or variable available?
-
 How does it know that even if we have that available
-
 that it holds an object which has our
-
 querySelector method?
-
 How does it know that button is something which has
-
 addEventListener method?
-
 How does TypeScript know all of that?
-
 Now you might say, "Of course it knows."
-
 Because in Vanilla JavaScript
-
 this would be valid code but keep in mind
-
 that when you write TypeScript code,
-
 you don't necessarily write it for the browser.
-
 You could be writing your Node.js
-
 application with TypeScript
-
 and there indeed this would all not work.
-
 So, the reason why this works is this lib option
-
 and as you see it's not even set here,
-
 but if it isn't set then some defaults are assumed.
-
 If it's not set the defaults depend
-
 on your JavaScript target here,
-
 and for es6 it, by default, includes
-
 all the features that are globally available in es6.
-
 For example, the Map object which is available in es6.
-
 Therefore it wouldn't complain if you use Map.
-
 So it assumes all the es6 features
-
 which are made available globally in JavaScript,
-
 that they are available in TypeScript as well.
-
 And in addition it assumes that all DOM API's
-
 are available.
-
 You'll find the detailed descriptions about all these
-
 options, by the way, in the official box which are linked
-
 in the lecture at the end of this module.
-
 So, long story short, if the lib option
-
 is not set some defaults are assumed
-
 and these are typically the defaults you need
-
 to have TypeScript run in the browser.
-
 So, all the DOM API's are gone.
-
 If we comment this in and I now compile everything
-
 I definitely get an error,
-
 because now they're commenting it in
-
 we don't have the defaults settings anymore.
-
 Instead, we now say, "Hey, please include
-
 "some default libraries," some default type definitions
-
 you could say, which I will give you in this array.
-
 And, as you see, I'm not passing any description,
-
 any paths, any values here.
-
 And therefore, what I'm saying to TypeScript now
-
 is, "Hey, regarding all the defaults, you know,
-
 "please take this into account."
-
 And, you know, nothing.
-
 So, only if that is commented out, it works,
-
 because then TypeScript will assume some defaults.
-
 If I set the default explicitly,
-
 well then TypeScript, of course, adheres
-
 to what I'm setting here.
-
 And here for example, it doesn't know document,
-
 It doesn't even know the console here.
-
 So therefore, we wanna set this two more
-
 reasonable values and, again,
-
 if you hit control space,
-
 and here you get auto completion.
-
 For example, there we could add dom.
-
 That's an identifier and there are some pre-defined
-
 identifiers, which TypeScript understands,
-
 again, you'll find a complete list in the official docs.
-
 The docs for this option
-
 are attached to this lecture as well.
-
 So, this is an identifier TypeScript understands
-
 and it's an identifier which basically unlocks
-
 all the DOM APIs in TypeScript,
-
 so that TypeScript understands what you're doing here.
-
 So now, already you see it knows console,
-
 it knows document, and so on.
-
 So now since we're working with Next-Gen JavaScript
-
 we should also add the es6 option,
-
 so that TypeScript also understands all globally
-
 available es6 options.
-
 And it's also a good idea to add dom.iterable
-
 and scripthost.
-
 With that here we would unlock all the core
-
 JavaScript features you would want to work
-
 and this, by the way, is the exact default
-
 set-up you get when you set target to es6, anyways.
-
 So, if you comment this in and set it up
-
 like this, you have exactly the same behavior
-
 as if you don't specify lib at all.
-
 Now, here I will comment that in though
-
 and with that this will compile.
-
 Again, setting this is a bit redundant though,
-
 just want to explain what it does.
-

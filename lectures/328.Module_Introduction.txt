@@ -4,53 +4,29 @@ Hình thu nhỏ của bài giảng
 0:00 / 1:05
 Phiên âm
 In this module we'll dive
-
 into a concept called generics.
-
 Generics exist in TypeScript, not in vanilla JavaScript,
-
 so there is no real translation here.
-
 But we can utilize them in TypeScript.
-
 And the concept of generic types
-
 all exist in other programming languages.
-
 Not in all other programming languages of course,
-
 but in some, for example in C Sharp.
-
 Now this course of course is not about C Sharp though.
-
 So let's have a look at what generics are
-
 and what they are in TypeScript
-
 and how we use them there and why we use them there.
-
 Specifically, we'll have a look at what exactly generics are
-
 and why they are interesting and helpful.
-
 We'll then build our own generic functions and classes
-
 because, turns out, we can do that.
-
 We'll then have a look at generic constraints
-
 and what that is and why we would use something like that.
-
 And we'll have a look at a couple
-
 of special TypeScript types,
-
 which also typically are generic
-
 and which we'd ever only really can understand now.
-
 So let's see what we got there.
-
 cảnh báo thông tin
 Lên lịch thời gian học
 Học một chút mỗi ngày sẽ giúp bạn tích lũy kiến thức. Nghiên cứu cho thấy rằng những học viên biến việc học thành thói quen sẽ có nhiều khả năng đạt được mục tiêu hơn. Hãy dành thời gian để học và nhận lời nhắc bằng cách sử dụng trình lên lịch học tập.
@@ -76,69 +52,37 @@ Learn TypeScript both in theory as well as applied to real use-cases and project
 Learn how to combine TypeScript with ReactJS or NodeJS / Express
 Mô tả
 March 2025: BIG COURSE UPDATE
-
 Re-recorded large parts of the course to cover missing TypeScript concepts (e.g., "satisfies"), improve explanations and add extra examples & demo projects.
-
 Added more than 10h of new content!
-
 ---
-
 Learn what TypeScript is, why it really is a powerful addition to JavaScript, what its features are and how to use it! Learn why TypeScript is amazing, how it improves your JavaScript code and how it helps you avoid nasty bugs and errors!
-
 This course takes you from the very basics and its most important feature (types!) to the point where you're able to use TypeScript in any of your projects. ReactJS projects included!
-
 As TypeScript is developed by Microsoft and strongly advertised and used by Angular 2+ (Google) and other popular libraries, it's here to stay. Indeed, TypeScript is one of the most popular web development languages you can learn these days!
-
 Gain an edge today and be amongst the first to really understand TypeScript!
-
 Learn how you can use TypeScript to bring modern JS features like destructuring, arrow functions or classes to any environment and codebase - even if it does not support those features yet!  Understand which types you may use and how you can build your own types. Learn how to write better code with types and with the many features offered by TypeScript!
-
 But, in this course, we'll not stop after the basics! You will also learn about more advanced features (like decorators) and also how to set up workflows with  TypeScript. This includes a TypeScript-only workflow as well as a webpack workflow.
-
 You'll also learn that you're not limited to Angular or plain JavaScript/ TypeScript projects. Instead, a complete module covers how you may use TypeScript with ReactJS and improve your React code with TypeScript as well.
-
 Practice what you learn!
-
 Watching videos is a great way to learn. And to a lot of students, it's the best way. If you also want to practice the things you learn, this course offers you more than that though. Because this course comes with plenty of exercises (and solutions, of course) in addition to all the high-quality learning videos.
-
 So much Content!
-
 I'm not a fan of these courses which teach you the basics and then leave you alone.
-
 That's why in this course you'll get insights into:
-
 Types and how to use them
-
 How the TypeScript compiler works (and how you may configure it)
-
 ES6 features with TypeScript
-
 Advanced TypeScript Features like "infer", Mapped Types, Constant Types & Much More!
-
 Classes in TypeScript
-
 Namespaces and modules
-
 Interfaces
-
 Generics
-
 Decorators
-
 How to integrate Third-Party JavaScript libraries like Zod into your TypeScript projects
-
 How to set up a TypeScript project with Webpack
-
 Or how to set up a plain-TypeScript workflow
-
 How to use TypeScript together with ReactJS
-
 How to use TypeScript together with Node/ Express (incl. native Node.js TypeScript support)
-
 Real projects and use-cases!
-
 And so much more!
-
 Đối tượng của khóa học này:
 This course is for every student who wants to extend his or her horizon beyond vanilla JavaScript
 Everyone learning Angular should definitely understand how TypeScript works
@@ -146,23 +90,14 @@ Giảng viên
 Maximilian Schwarzmüller
 AWS certified, Professional Web Developer and Instructor
 Experience as (Web) Developer
-
 Starting out at the age of 12 I never stopped learning new programming skills and languages. Early I started creating websites for friends and just for fun as well. Besides web development I also explored Python and other non-web-only languages. This passion has since lasted and lead to my decision of working as a freelance web developer and consultant. The success and fun I have in this job is immense and really keeps that passion burningly alive.
-
 Starting web development on the backend (PHP with Laravel, NodeJS, Python) I also became more and more of a frontend developer using modern frameworks like React, Angular or VueJS in a lot of projects. I love both worlds nowadays!
-
 I also build full-stack applications and acquired expert DevOps and cloud computing knowledge - proven by the many AWS certifications I hold (incl. the top-level Solutions Architect Professional certification).
-
 As a self-taught developer I had the chance to broaden my horizon by studying Business Administration where I hold a Master's degree. That enabled me to work in a major strategy consultancy as well as a bank. While learning, that I enjoy development more than these fields, the time in this sector greatly improved my overall experience and skills.
-
 Experience as Instructor
-
 As a self-taught professional I really know the hard parts and the difficult topics when learning new or improving on already-known languages. This background and experience enables me to focus on the most relevant key concepts and topics. My track record of many 5-star rated courses and more than 2,000,000 students on Udemy is the best proof for that.
-
 Whether working as development instructor or teaching Business Administration I always received great feedback. The most rewarding experience is to see how people find new, better jobs, build awesome web applications, acquire amazing projects or simply enjoy their hobby with the help of my content.
-
 Together with Manuel Lorenz, I founded Academind to offer the best possible learning experience to our more than 2,000,000 students.
-
 Yêu cầu
 JavaScript knowledge is required, though you don't need to be an Expert
 NO prior TypeScript experience is required

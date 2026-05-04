@@ -1,86 +1,43 @@
 So we added another component
-
 and this component has a delete button.
-
 Now it would of course be nice if that button did something.
-
 Put in other words, it would be nice if these goals here
-
 in the app component that are passed
-
 to the course goals component
-
 would not be a static list of goals,
-
 but instead some react state that could be changed.
-
 By the way, I'm managing these goals here
-
 in the app component instead of the course goals component
-
 because we will soon need it
-
 on that level of our application
-
 because we'll change the goals from
-
 inside some other component as well.
-
 But that's just a side note.
-
 For now, we're only using the goals and course goals,
-
 but nonetheless, I want to be able to change them.
-
 So we will need some state,
-
 hence I'll cut them from here and use react,
-
 use state hook to manage some state.
-
 And of course that's imported from react
-
 and that's now not a type, that's a function.
-
 And use state, as you might know,
-
 is a hook you can use to manage data which,
-
 when changed, should cause a UI update.
-
 Now, use state is a generic type
-
 and you can tell which kind of value you will manage
-
 through use state by passing that type information
-
 between those angle brackets.
-
 Alternatively, you can pass an initial state to use state,
-
 and TypeScript is then able to infer the state type
-
 from that initial value.
-
 In that case that it is an array
-
 with objects of this shape.
-
 So then we have our goals and the set goals function here.
-
 That's how the use state hook works.
-
 It gives you an array with exactly two elements.
-
 And we can use that goals value to pass it as a value
-
 to the gold prompt.
-
 And TypeScript is happy here
-
 because that shape of our state here
-
 is of course the same shape of goals we expect here
-
 in course goals prompts.
-

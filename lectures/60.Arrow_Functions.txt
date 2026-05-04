@@ -1,228 +1,114 @@
 Now besides let and const,
-
 another major feature added
-
 with Next-Gen JavaScript with ES6 specifically
-
 were arrow functions.
-
 Now let's rewrite this add function down here,
-
 and let's not use the function keyword,
-
 but let's instead use this new arrow function syntax.
-
 For that you have to write the function as an expression,
-
 which you store in a variable.
-
 So we could have our add variable.
-
 And that can hold a function with the function keyword,
-
 as you probably know.
-
 But you can now also write a function,
-
 without the function keyword, with your parameter list,
-
 then an arrow, which you construct
-
 by using an equals sign, and a greater than sign,
-
 and then your function body.
-
 And this is a valid function,
-
 so here you can now also assign parameters, and use them,
-
 and, for example, return it like this.
-
 And then if you console log add two and five here like that
-
 and we save everything, we'll see seven in the console here.
-
 So that is something we can do, that's a new syntax,
-
 and one obvious benefit is that it's a bit shorter.
-
 We saved the function keyword.
-
 Another benefit is that it has a couple of nice variations
-
 which make it even more useful.
-
 For example, besides this already very short syntax here,
-
 you could also, if you just have one expression,
-
 omit the curly braces
-
 like this,
-
 and then also remove the return statement
-
 and just write this function like that.
-
 If you only have one expression,
-
 you can omit the curly braces, and the result of that
-
 one expression is then automatically returned.
-
 So there always is an implicit return statement
-
 in front of this.
-
 So now, this is way shorter than the function alternative,
-
 as you can tell.
-
 Now again, this only is available though
-
 if you have one expression.
-
 If you have two expressions or more
-
 in the body of the function, you could not use
-
 this shorter syntax.
-
 You would need a real, normal function body
-
 surrounded with curly braces.
-
 Another nice variation is that if you have a function
-
 that only takes one parameter,
-
 let's say we have
-
 our print output function,
-
 and that takes output,
-
 which is a string or a number, let's say,
-
 using a little unit type here,
-
 and then we console log output here.
-
 Then, we can of course use that to call print output here
-
 and add five and two.
-
 But now of course from one, we can shorten this
-
 by removing the curly braces.
-
 I'm not really interested in the returned value
-
 of console log, but that's also another problem
-
 if we do return it, because, as we learned,
-
 there is an implicit return statement.
-
 But now, since we only have one argument, we can even omit
-
 the parentheses around that argument.
-
 However with that type assignment, it will then not work.
-
 It would work like that, which works in Vanilla JavaScript
-
 but which is not supported in TypeScript because we
-
 omit the type assignment.
-
 But if you would have the type assignment
-
 in a different place, let's say with the function type
-
 assigned to the constant, which also
-
 gives TypeScript information about what will be stored
-
 in a constant, then this would be a syntax we can use.
-
 So, if we have
-
 this setup here
-
 and we give that type information two types
-
 in a different place,
-
 then we could use this more concise syntax.
-
 Now arguably, here we don't save a lot because now
-
 we will have to add that type assignment on our own.
-
 But a case where we would save a lot is, for example,
-
 if you were to reach out to a button,
-
 which we find in the DOM maybe, and please note here
-
 I have no button in DOM, but we can
-
 try to find one nonetheless.
-
 And we then add an event listener.
-
 And now, to make sure the TypeScript does not complete
-
 because button could be null, as it actually is here,
-
 we can wrap this code into an if check as you learned.
-
 And now, add an event listener to a click.
-
 And now here, we want to pass on a function
-
 that should be executed,
-
 well, that can be an anonymous function here.
-
 Just like that, (static)
-
 and that shows us how great arrow functions are.
-
 That's really not a lot of code.
-
 And, in here
-
 we get the event object
-
 which we now could console log like this.
-
 Now here we don't need to specify
-
 any function type anywhere because TypeScript knows
-
 what add event listener will provide to us,
-
 that this will be an event object,
-
 so indeed TypeScript is able to infer this,
-
 even the correct event object
-
 based on the event we're listening to.
-
 And hence here, we can re-take advantage
-
 of this very short and concise syntax.
-
 So these are some of the variations of arrow functions
-
 and of course, I've already used arrow functions
-
 thus far in the course.
-
 Just wanted to make it really clear again
-
 what they are, and what we can do with them.
-

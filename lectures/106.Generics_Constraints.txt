@@ -1,160 +1,80 @@
 Now, sometimes when working
-
 with Generic types and when building Generic functions
-
 and so on, you also might want to allow some flexibility,
-
 but you might not be happy with getting
-
 all kinds of values for those placeholders.
-
 For example, what if we had a function called mergeObj?
-
 So, merge Object.
-
 And the idea is that we get two values here
-
 and we, again, merge them,
-
 but I wanna merge them into a new object.
-
 By creating a new object like this
-
 and by then using the standard JavaScript spread operator
-
 to spread all the properties
-
 of the first value into this object
-
 and all the properties of the second value.
-
 That might be a utility function we wanna build.
-
 Now, of course, again, the types are missing here
-
 and we could therefore use any,
-
 but, again, for the reasons mentioned before,
-
 that's not ideal.
-
 It's also not ideal, by the way,
-
 because here in this case, when I use merge object
-
 and I try to merge to numbers like this,
-
 that won't work with the spread operator.
-
 If you console lock the result of merging this here,
-
 and you then compile this code,
-
 and you then run the compiled JavaScript file,
-
 you'll see an empty object will be output here,
-
 because merging two numbers doesn't really do anything
-
 when doing it like this.
-
 So, any is not a great choice here.
-
 Now, again, we can use a placeholder,
-
 we can turn this into a Generic function
-
 and use
-
 T like this.
-
 We could also use multiple placeholders,
-
 but let's start with one.
-
 Now, with that, we can still use
-
 this function like this though,
-
 and that might be exactly the kind
-
 of thing we don't wanna allow.
-
 We might be happy here with getting
-
 different kinds of values, but not all kinds of values.
-
 And that's why TypeScript allows you
-
 to add a so-called constraint to your placeholders,
-
 to your Generic type parameters as they're also called.
-
 Because these things here, these placeholders,
-
 are essentially parameters
-
 for the Generic type you are building.
-
 And you do add a constraint here
-
 by adding the extends keyword.
-
 A special keyword provided
-
 by TypeScript here in this context
-
 to allow you to define a constraint for this placeholder.
-
 Essentially, extends tells TypeScript that the actual type
-
 that will be used here when using merge object,
-
 so it will be used for these parameters in the end,
-
 must extend a certain other type of your choice.
-
 For example, number.
-
 That it must be something
-
 that has something to do with the number type
-
 to put it like this.
-
 And as a result, if I were to add number here,
-
 I'd get an error that the spread operator
-
 makes no sense when being used on a number.
-
 Because, indeed, here I don't want number,
-
 this was just an example.
-
 Instead, here we could say
-
 that we want to extend the object type.
-
 This tells TypeScript that the actual type
-
 that will be used here must be some object,
-
 any kind of object, but it has to be an object.
-
 A number doesn't qualify.
-
 Hence, I'm getting this error here
-
 that a value of type number is not an object.
-
 Instead, now we could pass an object here
-
 where we have, like, a username, let's say,
-
 and then we could pass a second object here
-
 where we had, like, a H,
-
 so that we're feeding two objects into merge object.
-

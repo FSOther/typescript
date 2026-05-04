@@ -1,108 +1,54 @@
 Now, you might recall
-
 that actually props in React
-
 also have this special children prop,
-
 which is automatically set by React.
-
 And you would be right, but I'll get back to this later.
-
 For now, I'll leave it like this,
-
 because if you're not using
-
 the children prop in your component,
-
 it's absolutely fine to define the props type like this.
-
 You don't have to mention children at all here.
-
 React does not force you, and TypeScript doesn't either.
-
 So with that component defined, back in APP.tsx,
-
 we can return a main element, let's say,
-
 and in there add our Header component like this.
-
 And you should consider adding the tsx file extension here.
-
 It's technically not required,
-
 but it's not uncommon to add it, both works.
-
 It should not be .jsx or js though,
-
 instead use .tsx or nothing at all.
-
 Now we're getting an error here
-
 because thankfully TypeScript understands
-
 that under the hood, Header will be called as a function
-
 because that is how functional React components work,
-
 and that it needs a parameter, a props parameter,
-
 which will ultimately be an object with a image property.
-
 So consequently, it expects to get this image property
-
 as a prop here on the header.
-
 Therefore, we should assign a value to this prop
-
 and it should be an object value
-
 because image is an object here,
-
 that's how I defined it.
-
 And it should be an object with a src and an alt key.
-
 Now, how do we get the values for these keys?
-
 Well, since I have an image
-
 locally stored here in this project,
-
 we can take advantage of the fact that in Vite,
-
 we can import locally stored images just like that.
-
 It would not work in Vanilla JavaScript,
-
 but it does work in Vite.
-
 And what we import here will be the path to the image,
-
 structured such that it will work in the browser.
-
 So it will actually be the path
-
 to the production-ready image, you could say.
-
 So here src is just goalsImg,
-
 and alt could now be A list of goals, whatever.
-
 Some alt text.
-
 Well, and that is it.
-
 If you save that, you should see
-
 that image here in your header.
-
 And that's working due to our own custom component
-
 being used here.
-
 But now let's revisit that idea
-
 of having this children special prop.
-
 How would that work?
-

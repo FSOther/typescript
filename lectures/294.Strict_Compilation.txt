@@ -1,520 +1,260 @@
 So that was
-
 an important first set of options.
-
 Now let's dive into these strict options
-
 because these are pretty interesting.
-
 There is this strict true option,
-
 and actually what this does
-
 is it enables all strict type checking options,
-
 so effectively setting this as the same
-
 as if you had set all these options separately.
-
 So you can either set all these options one by one,
-
 or just set this option.
-
 Of course, you wanna set the individual options
-
 if you want to have some options set to false.
-
 'Cause otherwise they're all set to true.
-
 If you want them all set to true
-
 then using just this option is of course way shorter.
-
 Now what do these options do though?
-
 Let's start with noImplicitAny.
-
 noImplicitAny is a quite interesting option
-
 that helps us write better code.
-
 Let's go to our analytics file here,
-
 and there let's add a function, sendAnalytics,
-
 that gets a data option let's say,
-
 and there we could send this to a server
-
 but here I'm just console logging it.
-
 Then I call sendAnalytics with the data,
-
 so with the string.
-
 Now as you see my IDE already complains here
-
 and so does TypeScript the compiler,
-
 because the two of course are connected
-
 if I tried to compile this.
-
 Parameter data implicitly has an any type.
-
 So this seems to be related
-
 to this noImplicitAny option.
-
 Indeed, if I set this to false,
-
 so if I set all strict options to true
-
 but I set this option to false, which I can do,
-
 then this error goes away.
-
 Both in the IDE and when we compile the code.
-
 So what does this option do?
-
 It ensures, and I'll comment it out again
-
 to turn it on again because of strict true,
-
 it ensures that we have to be clear
-
 about our parameters,
-
 about the values we're working with in our code.
-
 Here we don't give TypeScript any information
-
 about the type of data we'll get as a parameter here.
-
 And we should.
-
 If TypeScript is able to infer this,
-
 then of course, it's fine, but here
-
 how would TypeScript be able to infer it from this line,
-
 well keep in mind that this function gets declared first
-
 before this file executes.
-
 So at the point of time when the function is created
-
 there is no chance of knowing what will end up in there.
-
 So here we can fix this error
-
 by simply declaring the type and being clear
-
 about which type we use there.
-
 Now please note that if you had a variable logged,
-
 as you set this to true here,
-
 you don't get an error about this declaration
-
 even though it also get a default type of any.
-
 For variables this is okay.
-
 For parameters it's not okay.
-
 Why is okay for variables?
-
 Because what TypeScript does for variables,
-
 what is possible for variables,
-
 what's not possible here
-
 because the function is created first.
-
 Here TypeScript is able to track the values you assign.
-
 You see, okay, I got logged here like this,
-
 now I set it to true,
-
 so therefore, thereafter,
-
 if I console log logged here,
-
 it's a boolean.
-
 So TypeScript is here able to understand
-
 the flow of your code,
-
 and therefore, you don't need to be precise
-
 regarding a type here.
-
 Of course, you wanna be precise if you want to avoid
-
 that you can freely assign the new value,
-
 which you can do here because it is of type any.
-
 So you wanna still assign a type to avoid this,
-
 but TypeScript is at least able to find out
-
 if the code you're calling works
-
 with the type it currently holds.
-
 That's not the case here
-
 because there the function is defined before you call it,
-
 and therefore, TypeScript would have not change of knowing
-
 if what you pass in there
-
 can be used inside of the function.
-
 strictNullChecks is never important option.
-
 It's actually related to our button selection
-
 which we have here.
-
 Remember I had to add this exclamation mark here
-
 to make it work.
-
 Otherwise, I'd get an error.
-
 Now we can also get rid of that error
-
 without adding the exclamation mark
-
 by setting strictNullChecks to false.
-
 So let's do that here and let's save this.
-
 And as you see this error is now gone here.
-
 And I can compile all files.
-
 Now what do strictNullChecks do?
-
 They tell TypeScript to be pretty, well strict
-
 regarding how you access and work with values
-
 that might potentially hold a null value.
-
 And button here might be null.
-
 It's not always pointing at a button element.
-
 It's not always pointing at such an element
-
 because even though you have such a selector here,
-
 a button might simply not exist on the page
-
 on which this script runs.
-
 And therefore, TypeScript can't tell
-
 because it's not diving into your html file
-
 and looking at that.
-
 It can't tell whether this will be successful or not.
-
 And if this fails to return a pointer and a null node,
-
 then it will return null, well undefined to be precise,
-
 but that's treated equally here.
-
 So therefore, that button might hold null value,
-
 and therefore this code could fail.
-
 Indeed, if I comment out this button here,
-
 if I now compile everything it works
-
 because I disabled the null checks.
-
 But I, therefore, now have a runtime error
-
 because I can't call event listener,
-
 addEventListener, on null.
-
 And I got null here because I got no button.
-
 Now this is a mistake we could avoid
-
 by setting strictNullChecks to true.
-
 And that's automatically set if we have strict set to true.
-
 Where TypeScript anticipates that this might happen,
-
 and therefore, forces us to work around that.
-
 Now one cheap workaround
-
 is this exclamation mark operator here.
-
 This tells TypeScript that you, the developer,
-
 know that this button exists,
-
 or that this operation will yield a non-null value.
-
 Now maybe you do, you certainly do
-
 if you know that you are working on the HTML code
-
 and that there is a button here,
-
 that this selector here will work.
-
 So it would be fine to use the exclamation mark
-
 in this scenario.
-
 If you have another scenario
-
 where you don't know for sure if it works
-
 and you just hope that it works,
-
 then it might be better
-
 to simply wrap the code that might fail in an if check,
-
 which will be there at runtime as well, of course.
-
 You could simply check if button is true here,
-
 which it won't be if it's null or undefined.
-
 And move that code into this if check here.
-
 Now even without the exclamation mark,
-
 in strictNullChecks mode we get no error
-
 because TypeScript understands
-
 that this code is inside of this if statement
-
 and that this if statement makes sure
-
 that button is not null and that this will not fail.
-
 So this might actually be the cleaner workaround.
-
 However, of course, to save code,
-
 if you know with certainty that something does exist,
-
 using the exclamation mark is shorter
-
 and an absolutely fine option.
-
 Here I said both so that we see both,
-
 of course you just need one of the two things,
-
 either the if check, or the exclamation mark.
-
 strictFunctionTypes here is a little bit
-
 of a more advance setting catching some niche box
-
 which you might not have in many applications.
-
 It is related to, well, function types
-
 you might be setting up.
-
 So not types inside of functions,
-
 but if you define how a function should look like
-
 regarding its parameters and return value,
-
 and you create such a function type
-
 which you learned about in the basics module,
-
 then there you can introduce box
-
 if you work with classes and inheritance,
-
 which we haven't learned about yet,
-
 which we haven't used yet, and therefore,
-
 for now let's ignore this.
-
 strictBindCallApply, that can be helpful
-
 if you do work with bind, call, or apply.
-
 For that, let's quickly see an example.
-
 Here we have our button and our function there.
-
 Now let's say this would be a function, which we define here
-
 with the function keyword, or as an error function.
-
 Doesn't matter, I'll use the function keyword here.
-
 clickHandler, and in there I console.log clicked.
-
 And now here we point to at clickHandler,
-
 and for some reason,
-
 we want to make sure that when this executes,
-
 we pass in certain arguments
-
 or we set the this keyword in there to a certain value.
-
 Now let's say here we do expect a message argument,
-
 which should be a string.
-
 And we wanna output this here as well.
-
 Now since clickHandler is passed
-
 to addEventListener like that
-
 so that the browser basically executes this for us,
-
 if we wanna pre-configure the arguments
-
 which will be passed in, we can use bind.
-
 And bind, as a first argument, takes what we want to bind
-
 the this keyword to.
-
 And here we could say that does not matter to us
-
 because we're not using this in the function,
-
 so we bind it to null.
-
 Now you see here I get an error.
-
 I get an error that can be avoided
-
 if I set strictBindCallApply to false.
-
 Now you see the error is gone.
-
 Now what does this option do, therefore?
-
 It basically checks on which function you're calling
-
 bind, call, or apply.
-
 And it checks if what you're setting up here makes sense.
-
 And here TypeScript sees we want a argument,
-
 we want the parameter in clickHandler.
-
 With bind, we're not configuring that though.
-
 And therefore, here we get an error.
-
 If I set this back to true,
-
 or I just commented it out
-
 because, of course, it is set to true by default
-
 by setting strict to true,
-
 we, therefore, get the error again.
-
 Now if we wouldn't expect an argument here,
-
 you see the error would be gone down there
-
 if we only removed the message,
-
 because TypeScript understands our code
-
 and sees you're not passing in any arguments
-
 to that method or to this function
-
 because it doesn't take any, so that's fine.
-
 But of course, here we want one so we get an error.
-
 The solution is to provide this second argument here,
-
 which is the first argument you wanna pass in.
-
 Now TypeScript is really smart here.
-
 And for example, if I pass in a number,
-
 it would still complain because it understands
-
 that I need a string here.
-
 If I pass in a correct string though,
-
 like you're welcome,
-
 then it does not complain anymore
-
 because not it understands this and it sees
-
 that this is matching my function definition here.
-
 So this is a very useful behavior that makes sure
-
 that you don't accidentally use bind, call, or apply
-
 in a way that does not work with your code.
-
 Now strictPropertyInitialization becomes important
-
 once we work with classes.
-
 We can ignore it for now.
-
 noImplicitThis also does not matter right now.
-
 It has to do the this keyword
-
 and TypeScript basically tries to warn you
-
 if you use the this keyword in a place
-
 where it's not clear what it refers to.
-
 And alwaysStrict simply controls
-
 that the JavaScript files which are generated
-
 are using strict mode so that this is added.
-
 With that, we covered all these strict options.
-

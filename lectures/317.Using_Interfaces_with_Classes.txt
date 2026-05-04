@@ -1,288 +1,144 @@
 Now if we come back to this interface here,
-
 the question is why do we need this?
-
 Wouldn't we have the exact same thing
-
 if we would add a custom type here and there?
-
 The difference is just that we have to add an equal sign
-
 and then we're saying the Person type is an object
-
 which looks like this?
-
 And indeed, if we save that,
-
 it compiles without errors.
-
 So we could replace our interface with such type
-
 and it works as before.
-
 So why do we have an interface then?
-
 Well, an interface
-
 and a custom type are not exactly the same
-
 whilst often, you can use them interchangeably
-
 and you can use an interface instead of a custom type
-
 or the other way around.
-
 There also are some differences.
-
 Well, one nature difference is
-
 that interfaces can only be used
-
 to describe the structure of an object,
-
 you can use type for that as well,
-
 but instead of a custom type,
-
 you can also store other things
-
 like union types and so on what we did early in the course.
-
 That sounds like type is therefore more flexible,
-
 but the other side of the coin is that interface is clearer.
-
 When you define something as an interface,
-
 it's super clear that you want
-
 to define the structure of an object with that.
-
 And indeed when it comes to defining object types,
-
 you more often see interfaces out there in the wild.
-
 Then, you see custom types.
-
 Now, another thing you can do with interfaces
-
 but you would only be able
-
 to do with custom types is
-
 you can implement an interface in a class.
-
 What do we mean by that?
-
 The reason why you often work with interfaces is
-
 that an interface can be used
-
 as a contract a class can implement
-
 and a class then has to adhere to.
-
 What do we mean with that?
-
 Let's say our interface is not a Person interface
-
 with the name and the age,
-
 but instead we name it Greetable.
-
 Now this might look like a strange name
-
 but in the end this just says
-
 any object that should be treated
-
 as Greetable has to be object with a name
-
 and with a greet method.
-
 So now, we could say this here,
-
 this user1 variable should hold a Greetable object
-
 and of course now we get an error
-
 because we have more than just name and greet.
-
 But we could use this interface
-
 to share it amongst possibly multiple classes we have
-
 to ensure that every class
-
 that adheres to this interface has to have a name property
-
 and has to have a greet method.
-
 So here, we could now add a Person class,
-
 the name is available again
-
 because we renamed the interface.
-
 And now, tell typescript
-
 and this class should basically adhere to this interface.
-
 It should implement this interface.
-
 It should follow that contract setup by this interface.
-
 We do this by adding the implements keyword
-
 after the class name.
-
 And then, the name of our interface, Greetable.
-
 And you can implement more than one interface.
-
 That's a difference compared to inheritance.
-
 You can inherit only from one class,
-
 you can implement multiple interfaces
-
 by simply separating them with a comma,
-
 so there, we could have another interface
-
 if we had one.
-
 Here, I only have one though.
-
 And now, the implication of this is that
-
 we get an error here
-
 because our class incorrectly implements the interface.
-
 It does not have the name property,
-
 does not have the greet method.
-
 So now, we have to set this here in our class,
-
 maybe I'll set a constructor
-
 where we get a value for the name,
-
 and then set it up like this,
-
 and where we also add our greet method
-
 where we then might have this logic from out there.
-
 Now, in our class, we can have more that that.
-
 We can have more fields,
-
 we can have more methods,
-
 we can also extend this class,
-
 we can work with this class as we always can.
-
 But we're forced to implement this method correctly
-
 to have this name property
-
 because we're implementing this interface.
-
 And therefore, interfaces are often used
-
 to share functionality amongst different classes
-
 not regarding their concrete implementation.
-
 You can't have implementation or values
-
 inside of interfaces but regarding the structure,
-
 regarding the features a class should have.
-
 It's a bit like working with abstract classes,
-
 therefore, the difference being
-
 that an interface has no implementation details at all,
-
 whereas abstract classes can be a mixture of
-
 you have to overwrite these parts
-
 and I have a concrete implementation parts.
-
 That's an important difference
-
 between interfaces and abstract classes.
-
 Now with that however,
-
 we have our person class here.
-
 And now here, user1 can be created
-
 by using new Person
-
 and feeding in the name for example.
-
 And now, use see it's okay
-
 that we have this age here in user1
-
 because we boat user1 based on Person,
-
 Person implements Greetable,
-
 and you can add more than Greetable ones in a class
-
 but you have to satisfy the conditions setup
-
 by the interface.
-
 And therefore now, if we save everything,
-
 we have a valid code,
-
 and if we log our user1 down there with console.log,
-
 we see that it is a normal object
-
 with the age and the name in this case,
-
 but the key takeaway is that it is based on a class
-
 which implements the interface.
-
 And you can then all use the interface as a type.
-
 Of course, we could have set this to type Person,
-
 but as you see, using type Greetable here it works
-
 because the Person object
-
 which we store in the user1 class in the end is based
-
 on the Greetable interface.
-
 It implements this.
-
 So that's another powerful feature.
-
 You can use an interface as a type on some constant
-
 or variable which will then actually store another class
-
 of another type which in turn is based on the interface type
-
 because it implements it.
-
 So that's interfaces in a nutshell.
-
 Lot of powerful features included.
-

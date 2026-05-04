@@ -1,76 +1,38 @@
 Now, there is one last
-
 interface-related feature I also want to show you.
-
 I did already show you that you can kind of
-
 extend interfaces by using this
-
 declaration merging approach
-
 where you simply repeat the definition
-
 of the interface and behind the scenes,
-
 TypeScript will merge the two together.
-
 Instead of doing that, you can also extend
-
 an interface with help of the extends keyword.
-
 For example, if we had another interface,
-
 the authenticatable admin, let's say,
-
 and this should be based on this authenticatable interface,
-
 but should then kind of extend it,
-
 you could do so by using the extends keyword here,
-
 which you can also use on classes
-
 to inherit from other classes.
-
 So you can use inheritance with interfaces as well.
-
 After extends, you add the interface which you want
-
 to inherit from like authenticable here.
-
 What you can now do is to find a new interface,
-
 which is based on this interface
-
 and which will get all the properties
-
 and methods of this base interface.
-
 But you can now add additional properties
-
 and methods like for example, role,
-
 which maybe should be set to admin,
-
 or super admin here, or anything like that.
-
 Compared to declaration merging,
-
 the idea here when using the extents keyword
-
 is that we're not touching the original interface.
-
 This stays the way it is.
-
 Instead, we create a new additional interface
-
 so that we have two interfaces in total,
-
 which simply builds up on the other interface.
-
 Which is a different use case
-
 and that's therefore also something you can do
-
 with interfaces.
-

@@ -1,92 +1,46 @@
 Now when using inheritance,
-
 you might face one problem.
-
 Let's say inside of this work method,
-
 you for some reason needed access
-
 to the first name of the user.
-
 Now, at the moment this is not that easy
-
 because we have setters for first name and last name,
-
 but we only have a getter for the full name.
-
 Now of course we have firstName stored here
-
 in this _firstName private property though.
-
 But inside of the extending class,
-
 you don't have access to that.
-
 If you use the this keyword,
-
 you can access the firstName setter,
-
 you can access the lastName setter,
-
 and you can access the fullName getter and the jobTitle.
-
 But _firstName can't be accessed here.
-
 If I try to do that, I'm getting an error
-
 that this is private
-
 and only accessible within the class user,
-
 not inside of the extending class.
-
 And super doesn't change this, by the way.
-
 You also can't access _firstName with that.
-
 So what can you do in situations like this?
-
 Well, of course you could change firstName to be public.
-
 That would get rid of the error.
-
 But now _firstName can also be accessed
-
 outside of the class.
-
 So for example, here,
-
 I could now access max._firstName and change it,
-
 which might not be what I want.
-
 So what you should use instead is protected
-
 because protected works like private,
-
 but does give extending classes access.
-
 That's the key difference.
-
 With protected, access from outside the class,
-
 like here, is not possible.
-
 firstName is protected, you can't access it.
-
 But it can be accessed from inside extending classes.
-
 So here in Employee,
-
 I can now access this _firstName.
-
 So therefore the protected keyword
-
 is another crucial keyword.
-
 If you have a scenario where you have some inheriting class
-
 that should access some private property with protected,
-
 you can make this work.
-

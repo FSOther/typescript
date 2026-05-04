@@ -1,90 +1,45 @@
 So union types are another
-
 very useful feature if you need to work
-
 with multiple acceptable value types.
-
 But what if you need to work with multiple values?
-
 Not value types necessarily, but values?
-
 Well for that, in JavaScript, you have arrays and objects.
-
 So let me create a new TypeScript file here,
-
 arrays and objects.
-
 And in that file here, let's create a new array,
-
 and I'll store it in a variable, and I'll name it hobbies.
-
 So I'll create an array, as you always do in JavaScript.
-
 And in there, I'll have sports and cooking.
-
 So two strings in that array.
-
 Now let's see what happens if I try to push a new value
-
 into that array, that for whatever reason is a number.
-
 As you see, I'm getting an error here that an argument
-
 of type number is not assignable in a place
-
 where a string is expected.
-
 And this example here really shows us
-
 how powerful TypeScript is in the end,
-
 because TypeScript here understands
-
 that hobbies is a variable
-
 that stores an array full of strings.
-
 So TypeScript correctly infers that the type
-
 of hobbies is an array,
-
 but it's an array of strings
-
 represented in TypeScript like this,
-
 the type of value inside of the array
-
 followed by the opening and closing bracket.
-
 That's the type name of a string array in TypeScript.
-
 But consequently, you could also explicitly
-
 assign this type here if you wanted to.
-
 But of course, there is no reason to do that here
-
 since it's correctly inferred.
-
 But since TypeScript understands this structure of disarray,
-
 it does not allow us to push a number into disarray.
-
 And that's really why TypeScript can be so useful,
-
 because you cannot just use it for simple types
-
 where it's already helpful,
-
 but also for more complex types like arrays,
-
 because it understands that an array type in the end
-
 is the combination of two types.
-
 The main value is an array, but it's an array of strings
-
 and TypeScript understands this combination,
-
 and that's of course really useful.
-

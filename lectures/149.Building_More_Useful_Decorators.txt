@@ -1,266 +1,133 @@
 Now, with the knowledge about factory functions,
-
 or factory decorators, we can do quite interesting stuff.
-
 We could trade a new decorator factory with template,
-
 for example.
-
 And here, I expect to get a template,
-
 which should be some string.
-
 And a hookId, which should also be a string.
-
 Then here, I return my anonymous function,
-
 which is the actual decorator, as you've learned.
-
 Because again, I have a decorator factory.
-
 And in there, I want to render some template,
-
 which should be some HTML code,
-
 into some place in the dom, where I find this hookId.
-
 So now we can go to index.html and add such a place
-
 so that we can see that this works.
-
 We can add a div here, with an id of app, maybe.
-
 And then in app.ts, instead of logger,
-
 I add WithTemplate.
-
 Let's pass an empty string as a first argument for now,
-
 and app as a second argument.
-
 So, this ID I assigned to the div here.
-
 And now inside of that inner function
-
 is our actual decorator.
-
 Inside of this decorator function,
-
 I want to reach out to the element.
-
 To the hook element with document.getElementById.
-
 For the hookId we're getting here as an argument.
-
 And if HookEl is a thing that exists, then
-
 I want to access it's innerHTML,
-
 and set this equal to template, let's say.
-
 A very simple set up, of course,
-
 but this should do the trick.
-
 Now, I'm not interested in the constructor.
-
 And to tell typescript that I'm not interested here,
-
 I can add an underscore as a name,
-
 which basically signals the typescript,
-
 "Yeah, I know I get this argument, but I don't need it.
-
 I have to specify it though.
-
 So, with this underscore, I tell you that I'm aware of it,
-
 but that I won't use it."
-
 Because, all I want to do for now,
-
 is I want to render this year.
-
 So now when we add WithTemplate here,
-
 here we could add a h1 tag,
-
 My Person Object like this.
-
 Also, close it.
-
 And if we now saved that, it compiles without errors.
-
 And indeed, here you see this was rendered on the screen.
-
 And this hopefully shows you the power
-
 you have with decorators.
-
 You can build really advanced decorators like this one,
-
 which all of a sudden does some magic behind the scenes.
-
 And that is what I mean with metaprogramming.
-
 We add some logic here, which we could expose
-
 if this would be a third-party library
-
 we share with other users.
-
 We could expose this as part of the library,
-
 and anyone who uses our library
-
 can import this decorator function
-
 and add it to a class to then magically
-
 render some content all of a sudden.
-
 And of course, you are, you're not even limited to do that.
-
 If you would want to output the name which is part of the
-
 class when it gets instantiated,
-
 you can do that as well.
-
 We get our constructor: Function here after all.
-
 Now what we can do with that
-
 is we can create a new person here,
-
 by calling our constructor,
-
 because that is our constructor: Function here, after all.
-
 Let me convert this to any, so the typescript allows this
-
 and doesn't think it's a normal function.
-
 And then we could go to our hook element,
-
 and query for a h1 tag, which you, of course in practice,
-
 will not always have.
-
 But for demo purposes,
-
 I assume we will always have one here.
-
 Whoops, and I should always close the h1 tag down there
-
 now that I see it.
-
 And then here, with an exclamation mark,
-
 again assuming that we always find an h1 element,
-
 we can set a textContent equal to p.name.
-
 And If I do that and save this,
-
 now I output the name, which is part of the object
-
 here in the template.
-
 So this is something you can do, and of course
-
 you can write way more elaborate decorators
-
 than I'm doing it here.
-
 Consider Angular,
-
 a very popular framework that uses typescript.
-
 They use decorators, like this component decorator,
-
 to allow you to pass in an object
-
 where you specify things like the template
-
 for discomponent.
-
 And the selector in the dom
-
 where this template should be rendered.
-
 This is relatively close to what we defined here.
-
 A template, and then a place where it should be rendered.
-
 Now needless to say, the Angular decorators
-
 are of course way more advanced and elaborate
-
 than our basic decorator here.
-
 Nonetheless, the core idea is the same.
-
 Angular gives you the decorators here,
-
 so that you can specify some HTML code,
-
 which can be connected to your component class
-
 that will be rendered to the dom
-
 when this component gets rendered.
-
 Now in case you don't know how Angular works,
-
 that's not a problem.
-
 You just have to understand here,
-
 that it works with classes and decorators,
-
 and then it does basically what we did here.
-
 So that's one other thing you can do with decorators,
-
 or as specifically here, with decorator factories.
-
 Because that allows us to pass in that extra conflict
-
 which we need here.
-
 And that's also what I meant with metaprogramming.
-
 We're creating things, we're creating decorator functions,
-
 which you might say have some impact on the end user.
-
 In the NP dual render or something on the screen here.
-
 But we do that with a tool
-
 which we expose to other developers.
-
 Because this decorator is such a tool,
-
 which other developers have to use
-
 by adding it to a class in this example.
-
 Otherwise, this would do nothing.
-
 So we provide extra utilities to developers,
-
 which the other developers can use to, for example,
-
 conveniently render something on the screen
-
 for a giving class.
-
 That's the same thing Angular does here,
-
 in a more advanced way,
-
 and it is something that graders are perfect for.
-

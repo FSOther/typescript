@@ -1,38 +1,19 @@
 When working with TypeScript
-
 or when using TypeScript in your projects,
-
 you'll very often use not just TypeScript in your code.
-
 Instead, it's quite common
-
 to also use third-party libraries,
-
 third-party packages you might wanna use in your project.
-
 And, of course, you can use such libraries
-
 in TypeScript projects as well.
-
 However, there are a couple of potential problems
-
 or things to be aware of,
-
 and therefore, in this section, we will explore
-
 how you can use TypeScript with JavaScript libraries.
-
 So libraries that are not written in TypeScript
-
 will make sense of .d.ts files
-
 and learn what those files are all about.
-
 And we'll also explore libraries that are written
-
 with TypeScript in mind,
-
 and that might even be TypeScript first
-
 and really only work in TypeScript projects.
-

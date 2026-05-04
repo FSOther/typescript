@@ -2,166 +2,84 @@ Lecture resource:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 - 
 We saw how we can build quite amazing things
-
 with decorators, decorator factories and then also
-
 by utilizing the return values of decorators
-
 which in the examples,
-
 the class decorator allows us to
-
 basically replace the class we added the decorator to
-
 with a class that is totally different,
-
 that builds up on the existing class, like in our case
-
 and that therefore might add some functionalities.
-
 Now you can return values in other decorators too
-
 but not in all of them.
-
 Or not in all them the return value is respected.
-
 Now, decorators where you can return something
-
 are the decorators you can add to methods
-
 and the decorators you add to accessors.
-
 So here on the setter log 2 and log 3 on the method
-
 these two decorators, log 2 and log 3 these also could
-
 return something and TypeScript would use it.
-
 The decorators on properties and on parameters
-
 of course, also can return something
-
 but TypeScript will ignore it.
-
 So return values are not supported there
-
 or are not used to be precise.
-
 Now what can you return on log 3?
-
 So on method decorators and on log 2,
-
 so on accessor decorators though.
-
 You can return a brand new property descriptor.
-
 Log 2 and log 3, which are the two decorators
-
 I'm talking about, right?
-
 Log 2 and log 3, both get the descriptor off the property,
-
 off the method, you could say, they are attached to.
-
 Because an accessor is kind of like a method,
-
 you have a function that gets executed there.
-
 Now the property descriptor is a JavaScript thing,
-
 as you know, if we have a look at this page again
-
 and we reload it we see that, for example
-
 for our accessor decorator,
-
 the property descriptor is this object here which has
-
 the configurable and enumerable
-
 and get and set properties.
-
 And for the method decorator our descriptor is
-
 this object here which also has
-
 configurable, enumerable, value and writable.
-
 And this is vanilla JavaScript.
-
 You have property descriptors in vanilla JavaScript as well.
-
 They allow you to define a property in more detail.
-
 You can of course assign a value to a property
-
 and since we're talking about a method,
-
 the value is a function in this case
-
 but you can also control whether it's writable
-
 so if it can be changed after it has been created,
-
 after the object has been created.
-
 Whether it's configurable,
-
 so if you can change it's
-
 configuration and if you can delete this property.
-
 And if it's enumerable,
-
 which means if it shows up when you loop
-
 through your object for example.
-
 And therefore a method for example
-
 by default this is set to false so that
-
 if you use a for in loop on an object
-
 this method is not printed as a property.
-
 For an accessor we also got
-
 configurable and enumerable,
-
 but we get and set and there you could of course,
-
 also, for example, return a new descriptor which
-
 assigns a brand new set method or which suddenly
-
 also adds a get functionality.
-
 So here in log 2 and log 3 you can return a new
-
 descriptor object in the end and make it clear
-
 to TypeScript that you will do so by returning
-
 or by setting the return type to property descriptor
-
 and there you can therefore also set the set keyword,
-
 the get keyword, the configurable or the
-
 enumerable property and change how this accessor
-
 or method is configured.
-
 Now I don't wanna do that here for the accessor,
-
 there's nothing interesting I could do with it
-
 therefore I will not return a property descriptor,
-
 but I will actually show you an example with the method
-
 decorator where we will return something and we can build
-
 interesting with the help of decorators.
-

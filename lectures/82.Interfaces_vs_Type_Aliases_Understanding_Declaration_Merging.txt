@@ -1,152 +1,76 @@
 Now, when using interfaces as object types,
-
 as we're doing here, you might have one question:
-
 why would you use an interface?
-
 After all, you could also create a custom object type
-
 with the help of the "type" keyword,
-
 as you learned before in the course.
-
 You could create such a "type" alias,
-
 add an equal sign here,
-
 and you're done.
-
 You have exactly the same logic, the same feature,
-
 if you want to call it like this,
-
 now just using this "type" keyword instead of an interface.
-
 So why would you do it with an interface
-
 instead of using this "type" alias feature,
-
 about which you already learned?
-
 And you would be right with that question.
-
 If all you want to do is define the shape of an object,
-
 if you want to create a custom object type,
-
 then you could absolutely do that
-
 with the "type" keyword as well, in most cases at least.
-
 And in most cases,
-
 it therefore comes down to personal preference.
-
 Whether you want to define object types
-
 with the help of the "type" keyword like this
-
 or as interfaces like this,
-
 both work and both can be done.
-
 Now, there are some subtle differences
-
 that can matter in certain scenarios,
-
 but I'll be honest, in many scenarios, they won't.
-
 But one difference that could matter
-
 is a feature called "declaration merging,"
-
 which means that when working with interfaces,
-
 you can easily add extra properties
-
 or methods to this object type
-
 by defining the same interface again.
-
 So, using exactly the same name again here,
-
 that's something you can do,
-
 and you could add a "role" here.
-
 Now, here, I'm not getting an error
-
 that this name is already taken.
-
 Instead, TypeScript, behind the scenes,
-
 will merge these two interface definitions into one,
-
 which is why I'm getting an error down here,
-
 where I am being told that I must add this role property
-
 to this user object.
-
 Of course, you might wonder why this would be useful,
-
 after all, we could have just added role right here
-
 in the first definition instead of defining it again,
-
 and you would be right.
-
 This "declaration merging" feature is mostly useful
-
 if you are working with interfaces
-
 that are coming from another file or, more commonly,
-
 from some library or anything like that,
-
 so where you maybe want to extend something
-
 you don't directly control.
-
 If you want to add a property
-
 to some interface you don't directly control,
-
 you could do that with "declaration merging" like this.
-
 That would be one place where this feature can be useful,
-
 and that is then something you can't do with "type" aliases.
-
 If you were to define this as a "type"
-
 and then define it again as a "type,"
-
 you would get an error that the name is already taken.
-
 So that is one pretty niche scenario
-
 where you must use "interface" instead of "type."
-
 But in many other cases, it simply won't matter.
-
 And instead, as mentioned,
-
 it will come down to personal preference.
-
 You will see both out there in the wild,
-
 you'll see lots of "interface" usage in certain projects,
-
 and almost no "interface" usage in other projects.
-
 Instead, their custom types with the "type" keyword
-
 might be used in all the places,
-
 and in the end, you can use whatever you want.
-
 It's just important to know about both features
-
 and to know about the subtle differences.
-

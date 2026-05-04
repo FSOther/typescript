@@ -1,212 +1,106 @@
 Now speaking of callbacks and function types,
-
 there it works pretty much in the same way.
-
 Let's say we have a new function up there
-
 addAndHandle, let's say.
-
 There we expect to get two numbers
-
 and then I also want to get a callback function here.
-
 So a function which is passed and is a argument
-
 that should do something with the result,
-
 then here we could generate the result, of course.
-
 But not only returning it,
-
 but instead I want to call the callback function
-
 and pass in result.
-
 Now for that, I want to be really clear
-
 that callback should be a function.
-
 So again, I'm using that function type definition
-
 that maybe does not return anything
-
 but it does take a number as an argument
-
 because we're passing it a number here.
-
 So the callback function,
-
 the function we're passing into this function as a parameter
-
 should accept a number.
-
 Now down there, we would call addAndHandle,
-
 pass in 10 and 20 and then pass in a function.
-
 For example, an anonymous function here.
-
 So now here, when we call the function,
-
 this is of course, not a function type
-
 but a concrete value we're passing in
-
 for this third argument.
-
 So, this now here is an anonymous function creating here
-
 and there we know we'll get a number.
-
 Maybe name it result here
-
 and then we can do with it whatever we want.
-
 And now if you compile this,
-
 we see this log down there, 30,
-
 which is the result of our callback function
-
 which we passed to addAndHandle
-
 where addAndHandle combines to two numbers
-
 and then calls the callback
-
 where the callback has to meet this condition here.
-
 The advantage of us defining the callback function
-
 definition here is that inside of the function we pass
-
 it is a callback types that is able to infer
-
 that result will be a number
-
 and hence we could do anything with result here.
-
 What we could do with a number
-
 without explicitly stating the type here
-
 because TypeScript knows the result will be a number
-
 because we made it really clear
-
 that the callback will get one argument
-
 which is a number.
-
 Hence, if we would expect a second argument here
-
 in the callback,
-
 we'd get an error because we know
-
 well, the callback we expect in our addAndHandle function
-
 only should have one argument.
-
 So if we then pass in a callback function
-
 which takes a second argument,
-
 that clearly is a mistake.
-
 The only thing TypeScript does not pick up
-
 is if we return something here.
-
 If a return result and the callback does return something,
-
 even though we made it clear
-
 that it shouldn't return anything.
-
 This however, is not a mistake or a bug in TypeScript.
-
 It actually happens on purpose.
-
 By specifying void here on our callback type,
-
 we're essentially saying we'll ignore any results
-
 you might be returning here.
-
 So we're basically saying in addAndHandle,
-
 where we get that callback function,
-
 we'll not do anything with the return type.
-
 That's why you'll be able to return something here
-
 without punishment but you know,
-
 because it's clearly defined here on the callback type,
-
 that the callback will not do anything
-
 with the value you might return here.
-
 So that addAndHandle inside of the function
-
 will not do anything with that value
-
 you might be returning.
-
 And that's of course a useful piece of information.
-
 You might expect that in here,
-
 we're doing something with the value returned
-
 by the callback, and by specifying this type here,
-
 we make it really clear that inside of addAndHandle
-
 we're not interested in any return value.
-
 So this does not force you to pass in a callback
-
 that does not return anything.
-
 It just tells you that anything you might return
-
 will not be used.
-
 For the parameters, it's of course different.
-
 There this is enforced
-
 because here it really matters that you know
-
 if you're passing a callback that expects more parameters.
-
 Well, then you'll get an error
-
 or you'll not get the result you want
-
 because I only give you one result.
-
 So there we can't just ignore what you might want
-
 as it's the case for the return type.
-
 We ignore that here for passing something in
-
 where the addAndHandle function is responsible for that
-
 because that's where the callback gets called.
-
 This is why parameters are enforced
-
 and TypeScript is really strict
-
 regarding the number and type of parameters
-
 of callback functions and why it doesn't really care
-
 about the return type.
-

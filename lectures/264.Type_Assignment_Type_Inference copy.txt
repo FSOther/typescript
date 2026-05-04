@@ -1,264 +1,132 @@
 So we're using the core types
-
 of number, boolean, and string.
-
 And here in the list of parameters of this function,
-
 we're always explicitly assigning the types
-
 with a colon after the parameter name,
-
 and then the name of the type.
-
 So here, the names are number, boolean, string.
-
 And in case you were wondering,
-
 these are now special identifiers.
-
 This overall, here, is a special syntax
-
 which is added by TypeScript.
-
 It's not part of the compiled JavaScript code.
-
 If we check that code here,
-
 these type assignments are gone,
-
 because JavaScript does not support them.
-
 This colon thing after a variable,
-
 or after a parameter.
-
 And then number and boolean and string.
-
 These special key words.
-
 This is introduced by TypeScript.
-
 The TypeScript compiler understands it.
-
 The IDE here supports TypeScript,
-
 and therefore doesn't complain about these special keywords.
-
 JavaScript does not understand this syntax.
-
 It doesn't understand a colon after a parameter,
-
 or a colon after a variable,
-
 and then the special number or string keyword.
-
 JavaScript doesn't understand this and therefore
-
 this is not part of the JavaScript output.
-
 It's really just used by the TypeScript compiler.
-
 And then, well, it is a compiler
-
 because it converts this code to JavaScript code.
-
 Side note, you also see it switches const for var
-
 but that's something I'll come back to later.
-
 So, we have our explicit type assignments here
-
 and it's only understood by TypeScript.
-
 Great, why don't we have them down there?
-
 I don't have explicit type assignments here.
-
 And, by the way, also not here
-
 when we calculate the result, for example,
-
 because TypeScript has a built-in feature
-
 which is called type inference.
-
 This means that TypeScript does its best,
-
 and it does a pretty good job there,
-
 to understand which type you have
-
 in a certain variable or constant.
-
 And here, for example, it understands that number1
-
 will always be of type number in the end,
-
 because you initialize it with a number.
-
 Now, this actually is a constant,
-
 so it's even more specific than that.
-
 And the type it identifies here is not just any number,
-
 it's the number five.
-
 Because you'll not be able to assign a new number,
-
 or a new value to a const value anyways.
-
 If you were to change this to a variable,
-
 so if you would use let instead,
-
 then of course this would not break anything.
-
 We can use a variable there, it might not be best practice
-
 because this value never changes
-
 but it's also not horrible.
-
 But now if hover over this we see
-
 TypeScript doesn't say, okay, this has to be a five.
-
 But still it detects that the type here is a number.
-
 Now, we absolutely could write this code here on our own.
-
 We can add a colon after the variable name
-
 on the left side of the equal sign,
-
 and then the name of the type.
-
 So, basically the same we did
-
 in the parameters of this function.
-
 But, this is redundant and it actually
-
 is also not considered to be a good practice.
-
 Because TypeScript is able
-
 to perfectly infer this type from there.
-
 So, assigning this is not a good idea.
-
 This only changes if you would create this variable
-
 in a unassigned way.
-
 Like this, if you don't initialize it immediately.
-
 Then, it's a good practice to tell TypeScript
-
 which value will eventually be stored in there.
-
 So that when you later assign a value to it,
-
 and of course it's a bit redundant here
-
 to split this in two lines.
-
 I'm just doing this for demo purposes.
-
 But now if I assign this here,
-
 this breaks because I told TypeScript in advance
-
 that this will be of type number.
-
 You don't have to do that.
-
 It also works if you don't do that.
-
 But now you could also add this five
-
 and you wouldn't get an error
-
 because you're not telling TypeScript
-
 anything about the type
-
 which will be stored in this variable
-
 and therefore TypeScript allows any type.
-
 If you instead add colon number here,
-
 you're telling TypeScript, "Hey, eventually,
-
 "a number will be stored in there."
-
 And hence if you later store something else in there,
-
 like in this case where we stored a string,
-
 you'll get an error here in the IDE,
-
 and of course also if you compiled your code.
-
 We'll get the error we already saw before.
-
 So this is how you can assign types.
-
 Now, even if TypeScript just inferred a type,
-
 and let me fix this,
-
 it will yell at you if you break that inferred type.
-
 Actually, it's wrong to say even because of course it does,
-
 why would it not do that?
-
 Type inference is there for you to save you code,
-
 to avoid that you manually have to assign a type.
-
 Of course TypeScript yells at you
-
 if you then use a wrong type,
-
 a type that it did not infer.
-
 For example, here if resultPhrase is created with let
-
 so that it's variable,
-
 then TypeScript here infers that this will be of type string
-
 because we initialize it with a string.
-
 So this is basically the equivalent to not initializing it,
-
 and setting the type on our own,
-
 and then assigning a value later.
-
 Now, if we change resultPhrase to, let's say,
-
 zero here, for whatever reason we might wanna do that,
-
 well then we get an error here
-
 that type zero is not assignable of type string.
-
 And that makes sense, right?
-
 TypeScript inferred that we wanna store a string,
-
 we're now trying to store a number,
-
 we get an error.
-
 That's the job, the core task of TypeScript.
-
 Checking types and yelling at us
-
 if we're using them incorrectly.
-

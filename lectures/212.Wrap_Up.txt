@@ -1,76 +1,38 @@
 So we added webpack, a very important tool
-
 that allows us to bundle together our different files
-
 into one bundle.
-
 This really helps us decrease the amount
-
 of HTTP requests made and, therefore,
-
 can speed up our application.
-
 If you find yourself working with a lot of individual files,
-
 which you typically do in bigger projects,
-
 tools like webpack are a must-use
-
 and webpack is the most important and prominent tool
-
 that helps you with that
-
 so, therefore, it's the tool I wanted to show here.
-
 You see that webpack is highly configurable
-
 and as I mentioned multiple times, the official docs
-
 of webpack are the place to go to learn all about it.
-
 About different loaders, different error settings
-
 you can set up and how it works, in general.
-
 So, definitely dive into this documentation
-
 if you want to become a webpack master
-
 and you want to have a more elaborate setup.
-
 Our basic setup here, however, already allows us
-
 to compile TypeScript files with webpack
-
 and then bundle together all the output
-
 into one single bundle.js file.
-
 And we also setup a configuration for development
-
 which makes debugging easier
-
 and gives us more helpful error messages.
-
 And we get a production setup
-
 which gives us a highly optimized code
-
 which we then could deploy to a server
-
 to ship as little code as possible to it.
-
 And that's it.
-
 webpack really is a core tool and being able to use it
-
 and having a configuration
-
 that really just works, is super important.
-
 So it is a must-use in any modern project, I would say,
-
 and in this module, you'll learn how you can get started
-
 with it in your TypeScript projects.
-

@@ -1,132 +1,66 @@
 We can't ignore isolated modules
-
 but there is one other option,
-
 which is actually not even mentioned here,
-
 which I still want to mention myself though.
-
 And that's the no emit on error option.
-
 You can set this to true or false
-
 and the default is false.
-
 Now what does this do?
-
 If we set it to false, let me show you
-
 where this might be a problem.
-
 It is a problem if we introduce an error
-
 or it can be a problem.
-
 Let's say here, I do have my button
-
 and I remove this exclamation mark.
-
 Now even though we don't fully understand what's going on
-
 the problem here is simply is that TypeScript does not know
-
 that we certainly have a button here.
-
 After all, when querying for a button
-
 we might not get one if there is no element in the DOMs
-
 that's satisfying this selector
-
 then this will return now.
-
 And that's basically what TypeScript complains about.
-
 Here we access something on a potential null object
-
 and that's not good.
-
 Now that's an error we have here.
-
 If we compile our code, we also get this error
-
 here in the console.
-
 Nonetheless, the file is created.
-
 So even if I delete the app.jsfile it will be recreated.
-
 So even if we have an error,
-
 TypeScript creates a JavaScript file.
-
 This might or might not be wanted.
-
 Maybe you have an error in your TypeScript file
-
 and you don't really know how to work around it
-
 but you know it will not be a problem in the final app.
-
 Like here, even if we don't know about the exclamation mark.
-
 Well if we don't know about the exclamation mark
-
 we might not know how to disable this error, basically.
-
 But still we know that this will work in our page here.
-
 So we might be fine with compiling this
-
 despite having an error.
-
 But, of course, in reality you should aim
-
 for error free projects and rather learn
-
 how you can work around this issue than ignore it.
-
 Nonetheless, you could set this to false
-
 or not set it at all, because false is the default,
-
 if you are fine with generating JavaScript files
-
 if you have an error.
-
 If you set this to true, however,
-
 what will happen is that problematic files
-
 will not be generated.
-
 If I now rerun this...
-
 You see, nothing is generated actually.
-
 Even the analytics.ts file is not output there
-
 if we have some content in there
-
 besides console.log, you see it's not getting generated.
-
 And the reason for that is
-
 that we have an error in the file.
-
 And if any file fails to compile no files
-
 will be omitted.
-
 So here, therefore, we have to make sure
-
 we fix this error before we then can get TypeScript
-
 to again compile files for us.
-
 And, therefore, it is an option I typically like to set
-
 because I'm not interested in getting JavaScript files
-
 if I still have errors in my TypeScript files.
-

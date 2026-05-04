@@ -1,14 +1,9 @@
 Example tsconfig.json & Deep Dive
 The tsconfig.json file can be scary! Over all those years, dozens of options and settings have been added - and trying to make sense of them all is almost impossible.
-
 Thankfully, you really don't need to understand them all, though!
-
 Very often, you'll be working in a project created with build tools like Vite which create a fitting tsconfig.json file for you.
-
 If you DO want to understand some of the settings you see in those generated tsconfig.json files, the official reference can be helpful.
-
 And if you need a basic tsconfig.json file because you're working in a project that doesn't come with one, you can consider using this one (also available here and described in greater detail here):
-
 {
   "target": "ES2022", // Good for modern browsers or Node.js
   "compilerOptions": {

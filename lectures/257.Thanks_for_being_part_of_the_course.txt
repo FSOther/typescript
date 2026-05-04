@@ -1,54 +1,27 @@
 Congratulations, you finished this course,
-
 and you therefore learned a lot about TypeScript
-
 and how to use it in your projects.
-
 You learned a lot about its essentials
-
 and also more advanced features like generic
-
 or derived types, for example.
-
 Now, as I mentioned at the beginning of this course,
-
 you should definitely continue practicing what you learn
-
 because only practice makes perfect,
-
 and therefore a good next step
-
 now that you finish this course
-
 is to apply the knowledge you gained
-
 in your future projects, even if it's just dummy projects,
-
 doesn't matter, but use the skills you gained,
-
 use all these TypeScript features.
-
 Also try using some of the more advanced features
-
 from time to time
-
 because that's how you get better at TypeScript
-
 and how you ultimately master TypeScript.
-
 And then of course you can use it
-
 no matter if you are working on a React project,
-
 an Angular project, a Node.js project,
-
 or any other kind of project.
-
 So I hope you liked the course.
-
 I'd of course love to welcome you on board
-
 of other courses as well,
-
 I wish you all the best for your future. Bye.
-

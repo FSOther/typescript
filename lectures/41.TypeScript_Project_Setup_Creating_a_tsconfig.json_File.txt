@@ -1,114 +1,57 @@
 So how can you configure
-
 Typescript's behavior?
-
 Well, you typically do it on a per project basis.
-
 So here I am in a super simple new project,
-
 which has one source code file,
-
 but it doesn't matter if it has one
-
 or dozens or hundreds of files.
-
 And I can configure
-
 how TypeScript will behave in this project folder
-
 and its sub-folders
-
 by creating a TypeScript configuration file,
-
 which will then be picked up by the TypeScript compiler
-
 and by my IDE, by Visual Studio Code, for example.
-
 And you can quickly create
-
 such a TypeScript configuration file by running tsc,
-
 so this compiler, --init.
-
 By running this special command, if you hit Enter,
-
 a tsconfig.json file will be created,
-
 and this file allows you to configure Typescript's behavior.
-
 Now, the default file which is created
-
 contains actually a list of all the options you can set.
-
 Most of them commented out
-
 with a short explanation here on the right,
-
 so that you at least get a brief introduction
-
 into the option, what the option does.
-
 Now, of course,
-
 it's a pretty long list of potential settings you have here,
-
 and those explanations on the right
-
 might not always be super clear.
-
 Now, I will guide you through
-
 some of the most important settings throughout this section,
-
 but I will also say right away
-
 that many of these options don't matter to you.
-
 The default settings are often fine.
-
 Some options are for specific use cases,
-
 like working with mono repos,
-
 and some options are simply niche
-
 or exist for historical reasons.
-
 So most options can be ignored,
-
 and you really don't need to understand them,
-
 unless you are in a situation
-
 where you must tweak your TypeScript behavior
-
 in a certain way.
-
 Now, if you wanna learn more about this configuration file
-
 and about all these options, though,
-
 the official documentation,
-
 and specifically there, the TSConfig Reference page,
-
 will be helpful
-
 because there you can learn everything
-
 about all these options,
-
 about all the niche options, how they work,
-
 what they do, why they exist, with examples, and so on.
-
 So that's a great place to dive super deep,
-
 but as mentioned, in most cases,
-
 you won't need to do that,
-
 and instead, I'll walk you through
-
 the most important settings in the next lectures.
-

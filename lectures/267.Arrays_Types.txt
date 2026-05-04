@@ -1,220 +1,110 @@
 Now besides objects, we also have arrays in JavaScript,
-
 very important type of data.
-
 Arrays are created like this in JavaScript, as you know,
-
 and you can store any data in there:
-
 numbers, strings, booleans, objects, other arrays,
-
 you can have nested arrays, after all,
-
 and you can also mix data.
-
 You can have an array with strings and numbers mixed.
-
 And TypeScript also supports arrays.
-
 Any JavaScript array is supported and the types
-
 of that array can be flexible, or strict.
-
 Now let's have a look at that in TypeScript.
-
 For that here in app.ts, let's say our person also
-
 has a hobbies key, but of course we could also have a
-
 variable or a constant hobbies outside of the object.
-
 So, using arrays as exactly the same inside
-
 of objects and outside of them.
-
 So here we have hobbies, and hobbies
-
 could be sports, and cooking, let's say.
-
 So I have two elements in there, and these elements,
-
 as you can tell, are strings.
-
 Now if we hover over hobbies, TypeScript correctly detected
-
 the distance of type string array.
-
 Now that's a syntax you haven't seen before,
-
 but this is how TypeScript describes an array of data.
-
 You have the square brackets, and in front of that,
-
 the type of data which is stored in there.
-
 Now this is the type, type's group inferred.
-
 It saw that here we have an array and that we only
-
 have strings in there, so it inferred that hobbies
-
 probably should be an array of strings.
-
 And indeed, for hobbies, that makes a lot of sense.
-
 Of course, you can also explicitly set the type of variable.
-
 If we would add a new variable, favorite
-
 activities, and initially that should be empty,
-
 then we might wanna explicitly set
-
 the type of data stored in there.
-
 Now let's say that should be an array of strings, well then
-
 we can just repeat what we just saw;
-
 type string, and then square brackets there after,
-
 and this tells TypeScript what we store in here is not
-
 just a single string, it's an array of strings.
-
 And indeed if I try to store just sports in there,
-
 I get an error. I get an error because
-
 that here is a single string, and not an array of strings.
-
 I don't get an error, of course, if I wrap this into square
-
 brackets and therefore effectively create an array.
-
 I again do get an error though, if I add a number,
-
 let's say, because we define this to be an array of strings.
-
 Now here, we have a mixed array.
-
 It's an array of strings and numbers, so that does
-
 not work and is not supported here.
-
 If we would want to support such a mixed array,
-
 one solution would be to use "any" here.
-
 The "any" type is a special type in TypeScript,
-
 which we'll have a closer look later,
-
 which basically means, do whatever you want.
-
 It's of course a type you don't wanna use too often
-
 because you'll lose the benefits TypeScript gives you,
-
 your back in JavaScript world, where you also
-
 can use any value anywhere.
-
 So "any" is really flexible, but the flexibility
-
 comes at the price of basically giving up
-
 all benefits TypeScript offers.
-
 So here I'm gonna go back to string, because I really
-
 don't wanna have a number in there, and hence
-
 we can remove the number and we're good.
-
 Arrays also give us a great example, actually
-
 just like objects and their properties,
-
 how dynamic TypeScript's type inference is.
-
 If we add a "for" loop here at the bottom, and we wanna
-
 go for all the hobbies of person, we can of course
-
 use a traditional "for" loop with
-
 for const hobby of person.hobbies,
-
 so accessing the hobbies property and going through
-
 all the hobbies there,
-
 storing each hobby for each iteration in this constant,
-
 and then we can consult log hobby here.
-
 Now that's not too fancy, that's something
-
 that we know from JavaScript, right.
-
 If I now compile this app.ts file down there,
-
 we get the name from this line,
-
 and thereafter the two hobbies being printed.
-
 But what's actually interesting here is that on hobby,
-
 we can access anything, we can access on any string.
-
 For example, to UpperCase, I get this auto completion
-
 and TypeScript does not complain.
-
 Why does it not complain?
-
 Because it knows that hobbies is of type string array,
-
 so when I access person.hobbies, TypeScript's inference
-
 detects that hobbies will be an array of strings.
-
 So hobby, on the upper hand, is correctly identified
-
 as being a string, because since we go through an array
-
 of strings, well the individual values
-
 have to be just strings.
-
 And therefore types offers us great support down there,
-
 and allows us to do anything with hobby that can be done
-
 with a string, because it knows with certainty that hobby
-
 will be a string because of the types we set up up there.
-
 And that's really flexible, and of course a great
-
 feature which makes writing code a lot easier
-
 and way more flexible and secure.
-
 For example, we would get an error here if it would try
-
 to access hobby.map, if I thought this would be an array.
-
 The map method is available on arrays, but not on strings.
-
 And here, correctly, again, an error that map
-
 does not exist on type string because it doesn't.
-
 So here we get an error, and that's good that we get it,
-
 because this would be wrong, and here we see
-
 TypeScript's inference really, really shine.
-

@@ -1,178 +1,89 @@
 Now one common source of confusion,
-
 I want to clarify here, is the difference
-
 between Generics and Union types.
-
 Why could you confuse these two?
-
 Well, for example, our data storage here.
-
 If we're accepting Generic types
-
 based on these types, we could also
-
 rewrite that to just say,
-
 "Well, we want to store strings,
-
 or numbers, or Booleans in here, right?"
-
 So, we could store that or to be precise,
-
 wrap this in parentheses so that we say
-
 either of these types as an array.
-
 Then here, of course, we could also say,
-
 "Well, what we get here when we
-
 add an item is either a string,
-
 a number, or a Boolean,
-
 when we remove it it's the same."
-
 Now, what's the problem with this approach?
-
 On first sight, it might look like it achieves the same,
-
 but, it actually does something totally different.
-
 What we're saying here is,
-
 we're storing any kind of data in there
-
 as long as it's either an array
-
 of strings, numbers or Booleans,
-
 and we're also then adding any kind of data here,
-
 either a string, number or a Boolean,
-
 and the same for removing.
-
 Now, we already have some errors down there, of course,
-
 because I can't initialize this in a generic way anymore.
-
 But, other than that it works.
-
 Now, the problem, however, is
-
 for one up here, we're not saying
-
 this is either an array of strings,
-
 or an array of numbers, or an array of Booleans.
-
 This says, we have an array
-
 which can have strings, numbers and Booleans mixed.
-
 So if you would want to say either
-
 an array of strings, or an array of numbers,
-
 we would have to say
-
 string array, number array, or Boolean array.
-
 Well, we can do that, but now we have a problem here.
-
 Now, we're adding a string, a number or a Boolean,
-
 but depending on what we actually
-
 set this data array to be, either a number array,
-
 or a Boolean array, or a string array,
-
 we're not allowed to add a number,
-
 or a Boolean or a string.
-
 If we set this to be a string array
-
 then we can't add a number here.
-
 Yet, here I am fine with any parameter
-
 as long as it is a number, Boolean, or a string.
-
 So, the problem is here with Union types.
-
 We accept any of these values every time
-
 this method gets called, or this method.
-
 So, we're not saying,
-
 "Hey, whenever we're working with this class,
-
 you have to decide for one type and stick to it,
-
 instead we're saying,
-
 whenever you're calling this method
-
 you're free to use any of these types.
-
 That's exactly not what we want here.
-
 If I revert this to the previous setup
-
 where we used generic types
-
 then we got a different setup.
-
 Here, we say you have to choose once
-
 which kind of data you want to store
-
 and then you're only allowed to
-
 add that exact type of data.
-
 So here if I add a number, for example,
-
 I get an error
-
 because that's not a string
-
 and it shows that I only want to
-
 manage strings here when I set the generic type.
-
 That's the difference between union types and generic types.
-
 Union types can be great if you want
-
 to have a function which you can
-
 call with one of these types every time you call it.
-
 Generic types are great if you want to
-
 lock in a certain type.
-
 Use the same type throughout the entire
-
 class instance you create.
-
 Use the same type throughout the entire function.
-
 That's where you want the generic type.
-
 You want union types when you are
-
 flexible to have a different type
-
 with every method call, with every function call.
-
 Then, you can use union types.
-
 Generic types lock in a type.
-

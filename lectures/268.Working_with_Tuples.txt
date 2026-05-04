@@ -1,254 +1,127 @@
 So arrays are supported and with numbers, strings,
-
 booleons, objects and arrays.
-
 We got the core values or value types,
-
 JavaScript nos supported in TypeScript,
-
 as you will learn at the example of objects in their arrays,
-
 TypeScript even offers way more functional it's there but
-
 that's a bit more advanced,
-
 which is why we'll have a look at that later,
-
 but even these core types with what
-
 you'll learn in the previous lectures are supported.
-
 Now TypeScript holds as a couple of new concepts,
-
 new types, which we don't know from vanilla Java script for
-
 example, the tuple type.
-
 Now you might know tuples from other programming languages,
-
 JavaScript does not have them.
-
 This is a tuple for example, and you would say,
-
 well this is an array. It is an array,
-
 but it's a fixed length array and
-
 actually not just fixed length but also fixed type.
-
 And where could this be handy?
-
 Let's say here on our, person,
-
 we actually have a number of property, role,
-
 which is an array with exactly two elements,
-
 where the first one is let's say a numeric identifier like
-
 two and the second one is a string identifier and
-
 a human readable description like author.
-
 Now this should always have exactly two elements because
-
 a user or a person in this application which we're writing,
-
 let's say can only have one role and
-
 a role is only made up of two elements.
-
 Of course we could have used an optic here, but
-
 for some reason we want to have an array with
-
 exactly two elements where the first element always is
-
 the numeric identifier and
-
 the second element always is the string identifier or
-
 description or however you want to call it.
-
 Now, if we hover over this TypeScript actually
-
 infers this strange type which we haven't seen before,
-
 In fact, if we dis means TypeScript understands that
-
 we have an array which might hold even strings or
-
 numbers, this a union type and
-
 we'll dive into those later. The key takeaway is to
-
 TypeScript understands that this should be an array with
-
 these types of values.
-
 The downs that is dead We could run this code though,
-
 person role, push, admin.
-
 Now for our application,
-
 this might not make sense because
-
 we know we only need two elements.
-
 Still TypeScript doesn't know that
-
 we only want two elements. We would also be able to
-
 switch person role, the second element with index one to
-
 be a number as well.
-
 This would work because TypeScript only knows that
-
 role should be of type string or number array, and
-
 therefore assigning a number here to
-
 the second element and therefore replacing it with
-
 a number would be allowed because
-
 we're just saying something about the types we generally
-
 can use in there.
-
 We know we want to have exactly that structure.
-
 Two elements, first element number, second element string,
-
 but TypeScript doesn't do that. Well for such a scenario,
-
 a tuple would be perfect. We can tell TypeScript what
-
 role should be, by explicitly setting the type of role.
-
 So here we also have an example where
-
 TypeScript doesn't phototype, but we explicitly want to
-
 override it. Now here we can therefore add an explicit
-
 object type by adding a colon after person,
-
 then the curly braces and then names should be a string,
-
 age should be a number and hobbies should be a string array.
-
 So all as inferred by TypeScript.
-
 So for that, we wouldn't have required,
-
 this explicit assignment and
-
 as you learn it would have been bad.
-
 But now we have a scenario,
-
 where the inference does not work in the way we want,
-
 and, we want to set role to be a tuple.
-
 Now instead of setting a two string array or
-
 number array or using the same type that
-
 wasn't third here earlier, we can now use a special type.
-
 We use square brackets again,
-
 but now inside off the square brackets we add number,
-
 and then a comma and then string.
-
 Now this marks a tuple type here.
-
 A tuple is a special construct, TypeScript understands,
-
 in Java scripted will be a normal array,
-
 but during development with TypeScript,
-
 we'll get errors with code like this here.
-
 Now what do tuples do?
-
 This here, tells TypeScript,
-
 I want to have a special array, with exactly two elements,
-
 because I have exactly two types in there and
-
 the first element should be a number.
-
 The second element should be a string, hence,
-
 if we compile this code here,
-
 I get an error regarding 10 not being assignable as
-
 a type here, because we want to have a string as
-
 a second value and if I then assign 10 as
-
 a second value here,
-
 then I obviously don't follow this rule.
-
 If you comment this out and we compile, this works.
-
 That's a bit strange because why does pushing work here,
-
 because we're all saying that role should have
-
 exactly two elements, so why can we push admin onto the
-
 role array here.
-
 Push actually is an exception which is allowed in tuples.
-
 So unfortunately TypeScript can't catch this error,
-
 but at least it ensures that we're not assigning
-
 a wrong value here, and outside of push,
-
 we also get some support regarding the length.
-
 If we set person that role to a new value.
-
 For example, an empty array is not allowed,
-
 one with exactly the structure we defined up there,
-
 is allowed, If I added an extra element here.
-
 Then we would again get an error.
-
 So the length is enforced if we assign it like this,
-
 but not for a pushing and so on.
-
 This is something you have to be aware of,
-
 but still getting this support and this support,
-
 is pretty nice and if you have a scenario where
-
 you need exactly X amount of values in an array and
-
 you know the type of each value in advance,
-
 then you might want to consider a tuple instead of
-
 an array to get even more strictness into your app to
-
 be even clearer about the type of data you're working with
-
 and the type of data you're expecting.
-

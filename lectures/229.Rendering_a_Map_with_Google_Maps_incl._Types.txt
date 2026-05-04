@@ -1,292 +1,146 @@
 So how can we output the coordinates on a map now?
-
 For that again, we'll use a Google API.
-
 If you search for Google JavaScript Maps,
-
 or Google JS Maps, you'll find the official docs
-
 for the google JavaScript Google Maps API.
-
 And here you'll learn how you can use Google Maps
-
 in your web application to render a map.
-
 And it's really straight-forward and simple.
-
 First of all we need to add this script here,
-
 which will add this Google Maps SDK to our application.
-
 So simply grab that script, and add it to your
-
 index html file, above your script.
-
 Now important, we don't install this NPM,
-
 because it's not published to NPM,
-
 hence we use this CDN link, which pulls the script,
-
 directly from Google's servers.
-
 And here we need to setup our API_KEY.
-
 Now that's of course the API_KEY we already have here
-
 the typescript file, so we can just copy that
-
 into index html and replace YOUR_API_KEY with it.
-
 And also get rid of this "&callback=initMap"
-
 thing at the end,
-
 this would trigger a function as soon as this map is loaded,
-
 or as this SDK is loaded, and that's not
-
 something I want here.
-
 So, with that, we're loading this SDK,
-
 and now we can use it, and here's where we'll
-
 have a problem.
-
 I want to use it render a map,
-
 and rendering a map is actually straight forward.
-
 In the official docs, we see that in the end
-
 we have to instantiate this google.maps.Map
-
 constructor function, pass a center to it,
-
 which is essentially...
-
 This pair of coordinates we're getting from the back,
-
 and add a zoom level.
-
 So we can just copy this,
-
 and then here once we've got the coordinates,
-
 execute this code,
-
 and maybe store map here in a constant named "Map."
-
 But of course we get an error here.
-
 "Cannot find name google,"
-
 and that makes sense, this will not be available globally,
-
 but typescript doesn't know that.
-
 It will be available globally, because of this
-
 JavaScript SDK we're importing.
-
 But of course typescript doesn't know this.
-
 You'll learn what you can do there,
-
 you can of course use "declare var google,"
-
 and set this to any.
-
 With that you're telling typescript,
-
 "It's fine, this will exist, don't worry."
-
 We can do that, and the error goes away.
-
 Now we can also use our coordinates here,
-
 instead of the hard-coded ones,
-
 and if we also want to render a marker,
-
 that's also possible.
-
 In the official docs, simply click on,
-
 "Adding a map with a marker,"
-
 we learn, that adding a marker is straight-forward
-
 we just use the map created,
-
 and create a marker with this command,
-
 and point at this map.
-
 So we'll just copy this code snippet here,
-
 and back in our code, after we created the map,
-
 I create my marker like this,
-
 and the position here again are my coordinates.
-
 So this will now render a map,
-
 and place a marker on it.
-
 The only remaining thing is that,
-
 we need to ensure that this map
-
 is rendered in the right place.
-
 By default it looks for a element with an I.D. "map"
-
 and that is what we have here.
-
 But if you chose a different I.D. here,
-
 make sure to adjust this in your typescript code.
-
 With that if we save this,
-
 it compiles without errors,
-
 and now if I enter an address here,
-
 it should render this.
-
 So this is working, and we can adjust the zoom level here,
-
 to be zoomed in a bit more,
-
 for example changed it to 16,
-
 and now if we try this we can see it a bit clearer.
-
 But it is working, and that is what we can tell.
-
 We can scroll around, and use this map.
-
 This is all nice, but it's not optimal.
-
 Of course it works, thanks to "declare var google,"
-
 we're not getting any errors.
-
 But we're also not getting any type support.
-
 IF I introduce an error,
-
 if I for example refer to ".map" instead of ".maps"
-
 it compiles without issues,
-
 and it only crashes in production thereafter.
-
 If I try to render a map.
-
 Now I get an error here, caught by our error handler.
-
 So this is of course not what we want.
-
 We want type support, we wanna handle dump mistakes
-
 like this, during development, and not at runtime.
-
 So how can we ensure the typescript knows Google Maps?
-
 Types to the rescue.
-
 If you search for "types google maps,"
-
 you find various packages, which adds types for,
-
 well, Google Maps.
-
 Now we didn't install the Google Maps package
-
 through NPM, but we can still install types
-
 for that package through NPM.
-
 And here I'll go for this first package,
-
 and simply install that into our project.
-
 So let's go back, quick development server,
-
 and run "npm install --save-dev
-
 "@types/googlemaps," one word.
-
 That was the name of this package.
-
 This will now install global types for this package.
-
 So now if I restart this with NPM start,
-
 let's see if we have a better situation.
-
 If I remove this "declare var" thing here,
-
 or I comment it out.
-
 It still compiles, now this google maps thing here
-
 is detected, and if I try to access ".map" here,
-
 I get an error, I also get auto-completion now
-
 and it sees, "Yes, there is a maps thing."
-
 It also tells me that this map constructor,
-
 needs a "Div" or an "Element" where it should render
-
 the map as first argument,
-
 and then some options for the map.
-
 So this is now working here, as it should.
-
 And this is of course a great step forward,
-
 because now we have our working application,
-
 and it did work before as well.
-
 But now it works also with types,
-
 and with a proper type support.
-
 And this staffer is another great practice,
-
 for how you build applications with type script
-
 and use certain types of features,
-
 but it's especially a great practice for how
-
 you can work with third party libraries.
-
 Some, like "axios" bring their own types.
-
 Others, aren't even installed with NPM,
-
 and yet you can add types with an
-
 appropriate types package.
-
 I hope this module was helpful,
-
 for understanding this,
-
 and for all future projects you might be working on,
-
 where you most likely will also work,
-
 with certain third party libraries.
-

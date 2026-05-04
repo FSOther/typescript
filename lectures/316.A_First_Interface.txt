@@ -1,214 +1,107 @@
 Now that we covered classes,
-
 let's have a look at interfaces.
-
 We are going to rename the app ts file to classes
-
 and add a new app ts file,
-
 while hereafter will be compiled to app js.
-
 And in this app ts file,
-
 we'll now dive into interfaces.
-
 What is an interface?
-
 Well, in its simplest version,
-
 an interface describes the structure of an object.
-
 We can use it to describe how an object should look like.
-
 Let me show you an example.
-
 We create an interface with the interface keyword,
-
 which only exists in typescript, not in vanilla JavaScript.
-
 Now let's name it person.
-
 Again, just like in a class,
-
 I start with a capital character,
-
 not a must do but a recommendation and a convention.
-
 Now in there,
-
 we can define how a person object should look like.
-
 Now unlike a class,
-
 we'll not use this as a blueprint, however.
-
 Just as a custom type, we could say.
-
 Here, you could say a person could have a name,
-
 which is of type string,
-
 and an age which is of type number.
-
 As you can see here,
-
 I add properties or field definitions,
-
 where I have the names of the properties
-
 and the types of the values that'll be stored in there.
-
 What we don't have here are the concrete values.
-
 So we don't have this.
-
 And if we were to try and assign a default value here,
-
 we would get an error
-
 that an interface cannot have an initializer.
-
 So we can just define the structure,
-
 not the concrete values.
-
 We can also add a method here, greet for example.
-
 Now just as with properties,
-
 we don't add the actual method here though
-
 but just the structure,
-
 the description so to speak.
-
 How it should look like.
-
 And to define a method which a person object should have,
-
 we add the name of the method, then parentheses,
-
 then return type.
-
 For example, white,
-
 and in parentheses
-
 you could have any arguments you wanna have.
-
 Like a phrase which should be a type.
-
 Again, just the name of the argument and then the type.
-
 Then the return type of the method.
-
 Of course, you don't have to add parameters.
-
 What can we now do with this person interface?
-
 What's the idea behind it?
-
 Well, we can now use this
-
 to type check an object, for example.
-
 We could have a variable, user one,
-
 and let's say
-
 for some reason we don't initialize immediately.
-
 We just wanna eventually store an object in there,
-
 which has this structure.
-
 Then we can assign a type to user one,
-
 which could be person.
-
 We can use our interface as a type.
-
 And now when I assign a value to user one,
-
 it has to be an object
-
 because interfaces are used to define objects.
-
 And it has to be an object with a name property,
-
 which must hold a string,
-
 an age property, which must hold a number,
-
 and a greet method which must take a phrase argument
-
 and then also return nothing.
-
 Here in this object,
-
 we can add a name.
-
 Max, for example.
-
 Now here we add the concrete value
-
 and it has to be of that type defined up there.
-
 Now separated with a comma,
-
 and that's a difference from our interface definition.
-
 There we separate our keys and properties with semi-colons.
-
 But down there, when we create our object,
-
 just as in vanilla JavaScript we use a comma.
-
 Then an age, and of course, also the greet method.
-
 Now the greet method, as you learned,
-
 has to be a method which takes one parameter, phrase,
-
 which has to be a string,
-
 and where I then want to console log
-
 phrase plus some white space plus this.name.
-
 This could be one implementation of the greet method.
-
 Now what's in there doesn't matter.
-
 Its just important that we have this one parameter,
-
 which is a string,
-
 and that we return nothing.
-
 Now this would be a valid user one object
-
 because it satisfies this definition of our interface.
-
 Therefore, of course,
-
 we can now for example call greet
-
 and say hi there, I am,
-
 and thereafter we should print name.
-
 If now save that and then reload,
-
 we see hi there I am Max.
-
 And that's coming from our greet method.
-
 This is an interface.
-
 It allows us to define the structure of an object.
-
 We can use it as a type to type check
-
 for objects that must have this structure.
-

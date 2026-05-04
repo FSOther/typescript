@@ -1,356 +1,178 @@
 So in the last lecture,
-
 you learned that you can run TypeScript code
-
 with just Node.js,
-
 but there are a couple of things you should know about that.
-
 For one, you should, of course,
-
 keep those configuration changes in mind
-
 which are recommended
-
 and that you need to add this type keyword, for example,
-
 and that you need to import from .ts files.
-
 That's what I mentioned in the last lecture.
-
 But that's not all you should know.
-
 One other very important thing to know and keep in mind
-
 is that certain TypeScript features can't be used
-
 when using this basic TypeScript support added by Node.JS.
-
 And there is a reason why I'm saying basic
-
 because I'll later show you a way
-
 of getting a better support.
-
 But in the basic version,
-
 there are features, most importantly the enum feature,
-
 that can't be used.
-
 So let's say if I have a enum TODO_TYPE here,
-
 and I have, for example, basic and urgent values here,
-
 because I might wanna use them in my emails.
-
 Let's say I have this TypeScript feature
-
 in my TypeScript file.
-
 That would be a problem
-
 depending on the Node.js version you're using
-
 for running your TypeScript code
-
 because enum is a TypeScript feature
-
 that unlike interfaces and type aliases
-
 can't just be removed
-
 to turn this code into JavaScript code.
-
 Instead, it needs to be converted
-
 to something else in JavaScript.
-
 And you'll see what I mean
-
 when I temporarily remove these two settings here,
-
 allowImportingTsExtensions and noEmit,
-
 and I therefore change the imports here to import.js again,
-
 and I'll change that back soon,
-
 but I just wanna show you something.
-
 If I do that, and I then compile my code,
-
 I, of course, get my compiled JavaScript code here
-
 and you'll note that in todo.js,
-
 this essentially is the code
-
 that represents this enum feature in JavaScript.
-
 So this enum feature is a TypeScript feature
-
 that has a JavaScript equivalent, so to say,
-
 but, of course, it looks very different
-
 from the TypeScript code we wrote.
-
 So put in our words, this is a TypeScript feature
-
 that has a representation JavaScript,
-
 but a compilation step is needed
-
 in order to have that JavaScript representation.
-
 And I'm highlighting this
-
 because there also are many other TypeScript features,
-
 like interfaces or custom types,
-
 which you'll use all the times
-
 and also type annotations, as we have them down here,
-
 which you'll use all the times.
-
 These are TypeScript features
-
 that, in the end, can simply be dropped
-
 to have a JavaScript version.
-
 I mean, take a look at this app.use function
-
 here in the app.ts file,
-
 and take a look at it here in app.js.
-
 It's the same function.
-
 The only thing that changed
-
 is that the type assignments here were removed, right?
-
 That's the only thing that changed.
-
 That's the only difference
-
 between this function and this function.
-
 And that's important to understand
-
 because with its basic TypeScript support,
-
 Node.js does just that.
-
 It simply drops those TypeScript-specific features.
-
 It does not, and that's important,
-
 it does not compile the TypeScript code to JavaScript.
-
 It just drops the TypeScript features.
-
 And it's doing that mainly for performance reasons.
-
 Compilation takes time and effort by the program.
-
 And if you're running a program with Node.js,
-
 you want it to run as quickly as possible.
-
 That's why it's not compiling anything
-
 and why it's instead just ignoring the TypeScript stuff,
-
 you could say.
-
 Now, with enums, that is no longer possible.
-
 And there also are a couple of other TypeScript features
-
 but enums are the most commonly used TypeScript feature,
-
 I would say that's not supported
-
 when just ignoring TypeScript stuff.
-
 So for that reason,
-
 if you are using a feature like enums
-
 in your TypeScript code, you won't be able to run that
-
 with this basic Node, TypeScript support.
-
 And to show you what I mean,
-
 I'll go back to importing from .ts files,
-
 and I'll adjust my configuration again
-
 to switch away from that compilation setup
-
 because now I want to run this with just Node again.
-
 And you'll see that, at least with Node version 23.7,
-
 in my case here when I'm recording this,
-
 I'll get an error if I try to run app.ts.
-
 And this error is related to this enum,
-
 that it's unsupported TypeScript syntax.
-
 TypeScript enum is not supported in strip-only mode.
-
 And strip-only mode is that mode I just described
-
 where the TypeScript features are simply stripped
-
 from the file, are dropped or ignored you could say.
-
 So you don't need
-
 to remember which features might not be supported,
-
 you'll just get an error if you're using one.
-
 So what's the solution?
-
 Well, the solution is to either not use features like this
-
 and instead find another way,
-
 like a string literal union type, for example,
-
 to implement this.
-
 Or you can use the extended TypeScript support
-
 that's offered by Node.js.
-
 And at least at the point of time where I'm recording this,
-
 this extended TypeScript support is not enabled by default.
-
 Instead, you need
-
 to add the --experimental-transform-types flag
-
 to your Node command
-
 to actually trigger a TypeScript compilation step
-
 because this flag does what its name implies:
-
 it actually transforms TypeScript features to JavaScript
-
 so that, for example, enums,
-
 which are specifically mentioned here, do work again.
-
 So therefore, if I absolutely do want
-
 to use this enum feature,
-
 I can, of course, add --experimental-transform-types
-
 and then run my app.ts file,
-
 and now it's working again.
-
 However, you should keep in mind that performance wise,
-
 this will perform a bit worse
-
 than using that strip-only mode,
-
 and therefore, you still might want
-
 to consider removing this enum feature
-
 and replacing it with some other way of handling this,
-
 if that is an option for you.
-
 It's nonetheless worth noting that TypeScript
-
 has both that strip-only mode, which is the default,
-
 and that transform mode,
-
 which is the more advanced mode you could say.
-
 Now, of course, at the point of time
-
 where you're watching this,
-
 this transform-type syntax might no longer be needed.
-
 It might be enabled by default.
-
 Nonetheless, what I just said will still matter.
-
 For performance reasons,
-
 you might wanna consider using that strip mode
-
 and not use features like enums,
-
 but that is, of course, something that is up to you.
-
 One last note,
-
 if you do want to use this strip-only mode
-
 and you wanna make sure that you're not using features
-
 like enums in your code that are not supported,
-
 you can and should again tweak your tsconfig.json file
-
 and then they are at the erasableSyntaxOnly flag
-
 and set this to true.
-
 That's a pretty new flag that was added
-
 with TypeScript 5.8, which at the point of time
-
 where I'm recording this is so new
-
 that my IDE doesn't even know that this option exists.
-
 That will likely be different for you.
-
 Setting this option will ensure in the future
-
 that you'll get an error in your IDE already when you try
-
 to use a TypeScript feature that can't be stripped,
-
 that can't just be dropped, that needs to be transformed,
-
 and therefore adding this setting here
-
 in your tsconfig.json file
-
 will help you ensure that you write TypeScript code
-
 that does not rely on some transformation by Node.js,
-
 which has a performance penalty,
-
 but that can instead simply be dropped.
-
 Though as mentioned, this flag,
-
 this feature is only available
-
 if you're using TypeScript version 5.8 or higher.
-

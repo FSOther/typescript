@@ -1,320 +1,160 @@
 Speaking of more generic types,
-
 as a little bonus, you could say,
-
 I wanna point your direction at a couple of built-in types.
-
 Typescript ships with, which utilize generic types
-
 or which are generic types,
-
 that give us certain utility functionalities.
-
 So just a little bonus here,
-
 and from time to time
-
 these special types might come in handy.
-
 Now, attached you'll find a link
-
 to the full documentation of all the built-in utility types.
-
 Here, I just wanna give you a few examples.
-
 Now just as all these type things,
-
 these types only exist in types of the world
-
 and therefore, only prior to compilation.
-
 But during this compilation step,
-
 they can give you extra type safety or extra flexibility.
-
 For example, there is the built-in partial type.
-
 Let's say we have a new type, and you interface which
-
 we will find or a custom type really doesn't matter,
-
 CourseGoal.
-
 The CourseGoal does have a title,
-
 which should be a string and let's say a description,
-
 which should all be a string.
-
 Maybe we also have completeUntil property, which is a Date.
-
 Now we wanna have a function, let's say,
-
 createCourseGoal, which creates us such an object.
-
 Of course, we could have created that class as well.
-
 But we have such a function because in that function,
-
 we might be drawing in some data from a database,
-
 or whatever it is.
-
 So we have this function.
-
 And in the end here,
-
 I want to get my title, which is a string,
-
 I might get my description, which is a string,
-
 and I hopefully get my date, which is a Date.
-
 Now in that function, of course, we could return an object
-
 but we just set up all these things.
-
 So where we set title to title, description to description
-
 and completeUntil to date.
-
 We could do all of that and if we then define that this
-
 function will always return a CourseGoal,
-
 we would have a correctly setup function.
-
 Now for some reason let's say we're
-
 not doing it like this though,
-
 we're not doing this all in one step.
-
 Instead, what I wanna do is,
-
 I wanna start by creating a variable here,
-
 which holds an empty object.
-
 And then step by step, I want to add my title here.
-
 I want to add my description here.
-
 And I want to add my date here.
-
 Now here I'm getting errors because of course,
-
 I can't set title this is not a property of this object.
-
 And while this works in vanilla JavaScript,
-
 TypeScript doesn't really like that on the fly adding here.
-
 So we might wanna say that this should be of type
-
 CourseGoal here.
-
 Now, TypeScript is not complaining about this,
-
 but about the fact that this is an empty object,
-
 which clearly is not fitting our type here.
-
 So in the end, I want to return it
-
 and I want to add all these things step by step,
-
 maybe because we have extra validation before each step,
-
 and therefore one to add it like this.
-
 Now here's where the partial type can come in handy.
-
 We could say the CourseGoal here should be a partial type,
-
 which in the end,
-
 thanks to generic types will hold a courseGoal.
-
 Now what this does is it tells TypeScript that,
-
 this is an object which in the end will be a courseGoal.
-
 But initially, partial kind of wraps our own type,
-
 and changes it to a type where all these properties
-
 are optional.
-
 That's what partial does one of these built-in types,
-
 Typescript ships with.
-
 So it turns this into a type, which is also an object type,
-
 where all the properties are optional.
-
 Therefore, we can set this to an empty object initially,
-
 and still add all these things step by step.
-
 The only problem is that in the end,
-
 we can't return this because now it's still of type
-
 partial CourseGoal, and not of type CourseGoal.
-
 We can fix this by converting this to courseGoal
-
 with typecasting, because we know at this point of time,
-
 we will have added all the data.
-
 So it will be a real courseGoal and not a partial one.
-
 And of course, this is a bit made up.
-
 But you could have scenarios like this,
-
 where you want to temporarily switch
-
 one of your object types,
-
 one of your interfaces to be optional only.
-
 To make sure that all the properties in there
-
 can be optional only temporarily.
-
 And then the partial type would allow you to do that.
-
 And never built-in utility type which you have
-
 is the read only type that can all be very useful.
-
 Let's say we have an array of names.
-
 And in there I got Max and Sports.
-
 Now, correctly TypeScript
-
 infers that this is a string array.
-
 Now what can we do?
-
 We can of course push
-
 Manu on there,
-
 and probably I should change this to Anna not sports
-
 to have a name in there.
-
 So this works.
-
 Now let's say however,
-
 I want to make sure that this is a locked array.
-
 We can't add more here.
-
 And we can always add more here,
-
 but at least I want Typescript to yell at me if I try it.
-
 Well, that's where we can use the read only type,
-
 we could set this to read only string array.
-
 With that we tell TypeScript,
-
 well, what we store here is, it's an array of strings.
-
 But it's also an array of strings, which is read only.
-
 So when we try to add something with push,
-
 or if we try to remove something with pop,
-
 we get errors,
-
 because we're not allowed to do these things
-
 with this array.
-
 And this is not limited to arrays by the way,
-
 you can also use read only on an object.
-
 For example, to market as read only,
-
 so that you are not allowed to change the properties
-
 or add new properties to this object.
-
 So this can also be very, very handy
-
 and give you more flexibility or be more precise
-
 about what you're aiming to do in your code.
-
 Now, all these are just utility types
-
 that only exist in TypeScript world.
-
 So they're not compiled to anything.
-
 But during compilation, they give you extra strictness,
-
 or extra checks or skip certain checks
-
 as we did it with partial.
-
 Now you've got more than read only and partial.
-
 And as I mentioned attached you find the documentation to a
-
 full list of these utility types.
-
 In certain scenarios, they can come in really handy,
-
 and therefore, I definitely did not want
-
 to hide them from you.
-
 But instead, you should be aware of them so that
-
 you can use them when you need to lock something down,
-
 or as in the case of partial open anything up
-
 or with all the other ones which I didn't discuss here,
-
 if you've got some other operation which can be enhanced
-
 with one of these built-in utility types.
-
 And these utility types are all generic,
-
 because what they do is
-
 they take some other value which is of any type
-
 and do something with it.
-
 They set everything to optional, they lock it down,
-
 not caring about whether this is an array or object
-
 or an array of strings, array of numbers, and so on.
-
 That's why these are generic.
-
 And together with the upper built-in generics we saw earlier
-
 and your own generics.
-
 This now hopefully all again helps you understand
-
 why generics can be useful in why they exist.
-

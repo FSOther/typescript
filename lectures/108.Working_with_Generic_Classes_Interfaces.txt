@@ -1,78 +1,39 @@
 Now, besides generic types
-
 and generic functions, you can also build generic classes.
-
 For example, a user class here
-
 where every user maybe has an ID,
-
 an ID property, let's say, defined with help
-
 of this shortcut through the constructor,
-
 and that Id may be a string, but it may also be a number
-
 and maybe it's also some object even,
-
 we don't know in advance, let's say.
-
 Of course, we could accept such a union type
-
 to describe all possible possibilities,
-
 but this would also be another great place
-
 for using a generic type.
-
 So we can turn this into a generic class
-
 by adding angle brackets after the class name
-
 and adding our type placeholder
-
 between those angle brackets,
-
 and then we can use it here, as we always did.
-
 And this allows us to instantiate this user, let's say,
-
 with a string ID or with a number.
-
 Both works, but it works now thanks
-
 to this generic class feature.
-
 And therefore, if we access this ID, TypeScript understands
-
 that it's a string.
-
 In this example here, for example,
-
 because I'm passing a string to new user.
-
 And that's there for just another important thing to know
-
 that you don't just have generic types
-
 and generic functions, but also generic classes,
-
 and you could also build generic interfaces
-
 if you needed to.
-
 Here, you could also define such a placeholder
-
 and then use it anywhere inside
-
 of the interface where you need it.
-
 Essentially in any place in TypeScript
-
 where you are defining some kind of type
-
 as you are doing when you're defining a class or a function
-
 or a standalone type in all these places,
-
 you can use this generic type feature.
-

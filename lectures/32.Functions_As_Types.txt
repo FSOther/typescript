@@ -1,344 +1,172 @@
 Okay, so now you know about
-
 return value types, void and never.
-
 What's interesting in JavaScript is that functions
-
 as a whole are actually also values.
-
 You can store a function
-
 as a value in a variable or constant.
-
 You can pass a function as a value to another function.
-
 For example, we could have a function, perform job,
-
 which takes a callback function as an argument,
-
 and this might then do something,
-
 maybe send an HTTP request, whatever doesn't matter.
-
 And once it's done, it should call that callback function
-
 to trigger some other process
-
 once the main job here is done.
-
 That's a common pattern in JavaScript
-
 and actually many programming languages.
-
 So here, cb, is a parameter which expects to get a function
-
 as a value because as mentioned in JavaScript
-
 functions are values.
-
 The question now just is
-
 how exactly do we type this cb parameter?
-
 What is the type we can set here?
-
 Well, TypeScript offers a built-in function type,
-
 which makes it clear that cb will be a function
-
 and can be executed as a function
-
 so that you're not getting an error here.
-
 That's okay, but it's not very specific.
-
 Typically, you'll therefore instead specify
-
 the exact function type you're expecting to get here.
-
 For example, let's say callback should be a function
-
 that expects a message, which it then logs to the console
-
 or anything like that.
-
 So it might expect to get a function like this,
-
 which takes one parameter of type string.
-
 To let TypeScript know about this
-
 you can create a so-called function type,
-
 and you do this by adding parentheses,
-
 then an equal sign and a greater sign.
-
 So an arrow you could say,
-
 and then the return type of the function you're expecting
-
 to get here, for example, void.
-
 So this looks very much like an arrow function
-
 in JavaScript.
-
 And just to make sure that we're on the same page,
-
 in JavaScript, you can create a function like this.
-
 This is now not a type, this is a function.
-
 Here we could expect to get a message of type string
-
 and then console.log that.
-
 So this is essentially an alternative way
-
 of defining such a log function here.
-
 And this is regular JavaScript.
-
 Syntax has nothing to do with TypeScript.
-
 It's not a type,
-
 it is a function just written in a different way
-
 using this arrow function syntax.
-
 Here however, we're not creating an arrow function.
-
 We're not creating a new function here.
-
 Instead, we're still in a world where we define a type.
-
 We're after this colon here after all.
-
 So we're in the same place where we would say number
-
 or string, but now we neither want a string nor a number
-
 but instead we want to get a function.
-
 And this is how you define a function type in TypeScript,
-
 how you tell TypeScript which kind
-
 of function you expect here.
-
 So what do we do here?
-
 Well, we have this arrow,
-
 and on the right side of the arrow we define a return type
-
 of the function we're expecting to get
-
 as a value here in this place.
-
 On the left side of this arrow between the parentheses,
-
 we specify the parameters
-
 we expect this function to have.
-
 Like here where we might expect to get one parameter,
-
 MSG or just M, whatever name you want,
-
 which should be of type string.
-
 And with that we're telling TypeScript that cb,
-
 this parameter here should be of type function,
-
 it should be of function.
-
 We should get a function as a value here
-
 where that function takes one parameter.
-
 And of course we could accept multiple parameters
-
 if we needed to, just to be clear.
-
 But here we want one parameter,
-
 which itself will be of type string.
-
 And then that function does anything.
-
 We don't know what, but it will return nothing.
-
 That's what this type says here.
-
 And with that, we can call cb instead of perform job
-
 because it is a function,
-
 but we now need to pass one argument to it
-
 because we're clearly specifying
-
 that this function wants one argument.
-
 So here we could say job done
-
 and now we're calling this function
-
 which we're passing to perform job.
-
 Therefore we could call perform job here, execute that,
-
 and now pass another function which has this shape,
-
 which has this type so to say as an argument to perform job.
-
 And here in this file, I have two functions
-
 that qualify either log message defined like this,
-
 because that's a function that takes one parameter
-
 of type string and returns nothing
-
 or function log,
-
 because this also takes one parameter of type string
-
 and returns nothing.
-
 So here I'll pass the log function to perform job,
-
 but we could have also passed log message.
-
 Now it does not matter
-
 that the parameter names here are different,
-
 that it's called message or MSG.
-
 And here it's M.
-
 This name here is not important to TypeScript.
-
 You just need any name here
-
 and it should be descriptive if possible.
-
 So MSG would actually be better here to help developers
-
 who use the perform job function understand
-
 what this function that gets passed to perform job
-
 actually does and wants.
-
 But it does not matter if this name here matches the name
-
 of the parameter of the actual function
-
 you pass to perform job.
-
 What does matter though is that the function you pass
-
 to perform job, the log function in this case
-
 does take one parameter, exactly one parameter in this case,
-
 which is of type string.
-
 That is important.
-
 And that's how you can define function types.
-
 This can also not just be helpful
-
 when dealing with callback functions,
-
 but also when dealing with objects and methods.
-
 For example, let's say you're defining a user type here,
-
 and that should be an object type.
-
 And a user might have a name which is a string
-
 and age which is a number.
-
 And then let's say we wanna have a greet method here.
-
 So now not a property which holds a string or a number,
-
 but instead a property which holds a function
-
 that can be called.
-
 Well, to achieve this the type here
-
 would be such a function type
-
 where we might accept a message here,
-
 but we also might not, if it's not needed
-
 and where we might return a value of type string
-
 or void or whatever you need.
-
 You could of course also return an object here
-
 or another function, whatever you need.
-
 But with that, if we then create a user
-
 which is a type user,
-
 we do need to specify all these properties.
-
 So a name, an age,
-
 and then we also need to specify greet
-
 either by using this arrow function syntax.
-
 And now here we're not creating a type,
-
 but instead a value, a function value.
-
 Or since we're in an object here,
-
 we can use this method syntax.
-
 This also works.
-
 Here we can console.log, hello there.
-
 And then in my case here, since I specified
-
 that this greet method should return a string,
-
 we should also return a string down here like this.name.
-
 So the name that's stored in this property.
-
 And with that, we created a user object,
-
 which has this greet method,
-
 which satisfies this type definition up here.
-
 And now of course you could call user greet, for example.
-
 So that's another place where function types can be useful
-
 besides callback functions
-
 because that's another place where you often need
-
 to define the shape of a function,
-
 and now you know how to do that as well.
-

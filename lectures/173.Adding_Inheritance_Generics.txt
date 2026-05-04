@@ -1,840 +1,420 @@
 So time for some inheritance
-
 and for a base class.
-
 I want to add a base class, which basically has
-
 templateElement, hostElement, an element in it,
-
 which does this job of selecting elements in the dom,
-
 which has the attach method,
-
 which we always need, and so on.
-
 So which basically manages all these shared functionalities,
-
 which our classes that actually render something to the dom
-
 have in common.
-
 So for that, above my ProjectInput,
-
 and also the ProjectList class, so basically here,
-
 I'll add the Component Base Class.
-
 Now, the name is up to you, but I'll name it Component,
-
 because you might know this term from React
-
 or Angular, if you work with that,
-
 and even if you didn't work with that,
-
 you can think of these classes as UI,
-
 user interface components, which you render to the screen.
-
 And every component is in the end a renderable object,
-
 which has some functionalities
-
 that allow us to render it.
-
 And then the concrete instances, or the inherited classes,
-
 add extra functionality which this specific component needs.
-
 So what goes into the general Component class then?
-
 Well, I would say these three elements for sure.
-
 templateElement, hostElement, and element.
-
 Now, we do have a problem here, however,
-
 regarding the types.
-
 The templateElement will always be a HTMLTemplateElement,
-
 but the hostElement doesn't always have to be a div,
-
 for example, when we will add a project item class,
-
 we'll render that in a ProjectList,
-
 and not directly even our root div here,
-
 so that's not always a div.
-
 And this here, well, it's always an HTMLElement,
-
 we can certainly settle on that,
-
 but, like in the case of the ProjectInput class,
-
 we actually know that it's somewhere specific
-
 form of it, it's a HTMLFormElement.
-
 So we would lose this extra information,
-
 if we restrict ourselves to always having
-
 just an HTMLElement there,
-
 without storing more specific information.
-
 So how can we work around that?
-
 Well, by not just using inheritance,
-
 but by creating a generic class here,
-
 where when we inherit from it,
-
 we can set the concrete types.
-
 For that, we add angle brackets after the class name,
-
 and then, two identifiers of our choice,
-
 like T and U, which would be common choices.
-
 And now, we also can add some constraints here,
-
 and say that T will certainly be some kind of HTMLElement.
-
 It can be just an HTMLElement,
-
 or a more specific version of it.
-
 And the same is true for U.
-
 And then here, we know the hostElement will be of type T,
-
 and the element will be of type U.
-
 And now, whenever we inherit from this class,
-
 we can specify the concrete types,
-
 so that we can work with different types
-
 in different places where we inherit.
-
 Now, let's also add a constructor here.
-
 In that constructor, we will need
-
 a little bit of information.
-
 We need to know the ID of our template,
-
 so that we know how to select it,
-
 and that should be a string.
-
 We need to know the hostElementId,
-
 which also needs to be a string,
-
 so that we know where to render this component.
-
 And I also want to get a newElementId,
-
 so that we get an ID that has to be assigned
-
 to the newly rendered element.
-
 This, however, is optional,
-
 which I signal by adding a question mark
-
 after the parameter.
-
 The alternative would be to also accept
-
 undefined here as a type,
-
 but I'll just use the question mark.
-
 And now, with that in the constructor,
-
 we can, basically,
-
 get this code here,
-
 and put it into our constructor of the Component class,
-
 so that we store the templateElement,
-
 but, of course, now the ID, which we're getting here,
-
 is that templateId, which is why I'm getting this
-
 as a argument in the constructor.
-
 And for the hostElement, the ID here, of course,
-
 is our hostElementId, like this.
-
 Also important, of course, regarding the casting here,
-
 we know this will be of type T,
-
 because T here is this generic type,
-
 which we store or which we use for our hostElement,
-
 so here we can cast it already.
-
 And with that, we're selecting elements.
-
 We can also grab more code.
-
 That code here, where we import a node and so on,
-
 and where we set the ID, we can grab all of that.
-
 So let's copy that here, and add this
-
 to the constructor of the Component class as well.
-
 importedNode, then we set element,
-
 and element here has this generic type U,
-
 so when we cast this here, we know
-
 it will be that U type here, so we should cast it to U.
-
 That's a good use of generics here,
-
 which makes this Component class really reusable.
-
 Now, regarding the ID.
-
 This is what we get here, the newElementId.
-
 Now, of course we might not always have this,
-
 because it's optional,
-
 so we should check if we do have it.
-
 So if newElementId is a thing,
-
 and only if it is a thing,
-
 only then I will try to assign it,
-
 otherwise we don't try it,
-
 because then we have no ID to assign.
-
 Well, with that, we have the constructor.
-
 Now let's use the attach function here.
-
 So let's copy the attach method
-
 from one of our other classes and add it here,
-
 as a private method, in the Component class.
-
 We can then also call this.attach
-
 at the end of the constructor of the Component class.
-
 Now, here we wanna add a element,
-
 but we don't know where it should be added,
-
 so that's actually some extra information
-
 that we should fetch here,
-
 as a fourth argument in the contructor, insert
-
 Atstart could be a name,
-
 and that is a boolean, let's say.
-
 And we should move that in front of our optional parameter.
-
 Optional parameters should always be last,
-
 because people might omit them.
-
 Your required parameters, therefore, can't come
-
 after these optional parameters.
-
 And insertAtStart is then forwarded to attach,
-
 there,
-
 insertAtBeginning, you could also reuse insertAtStart,
-
 I'm just using a different name here to avoid confusion,
-
 is received as a boolean.
-
 And then here, we check if insertAtBeginning is true,
-
 if it is, then here, we have afterbegin,
-
 otherwise we have beforeend.
-
 Now we're flexible regarding how this gets inserted.
-
 I also want to mark this class now as a abstract class,
-
 because people should never directly instantiate it,
-
 instead, it should always be used for inheritance.
-
 So in front of class, I add the abstract keyword.
-
 This makes sure that now we can't instantiate it.
-
 If we would try to do so, TypeScript would yell at us.
-
 I will also add two more methods,
-
 and that's the configure method,
-
 and also then the renderContent method.
-
 And I will add it as a abstract method,
-
 which means the concrete implementation is missing here,
-
 but we now, basically, force any class
-
 inheriting from component,
-
 to add these two methods and to have them available.
-
 I'm just adding this here,
-
 so that if someone else looks at our code,
-
 he or she can get a good understanding
-
 of what the idea behind the Component class is.
-
 That it does all the general rendering,
-
 or the attachment of the component,
-
 but that the concrete content and configuration
-
 then needs to happen in the place where we inherit.
-
 Side note, you can't have private, abstract methods.
-
 So private has to be omitted here,
-
 that's not allowed by TypeScript.
-
 Well, and with this, we can extend Component
-
 here on the ProjectList,
-
 and now get rid of these three properties.
-
 We keep the assignedProjects,
-
 because that's specific to the ProjectList.
-
 We also now wanna specify the concrete values
-
 that should be plugged in for our generic types.
-
 And we know, if we revert this,
-
 we know that we'll have a HTMLDivElement and a HTMLElement,
-
 so here I will pass in HTMLDivElement,
-
 and HTMLElement, like this,
-
 and then get rid of these three properties.
-
 In the constructor, we now don't need that here,
-
 but instead we need to call super at the beginning,
-
 to call the contructor of the base class,
-
 and to that, we need to pass some information
-
 to the super contructor, we need to pass some information.
-
 The ID of out templateElement, the hostElementId,
-
 whether we wanna insert this
-
 at the start of the hostElement,
-
 and, potentially, the ID that should be assigned
-
 to the new element.
-
 So here's our template ID,
-
 and with that we can rid of this here.
-
 Then here, the hostElement, that ID was app,
-
 so we can get rid of this.
-
 We keep the assignedProjects,
-
 because we still need that here.
-
 We get rid of this here,
-
 but, regarding the ID for the new element,
-
 I wanna pass that as a fourth parameter actually.
-
 The third one is where this should be inserted,
-
 and here, we use to insert this before the end,
-
 so actually what I wanna insert here as a parameter
-
 for the insertAtStart value is false,
-
 because it should not be inserted at the start,
-
 but at the end.
-
 Now, I certainly still want to set up my listener here.
-
 I don't need to call attach though,
-
 that will happen in the base class, in the base component.
-
 I will call renderContent though.
-
 And here we shouldn't use this type,
-
 but just type, because we can't use
-
 this before super finished running.
-
 That's no problem though,
-
 because we received type as a argument.
-
 Now, you see I still get an error here,
-
 because we have an attach method here in ProjectList,
-
 and that clashes with the attach method
-
 we have in the base class.
-
 So let's get rid of this attach method here.
-
 Now we still get an error, because you see,
-
 renderContent is private here,
-
 but we specify it as a public method here,
-
 I would love to have it as a private one,
-
 but private abstract methods are not supported.
-
 So I will remove the private keyword here,
-
 and now with that, we're left with one issue here,
-
 that we're not having that configure method,
-
 which I promised we'd have here.
-
 Well, let's add it.
-
 So here, besides renderConfig, we could add configure,
-
 even though I'm not doing anything here.
-
 Alternatively, you could convert this here
-
 to be an optional method by adding a question mark,
-
 then, you're not forced to add it.
-
 Here, I will add it because we could also argue
-
 that we, for the ProjectList,
-
 put that code where we set up our listener here,
-
 actually into configure.
-
 So we can reach out to configure,
-
 and then do our thing here,
-
 that listener setup.
-
 And now, we should just make sure
-
 that we call renderContent, but also configure like this.
-
 In case you're wondering why I'm not calling
-
 configure and renderContent here
-
 in the abstract class in the contructor,
-
 well, we could this,
-
 but we might have a problem then.
-
 If we call this in the Component class,
-
 then, we might call a method in the inheriting class,
-
 so in a class that extends Component,
-
 where renderContent or configure relies on something
-
 where the contructor of the inheriting class
-
 actually maybe sets something up,
-
 only after the base class contructor finished,
-
 which renderContent and or configure rely on.
-
 That's why it's safer to, basically,
-
 make sure that the inheriting class
-
 has to call these methods instead of the base class
-
 calling these methods for us.
-
 So with that, we restructured the ProjectList class
-
 to take advantage of inheritance and of our shared logic.
-
 Let's do the same for ProjectInput now.
-
 There, we also want to extend
-
 Component.
-
 Use the generic nature of that,
-
 and there, we have the HTMLDivElement for the hostElement,
-
 and the HTMLFormElement for the element which gets rendered.
-
 With that, we can get rid of these three properties here,
-
 so let's do that.
-
 We keep these three properties, of course,
-
 because they're specific to ProjectInput.
-
 We then have to call super here,
-
 and to super we pass the ID of the template,
-
 which is ProjectInput,
-
 the ID of the host element, which is app,
-
 insertBefore here is true, because I wanna insert
-
 that newly created element at the beginning
-
 here for this ProjectInput class.
-
 And then, newElementId,
-
 well, that here is user-input,
-
 so we should also forward that.
-
 With this, we can get rid of this code,
-
 of this code, and of all this code here actually.
-
 Of course, keep this code here.
-
 However, we could also argue that we put this
-
 into configure maybe.
-
 So let's go down to the configure method,
-
 which we already have here,
-
 and add our listeners here or our property setup here
-
 to configure.
-
 Of course, let's get rid of attach,
-
 because that's now something the base class does for us,
-
 and let's check what TypeScript doesn't like,
-
 of course we should get rid of the attach here.
-
 And yeah, actually one thing TypeScript doesn't like,
-
 it now complains that these fields
-
 do not get initialized in the contructor,
-
 because it doesn't understand or it doesn't check
-
 that configure is called in the contructor
-
 and does this initialization.
-
 So to satisfy TypeScript, I'll actually move
-
 these initializations back from configure
-
 right into the constructor.
-
 Technically, the result is exactly the same,
-
 but now TypeScript won't complain.
-
 It will complain, however, that we
-
 do have a private configure method,
-
 so just as before, we should change this,
-
 and turn configure into a public method.
-
 Now, it's not a must do, but it's kind of convention
-
 to have your public methods first,
-
 which is why I will move it up
-
 above the other private methods here.
-
 And, of course, now it also complains
-
 that we haven't a renderContent method.
-
 Now, I will add one, just because we need to.
-
 Here we're not doing anything in it,
-
 so technically it's not required,
-
 but now we satisfy our base class.
-
 Side note, renderContent,
-
 and configure, in the ProjectList class, can also be moved
-
 above that private method here for the exact same reasons,
-
 for this convention I just mentioned.
-
 And with that, we also restructured ProjectInput,
-
 to take advantage of inheritance
-
 and let the base class do a lot of the job.
-
 Let's see whether that now all works.
-
 If we save that, it compiles without errors,
-
 seems to run fine,
-
 so does this work is the question.
-
 And that looks quite good.
-
 It works the same way as before,
-
 but now we have cleaner code,
-
 where we take advantage of code reusage,
-
 thanks to inheritance.
-
 Now, it's not the only place where we can inherit.
-
 I wanna conclude this lecture here
-
 by also refactoring our project's state.
-
 Technically, there we don't need inheritance,
-
 because we only have this one single state we manage
-
 in this entire application,
-
 but imagine a bigger application,
-
 where you have multiple different states.
-
 One for the user state,
-
 whether the user's logged in and so on,
-
 one for the projects, one for a shopping cart.
-
 Now, you will notice that some features
-
 of your state class are always the same.
-
 Specifically, that array of listeners,
-
 and the addListener method.
-
 So we could also use a base class here.
-
 We could use a class State here,
-
 and that class has a listeners array,
-
 and that class also has an addListeners method,
-
 so we'll cut both from ProjectState,
-
 and add it to State.
-
 Now, that also means that we, of course, don't know
-
 whether our listener will actually return
-
 an array of projects.
-
 So actually here,
-
 for this function type,
-
 I also want to have a generic type actually.
-
 So that we can set this from outside.
-
 We can do that,
-
 we can write a generic type,
-
 like this here, a custom type, which is generic,
-
 we can add the angle brackets after our type name,
-
 use an identifier of our choice,
-
 and then reuse that type here.
-
 Now, we can make State generic,
-
 we can use the same identifier,
-
 because it's a different construct than our custom type.
-
 And then here, when we say that we wanna have
-
 a list of listeners, we have to tell TypeScript
-
 which generic type the listeners use
-
 for this State object we're creating.
-
 And that simply means we can forward
-
 our generic type here, and here.
-
 So when we now extend state, we have to specify
-
 the type of data this state will work with,
-
 and instead of state, this then gets forwarded
-
 to our listener custom type, that's the idea.
-
 And how do we use all of that?
-
 Well, down there, in the ProjectState class,
-
 we simply extend the State class,
-
 and now, provide a value, a concrete value
-
 for that generic place holder,
-
 and here, this concrete value is Project,
-
 because this ProjectState is all about managing guess what?
-
 Projects.
-
 Now, the private constructor here
-
 has a problem, as you can tell,
-
 because we're not calling super.
-
 Well, we should definitely do that,
-
 let's call super in here,
-
 that's all we gotta do there.
-
 And here, if we scroll down,
-
 where we go through the listeners,
-
 we see listeners is private,
-
 and it's private in our base class.
-
 Now, that means we can only access it
-
 from inside the base class.
-
 But you learned about another access modifier,
-
 which is similar to private,
-
 but also allows access from inheriting classes,
-
 and that would be protected.
-
 Protected means it still can't be accessed
-
 from outside the class,
-
 but it can be accessed from any class that inherits.
-
 With that, let's save all of that,
-
 it should compile just fine.
-
 And let's quickly test this,
-
 and that's looking good, so that works as before,
-
 but now, again, with a bit nicer code,
-
 using inheritance and generics
-
 also for our state management.
-

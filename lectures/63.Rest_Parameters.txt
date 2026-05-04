@@ -1,218 +1,109 @@
 Kind of related to the spread operator
-
 are rest parameters.
-
 And for that, I'll again tweak my add function.
-
 So I'll comment out all that code up here
-
 so that nothing breaks.
-
 And re-add my add function with any syntax you want
-
 with the function key word as an arrow function,
-
 whatever you want.
-
 But now I wanna have a special function.
-
 I don't want to restrict it to two values,
-
 I want to be able to add as many values
-
 as a user passes in.
-
 So that we can basically call add like this,
-
 five, ten, two, three dot seven, and so on,
-
 with as many values as you want.
-
 If you would want to call it with 10 values,
-
 that should also be possible.
-
 Now of course however, right now it's not possible
-
 as you can clearly see.
-
 Typescript is giving me an error,
-
 and correctly so, because I'm accepting no arguments here.
-
 Now of course I could accept for arguments here
-
 and assign the correct types,
-
 but what if I then call it with five.
-
 As I said, I wanna be flexible.
-
 That's where rest parameters come in.
-
 In the place where you expect a list of values,
-
 so not where you want to pass it,
-
 but where you want to accept it as incoming values,
-
 you can also use the three dots
-
 and then any name of your choice, like numbers.
-
 Now what this will do is,
-
 it will merge all incoming parameters,
-
 or generally the incoming list of values,
-
 comma separated list of values into an array.
-
 So numbers here will be an array,
-
 but of course by default a type of any values,
-
 so an array full of any values,
-
 and that's not what we should do,
-
 we should be more explicit.
-
 And here we could say, "It will be a number array."
-
 Like that.
-
 So now we are defining the correct type
-
 and now work with that numbers array.
-
 Now we can sum that up in a couple of different ways.
-
 We can work with a result variable
-
 and then a four loop because numbers is an array.
-
 So here we could loop through numbers
-
 and add that to the result.
-
 Or we use the reduce method which is available on arrays.
-
 Reduce works such that it performs an operation
-
 on every element in an array,
-
 returns a result, and then adds these results together.
-
 For that you provide a function to reduce
-
 and then a starting value which here is zero.
-
 And then this function which you pass
-
 to reduce itself takes two arguments
-
 and that's the current result you could say.
-
 And it's the current value which we're looking at,
-
 which will be each value of the array ones.
-
 And then here you can return cuResult,
-
 which for the first run will be that initial value here.
-
 Plus curValue.
-
 And if you do that reduce overall here will return a number.
-
 So here we can overall return the result
-
 of numbers reduced and hence the add variable,
-
 or constant here, will in the end hold a function
-
 which takes a couple of numbers, not an array of numbers.
-
 But because of the rest parameters, a list of numbers,
-
 which is then merged into an array inside of the function
-
 and which returns the number in the end.
-
 So then for now if we save everything,
-
 it should all work and we see the result,
-
 the sum of our little addition here.
-
 So that's rest parameters,
-
 a really useful feature for accepting
-
 an unlimited amount of arguments.
-
 And a couple of built in methods like the push method
-
 work exactly that way.
-
 You see, push here has this strange parameter definition.
-
 Well that's exactly what we just learned.
-
 Push here takes a couple of items for this array,
-
 which is an array full of strings.
-
 It takes a couple of strings.
-
 And this does not mean it takes an array of strings,
-
 but instead here wit the rest parameters,
-
 a comma separated list of strings,
-
 which ins out of porch is then merged into an array
-
 and handled internally.
-
 That is the rest parameters syntax.
-
 You can even combine this with tuples by the way.
-
 If you know you wanna support multiple arguments
-
 but you know how many it will be,
-
 so if it's not an unlimited list,
-
 then you can also use a tuple type there.
-
 And for example say, "I do accept my free numbers here."
-
 And then I have to remove the fourth argument here of course
-
 when calling the function.
-
 Because now I'm pretty clear
-
 that I want to get three arguments, which each are numbers.
-
 So of course we could have just added three
-
 standalone parameters here,
-
 but this syntax might still be a bit shorter
-
 or easier to set up than adding the free parameters.
-
 It really depends on your application and your requirements.
-
 Here I'll move away from that setup and be more generic
-
 and accept as many arguments as I get
-
 because for this function I am indeed able
-
 to handle an infinite amount of arguments.
-

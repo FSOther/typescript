@@ -1,156 +1,78 @@
 To output more useful information
-
 about a single project item,
-
 let's go to the ProjectItem class,
-
 because that is where we render this.
-
 And in there, when I set the content of the h3 tag,
-
 which is that number of persons,
-
 we could change this to, say, number of persons
-
 which we're outputting here plus "assigned."
-
 So that we at least say, if I render this, "5 assigned."
-
 But "5 assigned" also isn't really a good wording, right?
-
 Of course we could say five,
-
 or whatever the number is, "persons assigned."
-
 So if we say "persons assigned" here, that is better...
-
 Whoops, testing.
-
 Does this work?
-
 Because now this says "5 Persons assigned."
-
 Well, that's better, but it's still not optimal.
-
 What if we only have a project with one person?
-
 It still says "persons,"
-
 and that doesn't make too much sense.
-
 Now, a getter can help us there.
-
 So instead of saying "persons" or "person" here,
-
 I just say plus "assigned."
-
 But actually I don't just wanna output
-
 the number of people here,
-
 I wanna use a getter instead,
-
 which returns us a proper term.
-
 So, the right text basically.
-
 So here I'll add a getter.
-
 Not a must do, but a convention you often see
-
 is to add getters and setters right below your upper fields.
-
 So I will add it here,
-
 below my fields above the constructor.
-
 Now I'll name it "persons."
-
 The name is totally up to you.
-
 I'll name it "persons" here.
-
 And a getter is basically like a function.
-
 So you have to add parenthesis here
-
 and then curly braces.
-
 Now in there, as you see, you must return a value.
-
 And here I wanna return a value
-
 which is basically some text
-
 based on the number of people I have in my project here.
-
 So here we're gonna check if this.project.people
-
 is equal to one.
-
 In that case I will return "1 person" as a text here,
-
 else I know it's more than one or zero
-
 and in both cases I would say "persons," plural form.
-
 I will return a template literal actually,
-
 simply because it's easier to write text
-
 with injected content with a template literal.
-
 And there I'll say this.project.people "persons."
-
 So now this is the text I'll return in this scenario.
-
 So now we just have to use this getter
-
 to automatically get the right jargon, the right text.
-
 So down there,
-
 instead of reaching out to this.project.people
-
 I will just say, this.persons.assigned.
-
 And I access this like a normal property,
-
 so we're not calling this like a function with parenthesis,
-
 instead we access this like this.
-
 But this will trigger this getter
-
 because it is the same name.
-
 So this will trigger this getter,
-
 run our logic there and then return the appropriate text.
-
 So now if we try this again.
-
 Testing.
-
 Does this work?
-
 And I assign five, we see "5 persons assigned."
-
 Does this really work?
-
 For sure?
-
 And I add one here.
-
 We see "1 person assigned."
-
 So now this works in the way I want it to work.
-
 Now this really outputs this properly
-
 and it shows a nice use case of a getter.
-
 Where this helps us transform data
-
 when we retrieve it.
-

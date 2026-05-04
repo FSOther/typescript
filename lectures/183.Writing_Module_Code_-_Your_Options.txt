@@ -1,108 +1,54 @@
 Now when it comes
-
 to splitting TypeScript code across multiple files
-
 and then again connecting it,
-
 and when it comes to importing
-
 or using features to find in File A in File B and so on,
-
 TypeScript actually gives you two main options
-
 for splitting your code
-
 and for importing and exporting features across files.
-
 The first option is using a feature called namespaces,
-
 which is a TypeScript feature,
-
 combined with file bundling supported by TypeScript.
-
 And the second feature is the ES Modules feature,
-
 which is not TypeScript specific,
-
 but which is instead the official JavaScript way
-
 of splitting code across multiple files
-
 and importing and exporting features across files.
-
 Now, TypeScript has its own solution
-
 besides supporting ES modules
-
 because this ES Modules feature hasn't always been around.
-
 It's a relatively new JavaScript feature,
-
 if you want to call it like this.
-
 That's why TypeScript also allows you
-
 to use a syntax feature called namespace.
-
 You can use the namespace keyword in your code,
-
 as you will see in this section,
-
 to group related code,
-
 to put related code into the same group,
-
 even if that code is stored in different files.
-
 And it then also gives you a feature
-
 to reference features across files,
-
 to use functions from other files, for example.
-
 TypeScript also ,with help of its tsconfig file,
-
 allows you to bundle those different files
-
 into one main JavaScript file in the end
-
 so that when writing the code,
-
 you can split it across multiple files.
-
 But then for serving the code in production,
-
 TypeScript can actually merge these different files together
-
 into one JavaScript file
-
 so that you just have that one file
-
 that must be served in the end.
-
 But, of course,
-
 TypeScript also supports the standard ES Modules syntax
-
 when it comes to importing and exporting,
-
 and we'll explore that syntax in this section here as well.
-
 You can still also bundle the code if you want to,
-
 for example, with extra build tools like Webpack,
-
 but the important takeaway from this section here
-
 will be that when it comes to splitting code
-
 across multiple files
-
 but then also using the different features across files,
-
 you can use these two approaches,
-
 which we'll now take a look at
-
 in greater detail throughout this section.
-

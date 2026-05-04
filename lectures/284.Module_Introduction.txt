@@ -1,36 +1,18 @@
 In this module,
-
 we'll take a closer look at the TypeScript Compiler.
-
 Thus far, we always just used it
-
 by running tsc and then pointing at a file
-
 which we wanna compile.
-
 Now, whilst that, of course, works,
-
 it's not really feasible for bigger projects
-
 where you have multiple files
-
 or where you simply don't want to run this command
-
 after every change you wanna see in practice.
-
 In addition to that convenience,
-
 which we currently don't have,
-
 there also are a couple of interesting things
-
 you can configure regarding the compilation process
-
 which actually change what is compiled
-
 and how it is compiled.
-
 And these are therefore the things
-
 we'll take a closer look at in this module.
-

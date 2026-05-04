@@ -1,136 +1,68 @@
 Now, for this section,
-
 I got a brand new project.
-
 You find a basic snapshot attached,
-
 and it's really just a basic ts config,
-
 a basic package.JSON file and an empty app.ts file.
-
 But in this project,
-
 I now want to use TypeScript, of course.
-
 It's a TypeScript file after all,
-
 but I also want to use a third-party library.
-
 To be precise as a basic example,
-
 I want to use the Lodash library,
-
 which as you can see on NPM
-
 is a very, very popular JavaScript library.
-
 And that's also its problem.
-
 It's a JavaScript library.
-
 It's not written with TypeScript in mind.
-
 If we explore Lodash GitHub repository,
-
 you'll see that in there,
-
 you don't find any TypeScript code or configuration.
-
 Instead, all that code in here is written
-
 in plain JavaScript.
-
 And that of course, could be a problem
-
 if you want to use that library in TypeScript.
-
 So let's explore if we can still use it there.
-
 And for that, I'll just try to use one
-
 of the array helper methods offered by Lodash.
-
 By the way, in case you don't know, Lodash is a library
-
 that provides tons of helper methods
-
 that help you interact with objects, arrays,
-
 change the structure of arrays and objects,
-
 and many other things as well.
-
 It contains a lot of useful utility functionalities.
-
 For example, the chunk method, which we can use on an array
-
 to basically split that array into multiple sub-arrays.
-
 So we could have an array of numbers
-
 to have a very simple demo here.
-
 Of course, you might use it
-
 for more complex things in reality,
-
 but we could have a very simple list,
-
 a very simple array of numbers,
-
 and we might wanna split that into multiple arrays.
-
 And that's exactly what we could do with help
-
 of this chunk method.
-
 So therefore, we need to install Lodash to use it
-
 and then call that chunk method.
-
 We can install it, for example, with this NPM command here.
-
 So I can go back to my project
-
 and in there run npm install--save lodash,
-
 and that will download and install the Lodash package
-
 and make it available in this project.
-
 Now with that installed, we have to import Lodash,
-
 and typically the underscore,
-
 the lodash is used as a name for importing it.
-
 So we could import it like this,
-
 and then we could try to call lodash_.chunk,
-
 pass our array to it,
-
 and then define the the size of the chunks.
-
 So for example, we could say 2 here
-
 to create chunks with two elements each,
-
 3 to create chunks with three elements each,
-
 and then whatever remains and so on.
-
 So here we could say 2.
-
 Now you can already see that I'm getting an error with that.
-
 I'm getting an error that TypeScript in the end
-
 could not find a declaration file for the module Lodash.
-
 Now if I try to compile this project here,
-
 I'll get the same error if I run the compiler
-
 in my folder here.
-

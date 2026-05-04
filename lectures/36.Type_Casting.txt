@@ -1,168 +1,84 @@
 Okay so this was the question mark
-
 and the exclamation mark operator.
-
 However, here in this specific example,
-
 we still got some other error
-
 that the property value does not exist
-
 on a value of type HTML element.
-
 And that is a problem.
-
 Now, we get this error because getElementById
-
 only knows that it will return some HTML element or null,
-
 but if it's not null, it will be an HTML element.
-
 But of course it does not know which kind of HTML element.
-
 Now it turns out that the value property
-
 is available on input elements,
-
 but for example, it would not be available
-
 on a paragraph element or many other elements.
-
 And that's what this error in the end tells us here,
-
 that this very generic HTML element type
-
 does not know that there is a value property available.
-
 Instead, you could say this HTML element type
-
 is the most generic type that describes all HTML elements.
-
 So element specific properties are not included there.
-
 Now of course here we know that inputEl
-
 is actually an element of type input.
-
 It's an HTML input element.
-
 It's not some random other HTML element.
-
 But we need to let TypeScript know about this information
-
 in order to safely access this value property.
-
 And one way of doing that,
-
 one common solution is to do something
-
 which is called type costing
-
 or a type assertion as it's also called.
-
 And it's a concept that's all about converting
-
 some type to another type.
-
 So again, it's about convincing TypeScript
-
 that something which is inferred to be of one type
-
 is actually of another type.
-
 And you do this with help of the as operator,
-
 which is a TypeScript specific operator here in this place.
-
 And thereafter, after as,
-
 you now define a type, this will be off,
-
 like for example, number, which would be wrong here,
-
 but you could try to do that.
-
 Here, we wanna say HTML input element,
-
 which is another type that's built into TypeScript.
-
 As you can tell, if you type HTML
-
 and open the auto completion menu,
-
 it comes with a lot of built-in HTML types.
-
 Because TypeScript in general has many built-in
-
 commonly used types
-
 so that you can just use them
-
 and you don't have to define them yourself,
-
 which would be pretty annoying for all the HTML elements.
-
 So here, by adding this code,
-
 we're telling TypeScript that getElementByID
-
 will return an HTMLInputElement.
-
 Now with that, we also got rid of the null case, by the way,
-
 because we overwrote both types,
-
 HTML element and null with this type.
-
 Of course, instead we could return
-
 a union type that looks like this
-
 because we might not be certain
-
 whether we really get an element here or not.
-
 But that's how you cast or convert a type to another type.
-
 Now, just as with the exclamation mark operator,
-
 you should be careful with that though.
-
 Sometimes it is necessary, sometimes you need this code,
-
 but of course every time you overwrite
-
 the type that's inferred by TypeScript,
-
 you take responsibility
-
 that you're actually working with a value of that type.
-
 And if getElementByID
-
 turns out to yield some average HTML element,
-
 which is not an input element,
-
 TypeScript wouldn't complain about your code,
-
 but you would potentially run into a runtime error
-
 or some nasty bugs.
-
 So that's just something to be aware of.
-
 Nonetheless, here it is a good solution
-
 to make sure that we can safely access
-
 the value property down there
-
 because this property does exist
-
 on values of type HTMLInputElement.
-
 And that's therefore never commonly used
-
 and very important TypeScript feature.
-

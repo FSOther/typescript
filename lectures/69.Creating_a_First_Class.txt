@@ -1,246 +1,123 @@
 Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/06-classes-interfaces/tsconfig.json
-
 So, let's get started with classes.
-
 For this, I'm in a brand new, pretty much empty project.
-
 I got a tsconfig.json file,
-
 which is the standard tsconfig.json file,
-
 except for the target which I set to ES2022 for me here.
-
 You can, of course, choose whichever target you want
-
 and you'll also find this file attached, by the way.
-
 But with that all set up, we can add a new,
-
 let's say basics.ts file.
-
 The name, of course, is not important,
-
 but in there I now wanna create a first class.
-
 And you do that, both in Vanilla JavaScript
-
 and in TypeScript with help of the class keyword.
-
 Then, thereafter, you have the name of your class,
-
 the name of your blueprint, so to say.
-
 For example, if you wanted to create a user class,
-
 which you can then use to create multiple user objects,
-
 you could name it user,
-
 but the name, of course, is up to you.
-
 The convention just is to start with an uppercase character.
-
 Not a technical requirement,
-
 but something that's typically done.
-
 Thereafter, you have a pair of curly braces,
-
 and that's your first class,
-
 though this class isn't too useful.
-
 Instead, what you typically often do when creating classes
-
 is that you add properties to these classes.
-
 Fields, as they're also called.
-
 So you add properties to these classes
-
 to make sure that every object
-
 that's created based on such a class
-
 has those same properties.
-
 They might hold different values.
-
 We'll get back to that soon.
-
 But adding properties, adding such fields,
-
 is something that's often done.
-
 And in Vanilla JavaScript,
-
 you do that by adding a constructor method to your class.
-
 That's a special method you can add to your class,
-
 a special function inside of your class
-
 that belongs to the class,
-
 that will be executed automatically
-
 whenever you instantiate the class with the new keyword.
-
 So, whenever you do that,
-
 this constructor method will be called,
-
 and that's still all Vanilla JavaScript.
-
 And in that constructor method in Vanilla JavaScript,
-
 you can then add your properties,
-
 like a name property, which you could set to Max.
-
 This is how you would do it in Vanilla JavaScript.
-
 But as you can tell in TypeScript,
-
 this produces an error
-
 that the property name does not exist on this user class
-
 because in TypeScript properties
-
 are added in a different way to classes
-
 instead of creating them kind of on the fly
-
 in the constructor, in TypeScript,
-
 like in many other programming languages,
-
 you add your class properties
-
 directly in the class definition,
-
 outside of the constructor.
-
 So if you wanna have a name property in that class,
-
 instead of adding it here, you would add it here
-
 and you can instill a sign and initial value of Max.
-
 That's how you would do it in TypeScript,
-
 and that's one key difference already.
-
 This, of course, also allows you in TypeScript to get rid of
-
 that constructor and, therefore, have a much leaner class,
-
 if all you wanna do is have such a fixed property.
-
 Now, often, you want to have clearly defined properties,
-
 which are the same for all instances
-
 that are based on that class,
-
 but you want to allow different values in those properties
-
 because otherwise you'll have some exactly equal clones
-
 of your objects, which are all exactly the same,
-
 holding exactly the same values,
-
 and that's typically not too useful.
-
 That's why it's quite common to have such a constructor
-
 where you then accept values for your properties,
-
 like a name value, which should be of type string.
-
 And let's say a age value, which is of type number,
-
 because we also might want to have a age property in here.
-
 And we could also initialize that to some default value,
-
 or we leave it uninitialized
-
 and set it to type number, for example.
-
 And we could do the same here for the name
-
 and set that to string.
-
 With that I'm getting some errors up here,
-
 but we'll fix that soon.
-
 So, now, we have some two uninitialized properties here,
-
 but we have a constructor that expects two parameters,
-
 name and age, which are of type string and number.
-
 So, the same as up here.
-
 The names of these arguments,
-
 by the way, could be different.
-
 We could have n and a here, as well.
-
 They don't have to match these property names.
-
 And here I'll use these different names
-
 to make it very clear that they don't have to be equal here.
-
 Because what we can do now is
-
 we can now, that we added those properties here,
-
 again, use the this keyword,
-
 which is a standard JavaScript feature,
-
 to access the name property.
-
 Now it does exist because we defined it here
-
 and assign the value we receive for n here to that property,
-
 so that the property is no longer uninitialized.
-
 It is up here,
-
 but since the constructor gets called
-
 right when an instance for this class is created,
-
 the property will actually receive a value
-
 when that class is instantiated
-
 because we assign a value here.
-
 We can do the same for age.
-
 And if we do that, both those errors up here also go away
-
 because those errors were about these properties
-
 being uninitialized and TypeScript doesn't like that.
-
 But if you do initialize them in the constructor,
-
 as I'm doing now, then everything's fine.
-
 And that's how you could set up properties
-
 and accept and assign values with help
-
 of the constructor in TypeScript.
-

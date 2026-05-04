@@ -1,138 +1,69 @@
 So now that we understood
-
 which kind of problem I wanna solve here,
-
 let's solve it with this decorator.
-
 Because my idea is to put that code
-
 which I had in the constructor here in this person class
-
 in the last lecture into this decorator.
-
 So that this decorator will automatically bind the method
-
 it's attached to, to the class the method belongs to.
-
 Now to do that, I'll remove this code here
-
 and I'll use my ctx object,
-
 and there, the addInitializer method.
-
 Because this addInitializer method is a utility method
-
 provided by this ctx object, which is passed
-
 to the decorator automatically by JavaScript
-
 to allow you to run code related to this thing
-
 you are attaching the decorator to
-
 after the surrounding thing,
-
 so the surrounding class is done initializing.
-
 So in the end you can think
-
 of this addInitializer method here as a way
-
 of giving you access to the constructor of the class
-
 the method this decorator is added to belongs to.
-
 For that you must pass a function to addInitializer
-
 and it must be a normal function with the function keyword.
-
 An arrow function won't work
-
 because the this keyword behaves differently in there.
-
 So it must be a normal, anonymous or not, does not matter,
-
 function defined like this.
-
 And this function will in the end be executed
-
 as part of the class constructor now, you could say.
-
 And therefore I can put the code,
-
 which I had in the class constructor
-
 in the last lecture into this function in the end.
-
 Here, I can use the this keyword
-
 and this will then refer to the class
-
 to which this method belongs
-
 to which I added this decorator.
-
 And then dynamically access my method by using ctx.name
-
 because that will be the name of my method.
-
 And by setting this to this ctx.name, bind this.
-
 So that's near the same code I had in the last lecture,
-
 just accessing the method name dynamically
-
 because this decorator can be added to any kind of method,
-
 not just to the greet method.
-
 So that's why I want to access the method name dynamically.
-
 Now of course I'm getting an error here,
-
 a type error related to the this keyword.
-
 And to fix this, we just need to again,
-
 change the type of auto bind a little bit.
-
 To be precise, what you can do here
-
 is add this as a argument to this function
-
 and set this to type any.
-
 That's a special syntax for telling TypeScript to what the
-
 this keyword inside of function should be referring to.
-
 And here I'm in the end saying
-
 that it can refer to anything.
-
 With that, this decorator can be added
-
 without problems to greet.
-
 And with that change made, with that code added here,
-
 we can now easily add this decorator to any method we want
-
 to ensure that that this keyword inside of this method
-
 will always refer to the class the method belongs to.
-
 So with the updated auto bind decorator added to greet,
-
 this code down here should now work
-
 without any further changes.
-
 So if I compile this and execute this,
-
 you see it works without errors and I'm getting this log.
-
 And that is one possible use case
-
 for such a method decorator.
-

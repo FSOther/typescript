@@ -1,450 +1,225 @@
 Typescript provides many types to JavaScript.
-
 Now, JavaScript itself, also knows some data types,
-
 and I'll come back to that in this module, as well,
-
 but Typescript adds many more types,
-
 and as you will also learn in this course,
-
 Typescript also enables you to write your own types.
-
 Now, let's start with some of the Core Types,
-
 which JavaScript already knows
-
 and which Typescript also supports,
-
 and we'll also have a look at what the difference
-
 between JavaScript, knowing the type,
-
 and Typescript, using that type, means.
-
 One of the core types we work with
-
 in JavaScript and Typescript, is the number type.
-
 Now, in JavaScript, and the same is true for Typescript,
-
 there is only one number type.
-
 There is no special type for integers or floats.
-
 Instead, these values here, would all be numbers.
-
 One would be a number without the decimal place.
-
 5.3 is obviously one with a decimal place
-
 and all these values are of type number.
-
 Other programming languages have special integer types
-
 and float or double types.
-
 JavaScript doesn't have that
-
 and Typescript doesn't have it either.
-
 So, we have the number type, which we know
-
 from JavaScript, also as a type, in Typescript.
-
 We also have the string data type, and that would be text,
-
 which you can define in one of these three ways,
-
 with single quotes, with double quotes,
-
 or also with backticks.
-
 The last notation with backticks is a special syntax,
-
 provided in modern JavaScript and also in Typescript,
-
 which allows us to write so-called template literals,
-
 that are normal strings where you can
-
 dynamically inject some data into them.
-
 So, strings are simply text
-
 and JavaScript knows about string value types.
-
 Typescript does so, as well.
-
 Last, but not least, one of the core data types,
-
 JavaScript knows and Typescript also supports,
-
 is the Boolean data type.
-
 That would be true or false,
-
 and that's super important in programming, obviously,
-
 especially when working with IF statements.
-
 Here, we got these two values,
-
 and that's important, because in JavaScript,
-
 you also might know this idea of truthy and falsy values,
-
 for example that zero, the number zero, is a falsy value.
-
 If you use it in an IF condition, it is treated as false.
-
 The Boolean data type, really just knows these two values,
-
 though, true or false, and that's not just the case
-
 for Typescript, but also for JavaScript.
-
 This truthy, falsy concept, which you should know,
-
 that is not related to data types.
-
 That's behind-the-scenes work.
-
 JavaScript does add runtime,
-
 when it sees certain values, and IF conditions.
-
 So, with numbers, strings and Booleans,
-
 we get a couple of core data types.
-
 Of course, not all,
-
 we got objects and so on, as well,
-
 but let's focus on these types
-
 and see what Typescript does with them,
-
 or what we can do with them, with the help of Typescript.
-
 For this, I'm back to the project,
-
 we saw in the first course module,
-
 and there I showed you that all you need to do, now,
-
 is run npm start in a terminal,
-
 navigate it into this project folder,
-
 to spin up this live development server,
-
 which will reload, whenever we change something,
-
 and here, I opened up this localhost:3000 address
-
 in the new tab of my browser.
-
 Right know, I'm getting an error,
-
 because I have no app tray as file, yet.
-
 Of course, you'll find this starting project,
-
 all attached to this lecture,
-
 will get such a app tray as file,
-
 which we're trying to import here, in our index html file,
-
 as soon as we compile app.ts from Typescript to JavaScript
-
 and we can do that in a new tab of the terminal,
-
 so that we keep this process running
-
 and open a new tab instead, by simply running tsc app.ts
-
 and what this does is, it compiles the Typescript file
-
 and spits out a JavaScript file,
-
 and once that happens, we can reload this page
-
 and we get the Time to get started... output here.
-
 So, now we have this setup here,
-
 were we can write some Typescript code
-
 and then compile it to JavaScript code, to see what it does.
-
 Now, with that in the Typescript file,
-
 I'll actually get rid of the content there,
-
 because now, I wanna dive into these core data types,
-
 which I just showed you on the slide,
-
 so that you understand how to work with them in Typescript.
-
 Now, let's start very, very simple.
-
 Let's say, we have a new function, add,
-
 and there we expect two numbers, n1 and add two,
-
 and that return n1 plus n2, just like that,
-
 very simple function, nothing Typescript-ish about it.
-
 Now, we have two numbers with which we wanna work.
-
 That could be number1 here, which is, say, five
-
 and also number2, which is maybe 2.8,
-
 whatever you want, two numbers here.
-
 Now, obviously and not very surprisingly,
-
 we can add, or call the add function
-
 and pass in number1 and number2
-
 as arguments to this function,
-
 store the result in a new constant maybe,
-
 and then to see something on the screen,
-
 we can console.log the result.
-
 If we do that, and I recompile this file with tsc app.ts,
-
 then this page should automatically reload, already.
-
 If not, you can manually reload,
-
 of course, and you should see 7.8.
-
 Now, you might think, that's not too special, right?
-
 This is a pretty straight forward JavaScript snippet
-
 and, indeed, there's nothing Typescript-ish does about it.
-
 Well, let's do something which will brake
-
 that snippet in normal JavaScript.
-
 Let's say, this input here is actually not a number,
-
 but some text, a five in text,
-
 and if we now save that,
-
 and rerun our compilation command here,
-
 you'll see that, once this page reloads here,
-
 I get 52.8 as a output and that's obviously
-
 not the correct result of this addition.
-
 Now, do you know why we're getting this output
-
 in normal JavaScript, which we,
-
 in the end are executing here.
-
 Well, we're getting this output,
-
 because this is not the result of the mathematical addition,
-
 but instead, this concatenates this as a string,
-
 because this input, here, five, is a string
-
 and then JavaScript sees, "Okay, I got a string,
-
 "I'm adding something to this string, while certainly,
-
 "this something should also be converted to a string,
-
 "so that overall, I got a string,
-
 "because the first value was a string,"
-
 and hence, what JavaScript does, is,
-
 it converts 2.8 from a number to a string,
-
 concatenates a longer string from five and 2.8,
-
 hence yielding 52.8, as a string and returns that.
-
 So, it's not treating this in a mathematical way,
-
 but instead, as a string,
-
 and with JavaScript, this can happen.
-
 Now, of course, you might think,
-
 "Why would I write such code?
-
 "I'm the developer, why would I make this mistake?"
-
 Well, maybe you're not the one, making this mistake.
-
 Maybe, this is getting fetched from some user input
-
 and you introduced a little bug in your code,
-
 where you forgot to transform this,
-
 or you're working in a team and you're having
-
 a couple of script files, working together,
-
 and some other developer introduced such an error.
-
 It's not impossible to make such errors,
-
 but it can be hard to track them down.
-
 Here, of course, it's pretty obvious
-
 that something went wrong, because we have a basic script,
-
 but in a bigger script, you might not even
-
 immediately recognize that something went wrong here,
-
 and that's were Typescript can help us.
-
 We can add type assignments
-
 in this function, to our parameters.
-
 We can tell Typescript that these two parameters
-
 should be of type number and not be of type,
-
 I don't care which is the default.
-
 So, we do that, by adding a colon here,
-
 after the value to which we wanna assign a type,
-
 so, in this case, after the parameter name
-
 and then the name of the type.
-
 For example, number would be one of the supported names.
-
 Besides number, you also got string,
-
 or Boolean, but we'll come back to those.
-
 For the moment, we need number
-
 and we don't just need it on the first parameter here,
-
 but also on the second one.
-
 So, here also, we can add a colon, and then number,
-
 and now, what we're saying to Typescript, is,
-
 "Hey, both parameters here, should be of type number,
-
 "passing in values of a different type is not allowed,"
-
 and indeed, my IDE already complains here,
-
 because Visual Studio Code has built-in Typescript support,
-
 but even if we would overlook this,
-
 as soon as I recompile this, by rerunning tsc app.ts,
-
 you'll see, we get an error.
-
 We get an error, that,
-
 "Argument of type '"5" is not assignable
-
 to parameter of type 'number',
-
 and it even shows us where this happened
-
 and gives us a line number, line eight,
-
 and it's basically showing us the same, the IDE shows here.
-
 So, in case we overlooked it in the IDE,
-
 compiling it, now throws an error,
-
 and that's the important thing about Typescript.
-
 It only helps us during compilation.
-
 It doesn't change JavaScript to work differently at runtime,
-
 because browsers have no built-in Typescript support.
-
 It can only help us during development,
-
 before we compile our Typescript code to JavaScript,
-
 but there, it's extremely useful,
-
 because it adds an extra step, an extra sanity check,
-
 where here, we find out, "Oh, we made a mistake.
-
 "Here, this shouldn't be a string, this should be a number",
-
 and we can fix this and we're good.
-
 This is what Typescript does.
-
 It helps you during development.
-
 It does not change your runtime code.
-
 Indeed, here, even with the default settings,
-
 it compiled our error here,
-
 even though it detected it during compilation,
-
 and created a file which causes the incorrect result,
-
 because by default, Typescript does not step in, here.
-
 Later you'll learn, how you can make sure that it does,
-
 but by default, it doesn't even block compilation.
-
 Still, it yells at you and points at this mistake,
-
 so that you can fix it,
-
 and so that you can avoid such mistakes here.
-
 By the way, make sure you don't have
-
 app.js and app.ts open at the same time.
-
 You could get errors here in the IDE,
-
 regarding duplicate function implementations.
-
 Closing the JavaScript file fixes this.
-

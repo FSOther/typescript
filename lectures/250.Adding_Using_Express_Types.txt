@@ -1,126 +1,63 @@
 Now, when building
-
 web applications with Node.js,
-
 it's pretty popular
-
 to use the Express.js library in conjunction with it.
-
 Now, there are plenty
-
 of other very popular libraries out there,
-
 like Hono, NestJS,
-
 Fastify, and many others,
-
 but Express.js is still probably the most popular choice,
-
 even though unlike those other libraries,
-
 it doesn't have great TypeScript support built in,
-
 but we'll get it to work.
-
 So, what I'll do here is I'll grab this installation command
-
 and back in my project, install this Express.js package
-
 into this project.
-
 And with that done, we can now change this code
-
 to start this server and listen to the request
-
 and send back a response with help of Express.js.
-
 For that we should import express from express
-
 using this ES module's import syntax again,
-
 and then use express, this object here, or this function,
-
 to set up a Express.js application.
-
 But again, we're getting an error
-
 that no type declarations were found,
-
 because again, this is not a library
-
 that has TypeScript support built in,
-
 so therefore, we should install those missing types,
-
 which we can again do by running npm install --save-dev
-
 @types/express.
-
 And with those types installed, this error goes away.
-
 Now we can construct an Express app
-
 by calling Express like this,
-
 and we can then set up a middleware with the use method
-
 or a GET requestListener with the GET method,
-
 listen to GET requests to the root path,
-
 and then again, get a request at a response object.
-
 Potentially, if we want to log the request method,
-
 this still works,
-
 and send back a response with the end method, for example,
-
 or the JSON method if we wanted
-
 to send back a response in a JSON format.
-
 And then maybe there have a message of "Hello World,"
-
 something like this.
-
 And now we just again have to call listen,
-
 but this time on this app object.
-
 And that's now some valid Express JS code,
-
 setting up a Node web server with the Express library.
-
 So again, we should run the compile script
-
 to compile this code,
-
 which it does without issues,
-
 and then start this server with npm start,
-
 and keep that process up and running, of course.
-
 And now if I reload this local host 3,000 page,
-
 I see that JSON response being printed here.
-
 And here in my terminal,
-
 I see the request method being printed
-
 thanks to this line of code.
-
 So that also works,
-
 but now using the Express.js framework.
-
 And with that out of the way,
-
 we can now finally build
-
 at least a bit more complex Node Express application
-
 as the next step.
-

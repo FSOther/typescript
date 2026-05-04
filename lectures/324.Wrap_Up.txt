@@ -1,90 +1,45 @@
 And that is it for interfaces and classes.
-
 In this module, we had a detailed look at classes
-
 and what we can do there.
-
 Classes and TypeScript, in the end,
-
 just build up on classes for JavaScript,
-
 and I already summarized those a little bit earlier
-
 in this module.
-
 Interfaces are a different thing.
-
 They only exist in TypeScript.
-
 They're a pure TypeScript feature,
-
 helping you to write clear, clearly structured,
-
 and very explicit code.
-
 They can help you to force classes to have certain features
-
 or objects in general to have a certain structure.
-
 They can be used as a function type, as you learned.
-
 They allow for optional properties
-
 and all therefore optional methods, by the way,
-
 if you add a question mark after the method name.
-
 So that is something you can use.
-
 And, as you just saw, when being compiled
-
 after fulfilling their role of allowing
-
 TypeScript to check your code,
-
 nothing is omitted for these interfaces.
-
 The code is simply dumped.
-
 Interfaces, nonetheless, are a powerful feature
-
 to force your classes or you objects
-
 to have a certain structure
-
 and to clearly describe your idea
-
 of how an object should look like.
-
 Now as you learned, you mostly can replace them
-
 with custom types if you wanted to.
-
 You can also implement custom types,
-
 but it simply more common to use an interface for that,
-
 to use an interface if you want to describe an object
-
 than if you want to implement it.
-
 All there for historic reasons,
-
 because in the earlier days of TypeScript,
-
 custom types couldn't be implemented
-
 or used like interfaces.
-
 Now there is more flexibility,
-
 but it's still recommended to go for interfaces
-
 if you work with objects
-
 and if you want to describe their structure.
-
 We'll also see them throughout this course
-
 over and over again.
-

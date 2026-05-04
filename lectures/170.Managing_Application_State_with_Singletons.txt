@@ -1,698 +1,349 @@
 So getting projects from A to B
-
 is now our goal.
-
 To be precise, when users create a new project,
-
 when they enter all the data,
-
 we wanna create a new project object in the end,
-
 which we then output in our project list class
-
 as part of the unordered list,
-
 which is rendered there.
-
 That's the idea.
-
 Of course a trivial way of implementing this
-
 could be to simply go to the place
-
 where the user input is entered
-
 and then here use document.getElementbyId,
-
 to reach out for that unordered list
-
 we rendered as part of our project list class,
-
 which has this ID here,
-
 so active-projects list or finished-projects list,
-
 and then simply reach out to that
-
 and add a new item to it.
-
 But that's not really the idea
-
 of how I wanna build this application.
-
 I wanna build it in an object oriented way
-
 where we have our different classes
-
 that work together in a reactive way
-
 where we create a new class
-
 and then something happens in the dom.
-
 Where we call a method of a class
-
 and then this class does something.
-
 That's how I want these things to work.
-
 Now of course we could add a method
-
 to the project list class,
-
 let's say I add project method.
-
 That method should then be called
-
 when a project should be added and rendered,
-
 and we would have to find some way of calling it
-
 from inside the project input.
-
 To do that, we could make sure
-
 that we actually pass references to our list here,
-
 to the project input constructor,
-
 so that from inside the project input class,
-
 we can work with these concrete instances
-
 and call the methods on these instances.
-
 Because that is what we would have to do.
-
 That would be a viable way,
-
 definitely an approach you could take,
-
 but I wanna take an even more abstract approach.
-
 Even more interesting approach in my opinion.
-
 I will build a class which manages the state
-
 of our application, so to say,
-
 a class which manages our projects,
-
 or whichever state we might need to manage
-
 in the application,
-
 which also allows us to then set up listeners
-
 in the different parts of the app that are interested.
-
 This is a pattern that might sound familiar to you
-
 if you worked with frameworks like Angular
-
 or libraries like React and Redux.
-
 That you have a global state management object
-
 and you just listen to changes.
-
 That is what I wanna implement here.
-
 Of course it's just one way of doing this,
-
 but I think it's a quite interesting way,
-
 which is why I want to show it.
-
 So at the top of the app ts file,
-
 I'll add a project state management class.
-
 And I will simply name is projectState;
-
 sounds like a sensible name to me.
-
 Now the idea here is that in this class
-
 we have a property or a field,
-
 a private field, projects,
-
 which holds an array of projects.
-
 Now we also need to define how a project should look like,
-
 we'll do that in the next step,
-
 for now I'll just say it's an array of anything,
-
 which of course is not perfect, not final,
-
 but I wanna focus on that state management solution for now.
-
 So we have this list of projects here.
-
 Now my goal is that I wanna add an item to that list
-
 whenever we, well click that add project button here.
-
 To make that work, inside of the project state class,
-
 I'll add an add project method, a public one.
-
 And there I expect to get the title,
-
 which should be a string,
-
 the description, which should be a string,
-
 and also the number of people working on the project,
-
 which should be a number.
-
 Then in here, we can create a new project
-
 with the object literal notation for now.
-
 Where we should have some ID for every project
-
 so that we can uniquely identify it,
-
 and I'll generate an ID here by using
-
 math.random().toString.
-
 Now a random number is not really a unique ID,
-
 you can generate the same number more than once,
-
 but it's very unlikely,
-
 and for our demo purposes here it will do.
-
 Now besides that every project should have a title
-
 and there will store that title argument we're getting.
-
 Same for description,
-
 where I will store description.
-
 And my people where I will store the number of people.
-
 This, for now, is the project I wanna store.
-
 So once we created it here,
-
 we can reach out to the projects array in projects state,
-
 which is private,
-
 but from inside the class,
-
 which this method is,
-
 we can access it of course.
-
 And there I wanna add this new project
-
 and for that we can simply push our new project to it.
-
 Now with that, we are able to add a project.
-
 But we still, of course, have a couple of unclear questions.
-
 How do we call add project from inside our class down there
-
 where we gather the user input
-
 from inside the submit handler?
-
 How do we call add project?
-
 And how do we pass that updated list of projects
-
 whenever it changes to the project list class?
-
 These are the two issues we of course face at the moment.
-
 Well, one thing I will do here,
-
 is I will create an instance of project state here.
-
 A global instance, which we could use from the entire file,
-
 and I'll do it right after we create that class.
-
 So here I have my project state constant
-
 where I instantiate project state like this.
-
 This way this is a global constant
-
 that can be used any where in the file,
-
 so talking to that class is now super simple,
-
 you just have to use this global constant here.
-
 We can even use a feature we all learned about,
-
 the private constructor,
-
 to guarantee that this is a singleton class.
-
 We can create a private constructor here
-
 and then we have another private property here,
-
 instance, which is of type project state,
-
 so the same type this class is of.
-
 And we then add a get instance method here,
-
 a static method actually,
-
 where we check if this .instance is a thing,
-
 and for that,
-
 this actually also have to be a static instance,
-
 a static property, I mean.
-
 If this is a thing,
-
 if it is, we return this .instance,
-
 so we return out single instance we got,
-
 otherwise we create a new one.
-
 So otherwise,
-
 this .instance will be equal to new project state.
-
 And then we return this .instance.
-
 Now with that, we can call get instance down there,
-
 like this, ProjectState.getInstance,
-
 and we're guaranteed to always work
-
 with the exact same object
-
 and will always only have one object of the type
-
 in the entire application.
-
 Which is the idea here,
-
 because I only wanna have one state management object
-
 for our project.
-
 So that is this project state
-
 with this singleton constructor now.
-
 So now we have our project state constant.
-
 Let's go down to the project input class
-
 therefore where we gather the user input.
-
 Here, we can now call projectState.addProject
-
 and forward the title, the description and the people,
-
 we get back from gather user input in the end.
-
 So now this project should get created.
-
 Now we just need to push that information
-
 that we have a new project to our project list class,
-
 because that's the class which is responsible
-
 for outputting something to the screen.
-
 And for that I wanna set up a subscription pattern
-
 in the end.
-
 Where inside of our project state
-
 we manage a list of listeners,
-
 so a list of functions in the end,
-
 which should be called whenever something changes.
-
 So for that
-
 I'll add another private property here, listeners.
-
 And listeners will be an empty array
-
 and for now, again, just an array of anything
-
 we will specify this in greater detail later.
-
 Now I also want to have a method here
-
 addListener where I get a listener function,
-
 so this should be a function in the end here.
-
 And I will then add this to my listeners.
-
 So we push the listener function here
-
 to, well the listeners array.
-
 Now what's the idea of having that listeners array?
-
 It's an array of functions,
-
 of function references right?
-
 The idea is that whenever something changes,
-
 like here when we add a new project,
-
 we call all listener functions.
-
 So we loop through all listeners,
-
 of this listener,
-
 so through all listener functions,
-
 and then since these are function references,
-
 we can execute this as a function.
-
 And to that function,
-
 we pass the thing that's relevant for it,
-
 based on the state we're managing,
-
 which is in this case, in this class of course,
-
 is our projects list.
-
 This is the state this class is responsible for.
-
 So here,
-
 I forward this project
-
 and I will call slice on it
-
 to only return a copy of that array
-
 and not the original array.
-
 So that it can't be edited from the place
-
 where the listener function is coming from.
-
 Because arrays and objects
-
 are reference values in Javascript,
-
 so if you would pass the original array,
-
 we could edit it from outside
-
 and also on the same hand,
-
 if we push something to it from inside this class,
-
 it would already change every where else in the app,
-
 but these places would not really notice that it changed,
-
 so it could introduce strange bugs
-
 if we pass around the original reference,
-
 which is why I pass around the brand new copy,
-
 a brand new array here.
-
 So now every listener function is getting executed
-
 and gets our copy, our brand new copy of projects.
-
 Now we just need to go to the places
-
 where we want to be informed about changes,
-
 in our case, the project list class here,
-
 and set up such a listener.
-
 So here, in the constructor of the project list class,
-
 before we attach and render the content,
-
 I will reach out to projectState
-
 and call addListener here
-
 to basically register a listener function here.
-
 Now a listener, as I said, is a function,
-
 so we have to pass a function to addListener.
-
 Because the listeners we're managing here
-
 in the project state,
-
 that's just a list of functions,
-
 which we will eventually call
-
 when something changes right?
-
 So I will need to pass a function
-
 to my addListener function here.
-
 Here I'm passing an anonymous arrow function.
-
 And that function will get a list of projects
-
 when it's called from inside projectState.
-
 So we get a list of projects, we know that,
-
 inside of this function body,
-
 we can then use this list of projects.
-
 And here I will add a brand new field to the project list,
-
 assignedProjects maybe,
-
 which is of type any array,
-
 so anything in an array,
-
 and array of any values,
-
 well of course I'll also specify this
-
 in greater detail later.
-
 Then here we can say this assigned project
-
 is equal to projects.
-
 So to the projects we're getting.
-
 Now here to get rid of that
-
 implicit any type error,
-
 I have to be clear that this will actually be
-
 an array of anything here.
-
 So now I'm adding the projects
-
 which I get because something changed in my state.
-
 Here to my assigned projects
-
 where I'm not adding it,
-
 I'm overriding the assigned projects
-
 with the new projects.
-
 And then my idea is to render all these projects.
-
 For that we can add a new method;
-
 renderPrjects, for example.
-
 Which I wanna call from in here,
-
 this renderProjects, just like this.
-
 It ends out of renderProjects.
-
 I'll reach out to this list here,
-
 right, we assign that ID when we render the content,
-
 which we do here.
-
 It looks like we do this after renderProjects is called,
-
 but keep in mind, that ends out of a function,
-
 which will only eventually be called
-
 once new projects are added.
-
 So actually renderContent will run first.
-
 And therefore, in renderProjects we can rely on this ID
-
 being assigned to an unordered list,
-
 so here we can grab this
-
 and get our list element by using document.getElementbyId
-
 and then I just pass on this ID identifier
-
 using the type of this concrete project list class.
-
 And then also using, well the rest of this ID we generated.
-
 And to that list or in that list
-
 I wanna render all the projects we have.
-
 So, I will go through all the project items
-
 of this assigned projects here.
-
 And then for every item I wanna add something
-
 to the list
-
 and we'll refine this later.
-
 For the moment, I will just call appendChild here
-
 on my list element.
-
 By the way here we should add an exclamation mark
-
 to make it clear that this will not be null.
-
 We can also cast this to an HTML UL list element,
-
 so to an unordered list element
-
 because that is what it will be.
-
 And then we can append the child here
-
 and that should be a brand new list item;
-
 so here we can create our list item
-
 with document.createElement LI.
-
 And on that list item here,
-
 I just will set the text content equal to project
-
 Item.title.
-
 Every project item will be a project
-
 as we create it up there in the project state,
-
 so it will be such an object,
-
 and therefore it will have a title.
-
 Now with that if we go down there
-
 we have our list item which now is added here.
-
 And with that we're almost there,
-
 remaining fixes here,
-
 I set up that field,
-
 but in the constructor I then never reference it.
-
 Only here in my listener function,
-
 but as mentioned, this does not run immediately
-
 in the constructor.
-
 So what I'll do here is I will set this assigned projects
-
 equal to an empty array here initially,
-
 so that we're all happy and this is initialized.
-
 Now if we save this,
-
 it should compile without errors.
-
 And now if we add something here,
-
 does this work?
-
 We indeed see it show up in our lists.
-
 In both lists at the moment
-
 because we have no filtering logic and so on.
-
 And that is something we can fix later,
-
 but it does work,
-
 and that's the important thing.
-
 Now you see we also have a bug here however.
-
 If I add a second element,
-
 we duplicate the last element
-
 and add the new elements,
-
 so that's something we'll have to fix.
-
 And these are all things we will tackle,
-
 but now at least we're able to output something
-
 with that, let's dive into all the improvements
-
 like being clearer about the types we're using,
-
 avoiding the duplicate output,
-
 and many other things as well.
-

@@ -1,64 +1,32 @@
 So at this point,
-
 you learned a lot about decorators,
-
 and therefore it's time to practice working with decorators.
-
 And in this section we'll build a demo project
-
 using this experimental decorators syntax
-
 covered in the previous course section.
-
 Attached to this lecture, you'll find this starting project,
-
 which you already know from the previous section.
-
 You need to download and extract it,
-
 and then run npm install to install the dependencies.
-
 You can ignore any warnings you might be getting
-
 and then run npm start to start a development server.
-
 And it should open up a site in your browser too.
-
 And it will serve this index HTML file,
-
 because in this section we'll actually build
-
 a web application where we can see something on the screen.
-
 So you should have this development server up and running.
-
 In a separate tab, you can then
-
 compile your code by running tsc,
-
 or by using tsc -w to enter watch mode
-
 so that your TypeScript code will be compiled
-
 whenever you save your changes.
-
 And it's that compiled TypeScript code from the dist folder
-
 that will be loaded into this index HTML file
-
 that is served by that server running
-
 in your other terminal window,
-
 which we started with npm start.
-
 So that's the project we'll use here.
-
 And then in app.ts, we'll write our code,
-
 we'll work with experimental decorators,
-
 and we'll build a little demo application
-
 with those decorators.
-

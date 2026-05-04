@@ -1,668 +1,334 @@
 So, what could we about validation?
-
 Well, maybe, let's start at the desired end result.
-
 My idea is that we later have some validate function
-
 which doesn't exist yet, but that we later have it,
-
 to which I pass the enteredTitle,
-
 or actually a configuration object I'd say
-
 where the value is the enteredTitle,
-
 so the thing to be validated.
-
 But where I then also have additional
-
 properties that tell the validate function
-
 how to validate it.
-
 So for example, that we have required set to true here,
-
 minLength set to five to enforce five characters,
-
 and so on.
-
 And then we do this here
-
 for all three inputs,
-
 and validate is a function that returns true
-
 if it's valid, and false if it's not valid,
-
 and in the end, we could have something like this.
-
 Or enteredDescription and enteredPeople,
-
 that would roughly be the idea.
-
 Of course, it's just one way of implementing this,
-
 but it's a way which I like quite a lot.
-
 For that, at the top of the file,
-
 I will add some validation logic.
-
 And, again, there are many ways of doing this.
-
 I will first of all start by defining
-
 the structure of such a validatable object.
-
 So this object we pass to the validate function,
-
 because of course this always needs to have
-
 a similar structure with a certain amount
-
 of properties which can be there
-
 and certain types of properties,
-
 so that the validate function actually knows
-
 what it's working with and can correctly
-
 extract properties and so on.
-
 So, I will start by defining an interface.
-
 We could also go for a custom type,
-
 totally up to you.
-
 Since I'll define the structure of an object,
-
 I'm always a bigger fan of defining just an interface.
-
 I'll name it Validatable here,
-
 because it describes a validatable object,
-
 and it will have a value which should be
-
 a string or also a number.
-
 It will have a required prop,
-
 which will have a Boolean value,
-
 so true or false.
-
 And then let's say we support minLength validation,
-
 which should be a number,
-
 maxLength which should be a number,
-
 and also in case we're getting a number,
-
 a min and a max value.
-
 The difference to minLength and maxLength
-
 is that this checks the length of the string,
-
 this the value of the number
-
 if it's above a certain number
-
 or below a certain maximum.
-
 These are the properties I want to support.
-
 Now besides the value,
-
 they should all be optional though,
-
 which we can enforce by adding
-
 a question mark after the names.
-
 By the way, the alternative to using a question mark
-
 is to allow for undefined values.
-
 The question mark basically does the same.
-
 It says that required is either a Boolean or undefined.
-
 So now we have the validatable interface.
-
 What can we do with that?
-
 Well, now with that interface created,
-
 we can create that function,
-
 that validate function I'm looking for.
-
 That should get such a validatable object.
-
 So ValidatableInput is of type Validatable.
-
 That's my idea here.
-
 So it gets an object which has this structure.
-
 And now in there,
-
 we can check for all these properties to exist
-
 and then do the appropriate validation.
-
 Now what exactly do we do
-
 in the validate function therefore?
-
 Well, in the end here,
-
 I wanna create a variable, isValid,
-
 which initially is true.
-
 So the default assumption is
-
 what we get is true.
-
 But we'll set it to false
-
 as soon as at least one of our checks fails.
-
 And now let's start with the first check.
-
 Let's see if the validatableInput here,
-
 this argument we're getting,
-
 if that has a required prop?
-
 If that's not undefined.
-
 If this is set, and if it is true therefore,
-
 this means that the value is required
-
 and must not be empty.
-
 So now in here,
-
 we can set isValid equal to isValid and
-
 the way JavaScript works,
-
 this ensures that the new value of isValid
-
 will be false if the thing after and is false.
-
 Because if at least one of the two things is false,
-
 the overall value will be false.
-
 Now isValid initially is true,
-
 but if the thing after the logical and operator
-
 is false, isValid will be false.
-
 And in the end I will return isValid.
-
 So now what do we add
-
 after the two ampersand symbols therefore?
-
 Well I wanna check if validatableInput.value,
-
 if that is empty.
-
 And for that, we can trim it
-
 and check the length, or can we?
-
 Well, the problem is,
-
 we don't know if value is a string.
-
 It's a string or a number.
-
 So it's not guaranteed to be a string,
-
 and therefore the trim method
-
 is not always available.
-
 Now there are various ways of working around that.
-
 We could add a type guard,
-
 we could check if typeof validatableInput.value
-
 equals string, and only perform this check if it is.
-
 But actually that would be a bit redundant.
-
 What we can do here is very simple.
-
 We can simply say
-
 "well, convert it to a string."
-
 If it was a number, now it's a string again.
-
 If it was a string, nothing changed.
-
 And with that, we're doing this.
-
 Now I just need to add my check here
-
 to check if that is zero.
-
 Or to be precise, if it's not zero.
-
 So if it is not zero,
-
 then this will return true,
-
 and isValid stays true.
-
 If it is zero, so if it is of length zero,
-
 if it's empty, this will return false
-
 and therefore isValid will become false.
-
 And we're only checking this
-
 if the required check is flagged with
-
 setting required to true.
-
 That's the first check I wanna perform here.
-
 It's not the only one of course.
-
 We can continue and check
-
 if validatableInput.minLength is set,
-
 if minLength is set,
-
 then this string which we get
-
 should have a certain minimum length.
-
 Important, the string should have
-
 a certain minimum length.
-
 We don't care about numbers here,
-
 we're not checking for a minimum value of a number.
-
 So here we can actually add a type guard,
-
 we can incorporate it into this check,
-
 and check if typeof validatableInput.value
-
 is equal to string.
-
 If it is not, we don't need to go into this if check
-
 because then there is nothing to check.
-
 If our value is a number, we don't care about this.
-
 If we set a min length for a number,
-
 we basically skip this check
-
 because it doesn't make much sense.
-
 If we do have a string though,
-
 and minLength is set,
-
 then I want to set isValid equal to isValid and,
-
 and then again, our check.
-
 And the check here is whether
-
 validatableInput.value, which we know is a string
-
 at this point here, length,
-
 is greater than validatableInput.minLength.
-
 So greater than the value which was defined here.
-
 Now we have one potential problem here though,
-
 and do you see which one that could be?
-
 This should generally work,
-
 but it will fail if minLength is set to zero.
-
 The intention of the developer setting it to zero
-
 is probably not to skip this check,
-
 but to check whether we do have
-
 the minimum length of zero.
-
 Well, arguably it's a redundant check,
-
 because it's basically checking whether
-
 we do have anything at all,
-
 which we already do with the required check.
-
 So it's not a huge problem.
-
 Still, if you want to be super secure here,
-
 we should actually check
-
 if validatableInput.minLength is not equal to undefined.
-
 Or not equal to null, with one equal sign,
-
 this includes null and undefined,
-
 that's how JavaScript works.
-
 This is a bit safer,
-
 because now we make sure we always run this check
-
 even if minLength is set to zero,
-
 which is a falsy value.
-
 Again, you could argue if it makes sense,
-
 because it's basically the same check as up there,
-
 but still, here I want to perform it.
-
 So that's the minLength.
-
 Now I'll copy this,
-
 and basically do the same for maxLength.
-
 So maxLength here is also checked,
-
 also here and also only for strings.
-
 And of course here we just have to revert this.
-
 We wanna make sure that the length of the value
-
 which is provided is below our max length.
-
 Well, and now we get two more checks left
-
 for min and max value
-
 which only make sense for a number.
-
 So here I will add another check
-
 and check if validatableInput.min
-
 is not equal to null.
-
 Again, I'm not just checking for truthiness,
-
 because that would have problems with a value of zero.
-
 And then I'll check if the type of validatableInput.value
-
 is equal to number.
-
 Because I see not much sense in checking
-
 this for a string.
-
 If you wanna check it for a string,
-
 of course you can omit this.
-
 Then you just have to make sure you convert the value
-
 to a number when you use it in the check
-
 we're about to write.
-
 The check we're about to write,
-
 again, uses the old value of isValid
-
 and combines it with a new check
-
 to then store it back in isValid.
-
 And the new check should now well incorporate
-
 our number and check whether
-
 it's bigger than the min value.
-
 So here I check if validatableInput.value
-
 is greater than validatableInput.min.
-
 And now we can repeat this for max,
-
 so here we need max and here we also need max
-
 and we need to change this here to a smaller than symbol.
-
 With that, we're checking
-
 all the different scenarios you could have here.
-
 And we're returning isValid.
-
 Now we just need to create objects
-
 that adhere to this interface
-
 to then send them to the validate function.
-
 For that, let's go down to project input,
-
 and there in gatherUserInput
-
 I wanna construct my validatable object.
-
 Side note, besides an interface,
-
 of course we could've also created a class here,
-
 then we could instantiate it with the new keyword,
-
 but all that for practice and demo purposes here
-
 I wanna show how this works with an interface.
-
 So here we have our titleValidatable,
-
 which should be of type Validatable.
-
 And that of course is an object
-
 which needs to have a value property.
-
 And that's our enteredTitle.
-
 It doesn't need any other properties
-
 but I wanna check whether it's not empty,
-
 so we'll set required to true.
-
 And then we can copy that and repeat that
-
 for the description and for people.
-
 And here we have the description,
-
 whoops, the entered description I mean.
-
 Here we have the entered people.
-
 To be precise here I wanna have a number.
-
 So I convert this to a number with a plus symbol.
-
 All should be required,
-
 but then also here let's say the description
-
 should have a minLength of five characters
-
 and for the people, the minimum should be one,
-
 so that we have at least two people assigned.
-
 By the way, it's up to you how you implement this.
-
 Of course, in your validation logic,
-
 you could also check for greater equal
-
 smaller equal if you like to.
-
 Same for the length of course.
-
 Greater equal, smaller equal.
-
 That's also possible.
-
 Actually, I will keep these changes.
-
 So now we have the minimum of
-
 one person assigned and a max of five.
-
 Now we have these three validatable objects
-
 and now here, to the validate function,
-
 we pass our titleValidatable,
-
 to the second function call
-
 I pass the descriptionValidatable,
-
 and to the third function call
-
 I pass peopleValidatable.
-
 And now validate should return true
-
 if they're all valid, and false otherwise.
-
 So now I wanna check if at least one of them fails
-
 by checking if these are all false
-
 by adding an exclamation mark in front of it,
-
 to check if this is false or this is false
-
 or this is false.
-
 And if at least one of them is false,
-
 so if at least one of the
-
 validate function calls returns false,
-
 we'll make it in there and show the alert.
-
 And with that out of the way,
-
 to also test this,
-
 I'll go to index.html,
-
 because there on the input for people,
-
 I actually allow a maximum of 10
-
 and a minimum of zero.
-
 So in the input we technically can enter invalid values.
-
 On purpose of course,
-
 so that we can test our logic.
-
 And there for now let's save it all,
-
 compiles without errors.
-
 Let's now give it a try.
-
 If I click add project, I get an error
-
 which is good.
-
 Now let's enter test here, still get an error.
-
 Let's enter test here and five here,
-
 and I still get an error.
-
 Because my description is too short.
-
 If I enter one more character
-
 I do have the min length
-
 and I can create this.
-
 So now let's enter, let's say,
-
 minus one people,
-
 and well okay html doesn't support this.
-
 But let's enter zero
-
 or six and we get errors.
-
 And only if I enter something between
-
 one and five it works.
-
 So that seems to work as it should,
-
 and that's pretty good.
-
 And that's of course just one way
-
 of implementing validation.
-
 But a way which actually is now quite reusable,
-
 could be used like this in different parts of the app
-
 as well and of course it takes advantage
-
 of typescript and offers us great support
-
 and type checking to avoid unnecessary mistakes.
-

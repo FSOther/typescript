@@ -1,76 +1,38 @@
 This contract feature,
-
 where you force a class to have a certain shape,
-
 can be very useful in situations
-
 where you maybe have some other part in your code,
-
 let's say some function or some method
-
 somewhere else in your codebase,
-
 which relies on getting an object
-
 that has at least a certain base structure.
-
 Let's say somewhere in your code
-
 you have an authenticate function
-
 and you expect to get a user object here
-
 that has a login method.
-
 Now, you could define an object type here on the fly
-
 with a login method.
-
 Like this.
-
 But even better than that,
-
 you could use the Authenticatable interface as a type here.
-
 Because you know that this will force
-
 anyone who uses this authenticate function here
-
 to pass a user object to this function
-
 that implements this Authenticatable interface.
-
 You are guaranteed to get a user object
-
 that has a login method
-
 because that is clearly defined by this interface.
-
 And that's one example for why interfaces
-
 can be a very useful feature in TypeScript.
-
 And by the way, just to be very clear about that,
-
 you can use all the TypeScript features
-
 you already learned about inside this interface.
-
 You can use any types you want.
-
 You can define nested object types in there.
-
 You can make properties optional by adding a question mark.
-
 All that works just as you learned it.
-
 But this interface then gives you
-
 all these little extra features I described,
-
 though, as I also mentioned, in many cases,
-
 you might be fine with using the type keyword
-
 instead of the interface keyword too.
-

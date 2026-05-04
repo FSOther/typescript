@@ -1,54 +1,27 @@
 So that is it for generic types already.
-
 They can really be tricky to understand,
-
 but in the end, the summary I gave you in the last lecture
-
 is the perfect explanation. They give us flexibility
-
 combined with type safety.
-
 We're flexible regarding the values we pass in
-
 or the values we use in a class,
-
 at least as long as we adhere to the possible constraints,
-
 which you might have added,
-
 but we got full type support what we then do
-
 with the class or with the result of a generic function
-
 because TypeScript then knows which concrete type
-
 we pass in when we call the function here
-
 or when we instantiate the class here.
-
 Here we then set a concrete type,
-
 but we don't lock this class or this function down
-
 to that concrete type when we create it.
-
 Instead, we're flexible and might just provide
-
 some constraints, and, of course, these constraints,
-
 alls are optional, and you might have some generic classes
-
 or generic functions which have no constraints
-
 and some which have a lot of constraints.
-
 So generic types are a really useful feature.
-
 With promise and array, I showed you two
-
 of the many built-in generic types,
-
 and, of course, we'll also see more,
-
 including custom generic types throughout this course.
-

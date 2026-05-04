@@ -1,138 +1,69 @@
 So in our app.ts file,
-
 we need to check for this form submission here.
-
 For this here,
-
 I will create a form constant
-
 and reach out to the form
-
 with document query selector,
-
 querying for the form tag.
-
 And since we have only one form tag
-
 in the entire document,
-
 we'll of course fetch that.
-
 So this gives us access to the form.
-
 On that form I will add an event listener.
-
 And I'll listen for the submit event.
-
 Now this form of course could be null,
-
 as always,
-
 but we know it won't be,
-
 so we can add this good old exclamation mark
-
 there after to tell TypeScript
-
 that this will not be null.
-
 And then here we have the event listener,
-
 and it will define a function
-
 which should be triggered
-
 and that is the
-
 search
-
 address
-
 handler function let's say.
-
 And this function should be triggered
-
 whenever this form is submitted.
-
 Now in this function we'll get the event object
-
 and I will first of all call event prevent default here.
-
 And also let's give TypeScript some hints here
-
 and let's inform it that this is an event
-
 so that it knows that this prevent default
-
 command here will exist.
-
 With that we prevent the form submission,
-
 we ensure that no request gets sent,
-
 but now I want to get access to the address
-
 the user entered.
-
 Now that shouldn't be too hard,
-
 we have one input here and it has an idea of address
-
 so in the end we wanna get the value that was entered
-
 into the input.
-
 And we can do this here by simply
-
 defining another constant,
-
 address input,
-
 which we get with document query selector,
-
 or actually get element by ID
-
 and then the ID was address that was the idea
-
 signed to this element,
-
 and just as before we know this will never be null,
-
 so we can add this exclamation mark here.
-
 And with that we got our entered address here
-
 by
-
 accessing address input
-
 dot value
-
 now why does TypeScript not like value here?
-
 Because it doesn't know that what we fetch here
-
 is a html input element.
-
 So let's tell TypeScript.
-
 Let's convert this to an html input element
-
 with the typecasting here.
-
 Now TypeScript doesn't complain about that value
-
 access here anymore,
-
 and gives us the entered address.
-
 And now we need to send this
-
 to Google's
-
 API.
-
 Let's do that with help of some other third party package
-
 in the next lecture.
-

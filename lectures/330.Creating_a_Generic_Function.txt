@@ -1,374 +1,187 @@
 So to get started with our own generics.
-
 Here below the commented out code.
-
 I will start with a generic function.
-
 You can build generic classes and functions
-
 I'll show both and here I'll start with a function.
-
 Now lets say we wanna have a function
-
 which basically merges two objects and returns a new object.
-
 So here we could name it "merge".
-
 And we wanna get object A and object B as a input.
-
 Now of course we could write this function in a certain way.
-
 We could say this is of type object
-
 and this is of type object.
-
 And then what this function does is,
-
 it returns the result of object assign.
-
 Where I get object A and object B.
-
 So of course since we got this object assign
-
 method already built into normal javascript.
-
 We could argue if we really need a merge function
-
 but of course you could be doing additional work here.
-
 You could enrich this with extra information,
-
 with extra options and in the end
-
 this is just a demo, just and example.
-
 So this would be valid, we could call merge here,
-
 and console log its result, like this.
-
 And then pass in an object which has a name key
-
 and a second object which has an age
-
 and if we run that and we save this.
-
 Here in the browser indeed we get this output.
-
 So we get this merge object.
-
 Now this works, the problem we have
-
 with that is if we
-
 try to store this
-
 merge name max, and age 30.
-
 If we try to store this here, I can't access name
-
 on the result, I can't access age on the results
-
 on this merged object.
-
 Even though we know that both will exist.
-
 Because typescript doesn't know this.
-
 Typescript can't know this.
-
 Because we are just telling it, you're getting an object
-
 and in the end typed in first that we return an object.
-
 Which is correct, but which doesn't carry
-
 all the information we could use here.
-
 Now of course we can always do type casting
-
 we can tell typescript that what we get back
-
 is an object where we have a name key
-
 and where we have an age key.
-
 But that's really cumbersome if we have to do that.
-
 So here, generics can help us.
-
 We turn this into a generic function by adding
-
 these angled brackets after the function name.
-
 And then we define Q identifiers.
-
 Typically you start with T, for type.
-
 But you could use any identifier here,
-
 doesn't have to be a single character
-
 but the convention is to use a single character
-
 and typically, if you only have one generic type
-
 you name this T.
-
 And then you say, well this generic type here,
-
 this is now available inside of this function.
-
 So we could say what we get here is of type T.
-
 Looks strange, we'll get there no worries.
-
 Now here we get two arguments where
-
 we don't know exactly how they will look like.
-
 So I will accept a second generic type here.
-
 Simply by adding a comma in the angled brackets,
-
 And then we just continue in the alphabet.
-
 And therefor the second generic parameter or type
-
 you might be using in a function typically is named U.
-
 So we could say this is of type U.
-
 Okay now what does this yield us?
-
 Well a lot actually, as you see with this alone
-
 if you hover over merge, typescript infers that
-
 this function returns the intersection of T and U.
-
 And we could of course also set this explicitly like this
-
 but we don't even need to do that
-
 because object assign returns an intersection and therefor
-
 since we returned a result of object assign,
-
 typescript automatically understands
-
 that this function returns the intersection.
-
 So how is this helpful then?
-
 Well if we now hover over merged object
-
 we see that now with this alone
-
 typescript understands that what we store
-
 in merged object is the intersection of these
-
 two object types, because it sees that we're
-
 passing in these objects, which are of these
-
 object types it infers.
-
 Name string and age number.
-
 And that our function returns the intersection.
-
 Why is it able to infer this now and
-
 not with object which we had before?
-
 Because object is highly unspecific type.
-
 We say any object and yes therefor typescript
-
 is able to infer that we return
-
 the intersection of object and object.
-
 But the intersection of two unknown objects
-
 is just a new unknown object which doesn't
-
 offer any additional type information to typescript.
-
 With generic types, what we're telling typescript
-
 is that, these two parameters can and often will be
-
 of different types and therefor typescript
-
 is able to understand that we're not just working
-
 with some random object type, but that we will get
-
 different type data here.
-
 And that this function overall
-
 will return the intersection of that data.
-
 And therefor typescript is able to understand that
-
 what we store in here in merged object
-
 is such intersect the data of these two inputs.
-
 Because now we're not just dealing with
-
 some unknown objects here but with very specific types.
-
 And therefor now if I console log merged object age here
-
 this works without errors as you can tell.
-
 Here I'm printing 30 because of generic types.
-
 We're giving typescript the extra information
-
 that we don't know exactly the types will be
-
 sure, there will be objects here we can tell that.
-
 But we don't know if its an object with
-
 a name key, with a age key, with a hobbies key.
-
 We don't know and we don't care, we don't care
-
 about the exact object here, we don't want
-
 to specify that this has to be of this type.
-
 Because then all of a sudden if I
-
 add hobbies in there, we would have a problem.
-
 So I don't want to be that restrictive.
-
 I just want to say this is of any type
-
 which I don't care about but its most likely
-
 a different type then of this one here.
-
 And if it would be the same that would be fine too.
-
 But typescript understands that we do
-
 have specific types here for these two parameters
-
 and that we return the intersection of them.
-
 Instead of just having any unspecific object here.
-
 Now specifically the magic here is not
-
 just that we tell typescript that
-
 we got two different types here.
-
 But that these types are not set in stone
-
 when we define this function, but they
-
 are set dynamically when we call the function.
-
 So here we're calling the function
-
 and typescript infers the types for the two arguments.
-
 For T, it basically fills in an object type
-
 with an object with a name property which holds a string
-
 and a hobbies property which holds an array of strings.
-
 And for U it fills in a type of type object
-
 with age property where age is of type number.
-
 Now when we call this function again in another line
-
 and we pass in different objects and
-
 I store this in a new constant with a new name,
-
 then of course, different types are filled in
-
 for T and U for this function call.
-
 You can also specifically tell typescript
-
 which types it should fill in by adding
-
 angled brackets after the
-
 function name when you call it
-
 and then you would fill
-
 in your own types for T and U.
-
 We could tell typescript that T should be of type string
-
 for this function call and U should
-
 be of type number but then of course typescript
-
 would complain about the
-
 concrete values we're passing in here.
-
 Because this clearly is not a string and
-
 if we would fix this, this clearly
-
 would not be of type number.
-
 So here we could be very specific and say well,
-
 the first argument or the type T to be precise
-
 for this function call here will be an object type
-
 where we have a name property which is of type string
-
 and a hobbies property which is of type string array.
-
 And the concrete type for U, for this function call
-
 will be an object where we have an age property
-
 which should be of type number.
-
 And now we would be good and no errors
-
 would be there anymore and this would work.
-
 But this is redundant, you can absolutely
-
 do that and it is important to understand
-
 that this is in the end what generics are all about
-
 that you can fill in different concrete types
-
 for different function calls.
-
 But we don't need to do that here because
-
 typescript simply infers the types of the values
-
 we're passing as arguments here.
-
 And then places in the inferred types
-
 for T and U for this function call.
-
 That's how generics work behind the scenes in the end.
-

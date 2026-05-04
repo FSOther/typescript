@@ -1,150 +1,75 @@
 Now before we create any project
-
 or write any code, it's worth pointing out
-
 that when it comes to building Node.js
-
 and TypeScript projects, you have various options,
-
 some of which we'll explore at this section.
-
 You can, for example, of course,
-
 use good old Node.js
-
 and they actually have a part
-
 in their official documentation
-
 where they guide you through using TypeScript with Node.js.
-
 And you can, for example, use Node.js
-
 and install the TypeScript compiler
-
 to compile your TypeScript code to JavaScript code,
-
 which you can then run with the Node.js runtime.
-
 But, that's why I am mentioning this here,
-
 Node.js actually also has native TypeScript support
-
 built in.
-
 You can run TypeScript code
-
 with Node.js without compiling anything,
-
 at least if you have a recent enough version of Node.js,
-
 older versions don't support it.
-
 Now at the point of time where I'm recording this,
-
 this feature is still experimental,
-
 so it might still be a bit unstable and buggy,
-
 but in future versions it should be more stable.
-
 So depending on when you are viewing this,
-
 you might not have any problems at all
-
 with running TypeScript code with Node.js,
-
 though it's worth noting that there are some limitations
-
 when it comes to this native support,
-
 but I'll get back to this later.
-
 Another option you would have
-
 for building Node.js applications, kind of,
-
 with TypeScript would be to use Deno.
-
 Deno is an alternative JavaScript runtime,
-
 which kind of aims to replace Node.js.
-
 Now it's way less popular and way less commonly used.
-
 Node.js is still the default,
-
 but depending on what you're building,
-
 you could explore you using Deno instead of Node.js.
-
 And a lot of the code you would write
-
 would still be the same.
-
 But if you go for Deno,
-
 then you also can actually run TypeScript code
-
 just like this.
-
 And in the end it has a built in TypeScript compiler
-
 that makes that code work.
-
 And unlike this native TypeScript support
-
 offered by Node.js,
-
 the support by Deno is a bit more comprehensive
-
 and doesn't require any trade-offs.
-
 And again, I'll get back to which trade-offs
-
 that will be later in this section.
-
 Yet another alternative to Node.js
-
 and also Deno would be Bun.
-
 And Bun claims to be a super-fast Node.js alternative.
-
 And just as with Deno,
-
 a lot of your standard Node.js code will just work.
-
 You can build a node and Express application
-
 and then just run it with Bun, for example.
-
 And for the most part, that should work just fine,
-
 and Bun also has built in TypeScript support
-
 so you can write your project in TypeScript
-
 and just run it with Bun,
-
 and again, behind the scenes,
-
 it will essentially compile that code for you.
-
 So you have different options here.
-
 But for this section, we'll start with good old Node.js
-
 and I'll show you how to set up a project
-
 for Node.js Express
-
 and TypeScript, which will compile the TypeScript code.
-
 But then I'll also explore some
-
 of these alternative runtimes
-
 and take a look at this native built in TypeScript support
-
 offered by Node.js.
-

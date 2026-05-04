@@ -1,90 +1,45 @@
 Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/07-advanced-types/guards-updated.ts
-
 Another common kind of type guard
-
 can be useful when dealing with classes
-
 or with objects that were created based on classes.
-
 Like in this example.
-
 Attached you find my updated guards.ts file
-
 and in there you'll find two classes, User and Admin,
-
 and some code where I instantiate these classes
-
 to create concrete User and Admin objects.
-
 I then have the entity type, which simply is a union type
-
 so that I either have a value of type User or Admin.
-
 And I'm passing a value of that type,
-
 so either a User or an Admin, to this init function.
-
 And inside of this init function, I now either want
-
 to call the join method which exists on the User,
-
 or the scan method which exists on the Admin.
-
 Therefore again, in this init function we need an if check.
-
 We need to find out with which concrete
-
 kind of value we're working.
-
 And when dealing with classes,
-
 we can take advantage of a specific JavaScript keyword
-
 or operator that's built into JavaScript.
-
 So that's not TypeScript specific,
-
 but that instead really is coming from JavaScript.
-
 We can use the instanceof operator.
-
 This allows us to check whether entity
-
 is an instance of user for example.
-
 And we'll then only make it into this if block
-
 if entity is an object that was created
-
 with help of the User constructor or that's based on
-
 that User class in some way to be precise.
-
 And therefore in here we can safely use join.
-
 If we then return so that we can't make it past
-
 this if check with a User object,
-
 we can then also safely use scan thereafter
-
 after the safe check because again,
-
 TypeScript will understand that we're handling the case
-
 that entity is an object of type User inside this if check.
-
 And since we're then returning,
-
 it understands that thereafter we must be dealing
-
 with an object of type Admin,
-
 which is why we can call scan without issues.
-
 And therefore instanceof is another way of finding out
-
 with which kind of value we are working,
-
 and it is therefore another very useful kind of type card.
-

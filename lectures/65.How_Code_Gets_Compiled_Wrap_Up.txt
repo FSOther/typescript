@@ -1,78 +1,39 @@
 Now this is it for this module.
-
 Obviously modern JavaScript has a couple
-
 of other neat features as well.
-
 For example, I will cover classes
-
 in the class module
-
 and in general this is no JavaScript course.
-
 I don't wanna bore you with tons of
-
 JavaScript knowledge that doesn't really relate
-
 to TypeScript.
-
 I wanted to mention these specific features
-
 because it's good to know that TypeScript
-
 helps us use these features in a way that still runs
-
 in older browsers.
-
 Because that is something which you must never forget.
-
 Your code gets compiled.
-
 Currently, I have to target set to ES6
-
 and therefore if we check the dist folder
-
 we see constants on are all available
-
 in the app JS file as well.
-
 Object de structuring, there is a way
-
 to like this there because all these features
-
 are supported in ES6.
-
 If I would set the target to ES5
-
 and I comment out lib now,
-
 so that the correct libs are imported
-
 for the ES5 target which will happen
-
 by default, you will see that the generated
-
 code now looks quite different.
-
 It's way longer because now we're using var
-
 and TypeScript had to find work
-
 arounds for certain syntaxes that are not supported
-
 in ES5 JavaScript.
-
 For example, the de structuring syntax was removed.
-
 So that's an important thing to always keep in mind.
-
 TypeScript compiles your code,
-
 not just from TypeScript only features
-
 to regular JavaScript, but all them from
-
 modern JavaScript to old JavaScript
-
 if you tell TypeScript to do so.
-

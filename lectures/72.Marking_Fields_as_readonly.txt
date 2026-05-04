@@ -1,68 +1,34 @@
 Now, besides public and private,
-
 there also is another keyword you can use
-
 on your properties, and that's the read-only keyword,
-
 which you can use in conjunction with public,
-
 but which you can also use without it.
-
 And of course, you can also use it with private
-
 and read only, simply ensures
-
 that this property may be read.
-
 It may be accessed, but it can't be changed.
-
 It can't be reassigned, to be precise.
-
 For example, if I set hobbies to be read only,
-
 it is public since it's defined outside of the constructor.
-
 But if I set it to be read only, then
-
 I can access hobbies here with the dot notation.
-
 But if I try to set it to some array, a new array,
-
 that contains sports, for example, I'm getting an error
-
 that I can't do that because it is a read-only property.
-
 Now, what would actually work here
-
 is pushing a new value onto that array
-
 because that technically does not assign
-
 a new value to that property.
-
 Instead, it mutates the existing array in memory.
-
 That's how JavaScript works.
-
 Arrays are objects and hence stored in memory.
-
 And the property then actually kind of holds a pointer
-
 to that place in memory.
-
 So if you push here, you're not setting a new array
-
 as a value, which would be forbidden with read only,
-
 but instead you are manipulating
-
 that original array in memory
-
 and that would then technically work.
-
 That's just a side note,
-
 but reassigning with an equal sign,
-
 that does not work when having a read-only property.
-

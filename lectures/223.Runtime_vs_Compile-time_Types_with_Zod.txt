@@ -1,148 +1,74 @@
 Now, when using Zod,
-
 you can also take it a step further.
-
 Thus far, we have only JavaScript code in here,
-
 but we get all the advantages of using TypeScript
-
 because, thanks to Zod, the proper type
-
 is set behind the scenes for parsed data.
-
 But what if we now want to have a function output
-
 that should actually receive the parsed data
-
 and then console log it?
-
 And of course, in reality,
-
 we might be doing something more useful with it.
-
 Well, the problem we have in this case is that,
-
 since I'm in that TypeScript file,
-
 I need to define the type of data we'll get here.
-
 Sure, I could set it to any,
-
 but nah, it's really not that great
-
 if we wanted to do more with it than just log it.
-
 The type I actually wanna set it to
-
 is the type I'm getting down here,
-
 the type that's set behind the scenes by Zod.
-
 Well, turns out you can get access to that type.
-
 You can define a type alias,
-
 so switch to the TypeScript world here.
-
 Name it data, maybe, and of course,
-
 we can now copy that type definition that's produced by Zod
-
 and use that here and use data as a type here,
-
 and that would then allow me to call output
-
 and pass the parsed data to it.
-
 That will work, but it's also annoying,
-
 because this approach means
-
 that whenever I change my shape up here,
-
 if I add some new key and set this to a string,
-
 I also need to change that down here, and that's not great.
-
 That's really error-prone.
-
 So that's why Zod gives you an easier way
-
 of constructing type aliases.
-
 You can use the Z thing here again and use infer,
-
 which is a type alias you are now accessing
-
 on that Zod namespace again, on that Z namespace,
-
 and infer works such that it's a generic type alias,
-
 where you use angle brackets therefore,
-
 and where you pass type of data schema, in this case,
-
 as a value for that generic type parameter.
-
 So I'm not calling infer as a method here.
-
 There are no parentheses.
-
 Instead, I'm passing the type of data schema to infer.
-
 Now, the type of data schema is a Zod object.
-
 It's a very complex thing
-
 because it's the result of calling z.object,
-
 but the infer type provided by Zod then simplifies that type
-
 that's yielded by type of and simplifies it to this type,
-
 which is the exact same type parsed data will be of.
-
 So this infer type alias provided by Zod
-
 is a utility feature, a very useful utility feature,
-
 offered by Zod that gives you access
-
 to the type definition that's generated under the hood
-
 by Zod for your schema, and that then allows you
-
 to use it under your own type alias anywhere in your code,
-
 and with that, we get the best of both worlds.
-
 We got runtime validation,
-
 which is a feature you might need in many apps,
-
 and we got type safety, all just because we're using
-
 this very useful TypeScript-first library called Zod.
-
 And with that, just to prove that it still works,
-
 if I compile this and I then run it,
-
 this executes without any error,
-
 and I got this object printed here,
-
 which, of course, contains the data that was read
-
 from this dummy data JSON file.
-
 And that's a simple example
-
 for using a TypeScript-first library,
-
 and Zod is indeed a library that can be very useful
-
 in many projects, because many projects do need
-
 to validate data.
-

@@ -1,78 +1,39 @@
 Now that's it for classes.
-
 We learned about classes themselves.
-
 We learned about their properties,
-
 the axis modifiers,
-
 private for internal axis,
-
 protected for internal axis also in inherited classes,
-
 and public for axis from everywhere.
-
 We also learned about methods which we can add.
-
 About static methods and properties.
-
 About abstract methods
-
 and abstract classes, which is important
-
 when we talk about another important concept,
-
 the inheritance which we can use.
-
 Here, we are inheriting from 'Department' with the
-
 'extends' keyword.
-
 This allows us to share functionalities,
-
 properties and methods,
-
 from the 'Department' class with this inheriting class
-
 and add our own functionalities
-
 or override existing functionalities.
-
 Either because we have to override
-
 as in the case of 'describe' which is a abstract method.
-
 Or because we want to override, like in the case of
-
 'addEmployee' here in the Accounting Department.
-
 That's not a abstract method in the base class,
-
 but of course we still can override it if we want to.
-
 We also learned about the singleton pattern
-
 and 'private constructors' which can also be
-
 useful sometimes.
-
 And then for overall, you now hopefully have a good idea of
-
 classes and what you can do with them in TypeScript.
-
 In general, of course, you would need to know what classes
-
 and objects, and also a bit what prototypes are about
-
 in Vanilla JavaScript because that's generally not
-
 something introduced by TypeScript,
-
 but of course something TypeScript is related to
-
 because TypeScript builds up on these default
-
 JavaScript features, and adds it's own magic
-
 on top of these features.
-

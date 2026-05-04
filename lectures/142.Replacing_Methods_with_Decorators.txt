@@ -1,148 +1,74 @@
 So you now saw
-
 how to create a method decorator.
-
 I also wanna mention that just as with the class decorator,
-
 the method decorator can also return an updated version
-
 of the method you are binding it to,
-
 or a version that replaces the original method
-
 if you want to.
-
 For that, you just return a function here in your decorator
-
 and it's now this function
-
 that will replace the original method,
-
 the original function the decorator was added to.
-
 Now of course you can control
-
 what should happen in this function
-
 and for example, in that function,
-
 we could simply execute the original target,
-
 so the original function like this.
-
 If you do that,
-
 you are essentially wrapping the original function
-
 with another function.
-
 And you could, for example, add a extra log here,
-
 executing original function or whatever.
-
 And that can of course be a powerful pattern
-
 because it allows you to preserve
-
 and execute the original function,
-
 but then add extra code to it
-
 because again, decorators are about manipulating other code.
-
 And here I'm enhancing the code of this method
-
 by adding more code to it in front of it here or after it,
-
 depends on what you wanna do.
-
 And of course you're not limited to logging here.
-
 You can also send HTDP requests right to a file,
-
 do whatever you need to do.
-
 One thing you should be careful about though is
-
 that if you do execute target like this,
-
 this code here in the initializer won't have any effect
-
 because here I'm tweaking the method in the object
-
 that's created based on a class.
-
 Target, however,
-
 is the original method without being tweaked
-
 because this decorator is executed
-
 after this discrete method is done initializing.
-
 So when I bind this method
-
 and then override the original method in the class,
-
 target will be the old method,
-
 simply due to how JavaScript works.
-
 I'm overriding the method here with the bound version,
-
 but the version I received here
-
 before this decorator executed is the old version,
-
 which has not been bound yet.
-
 So if I do plan to overwrite my method here
-
 and I do plan to execute the old method here
-
 and that this keyword matters to me,
-
 I actually should execute it in a way
-
 that this keyword is set appropriately.
-
 And you can do that by using apply, for example.
-
 Apply is like bind,
-
 but unlike bind, it does not prepare this function here
-
 for future execution.
-
 Instead it executes it right away.
-
 But it gives you an opportunity
-
 of changing what this keyword
-
 inside of this function we'll refer to.
-
 Simply by passing this to it
-
 just as you did it with bind.
-
 And just as before for this to work,
-
 we should just make sure to tell TypeScript
-
 that this can be referring to anything.
-
 And that would then be the proper way
-
 of executing this original method here,
-
 if that this keyword matters.
-
 With this change made, if we execute this code,
-
 you see it works as before,
-
 but I now also got this executing original function log here
-
 simply because I replaced the original method.
-

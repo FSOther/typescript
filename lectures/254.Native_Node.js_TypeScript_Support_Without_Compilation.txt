@@ -1,276 +1,138 @@
 In the previous course lecture,
-
 and in all the other course lectures before that
-
 in this section, we were able
-
 to run our Node TypeScript code
-
 because we compiled it with the tsc command,
-
 which is why we then have this dist folder,
-
 which contains the compiled code.
-
 And it was this compiled application that we then executed
-
 with the node command.
-
 That's what we did throughout this section
-
 and how you will often run
-
 your TypeScript, Node.js projects.
-
 But I mentioned at the beginning of this section
-
 that you actually also have alternatives to that.
-
 For example, Node.js actually
-
 has native TypeScript support built in,
-
 or to be precise, it has that built-in support
-
 if you're using at least version 22.6, Node.js version 22.6.
-
 Older Node.js versions won't have that support.
-
 So what you can do is you can run node --version
-
 in some command line,
-
 and you'll see the version you're currently using.
-
 And you might wanna install the very latest version
-
 of Node.js from nodejs.org to be able to take advantage
-
 of this native built-in TypeScript support
-
 because if you do have such a recent version,
-
 you can actually run your TypeScript code
-
 without compiling it first.
-
 You can then use Node and target your TypeScript file.
-
 So my app.ts file here, I'm targeting that now
-
 and you should be able to run it, or not
-
 because you'll need to make a couple of adjustments
-
 in order to run your code.
-
 And there are mainly two kinds of adjustments you must make.
-
 One adjustment is that for all your imports
-
 where you're importing something that's not something
-
 that exists in vanilla JavaScript as well,
-
 so that's not a value or a function or a class,
-
 but instead a type alias, a custom type or an interface,
-
 so if you're importing something that defines a type
-
 that only exists in TypeScript
-
 and not in vanilla JavaScript,
-
 then you must add the type annotation in front of that.
-
 And I introduced you
-
 to this annotation a bit earlier in the course.
-
 Essentially what type does here is it tells Node.js
-
 or whichever other build tool you might be using in some
-
 of your projects that the thing after it,
-
 like NextFunction, Response and Request here is something
-
 that does not exist in vanilla JavaScript,
-
 but that it's instead a TypeScript-only feature
-
 or specifically some type definition
-
 or type declaration that you're importing here.
-
 So Request, for example, is an interface,
-
 and that's something that does not exist
-
 in vanilla JavaScript.
-
 It's a TypeScript only thing,
-
 and it's just used to, in the end, define the structure
-
 of some value, to define a type therefore.
-
 The same would be true if you were using the type keyword
-
 and defining a custom type, you would need
-
 to import that with the type annotation as well.
-
 So that's one important thing.
-
 And, of course, you should do that in all your files,
-
 though here in todo.ts, I'm actually not using Request
-
 and Response, so I can also remove them.
-
 If I were using them, or any other type definitions,
-
 I would have to add the type annotation in front
-
 of those imports as well.
-
 So that's one thing, but it's not the only thing.
-
 The other important adjustment you need to make
-
 to your code if you do want to run it with just Node,
-
 with the builtin TypeScript support
-
 is that for all your imports
-
 where you're importing from a .js file,
-
 which is correct if you are compiling the code,
-
 if you're not compiling it,
-
 you should replace data.js with data.ts.
-
 So you should use .ts as a file extension,
-
 even though I'm getting an error here, we'll fix that soon.
-
 But that is crucial because now the code won't get compiled,
-
 so there won't ever be some JS file being imported,
-
 and that's why this adjustment is needed.
-
 Now, in order to get rid of this error here,
-
 you should go to your tsconfig.json file,
-
 and there you can add the allowImportingTsExtensions setting
-
 and set this to true.
-
 And this does exactly what its name suggests.
-
 It allows you to import from .ts files in your files.
-
 Now, as you can see,
-
 I'm getting an error here in the tsconfig.json file
-
 because this setting can actually only be set to true
-
 if you also set the noEmit setting.
-
 So I'll do that. I'll set noEmit to true as well.
-
 And noEmit simply tells TypeScript
-
 that your TypeScript code won't get compiled.
-
 There won't be any JavaScript files being emitted.
-
 Instead you intend to run it as is,
-
 or you might be compiling it with some other build tool.
-
 But here we plan to run it as is.
-
 So these are two settings we should add here.
-
 It's also a good idea
-
 to add the verbatimModuleSyntax setting
-
 and set this to true as well.
-
 What does this do?
-
 Well, it actually forces you
-
 to add these type keywords here.
-
 You see, if I now remove the type keyword,
-
 I'm getting an error, that request is a type
-
 and must be imported using a type-only import
-
 because of that setting, that verbatimModuleSyntax setting,
-
 I just added and set to true.
-
 So this forces me to add this type annotation,
-
 and that's, of course, a good thing since we'll need it
-
 in order to run this TypeScript code natively with Node.js.
-
 So these are some tweaks that should be made here.
-
 With that all done,
-
 if I now again try running my application like this,
-
 this will now work.
-
 Now my web server, my Node.js server is up and running,
-
 even though I have not compiled this code
-
 because I'm using that built-in node TypeScript support.
-
 Now, it is possible
-
 that you'll still get an error
-
 when you try to run app.ts with Node,
-
 even though you might be using Node version 22.6.
-
 And the reason for that
-
 is that initially when this TypeScript support was added,
-
 you needed to add this extra flag
-
 to your command to enable it.
-
 Newer versions, more recent versions of Node.js
-
 don't need this flag anymore,
-
 but older versions, like 22.6, still need it.
-
 So the solution is to simply add --experimental-strip-types,
-
 that's the flag you need to add to your Node command,
-
 and then target this TypeScript file.
-
 And with that, this might look like an error, but it isn't.
-
 This is working.
-

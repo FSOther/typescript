@@ -1,332 +1,166 @@
 So we rendered our first form
-
 but what you'll notice is that the styling is a bit off,
-
 I mean the form looks okay,
-
 but some distance between the edges of our screen
-
 and the form would be nice.
-
 If you dive into the app.css file
-
 you will actually detect that there we have
-
 a user input ID selector.
-
 Were we do add some margin paddings,
-
 that doesn't sound too bad,
-
 so actually what we can do is an app.ts
-
 when we create our element here or when we get access to it.
-
 We can reach out to the element and add an ID here
-
 which would be user-input.
-
 This will make sure that the rendered element has this ID
-
 in hence if this reloads this looks much nicer.
-
 If we inspect this in the browser depth we see
-
 the ID here and that's the reason for this better styling.
-
 With that we're already doing the next step,
-
 we're interacting with the element.
-
 Now this is not the only interaction I wanna do.
-
 Since we have a form here
-
 I wanna get access to the different form inputs we have here
-
 so that we can read the values when the form gets submitted,
-
 and that we also then set up a event listener here
-
 to the submission, and validate the user input.
-
 So we need access to the button or to the form overall
-
 to listen for the submission and to all the input elements
-
 to get the latest values from there.
-
 For that here, before we attach everything,
-
 but after I assign my ID to the element here,
-
 I wanna get access to the different inputs in that element
-
 in that form, and I wanna store them as properties
-
 of this class, so I'll add more fields up there
-
 and the first field could be a titleInputElement field.
-
 The type will be HTMLInputElement
-
 write this, and we will not just need it once
-
 we need two other similar fields.
-
 We a descriptionInputElement field
-
 which is a type HTMLInputElement,
-
 and we also need a peopleInputElement field.
-
 Now we can populate these fields here in the constructor,
-
 with this titleInputElement which is
-
 set equal to this.element,
-
 so to our form element,
-
 always keep in mind that's the form element here,
-
 query selector and then query for the title element.
-
 And if you again have a look at index.html we see in there
-
 we got the ID title on this element
-
 so we can query for that,
-
 so in app.ts here in the query selector we can use
-
 #title to select for the title ID element
-
 and store that in titleInputElement.
-
 Now as you know just as with document get element by ID,
-
 typescript has no chance of understanding
-
 that the query selector is going to return
-
 an input element here.
-
 So to tell typescript, I will again use casting,
-
 and cast this to an input element,
-
 and then we can repeat this step twice,
-
 and also sign the descriptionInputElement,
-
 and the peopleInputElement.
-
 Look up the appropriate IDs in the index.html file,
-
 which are surprisingly, I guess, description and people,
-
 and add them to typescript.
-
 So here we're searching for the description ID element,
-
 and here for people.
-
 And with that we got access to
-
 all these elements inside of our class here, or
-
 inside of every object that is created based on the class.
-
 Now we just need to add a listener
-
 to our element, to our form.
-
 For that I'll add another private method configure,
-
 which you don't have to add
-
 but again I wanna keep that separation where we basically
-
 do the selection and rough set up in the constructor.
-
 And then the insertion
-
 or the fine-tuning in separate methods.
-
 And in the configure method
-
 my idea is to set up an event listener,
-
 so here we can reach out to this element
-
 which is the form and add an event listener.
-
 Now since typescript knows that element is a
-
 HTML form element, it actually offers us auto-completion
-
 when we wanna listen to the submit event here
-
 which is great.
-
 Now we just need to bind this to a method
-
 and for that I'll add another private method,
-
 private because I'm never going to access this from
-
 outside of the class, only from inside.
-
 Which I'll name submitHandler, name is totally up to you.
-
 This should be a method which receives an event object,
-
 'tho because we'll bind it to this event listener.
-
 So here we can point at this...
-
 submit handler.
-
 Now we adjust it to make sure that
-
 before we attach all the call configure and
-
 execute this private method,
-
 again its private so from inside the class
-
 we can of course reach it,
-
 from outside you would get a typescript error,
-
 so now this method should trigger
-
 whenever the form is submitted.
-
 In the submit handler I there wanna
-
 get access to my different input values here,
-
 and validate them,
-
 and then of course do something with the inputs.
-
 Now we will worry about the do something part later,
-
 for now let's just get access to them.
-
 For this first of all I will call event.preventDefault
-
 to prevent the default form submission,
-
 which would trigger an HTTP request to be sent
-
 which I don't want here,
-
 and then just to see where this works,
-
 let's print console.log this title Element value,
-
 to print what's currently in the title input element.
-
 If we saved it you see it compiles with no errors,
-
 so that's looking good.
-
 And if we now go to the console here and enter "Hello!",
-
 and click add project, good is that it didn't get submitted,
-
 bad is that we get an error,
-
 "Cannot read property 'value' of undefined."
-
 Now what's going wrong here?
-
 The problem here is that, this here, that this keyword
-
 in submitHandler does not point at the class actually.
-
 Why?
-
 Well because of the way JavaScript and typescript works,
-
 we bind the method here to the event listener
-
 and when we bind something to an event
-
 or with the help of an event listener
-
 then that's something so that method,
-
 which is going to get executed,
-
 will have this bound to something else,
-
 in this case to the current target of the event.
-
 So this end of this method will not point at the class,
-
 when the method is triggered upon an event
-
 with an event listener.
-
 Now the work around or the solution is to actually
-
 call bind here on submitHandler to
-
 preconfigure how this function is going execute
-
 when it executes in the future,
-
 and the first argument we can pass to bind then
-
 is actually what the this keyword will refer to
-
 inside of the to be executed function.
-
 And here I pass this which means,
-
 this inside of submitHandler will refer to
-
 the same thing as this refers to in this context.
-
 And since we call it in the context of configure here,
-
 which we call with this configure,
-
 this ends out of configure will refer to the class,
-
 and thanks to bind, it will there for all,
-
 also refer to the class ends out of the submitHandler.
-
 So if you now save this here,
-
 and we reload,
-
 and enter "Hello!" here,
-
 you now see "Hello!" gets printed here
-
 when we submit the form.
-
 So now this is solved
-
 and now we're dealing with this properly.
-
 But maybe there is a better way,
-
 or an alternative way we've all have learned about.
-
 Maybe one using decorators,
-
 so here's your chance to again pause this
-
 and try solving this binding with decorators,
-
 because that's something we did learn about
-
 in the decorators section.
-

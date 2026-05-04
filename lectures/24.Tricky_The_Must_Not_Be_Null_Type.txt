@@ -1,90 +1,45 @@
 Now, when working with object types
-
 in TypeScript, there are two additional
-
 kind of related TypeScript features
-
 that are important to know.
-
 And the first one is a rather weird type.
-
 Let's say we have a val variable
-
 that should store some value,
-
 and let's assign an empty object as a type here.
-
 And now let's set this to, some text, surprisingly.
-
 And I say surprisingly
-
 because you'll see that this just works.
-
 Even though I said val to be an empty object,
-
 assigning a string works.
-
 And why is that?
-
 Because this is maybe one of the weirdest
-
 TypeScript features here
-
 because this type does actually not mean empty object,
-
 even though it looks like that.
-
 I mean, if we were to use this as a value instead of a type.
-
 If I had some object constant
-
 and I would store this as a value,
-
 then this, of course, is an empty object in JavaScript.
-
 This is an empty object.
-
 And here I am in JavaScript world
-
 because I'm simply assigning this as a value.
-
 This code here has nothing to do with TypeScript.
-
 So in JavaScript, this is an empty object.
-
 But when used as a type,
-
 this actually just means any value
-
 that's not undefined or null.
-
 So if I were to store null as a value here,
-
 I would get an error.
-
 "Type null is not assignable to type," whatever this is.
-
 The same is true for undefined.
-
 But using false or zero or an empty string,
-
 or of course, a string with characters, or an object
-
 is all allowed.
-
 And that can really be confusing.
-
 But it is important to keep in mind and understand
-
 that this here when used as a type,
-
 just means any non-null or undefined value,
-
 could be an object, could be a string, a number, whatever.
-
 So this syntax is actually not related to object types,
-
 but I'm mentioning it here because it looks like it might be
-
 when it actually isn't.
-
