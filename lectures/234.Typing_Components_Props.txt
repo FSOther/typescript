@@ -1,3 +1,7 @@
+Lecture resources:
+- https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/18-react-ts/index.css
+- https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/18-react-ts/goals.jpg
+
 So, let's get started with
 using TypeScript and React here.
 And for that I prepared a new index.css file,

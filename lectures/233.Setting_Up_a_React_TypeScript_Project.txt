@@ -1,3 +1,4 @@
+Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/18-react-ts/starting-project.zip
 Now in order to use React with TypeScript,
 we need a React project
 and we'll create one with help of Vite,

@@ -1,3 +1,5 @@
+Lecture resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
+
 Kind of related to what you just learned
 about access modifiers, is another modifier.
 And that's the readonly modifier.

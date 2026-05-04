@@ -1,3 +1,6 @@
+Lecture resources: 
+- https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+
 Visually, we are able to drag and drop
 but technically in JavaScript of course,
 our script has no idea of what's happening.

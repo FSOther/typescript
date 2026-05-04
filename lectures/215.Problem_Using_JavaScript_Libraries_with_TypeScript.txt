@@ -1,3 +1,5 @@
+Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/16-libs-and-ts/starting-project.zip
+
 Now, for this section,
 I got a brand new project.
 You find a basic snapshot attached,

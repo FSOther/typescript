@@ -1,3 +1,6 @@
+Lecture resource:
+- https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/14-modules-namespaces/starting-project.zip
+
 Up to this point in the course,
 we typically always only worked in one code file,
 or even if we had multiple files,

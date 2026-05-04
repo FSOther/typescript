@@ -1,3 +1,5 @@
+Lecture resource: 
+- https://vite.dev/
 So you could configure your own project
 with ESBuild or Webpack to handle all these different files.
 But as I mentioned, you typically don't need to do that.

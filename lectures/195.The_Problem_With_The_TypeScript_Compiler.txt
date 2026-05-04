@@ -1,3 +1,6 @@
+Lecture resource: 
+- https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/15-build-tools-vite/starting-project.zip
+
 For this section here,
 I created a brand new, very, very basic demo project,
 which you'll find attached.

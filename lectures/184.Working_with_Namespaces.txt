@@ -1,3 +1,7 @@
+Lecture resource: 
+- https://medium.com/computed-comparisons/commonjs-vs-amd-vs-requirejs-vs-es6-modules-2e814b114a0b
+
+
 I want to start with the namespace feature.
 Now to show you how it works,
 I will grab these two interfaces here.

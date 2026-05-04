@@ -1,3 +1,7 @@
+Lecture resources:
+- https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+- https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
 We also got module here.
 Now, module is an option I'll skip for now,
 because it really only makes sense
