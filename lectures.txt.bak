@@ -1,0 +1,1033 @@
+Phát
+1. Welcome to the Course!
+2 phút
+Phát
+2. What Is TypeScript?
+3 phút
+Phát
+3. Why Would You Use TypeScript?
+6 phút
+Bắt đầu
+4. Join Our Learning Community
+1 phút
+Phát
+5. Installing & Using TypeScript
+6 phút
+Phát
+6. Editor & Project Setup
+2 phút
+Phát
+7. About This Course
+2 phút
+Phát
+8. How To Get The Most Out Of The Course
+3 phút
+Bắt đầu
+9. Course Setup & Course Code
+1 phút
+Phát
+10. Module Introduction
+1 phút
+Bắt đầu
+11. Using Node.js To Run JavaScript Code
+1 phút
+Phát
+12. Project Setup
+3 phút
+Phát
+13. Working with Types & Exploring Built-in Types
+5 phút
+Phát
+14. Vanilla JavaScript Has Types, Too!
+3 phút
+Phát
+15. Type Inference vs Type Assignment
+3 phút
+Phát
+16. Assigning Types To Function Parameters
+3 phút
+Phát
+17. The "any" Type
+3 phút
+Phát
+18. Understanding Union Types
+2 phút
+Phát
+19. Arrays & Types
+2 phút
+Phát
+20. Advanced Array Types
+2 phút
+Phát
+21. A First Glimpse At Generic Types - Alternative Array Type Declaration
+2 phút
+Phát
+22. Making Sense of Tuples
+3 phút
+Phát
+23. Object Types
+5 phút
+Phát
+24. Tricky: The "Must Not Be Null" Type
+2 phút
+Phát
+25. Flexible Objects with the Record Type
+5 phút
+Phát
+26. Working with Enums
+7 phút
+Phát
+27. Being Specific With Literal Types
+5 phút
+Phát
+28. Type Aliases & Custom Types
+4 phút
+Phát
+29. Function Return Value Types
+3 phút
+Phát
+30. The "void" Type
+1 phút
+Phát
+31. The "never" Type
+3 phút
+Phát
+32. Functions As Types
+9 phút
+Phát
+33. null & undefined - Special Types
+3 phút
+Phát
+34. Inferred null & A First Look At Type Narrowing
+3 phút
+Phát
+35. Forced "Not Null" And Optional Chaining
+5 phút
+Phát
+36. Type Casting
+4 phút
+Phát
+37. The "unknown" Type
+5 phút
+Phát
+38. Optional Values & TypeScript
+3 phút
+Phát
+39. Nullish Coalescing
+6 phút
+Phát
+40. Module Introduction
+1 phút
+Phát
+41. TypeScript Project Setup & Creating a tsconfig.json File
+3 phút
+Phát
+42. Exploring tsconfig Options: Target & Libs
+6 phút
+Phát
+43. Controlling File Input & Emission
+5 phút
+Phát
+44. Configuring Type Checking
+3 phút
+Bắt đầu
+45. Configuring Code Quality Checks
+1 phút
+Bắt đầu
+46. Example tsconfig.json & Deep Dive
+1 phút
+Phát
+47. Compiling with tsconfig
+1 phút
+Phát
+48. Using TypeScript's Watch Mode
+1 phút
+Phát
+49. Installing Type Packages
+6 phút
+Phát
+50. Module Introduction
+1 phút
+Bắt đầu
+51. Using Node.js To Run Compiled JS Code
+1 phút
+Phát
+52. Getting Started & First Steps
+5 phút
+Phát
+53. Creating a First Custom Type
+4 phút
+Phát
+54. Defining a Function with a Union Type Return Value
+4 phút
+Phát
+55. Adding Application Logic
+10 phút
+Phát
+56. Connecting Functions & Passing Values
+4 phút
+Phát
+57. Compilation & Execution
+4 phút
+Phát
+58. Module Introduction
+4 phút
+Phát
+59. "let" and "const"
+7 phút
+Phát
+60. Arrow Functions
+5 phút
+Phát
+61. Default Function Parameters
+2 phút
+Phát
+62. The Spread Operator (...)
+5 phút
+Phát
+63. Rest Parameters
+5 phút
+Phát
+64. Array & Object Destructuring
+5 phút
+Phát
+65. How Code Gets Compiled & Wrap Up
+2 phút
+Bắt đầu
+66. Useful Resources & Links
+1 phút
+Phát
+67. Module Introduction
+1 phút
+Phát
+68. What are Classes?
+1 phút
+Phát
+69. Creating a First Class
+6 phút
+Phát
+70. A Useful TypeScript Shortcut & Compiling to JavaScript
+5 phút
+Phát
+71. Making Sense of "public" and "private"
+6 phút
+Phát
+72. Marking Fields as "readonly"
+2 phút
+Phát
+73. Understanding Getters
+4 phút
+Phát
+74. Setting Values with Setters
+5 phút
+Phát
+75. Exploring Static Properties & Methods
+3 phút
+Phát
+76. Understanding Inheritance
+3 phút
+Phát
+77. The "protected" Modifier
+3 phút
+Phát
+78. Making Sense Of Abstract Classes
+4 phút
+Phát
+79. Introducing Interfaces
+2 phút
+Phát
+80. Creating a First Interface
+4 phút
+Phát
+81. Interfaces As Object Types
+2 phút
+Phát
+82. Interfaces vs Type Aliases & Understanding Declaration Merging
+4 phút
+Bắt đầu
+83. Using Interfaces To Define Function Types
+1 phút
+Phát
+84. Implementing Interfaces
+3 phút
+Phát
+85. Ensuring Base Types with Interfaces
+2 phút
+Phát
+86. Extending Interfaces
+2 phút
+Phát
+87. How Interfaces Get (Not) Compiled To JavaScript
+1 phút
+Phát
+88. Module Introduction
+1 phút
+Phát
+89. Intersection Types
+5 phút
+Phát
+90. More on Type Guards
+6 phút
+Phát
+91. Discriminated Unions
+5 phút
+Phát
+92. Type Guards via "instanceof"
+3 phút
+Phát
+93. "Outsourcing" Type Guards & Using Type Predicates
+3 phút
+Phát
+94. Function Overloads
+5 phút
+Phát
+95. Working with Function Overloads
+3 phút
+Phát
+96. Making Sense of Index Types
+5 phút
+Phát
+97. Constant Types with "as const"
+3 phút
+Phát
+98. Revisiting the "Record" Type
+2 phút
+Phát
+99. The "satisfies" Keyword
+8 phút
+Bắt đầu
+Trắc nghiệm 1: Advanced Types
+Phát
+100. Module Introduction
+1 phút
+Phát
+101. A Generic Type We Already Know
+2 phút
+Phát
+102. Understanding Generic Types
+2 phút
+Phát
+103. Creating & Using a Generic Type
+6 phút
+Phát
+104. Generic Functions & Inference
+5 phút
+Phát
+105. Working with Multiple Generic Parameters
+2 phút
+Phát
+106. Generics & Constraints
+4 phút
+Phát
+107. Constraints & Multiple Generic Types
+3 phút
+Phát
+108. Working with Generic Classes & Interfaces
+2 phút
+Phát
+109. Summary
+1 phút
+Phát
+110. Module Introduction
+1 phút
+Phát
+111. What Is A Linked List?
+2 phút
+Phát
+112. Creating List & Node Classes
+5 phút
+Phát
+113. Making the Class Generic
+3 phút
+Phát
+114. Adding an "add" Method
+7 phút
+Phát
+115. Adding Items More Efficiently
+3 phút
+Phát
+116. Accessing the Data & Compiling + Running the Code
+4 phút
+Phát
+117. Finishing the Linked List
+2 phút
+Phát
+118. Module Introduction
+1 phút
+Phát
+119. Using "typeof"
+5 phút
+Phát
+120. "typeof" & A More Useful Example
+4 phút
+Bắt đầu
+121. Another Great Use-case for "typeof"
+1 phút
+Phát
+122. Extracting Keys with "keyof"
+2 phút
+Phát
+123. "keyof" & A More Useful Example
+6 phút
+Phát
+124. Understanding Indexed Access Types
+5 phút
+Phát
+125. Accessing Array Elements with Indexed Access Types
+4 phút
+Phát
+126. Introducing Mapped Types
+8 phút
+Phát
+127. Readonly Types & Optional Mapping
+7 phút
+Phát
+128. Exploring Template Literal Types
+10 phút
+Phát
+129. Introducing Conditional Types
+9 phút
+Phát
+130. Conditional Types - Another Example
+6 phút
+Phát
+131. Making Sense of the "infer" Keyword
+7 phút
+Phát
+132. TypeScript's Got You Covered: Built-in Utility Types
+3 phút
+Phát
+133. Module Introduction
+1 phút
+Phát
+134. What Are Decorators? And ECMAScript Decorators vs Experimental Decorators
+7 phút
+Phát
+135. Exploring Different Types of Decorators
+1 phút
+Phát
+136. Building a First Decorator
+8 phút
+Phát
+137. Building a Class Decorators That Edits a Class
+5 phút
+Phát
+138. Understanding Decorator Code Execution Order
+3 phút
+Phát
+139. Creating a Method Decorator
+4 phút
+Phát
+140. Using Decorators To Solve A Common Problem
+4 phút
+Phát
+141. Implementing A Decorator-based Solution: autobind
+4 phút
+Phát
+142. Replacing Methods with Decorators
+4 phút
+Phát
+143. Introducing the Field Decorator
+5 phút
+Phát
+144. Building Configurable Decorators with Factories
+4 phút
+Phát
+145. Onwards to Experimental Decorators
+1 phút
+Phát
+146. Module Introduction
+2 phút
+Phát
+147. A First Class Decorator
+5 phút
+Phát
+148. Working with Decorator Factories
+2 phút
+Phát
+149. Building More Useful Decorators
+6 phút
+Phát
+150. Adding Multiple Decorators
+3 phút
+Phát
+151. Diving into Property Decorators
+5 phút
+Phát
+152. Accessor & Parameter Decorators
+6 phút
+Phát
+153. When Do Decorators Execute?
+3 phút
+Phát
+154. Returning (and changing) a Class in a Class Decorator
+9 phút
+Phát
+155. Other Decorator Return Types
+4 phút
+Phát
+156. Example: Creating an "Autobind" Decorator
+9 phút
+Phát
+157. Validation with Decorators - First Steps
+7 phút
+Phát
+158. Validation with Decorators - Finished
+12 phút
+Bắt đầu
+159. Fixing a Validator Bug
+1 phút
+Phát
+160. Wrap Up
+3 phút
+Bắt đầu
+161. Useful Resources & Links
+1 phút
+Phát
+162. Module Introduction
+2 phút
+Phát
+163. Getting Started
+5 phút
+Phát
+164. DOM Element Selection & OOP Rendering
+12 phút
+Phát
+165. Interacting with DOM Elements
+8 phút
+Phát
+166. Creating & Using an "Autobind" Decorator
+5 phút
+Phát
+167. Fetching User Input
+9 phút
+Phát
+168. Creating a Re-Usable Validation Functionality
+14 phút
+Phát
+169. Rendering Project Lists
+11 phút
+Phát
+170. Managing Application State with Singletons
+16 phút
+Phát
+171. More Classes & Custom Types
+7 phút
+Phát
+172. Filtering Projects with Enums
+6 phút
+Phát
+173. Adding Inheritance & Generics
+19 phút
+Phát
+174. Rendering Project Items with a Class
+12 phút
+Phát
+175. Using a Getter
+4 phút
+Phát
+176. Utilizing Interfaces to Implement Drag & Drop
+10 phút
+Phát
+177. Drag Events & Reflecting the Current State in the UI
+6 phút
+Phát
+178. Adding a Droppable Area
+8 phút
+Phát
+179. Finishing Drag & Drop
+7 phút
+Phát
+180. Wrap Up
+1 phút
+Bắt đầu
+181. Useful Resources & Links
+1 phút
+Phát
+182. Module Introduction
+1 phút
+Phát
+183. Writing Module Code - Your Options
+3 phút
+Phát
+184. Working with Namespaces
+11 phút
+Phát
+185. Organizing Files & Folders
+9 phút
+Phát
+186. A Problem with Namespace Imports
+3 phút
+Phát
+187. Using ES Modules
+12 phút
+Bắt đầu
+188. Configuring tsconfig
+1 phút
+Phát
+189. Understanding various Import & Export Syntaxes
+5 phút
+Phát
+190. How Does Code In Modules Execute?
+2 phút
+Phát
+191. Understanding "type" Imports
+2 phút
+Phát
+192. Wrap Up
+3 phút
+Bắt đầu
+193. Useful Resources & Links
+1 phút
+Phát
+194. Module Introduction
+1 phút
+Phát
+195. The Problem With The TypeScript Compiler
+4 phút
+Phát
+196. Building with Webpack or ESBuild
+4 phút
+Phát
+197. Introducing Vite
+2 phút
+Phát
+198. Using Vite
+7 phút
+Phát
+199. Installing TypeScript on a Per-Project Basis
+2 phút
+Phát
+200. Making Sense of .d.ts Files
+3 phút
+Phát
+201. Importing non-TS Files
+2 phút
+Phát
+202. Wrap Up
+1 phút
+Bắt đầu
+203. About This Section
+1 phút
+Phát
+204. Module Introduction
+1 phút
+Phát
+205. What is Webpack & Why do we need it?
+6 phút
+Phát
+206. Installing Webpack & Important Dependencies
+4 phút
+Phát
+207. Adding Entry & Output Configuration
+6 phút
+Phát
+208. Adding TypeScript Support with the ts-loader Package
+7 phút
+Bắt đầu
+209. Adjust Webpack Config
+1 phút
+Phát
+210. Finishing the Setup & Adding webpack-dev-server
+4 phút
+Phát
+211. Adding a Production Workflow
+4 phút
+Phát
+212. Wrap Up
+2 phút
+Bắt đầu
+213. Useful Resources & Links
+1 phút
+Phát
+214. Module Introduction
+1 phút
+Phát
+215. Problem: Using JavaScript (!) Libraries with TypeScript
+4 phút
+Phát
+216. Solution: Installing @types Packages
+5 phút
+Phát
+217. Exploring .d.ts Files
+7 phút
+Bắt đầu
+218. Diving Deeper Into .d.ts Files
+1 phút
+Bắt đầu
+219. Using "declare" Manually
+1 phút
+Phát
+220. There Are Libraries With Great TypeScript Support!
+2 phút
+Phát
+221. Exploring Zod As a TypeScript-first Library
+8 phút
+Phát
+222. Diving Deeper Into Zod
+4 phút
+Phát
+223. Runtime vs Compile-time Types with Zod
+4 phút
+Phát
+224. Module Introduction
+1 phút
+Phát
+225. Project Setup
+4 phút
+Phát
+226. Getting User Input
+3 phút
+Phát
+227. Setting Up a Google API Key
+3 phút
+Phát
+228. Using Axios to Fetch Coordinates for an Entered Address
+10 phút
+Phát
+229. Rendering a Map with Google Maps (incl. Types!)
+7 phút
+Bắt đầu
+230. Working with Maps without a Credit Card
+1 phút
+Bắt đầu
+231. Useful Resources & Links
+1 phút
+Phát
+232. Module Introduction
+1 phút
+Phát
+233. Setting Up a React + TypeScript Project
+4 phút
+Phát
+234. Typing Components & Props
+6 phút
+Phát
+235. Using Components & Props
+3 phút
+Phát
+236. The Special "children" Prop & Optional Props
+3 phút
+Phát
+237. Adding Another Components With Props
+4 phút
+Phát
+238. Component Functions & Types - An Alternative
+3 phút
+Phát
+239. Managing State
+2 phút
+Phát
+240. Passing Functions As Props
+5 phút
+Phát
+241. Handling Form Submission
+5 phút
+Phát
+242. Working with Refs
+6 phút
+Phát
+243. More Function Passing & State Updating
+4 phút
+Bắt đầu
+244. Fixing a Typo
+1 phút
+Phát
+245. Wrap Up
+1 phút
+Phát
+246. Module Introduction
+1 phút
+Phát
+247. Node & TypeScript: Options & Alternatives
+4 phút
+Phát
+248. Setting up a Project
+7 phút
+Phát
+249. First Server & Working with Node Types
+3 phút
+Phát
+250. Adding & Using Express (+ Types)
+3 phút
+Phát
+251. Managing Data with Help of TypeScript
+8 phút
+Phát
+252. Adding & Testing a First Route
+10 phút
+Phát
+253. Finishing The Basic App
+12 phút
+Phát
+254. Native Node.js TypeScript Support (Without Compilation!)
+7 phút
+Phát
+255. Type Stripping vs Type Transformation
+9 phút
+Phát
+256. Exploring Alternative Runtimes Like Bun
+2 phút
+Phát
+257. Thanks for being part of the course!
+1 phút
+Bắt đầu
+258. LEGACY Lectures Below
+1 phút
+Phát
+259. Module Introduction
+1 phút
+Phát
+260. Using Types
+10 phút
+Phát
+261. TypeScript Types vs JavaScript Types
+5 phút
+Bắt đầu
+262. Important: Type Casing
+1 phút
+Phát
+263. Working with Numbers, Strings & Booleans
+6 phút
+Phát
+264. Type Assignment & Type Inference
+6 phút
+Bắt đầu
+Trắc nghiệm 2: Understanding Types
+Phát
+265. Object Types
+8 phút
+Bắt đầu
+266. Nested Objects & Types
+1 phút
+Phát
+267. Arrays Types
+5 phút
+Phát
+268. Working with Tuples
+6 phút
+Phát
+269. Working with Enums
+7 phút
+Phát
+270. The "any" Type
+2 phút
+Phát
+271. Union Types
+7 phút
+Phát
+272. Literal Types
+8 phút
+Phát
+273. Type Aliases / Custom Types
+3 phút
+Bắt đầu
+274. Type Aliases & Object Types
+1 phút
+Bắt đầu
+Trắc nghiệm 3: Core Types & Concepts
+Phát
+275. Function Return Types & "void"
+7 phút
+Phát
+276. Functions as Types
+6 phút
+Phát
+277. Function Types & Callbacks
+4 phút
+Bắt đầu
+Trắc nghiệm 4: Functions & Types
+Phát
+278. The "unknown" Type
+4 phút
+Phát
+279. The "never" Type
+4 phút
+Phát
+280. Wrap Up
+2 phút
+Bắt đầu
+281. Useful Resources & Links
+1 phút
+Bắt đầu
+282. Where Should You Go Next?
+1 phút
+Bắt đầu
+283. LEGACY Lectures Below
+1 phút
+Phát
+284. Module Introduction
+1 phút
+Phát
+285. Using "Watch Mode"
+2 phút
+Phát
+286. Compiling the Entire Project / Multiple Files
+4 phút
+Phát
+287. Including & Excluding Files
+6 phút
+Phát
+288. Setting a Compilation Target
+4 phút
+Phát
+289. Understanding TypeScript Core Libs
+6 phút
+Phát
+290. More Configuration & Compilation Options
+2 phút
+Phát
+291. Working with Source Maps
+2 phút
+Phát
+292. rootDir and outDir
+6 phút
+Phát
+293. Stop Emitting Files on Compilation Errors
+3 phút
+Phát
+294. Strict Compilation
+11 phút
+Phát
+295. Code Quality Options
+4 phút
+Phát
+296. Debugging with Visual Studio Code
+4 phút
+Phát
+297. Wrap Up
+1 phút
+Bắt đầu
+298. Useful Resources & Links
+1 phút
+Bắt đầu
+299. Where Should You Go Next?
+1 phút
+Bắt đầu
+300. LEGACY Lectures Below
+1 phút
+Phát
+301. Module Introduction
+1 phút
+Phát
+302. What are Classes?
+5 phút
+Phát
+303. Creating a First Class
+6 phút
+Phát
+304. Compiling to JavaScript
+3 phút
+Phát
+305. Constructor Functions & The "this" Keyword
+8 phút
+Phát
+306. "private" and "public" Access Modifiers
+6 phút
+Phát
+307. Shorthand Initialization
+3 phút
+Phát
+308. "readonly" Properties
+3 phút
+Bắt đầu
+Trắc nghiệm 5: Class Basics
+Phát
+309. Inheritance
+8 phút
+Phát
+310. Overriding Properties & The "protected" Modifier
+3 phút
+Phát
+311. Getters & Setters
+7 phút
+Phát
+312. Static Methods & Properties
+5 phút
+Phát
+313. Abstract Classes
+5 phút
+Phát
+314. Singletons & Private Constructors
+5 phút
+Phát
+315. Classes - A Summary
+2 phút
+Bắt đầu
+Trắc nghiệm 6: Classes
+Phát
+316. A First Interface
+4 phút
+Phát
+317. Using Interfaces with Classes
+6 phút
+Phát
+318. Why Interfaces?
+2 phút
+Phát
+319. Readonly Interface Properties
+2 phút
+Phát
+320. Extending Interfaces
+3 phút
+Phát
+321. Interfaces as Function Types
+3 phút
+Phát
+322. Optional Parameters & Properties
+4 phút
+Phát
+323. Compiling Interfaces to JavaScript
+2 phút
+Bắt đầu
+Trắc nghiệm 7: Interfaces
+Phát
+324. Wrap Up
+2 phút
+Bắt đầu
+325. Useful Resources & Links
+1 phút
+Bắt đầu
+326. Where Should You Go Next?
+1 phút
+Bắt đầu
+327. LEGACY Lectures Below
+1 phút
+Phát
+328. Module Introduction
+1 phút
+Phát
+329. Built-in Generics & What are Generics?
+9 phút
+Phát
+330. Creating a Generic Function
+9 phút
+Phát
+331. Working with Constraints
+4 phút
+Phát
+332. Another Generic Function
+6 phút
+Phát
+333. The "keyof" Constraint
+3 phút
+Phát
+334. Generic Classes
+9 phút
+Phát
+335. A First Summary
+1 phút
+Phát
+336. Generic Utility Types
+7 phút
+Phát
+337. Generic Types vs Union Types
+4 phút
+Bắt đầu
+Trắc nghiệm 8: Generics
+Bắt đầu
+338. Useful Resources & Links
+1 phút
+Bắt đầu
+339. Where Should You Go Next?
+1 phút
