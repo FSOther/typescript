@@ -1,0 +1,326 @@
+Time for another new file.
+
+I'll rename app.ts here to union aliases.ts,
+
+and add a new app.ts file where we can start
+
+from scratch again, close the other file.
+
+And now in here I wanna dive a bit deeper into functions.
+
+Now, of course, with already worked with functions.
+
+For example, here in the union aliases file
+
+with the combine function.
+
+And for example, you saw that for functions
+
+you can assign types to the parameters of functions.
+
+Well, turns out there's a bit more you can do
+
+with functions and types.
+
+For that I'll recreate my add function,
+
+which simply accepts numbers, not strings.
+
+Which does one simple thing, it returns n one plus n two,
+
+so not too tricky.
+
+As I mentioned, we can assign types to parameters,
+
+that's not new.
+
+The function overall, however,
+
+has one important other type, it has a return type.
+
+And here the return type is inferred by TypeScript.
+
+We can see it if we hover over add.
+
+Here at the end, the colon after the parameter list,
+
+this here, describes the return type of the function.
+
+So the type of the returned value.
+
+Here, I return the addition of n one and n two.
+
+And since both these inputs are numbers,
+
+TypeScript is able to infer
+
+that the result of this will be a number,
+
+and since we return it, that the return type
+
+of this function data will be a number.
+
+If you would concatenate them as strings here,
+
+with toString for example,
+
+then TypeScript would correctly infer
+
+that we return a string here.
+
+Now of course, we can always explicitly assign
+
+a return type here by adding a colon
+
+after the parameter list,
+
+and then the type you wanna return, like number.
+
+This would be the same type as inferred.
+
+If I, for example, set this to string,
+
+I would get an error here, because obviously my calculation
+
+here does not match my described return type.
+
+Now just as with variables, it's a good idea
+
+to let TypeScript do its job regarding type inference.
+
+And if you have no specific reason
+
+for explicitly setting the type,
+
+you should therefore not set the type,
+
+and instead let TypeScript infer the type.
+
+Regarding the return types though,
+
+there is one interesting type which we haven't seen before,
+
+and which might be brand-new to you
+
+if you have to experience with other programming languages.
+
+Because it is a type
+
+that doesn't really exist in JavaScript.
+
+It's the void type.
+
+Let's say we have the printResult method.
+
+There we get a number argument,
+
+which should be a, well, number.
+
+And in there, I want to console.log num.
+
+And I want to console.log it as a part of a string,
+
+where I say result plus num.
+
+So now this will be concatenated
+
+to one long string, and will be output.
+
+And now I can call printResult.
+
+And for example, pass through that the result
+
+of my add function call, with five plus, let's say 12.
+
+So I am executing add here, with two numbers.
+
+And the result of that, so what add returns,
+
+is then passed as an argument into printResult.
+
+And that should print it to the console.
+
+If we now compile this and then have a look at that
+
+in our page, or on our page here,
+
+we see result 17, which makes sense.
+
+Now the interesting thing here
+
+is the return type of printResult.
+
+What would you guess is the return type here?
+
+So maybe you think it's string,
+
+because I'm creating a string in here.
+
+But keep in mind, we're not returning this.
+
+We're not returning anything here.
+
+And therefore this printResult function here
+
+has a special return type, void.
+
+Now you might notice void return type
+
+from other programming languages.
+
+There you have something like this.
+
+JavaScript doesn't really know that,
+
+or doesn't really have a name for this situation.
+
+TypeScript, however, does.
+
+So indeed, this function here has a return type of void.
+
+And of course, you don't need to specify it here.
+
+TypeScript's inference did its job.
+
+But I want to really make it really clear
+
+that this has the void return type,
+
+which is why I am adding it here, for demo purposes.
+
+Now, void really just means this function doesn't have
+
+a return statement, it doesn't return anything.
+
+It successfully completes, it does its job.
+
+It executes its code, it does not yield an error
+
+or anything like that, but it then does not return anything.
+
+That's the void return type.
+
+Now technically in JavaScript, of course,
+
+if we would console.log the result
+
+of printResult here and I now compile this,
+
+and we see what gets output here on the page.
+
+We see that undefined is returned by that.
+
+So technically, and that's really interesting,
+
+in JavaScript, if we use the return value of a function
+
+that doesn't return anything, we get undefined as a value.
+
+And as you probably know, undefined in JavaScript
+
+is actually a real value.
+
+A value you, for example, also get if you try
+
+to access a property on an object which doesn't exist.
+
+So here we get void,
+
+even though technically this returns undefined.
+
+And now to make it even more confusing,
+
+undefined actually is a type in TypeScript.
+
+You can have undefined as a type.
+
+And for example, a brand-new variable, someValue,
+
+can receive undefined as a type,
+
+and you'll not get an error.
+
+This variable will now just be forever undefined.
+
+How useful that might be is a different question.
+
+But undefined is a valid type in TypeScript.
+
+Nonetheless, here you see we're getting an error.
+
+And we're getting an error
+
+because a function is not allowed to return undefined.
+
+Technically it of course does,
+
+but TypeScript thinks about functions a bit differently.
+
+You should use void here if a function returns nothing,
+
+and not undefined, because with void you make clear
+
+that this function deliberately
+
+does not have a return statement.
+
+If you would say undefined here,
+
+then TypeScript would expect that you have
+
+a return statement where you just don't return a value.
+
+That's the technical difference.
+
+Now you see I'm not getting an error.
+
+From a JavaScript perspective,
+
+this is basically the same as this.
+
+But TypeScript makes a differentiation here,
+
+and therefore void is the type you wanna use
+
+if you don't have a return statement.
+
+Undefined, which you will rarely need, to be honest,
+
+can be used if you return without returning an actual value.
+
+But again, this is a rare use case, and you could use void
+
+with a return statement like this as well.
+
+You would not get an error.
+
+And by default, you would actually
+
+always use void in this scenario.
+
+Unless you really have a function
+
+that should produce undefined,
+
+and you wanna be clear about that.
+
+But again, that will rarely be the case.
+
+I just want to make sure here, that you understand
+
+the difference between void and undefined,
+
+that void is the standard which you'll use
+
+in pretty much all scenarios where you have
+
+a function that does not return a value,
+
+and that you can assign it explicitly.
+
+But of course, TypeScript also is able to infer it,
+
+like it would be able here as well.
+
+I just added this for demo purposes here.
+

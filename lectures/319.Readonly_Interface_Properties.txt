@@ -1,0 +1,70 @@
+Now inside of an interface
+
+you can also add the read-only modifier.
+
+You cannot add public or private or anything like that.
+
+This is not possible on an interface,
+
+but you can add read-only to make it clear
+
+that this property in whatever object you built based
+
+on this interface must only be set once
+
+and is read-only thereafter so that it can't be changed
+
+after the object has been initialized.
+
+This is also something, if we use a type instead,
+
+which you can use on a type if you want to though,
+
+so again, these two things are very similar here,
+
+but it's more common or seen more often
+
+that if you really wanna work with an object,
+
+you use an interface for that,
+
+and read-only is just one other thing you can add there
+
+as a extra feature you can set up.
+
+With read-only added here, by the way,
+
+you see I didn't add it here in the class.
+
+I didn't add read-only here
+
+and still if I now go to user one
+
+and then try to set name to something else,
+
+I get an error here already
+
+because it's read-only
+
+and of course I also get that if I save it
+
+and it tries to compile that,
+
+so the interface is really having an effect here
+
+once we implement it into our class
+
+even though I didn't add read-only here,
+
+the class knows that it implements readable
+
+and it automatically assumes that the property name,
+
+which we have here, which we need to have
+
+because of the interface, is read-only
+
+because that is what we set up inside of the interface,
+
+and that's of course pretty convenient as well.
+

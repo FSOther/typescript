@@ -1,0 +1,104 @@
+Now, one interesting thing you'll see
+
+is that the inferred type here is rather complex.
+
+Now it's a union type of multiple different objects,
+
+and the reason for that
+
+is that I'm using one single type placeholder T
+
+for two parameters
+
+and I'm then passing two different objects
+
+into merge object.
+
+Therefore, we actually have two values
+
+of two different kind of object types.
+
+Sure, they're both objects,
+
+but the concrete object types are different.
+
+The first object is a object
+
+with a property called username, which holds a string.
+
+And the second object is a totally different object,
+
+which has a age property of type number.
+
+TypeScript could throw an error,
+
+therefore, that we have one placeholder,
+
+but two different types here, but it doesn't do that.
+
+Instead, it decides that we have probably one shared type
+
+that's common to both objects,
+
+and that would be an object that has both a username
+
+and an age property,
+
+but username can be string or undefined,
+
+and age can be a number or undefined.
+
+That's the only way of making both
+
+of these values work based on one shared type,
+
+and that's why we have such a complex inferred type here.
+
+Now therefore, what we could do here
+
+is we could add a second placeholder U,
+
+which should also extend object
+
+and which we use for the second parameter like this.
+
+With that, the inferred type is still not trivial,
+
+but definitely a bit less to read.
+
+Now this essentially says
+
+that we have two different object types passed
+
+into merge object and we get back a new object type,
+
+which is the combination of these two objects.
+
+So an intersection type of these two object types
+
+in the end,
+
+that's what we're getting back from merge object.
+
+And with that, long story short,
+
+we built a generic merge object function,
+
+which uses multiple placeholders
+
+that do allow all kinds of different object types
+
+but that need object types
+
+that do not work with numbers, strings
+
+or anything like that.
+
+And therefore, type constraints
+
+as we have them here are another crucial feature
+
+when working with generic types or generic functions
+
+or anything like that.
+

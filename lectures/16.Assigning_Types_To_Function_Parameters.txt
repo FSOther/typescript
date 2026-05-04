@@ -1,0 +1,104 @@
+Okay, so we did now learn about
+
+explicit type assignments, type inference,
+
+and that TypeScript has built-in types,
+
+like string, number, or boolean,
+
+and other types which we'll see later.
+
+Now, another interesting question
+
+at this point of time, though,
+
+is where you can set types.
+
+I mean, we can see that we can do it for variables,
+
+but where else can we take advantage of TypeScript?
+
+Well, another place are functions,
+
+as you also already briefly saw in the first course section.
+
+If you have a function add that expects to get to numbers,
+
+you can set the types of parameters
+
+you expect to get for this function
+
+right after the parameter names, again, by using colon,
+
+and then followed by the type name.
+
+And that allows you to take advantage of TypeScript
+
+when defining functions.
+
+Now, you can also take advantage
+
+of type inference here if you need to.
+
+You could assign an initial value to be like this,
+
+and that's a standard JavaScript feature, by the way,
+
+initial values for function parameters,
+
+that's not TypeScript-specific.
+
+But what is TypeScript-specific
+
+is that it will now infer that b should be of type number
+
+due to this initial value.
+
+And a is of type number due to our explicit type assignment.
+
+And since that's the case,
+
+we can call this function with one parameter value.
+
+So with one argument since the second one is optional
+
+due to the initial value.
+
+But it must be a number that we pass to add.
+
+A string will not work, as you see,
+
+because, well, we have that type assignment.
+
+And of course, we can also call it with two arguments
+
+and override that initial value here.
+
+But in that case as well,
+
+both values, of course, must be numbers,
+
+strings are not allowed.
+
+So functions and their parameters specifically
+
+are another very commonplace where TypeScript features
+
+are being used or very explicit type assignments
+
+can be useful, unless you have an initial value.
+
+Now, there also are some other places
+
+where type assignments and type inference can be used,
+
+for example, when working with classes or objects,
+
+but these are examples we'll see step by step
+
+throughout this course.
+
+Variables and functions are amongst the most common places
+
+for TypeScript usage, though.
+

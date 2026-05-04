@@ -1,0 +1,158 @@
+So let's build this project together now,
+
+and there would be different ways of approaching this.
+
+I'll start with that data that's passed
+
+to calculate investment,
+
+and I wanna set up a type for that data.
+
+Now, I did mention
+
+that it's these four pieces of information
+
+that should be fed into calculate investment,
+
+and therefore we could of course,
+
+simply accept four parameters here instead of one.
+
+So we could expect the initial amount,
+
+which could be a number as a first parameter,
+
+then the annual contribution, which could also be a number
+
+as a second parameter and so on.
+
+But of course, we would end up
+
+with a relatively long parameter list.
+
+And when calling that function, we would have to make sure
+
+that we pass the arguments in the right order
+
+to this function,
+
+and therefore all instead go for a single parameter,
+
+which should be an object,
+
+which then groups all this information here together.
+
+And therefore all start by describing such a object type
+
+by using that type alias feature
+
+provided by TypeScript to set up a custom type.
+
+And I'll name my type investment data,
+
+though the name of course is totally up to you.
+
+And all store an object type definition under that alias.
+
+So here I'm not creating a new object value.
+
+That's not what I'm doing here.
+
+Instead, I'm creating a new object type
+
+because we're on the right side of an equal sign
+
+after using the type keyword.
+
+So we're in TypeScript world here.
+
+We're defining a type, not a value, that's important.
+
+And this object type, which I'll define here,
+
+should have these fields I listed up here an initial amount,
+
+which in my case will be a number.
+
+Then an annual contribution,
+
+which should also be a number
+
+and expected return or return rate,
+
+however you want to call it,
+
+which I guess makes also sense if it's a number,
+
+and a duration in years, which therefore all is a number.
+
+And it makes sense
+
+that we're dealing with a bunch of numbers here
+
+because it's all about calculating
+
+some investment amount here
+
+and naturally that involves working with numbers.
+
+Of course, you'll learn about other types as well,
+
+like string or boolean,
+
+which might be helpful in other projects,
+
+but here it's number,
+
+well and data.
+
+This parameter here on the calculate investment function,
+
+that's now of type investment data,
+
+and I'll make that clear
+
+by adding this type annotation here.
+
+Now, just to be very clear,
+
+you could of course also grab this object type definition
+
+and define it in line,
+
+so to say hereafter this colon like this.
+
+That would be a perfectly valid way
+
+of setting up this type definition as well.
+
+Now, by using it like this, you would not take advantage
+
+of the type alias feature,
+
+but instead define the type
+
+right in the place where you need it.
+
+There is nothing wrong with this approach,
+
+but of course it makes this function a bit harder to read,
+
+I would argue, and if you ever needed
+
+to use this type somewhere else,
+
+you would have to copy and paste it.
+
+For that reason, I'll instead outsource it
+
+into this custom type alias
+
+or into this custom type here to be precise.
+
+Okay, with that, I got this parameter set up.
+
+Now we can start working on the logic
+
+that should go into calculate investment.
+

@@ -1,0 +1,188 @@
+So, here, I'm in a brand new empty project,
+
+and as before in earlier sections,
+
+I'll start by running tsc --init
+
+to create such a tsconfig.json file
+
+and I'll keep all the default settings here
+
+except for the target,
+
+which I'll bump up a little bit
+
+to target more modern browsers
+
+if we were to run this in a browser,
+
+though I actually won't do that,
+
+I'll run it with Node.js.
+
+But nonetheless, it's something I typically do
+
+when creating new TypeScript projects.
+
+Okay, so, with that tsconfig.json file created,
+
+I'll start by adding a linked-list.ts file here
+
+to this project.
+
+And it's in this linked-list TypeScript file where I wanna,
+
+well, create that linked list data structure.
+
+And I'll do that with help of classes.
+
+You wouldn't have to do that,
+
+you could also build it just with some global variable
+
+or constant and then some functions to change that.
+
+But here, I'll work with a class
+
+and I'll name it LinkedList,
+
+which sounds like a sensible name in my opinion,
+
+since that's the kind of data structure I wanna build.
+
+Now, inside of that LinkedList,
+
+I then want to store the head,
+
+the starting element of that linked list, so to say.
+
+If you recall that slide,
+
+I need to store at least one node in that linked list,
+
+and then this node will point at the next node,
+
+and that node will point at yet the next node, and so on.
+
+But I need to store one node, the root node,
+
+if you wanna call it like this, in that LinkedList here.
+
+So, therefore here, I'll add a property named root.
+
+We could add public here to be explicit about the fact
+
+that it can be accessed from anywhere
+
+where this LinkedList object
+
+that's created based on this class is used.
+
+We could make it private so that it can only be used
+
+from inside this class, or omit that,
+
+and in that case, it will be public automatically.
+
+Here, however, I'll go for private, private root.
+
+And I also wanted to find the type of value
+
+that will be stored under that root property.
+
+And as mentioned, I wanna store such a node,
+
+such a data container under that property.
+
+Therefore, I'll actually create a second class.
+
+ListNode could be the name,
+
+which will describe such an individual node,
+
+so which we'll use to instantiate such nodes later.
+
+Now. I'll finish this class later.
+
+For the moment, I just wanna define it
+
+so that I can use it as a type here
+
+so that my root property holds such a list node.
+
+Now, with that, I'm getting an error,
+
+because no value is assigned here.
+
+And therefore, I'll fix this by adding a question mark here,
+
+which makes this an optional property
+
+so that undefined is a valid value for this property,
+
+and initially it will be undefined,
+
+which is why now the error goes away,
+
+because we're happy with undefined now.
+
+I'll also add a second property here,
+
+which I'll name length,
+
+which should simply store the number of nodes
+
+that have been added here
+
+because there is no easy
+
+or efficient way of finding out
+
+without counting all the nodes.
+
+If you want to know the length,
+
+which is I'll store it here in a separate property
+
+so that we can quickly retrieve that information
+
+without counting all the nodes every time
+
+we wanna know how many we have.
+
+So, I got two private properties in here,
+
+and as you learned, private is a TypeScript feature.
+
+Classes aren't.
+
+They exist in JavaScript too without TypeScript.
+
+But this private annotation,
+
+that is actually TypeScript.
+
+And just to be very clear about what it does,
+
+it makes sure that if you instantiate this LinkedList,
+
+like this, which is the standard JavaScript syntax
+
+for instantiating a class, if you do that,
+
+you can't access root or length.
+
+You would get an error,
+
+because these are private properties.
+
+So, that's the idea.
+
+And that's therefore the very basic starting setup
+
+of these classes, but of course,
+
+the entire logic is missing.
+
+And that's therefore what we'll, step by step, work on next.
+

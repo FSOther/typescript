@@ -1,0 +1,67 @@
+Now I'm in a brand new project as always,
+
+and in there I'll add a Generics.ts file.
+
+And in this file, I'll add an array,
+
+let's say an array of names
+
+where I have two names in there, but we could add more.
+
+You might recall from earlier in the course
+
+that the type of names now is an array of strings,
+
+which would be written like this in TypeScript.
+
+So if we wanted to explicitly type this,
+
+we could do it like this.
+
+But you might also recall
+
+that I also mentioned an alternative way
+
+of writing this string array type
+
+of setting this string array type.
+
+Earlier in the course I showed you
+
+that you can also use the array type,
+
+but that you then need
+
+to add these weird angle brackets here,
+
+opening and closing angle brackets,
+
+and you would put the type of value that's stored
+
+by that array between those angle brackets.
+
+And that would be another perfectly valid way
+
+of setting up such a array type
+
+of describing this array type, so to say.
+
+And in the end, you can say that this way
+
+of writing this type is just some kind of shortcut
+
+or convenience feature
+
+provided by TypeScript compared to this form here,
+
+because this form here actually uses
+
+this Generics feature I mentioned.
+
+This here is a generic type,
+
+and we'll now take a look at
+
+what makes this a generic type
+
+and why this feature exists.

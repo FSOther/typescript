@@ -1,0 +1,208 @@
+Now, here's another example
+
+for conditional types.
+
+Let's say you wanna build a function, getFullName.
+
+And in that function, you expect to get a person,
+
+which should be some object type in the end,
+
+but you don't care about the concrete type of object.
+
+So it should just be any object.
+
+And we can, of course, again, make that work
+
+by adding a generic type parameter here,
+
+so to say, so by making getFullName a generic function
+
+where T extends object.
+
+Now, inside of getFullName,
+
+we then wanna check whether person
+
+has a firstName property.
+
+So whether there is a firstName property in person,
+
+and if there also is a lastName property in person.
+
+In addition, I wanna check that those properties
+
+don't hold null or undefined values.
+
+So I'll check if person firstName is truthy
+
+and if person lastName is truthy.
+
+And that's how you can do this in JavaScript.
+
+And if that's the case, we can return a string,
+
+a template literal.
+
+So this is now not this template literal type feature.
+
+Instead here we're writing some JavaScript code.
+
+So this is a regular string created using back ticks,
+
+using JavaScript's template literal feature.
+
+And I'll inject person.firstName here, add a blank,
+
+and then have person.lastName.
+
+And if we don't make it into this if check,
+
+so if we don't have a firstName or a lastName,
+
+or if one of the two is falsey,
+
+then I wanna throw a new error.
+
+No firstname and/or last name found.
+
+Something like this.
+
+Now, that could be a function your application needs.
+
+Now, getFullName will return a string here.
+
+That's what TypeScript infers.
+
+But actually, that's not entirely correct.
+
+It will actually return nothing. It will return never,
+
+so to say, if we don't make it into this if check
+
+because we throw an error in that case.
+
+That's again a scenario where a conditional type
+
+can help even though we're not building a utility type here.
+
+But this is one example
+
+where a conditional type could be used in a function
+
+or with a function that you might build
+
+for your application
+
+because here for the return type,
+
+we could set up a conditional type where we check
+
+whether T extends an object that has firstName
+
+and lastName properties.
+
+Now, I'll actually outsource this into a separate type
+
+so that this line of code doesn't get too long
+
+and I'll name it FullnamePerson.
+
+So that is simply an object where we have a firstName
+
+of type string and a lastName of type string.
+
+So we can then check here if T extends FullnamePerson.
+
+And if that's the case, then I know
+
+that this function will return a string,
+
+otherwise it will return never, like this.
+
+So that's now a conditional type being used
+
+for the return value type of this getFullName function
+
+to make it clear to TypeScript
+
+that this function will either yield a string
+
+or never anything depending on whether the object we get
+
+is a fullName person or not.
+
+So whether it has a firstName or a lastName.
+
+Now, here I'm getting an error
+
+that my string here is not assignable
+
+to my conditional type here, even though we know
+
+that it makes sense.
+
+So what we can do here
+
+to fix this is grab this conditional type
+
+and outsource it into another type.
+
+fullName or nothing could be the name,
+
+which, of course, must be a generic type here
+
+since I'm using T.
+
+And then we can use fullName
+
+or nothing here as a return type.
+
+And just pass T, the same T we have here to it.
+
+And then use type casting here in our return statement
+
+to make it clear that this is of type fullName or nothing
+
+for the generic type we're getting when using getFullName.
+
+And with that the error goes away.
+
+And now we can use our getFullName function here,
+
+let's say on an empty object,
+
+in which case, name1 will be never
+
+because this empty object doesn't have a firstName
+
+or a lastName.
+
+If I, on the other hand, use it on an object
+
+where we do have a firstName
+
+but no lastName, it's still never.
+
+But if I add a lastName here as well,
+
+like this, then name2 all of a sudden is a string
+
+instead of never because of our conditional type here,
+
+the fullName or nothing type.
+
+And that's therefore never example
+
+for a conditional type here being used on a function
+
+that we might build like this
+
+in the application we're building.
+
+And with that, we have a very generic
+
+and flexible, yet at the same time type-safe way
+
+of building functions like this.
+

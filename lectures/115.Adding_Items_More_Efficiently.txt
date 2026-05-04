@@ -1,0 +1,118 @@
+Now we can improve this add method though,
+
+because at the moment we're always looping
+
+through all our nodes whenever we want to add a new node.
+
+And this is really some work we can avoid here.
+
+We can avoid it by not just storing the root node
+
+but also the tail node, which also could be undefined.
+
+So that we don't just store the first node,
+
+but also the last node in the linked list
+
+because we need that last node
+
+whenever we want to add a new node at the end.
+
+With this addition made here,
+
+we can go back to this add method.
+
+And then here, instead of using this while loop,
+
+and instead of using this approach here altogether,
+
+we can reach out to our tail node
+
+and then set the next property of that tail node
+
+equal to the node, to the new node here.
+
+Now I'm getting an error here though,
+
+and the error in the end is related to the fact
+
+that my IDE added this question mark here automatically,
+
+which is required because tail may be undefined.
+
+It is undefined initially,
+
+so accessing next here is not safe.
+
+And indeed at the moment this tail would never be set
+
+because I only set the root node
+
+when I insert a node for the first time.
+
+Of course, here, when it is the first node that's inserted,
+
+I should set tail to the very same node
+
+because the root node,
+
+the initial node is also the last node
+
+if it's the first node that's inserted.
+
+With that, however,
+
+I know that if we have at least one node,
+
+this tail will be set.
+
+So I know with certainty
+
+that here, this tail will not be undefined.
+
+I can also clarify this by adding an extra check here
+
+to make sure that we make it into this first branch
+
+of this if check if this root is faulty
+
+or if this tail is faulty,
+
+and typically they should both be faulty at the same time.
+
+With that, TypeScript is happy about this line of code.
+
+And with that, we have a more efficient way
+
+of updating that last node
+
+and adding that new node to this list of nodes
+
+because now we always update the next property
+
+of the tail node to the newly inserted node.
+
+This also means that thereafter
+
+we need to set the tail to this new node though
+
+so that the newly inserted node
+
+is now also the new tail node.
+
+First, we update the next property of the old tail node
+
+and set it to the new node,
+
+but then we also set that new node as a value
+
+for the tail node, so we make sure
+
+that we store the correct node
+
+as the tail node in the linked list after adding this value.
+
+And with that, we now have a pretty efficient way
+
+of storing this new node in this linked list data structure.
+

@@ -1,0 +1,80 @@
+Now with that we had a thorough look
+
+at all the core types and the TypeScript basics.
+
+You hopefully now understand how we create and assign types,
+
+how we assign types to variables
+
+and to parameters, and why we do that.
+
+How type assignments and types could differ from
+
+JavaScript type checks that JavaScript uses runtime types,
+
+and TypeScript uses static types
+
+that matter during development.
+
+That the built JavaScript code, therefore,
+
+does not include any type assignments.
+
+It of course includes any type checks,
+
+because that is regular JavaScript code,
+
+but something like this here...
+
+this is simply not allowed in JavaScript.
+
+This is not supported syntax.
+
+That's TypeScript only.
+
+So that's hopefully clear.
+
+And then we had a look a numbers, strings, Booleans
+
+at function types and setting return types,
+
+argument types, and also describing
+
+the type of an overall function
+
+which can be helpful if you wanna have a variable
+
+that eventually holds a function.
+
+We had a look at objects and arrays and enums
+
+and how that can be interesting and help you.
+
+The same is true for tuples.
+
+And now we also had a look at aliases, types aliases,
+
+where you can merge complex types
+
+into aliases which you can reuse.
+
+We had a look at literal types and union types,
+
+which can be useful for scenarios
+
+where you expect more than one possible type.
+
+And now at the end we also had a look at unknown and never,
+
+which are niche types but still
+
+in their niche they can be very useful.
+
+Now with these basics we'll
+
+dive deeper into individual aspects,
+
+and of course also explore other types
+
+and JavaScript constructs where types can be helpful.
+

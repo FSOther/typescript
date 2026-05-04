@@ -1,0 +1,60 @@
+Now, before we get started
+
+writing decorator code,
+
+I also briefly want to introduce you
+
+to the different types of decorators.
+
+So not the different kinds,
+
+the two different syntaxes you can use,
+
+but different types of decorators.
+
+And here it's important to understand
+
+that this decorator's feature
+
+is an object-oriented programming feature,
+
+which means this decorator's feature,
+
+the decorators you are going to build,
+
+can only be used in conjunction with classes, their methods,
+
+their fields, or getters and setters in the end.
+
+So you can build decorators that can be attached
+
+to entire classes, to class methods, to class fields
+
+and/or getters and setters.
+
+But you, for example, can't build a decorator
+
+that can be attached to a function
+
+that's not part of a class.
+
+It is an object-oriented programming feature,
+
+and there is no such feature
+
+for non-class things in your code.
+
+So you can't build decorators that are attached to functions
+
+or variables, for example.
+
+That's simply how it works.
+
+And in this section, I'll get you started with class method
+
+and field decorators,
+
+and we'll explore how we can build them, type them,
+
+and use them.
+

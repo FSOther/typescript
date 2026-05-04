@@ -1,0 +1,95 @@
+So what is TypeScript
+
+and why would you use it?
+
+Why might it be helpful?
+
+Now, regarding the first question, what it is,
+
+you can learn on the official TypeScript website
+
+that TypeScript is JavaScript
+
+with syntax for types, which sounds quite cryptic,
+
+but in the end it means
+
+that TypeScript code looks like this, for example.
+
+What you see here on the screen is TypeScript code,
+
+but of course, if you take a closer look,
+
+it pretty much looks like JavaScript code
+
+because, and that's really important,
+
+TypeScript in the end is JavaScript
+
+with some extra features being added,
+
+because TypeScript is a so-called JavaScript superset,
+
+which in the end means it's an extension
+
+to the JavaScript language, you could say.
+
+It adds some extra syntax to that language.
+
+Specifically, it keeps all the core syntax
+
+and features you already know from JavaScript,
+
+but it adds some extra type-related features.
+
+It adds strict and static typing,
+
+which essentially means
+
+that you can't use all value types in all places,
+
+and that you can also define
+
+which value type you expect in certain places.
+
+For example, this code here is TypeScript-specific.
+
+That's not JavaScript code.
+
+Here, I'm telling TypeScript in the end
+
+that this input price parameter should be of type number.
+
+If then down here I, for example, try to pass a value
+
+that's not a number to that function,
+
+in this case inputPrice, which is essentially a string,
+
+I would get an error right here in my IDE.
+
+If I convert this to a number, the error goes away.
+
+That's TypeScript.
+
+That's the main thing TypeScript brings to the table.
+
+And since it's such a JavaScript superset,
+
+learning TypeScript is really not that difficult
+
+if you already know JavaScript,
+
+because all your JavaScript knowledge still applies.
+
+In the end, you'll be writing JavaScript code,
+
+just JavaScript code enhanced
+
+with some extra TypeScript-related features.
+
+But that brings us back to that other question.
+
+Why would you use TypeScript?
+
+Why would these extra features be helpful?

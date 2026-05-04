@@ -1,0 +1,132 @@
+Now, when working with type guards,
+
+as we're doing it here in these various examples,
+
+you sometimes might want
+
+to outsource this type checking logic
+
+into a separate function,
+
+because maybe you're using it in different functions
+
+and you don't always wanna repeat it.
+
+Therefore, you could add a new function
+
+and name it isFile, for example.
+
+And then here, accept such a source,
+
+since I'm coming back to this example here.
+
+And then inside of this function,
+
+return this check here,
+
+so true or false depending on this check.
+
+So, isFile will return a Boolean
+
+and it will return true if the source.type is file
+
+and it will return false otherwise.
+
+Now, the great thing about TypeScript,
+
+at least modern TypeScript,
+
+because it wasn't always like this,
+
+but nowadays, the great thing about TypeScript
+
+is that it will actually not use a Boolean
+
+or just a Boolean as a return type here,
+
+as an inferred return type,
+
+but instead this strange return type,
+
+and that's a so-called type predicate.
+
+It is a Boolean under the hood,
+
+but it is a Boolean with extra information attached,
+
+so to say.
+
+TypeScript will get extra information
+
+from this isFile function here,
+
+because TypeScript will understand
+
+that if this function returns true,
+
+source, the input argument which we are handling here
+
+in this condition that produces the return value,
+
+TypeScript will understand that source
+
+will be of type FileSource.
+
+And therefore as a consequence,
+
+wherever you're going to use isFile,
+
+TypeScript will have this extra information
+
+that if isFile returns true,
+
+the source, the value you passed to isFile
+
+will be of type FileSource
+
+Now, in older TypeScript versions,
+
+it did not work like this.
+
+There, TypeScript only understood
+
+that isFile returns true or false,
+
+but if you then used it somewhere else in your code,
+
+TypeScript would not have the extra information
+
+that this function returning true means
+
+that the input value is of type FileSource.
+
+In modern TypeScript,
+
+it has this information and as a consequence,
+
+you can outsource type guard logic
+
+into functions like this
+
+and then reuse this function wherever you need it.
+
+You can use it inside of loadData in this if check
+
+and TypeScript will understand
+
+that if you make it into this if check,
+
+the source value here will be of type FileSource.
+
+And that might sound like it of course
+
+should behave like this and nowadays it does,
+
+but it wasn't always like this.
+
+And it is therefore important to know that now it is
+
+and that you can outsource type guard logic
+
+into reusable functions like this.
+

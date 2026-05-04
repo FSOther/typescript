@@ -1,0 +1,132 @@
+Kind of related to what you just learned
+
+about access modifiers, is another modifier.
+
+And that's the readonly modifier.
+
+Let's say we have certain fields,
+
+which should not just be private or public,
+
+they also shouldn't change after their initialization.
+
+For example, the id should not change thereafter.
+
+To make it clear that it shouldn't change,
+
+you can add readonly here as well.
+
+And you could have added that up here as well.
+
+So here you would have also written private readonly.
+
+Now the readonly keyword, just like private and public,
+
+is introduced by TypeScript,
+
+it does not exist in JavaScript.
+
+It makes sure that if you try to write
+
+to its property thereafter, you fail.
+
+So you can only use it once during initialization
+
+but thereafter, let's say for addEmployee,
+
+for whatever reason, I try to change id to d2,
+
+you see, we get an error here,
+
+that I can't assign to id because it's readonly.
+
+So this adds some extra safety to make it really clear
+
+that a certain property should only be initialized once
+
+and shouldn't change thereafter,
+
+a requirement you have quite often for certain properties
+
+in your objects.
+
+So this can add extra type safety again,
+
+and make your intentions very clear.
+
+Of course, you can always say,
+
+Well, I'm the one writing the code,
+
+I won't do anything I don't want.
+
+Well, it's still good to be very clear
+
+when you define your code.
+
+Because a, you might forget what you wanted to do
+
+if you pause working on your code for a couple of weeks,
+
+or whatever it is,
+
+and b, you might be working in a team
+
+or sharing your code with other people.
+
+And it's generally a good idea to write clear
+
+and explicit code that makes your intention very clear.
+
+And readonly can help you there,
+
+because it makes it very clear what your goal is.
+
+If we have a look at app.js, as I mentioned,
+
+we see neither private nor public, nor read only,
+
+because that all only exists in TypeScript,
+
+not in JavaScript.
+
+We also see something different which is also interesting,
+
+the methods are added to the prototype
+
+of our constructor function.
+
+Now for this, you need to know what prototypes are,
+
+and introducing those in this course
+
+would be a little bit too much.
+
+Attached you find some resources
+
+where you can dive into prototypes.
+
+It's an important part of JavaScript,
+
+especially of JavaScript before we had classes,
+
+and it doesn't hurt to understand prototypes
+
+if you're a JavaScript developer.
+
+Still here, I will not dive deeper into them
+
+because it's a pure JavaScript topic,
+
+not specific to TypeScript.
+
+Indeed in TypeScript,
+
+we typically work less with prototypes,
+
+because we can do more with classes.
+
+And related to that, we got another important class concept,
+
+Inheritance.
+

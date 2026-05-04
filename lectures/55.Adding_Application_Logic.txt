@@ -1,0 +1,344 @@
+So which logic
+
+should go into calculateInvestment?
+
+Well, I'll start by extracting the pieces of data
+
+that are fed into calculateInvestment.
+
+So I'll start by destructuring this data parameter.
+
+For that I'll use JavaScript's destructuring syntax,
+
+it's object destructuring syntax to be precise.
+
+And I'll target this data parameter
+
+to destructure all these pieces of information
+
+that are grouped together into this object,
+
+so that I can easily work with them
+
+inside of calculateInvestment.
+
+So here I wanna grab the initial amount.
+
+I wanna grab the annual contribution.
+
+I wanna grab the expected return
+
+and the duration, like this.
+
+Next, I wanna check some inputs
+
+and make sure that I'm not continuing
+
+with invalid inputs.
+
+So for example, I wanna check if the initial amount
+
+is smaller than zero.
+
+I am fine with getting zero as an initial amount
+
+because we still might have some annual contribution,
+
+but smaller than zero,
+
+I don't wanna calculate liabilities here.
+
+So instead of continuing in that case, I'll return a string,
+
+which is one of the two
+
+kinds of return values we're accepting.
+
+And I'll return a string where I'll say,
+
+'Initial investment amount must be at least zero.',
+
+or something like that.
+
+Next, I wanna validate whether my duration is maybe
+
+smaller or equal than zero,
+
+because if we're not saving for at least a year,
+
+it doesn't make sense to calculate anything.
+
+So in that case, I'll also return an error message string
+
+where I'll say, 'No valid amount of years provided.',
+
+or something like that.
+
+And last but not least, I also wanna check
+
+if the expected return is smaller or equal than zero.
+
+Because if we have no expected return, yeah,
+
+then this entire calculation doesn't make too much sense.
+
+I guess you could go for a zero if you only wanna add up
+
+the annual contributions,
+
+so we could change it to this.
+
+But smaller than zero definitely makes no sense here
+
+because I don't try to calculate some kind of deflation
+
+or anything like that.
+
+Instead, I'll just return an error message text here
+
+and say, 'Expected return must be at least zero.'
+
+Okay, so these are some checks.
+
+Now for the interesting part,
+
+because now I wanna perform the actual calculation
+
+where I derive my different pieces
+
+of information for every year.
+
+And for that I'll start
+
+by initializing some local variables,
+
+which I'll use throughout this calculation.
+
+And I'll also say right away
+
+that there will be different ways
+
+of performing this calculation.
+
+Here ,I'm just showing you one possible solution,
+
+which hopefully is really straightforward to understand.
+
+And I'll start by setting up a total variable,
+
+which should hold the total amount invested
+
+and will increase that year by year.
+
+And I'll start with the initial amount
+
+because initially my total amount invested is,
+
+of course, my initial amount.
+
+Then I also wanna track the total amount
+
+of contributions in a separate variable.
+
+So I'll add a totalContributions variable,
+
+which initially is zero
+
+because I don't wanna count that initial investment
+
+towards my total amount of contributions.
+
+And I'll add a last variable totalInterestEarned,
+
+which initially is zero,
+
+because, of course, we haven't earned any interest yet
+
+if we haven't processed a single year.
+
+I'll also add another constant here since I don't plan on
+
+assigning a new value to it, which I'll name annualResults
+
+and that should be an array
+
+full of investment results objects.
+
+Therefore, I'll assign my InvestmentResult type here,
+
+though I want an array full of such values.
+
+So it's actually this type definition.
+
+And initially it'll be an empty array.
+
+Now we can still change it even though that's a constant
+
+due to how JavaScript works.
+
+Next we can set up a loop.
+
+And I'll set up a loop
+
+where I'll use a helper variable called i,
+
+which starts at a value of zero
+
+and where I wanna continue looping as long as
+
+that's smaller than my duration,
+
+so smaller than my number of years.
+
+And I wanna increment i at the end of every iteration,
+
+so a standard JavaScript loop in the end.
+
+Inside of that loop, I then wanna start
+
+by increasing my total by the expected return
+
+because I will add the contribution only
+
+after calculating the return for the year,
+
+assuming that the contribution is made
+
+at the very end of every year.
+
+So therefore here I'll set my total to total
+
+times one plus expectedReturn.
+
+And for that I do expect
+
+that expectedReturn will be something like 0.0848%.
+
+If you expect to get something like eight, for 8%,
+
+you would have to divide it by 100 in your calculator first.
+
+But here I assume that I get the right kind of value
+
+right from the start.
+
+Next, I'll increment
+
+or I'll add to my totalInterestEarned,
+
+and I'll add my new total,
+
+which includes the interest for the year
+
+minus my totalContributions up to this point
+
+minus the initialAmount.
+
+And that will then give me the totalInterestEarned
+
+up to the end of this year.
+
+I then, after calculating my interest,
+
+also wanna add something to my totalContributions.
+
+And here I wanna set totalContributions equal to
+
+totalContributions plus annualContribution,
+
+so the annualContribution that's made every year.
+
+And then finally, I'll again change the total
+
+and now also add my annualContribution for the year.
+
+So that's what I wanna do every year.
+
+These calculations should be performed every year.
+
+And then still inside the for loop,
+
+I'll use my annualResults array here,
+
+which wants a bunch of InvestmentResult objects,
+
+so objects that have this shape.
+
+And I'll push a new value into this array.
+
+And that new value, of course, should be an object
+
+that has the shape described in my custom type.
+
+So for the year, I wanna have a string.
+
+That's how I defined it.
+
+So I'll actually create a template literal here
+
+using this JavaScript feature where we use back ticks
+
+instead of single quotes
+
+to set this to an identifier of Year.
+
+And then I'll use this syntax, which is supported
+
+by JavaScript to inject a value into this string.
+
+And here that should be i plus one, so that for year one,
+
+this says year one.
+
+For year two, it says year two, and so on.
+
+Then for the totalAmount key, I'll store my total.
+
+So, the value which I update in these two steps here,
+
+I'll store that here.
+
+For the totalInterestEarned,
+
+I'll store the totalInterestEarned,
+
+and we could do that like this.
+
+But, since we have the same name for the key
+
+and for the variable that holds the value,
+
+that should be stored under that key,
+
+we can also use JavaScript's shortcut,
+
+which allows us to omit this colon value assignment.
+
+And that's JavaScript, not TypeScript, to be very clear.
+
+And we can do the same for the total contributions.
+
+With that, I save the data for this year in this array,
+
+and then we continue with the next iteration
+
+and therefore with the next year.
+
+And ultimately after this for loop,
+
+I'll return my annualResults here.
+
+And with that done, with that return statement added here,
+
+TypeScript should now also be happy
+
+and no longer throw an error related to this return type
+
+because we are now returning either a string,
+
+as we do here in these error cases,
+
+or an array of investmentResults,
+
+which is what I do here at the end.
+

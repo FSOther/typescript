@@ -1,0 +1,186 @@
+Before we dive into more examples,
+
+let's understand the order
+
+in which decorators run though.
+
+And here, it's important to understand
+
+that first of all,
+
+they're all running without us
+
+instantiating this product.
+
+Or, in other words,
+
+if I create a product here with,
+
+new product,
+
+book, for $19,
+
+and I create another product here,
+
+book two for,
+
+$29.
+
+this complied without errors
+
+of my decorator code here
+
+doesn't run more often.
+
+So it's not the instantiation of this class that matters.
+
+All these decorators,
+
+no matter if it was a property decorator,
+
+a method decorator, an accessor decorator,
+
+or a parameter decorator,
+
+they all executed when you defined this class,
+
+and that's important to understand.
+
+These are not decorators that run
+
+at run time when you call them method
+
+or when you work with a property.
+
+This is not what they do.
+
+Instead these decorators allow you to
+
+do additional behind the scenes set up work
+
+when a class is defined.
+
+Back to that metaprogramming concept
+
+I explained earlier, right.
+
+That's the idea behind decorators
+
+or that's their core use case.
+
+They're not event listeners you add to something
+
+so that when you work with a property
+
+you can run some code.
+
+You can make something like that
+
+work with decorators actually,
+
+but by tweaking and editing
+
+something behind the scenes,
+
+but the decorator itself
+
+really is just a function
+
+that executes when your class is defined,
+
+when your
+
+(mumbles)
+
+and you can then use the decorator
+
+to do some behind the scenes work,
+
+to then set up some code that should run
+
+whenever this is called.
+
+To add extra meta data or store some data
+
+about a property somewhere else in your project
+
+or in your library, which you're creating.
+
+This is what you can use decorators for,
+
+and that's all the pattern
+
+you'll kind of see when I now show you
+
+these examples of what you
+
+could build with decorators.
+
+They're adding extra functionality
+
+behind the scenes
+
+which then sometimes can execute
+
+when you do something with your class
+
+or with your method,
+
+but which can also do
+
+totally different things.
+
+That's all important for our person example
+
+from earlier with the template decorator.
+
+This does not add this template
+
+whenever we instantiate a person here.
+
+It does add it whenever we define this class.
+
+We would have to add extra logic
+
+inside of our decorator function
+
+to change this behavior.
+
+And to maybe just store this template
+
+in some other data structure of our project
+
+which we then tab into whenever
+
+we do create a new person here.
+
+So then we basically just set this up
+
+when we define the class,
+
+but then we just store it
+
+behind the scenes internally
+
+and we can then use it
+
+when we want to use it.
+
+Right now we always render this
+
+when we define this class,
+
+not when you create a new instance.
+
+This is how decorators execute
+
+and as I said,
+
+now I will show you a couple of examples
+
+where we take advantage of decorators in general
+
+and of their execution time
+
+to do some nice things with them.
+

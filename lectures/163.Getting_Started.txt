@@ -1,0 +1,256 @@
+For that attached you find
+
+a starting project as you saw it multiple times
+
+in the course already,
+
+a very trivial project
+
+with a basically empty index.html file
+
+and an empty app.ts file
+
+and here we're going to build a small little
+
+demo application, a little project.
+
+Now the app we're going to build will not be too complex
+
+but it will be a nice application where we essentially
+
+will be able to manage a couple of projects
+
+where a project essentially is a goal you could say
+
+so that we have lists of projects
+
+and we'll have two lists of projects
+
+an active list
+
+and a finished list
+
+and we'll be able to drag and drop items
+
+from one list to the other
+
+and stuff like that.
+
+Now of course the application itself will be nice
+
+but the most important thing is
+
+that it will allow us to practice
+
+many of the things we learnt thus far
+
+and that's of course the goal of this module.
+
+Now also one important note
+
+for this module
+
+I'm going to write all the code
+
+in one single file in this one single app.ts file
+
+and this therefore will become a very very big file.
+
+In the module after this module
+
+I'll dive into that problem and show you
+
+how TypeSript allows us to split this file
+
+but for the moment, since we don't know this yet
+
+and thus far we had no size issues,
+
+let's focus on our demo application.
+
+And for that we'll actually start
+
+by working on the index.html file.
+
+Attached you'll find a new file
+
+download it and replace all the content
+
+in this starting index.html file
+
+with the downloaded file
+
+and do the same for app.css
+
+there we have no file yet
+
+simply add the file
+
+which you find attached to this lecture
+
+to your project next to index.html
+
+because there we already imported.
+
+So what's going on here in these files?
+
+In the index.html file we're importing
+
+the app.css file for some styling
+
+and the app.js file for some JavaScript logic
+
+of course we're not going to write
+
+any JavaScript code like this
+
+we're going to write code in app.ts
+
+but that will get compiled to a JavaScript file of course.
+
+Now in the body of that html file
+
+you'll find a couple of template tags.
+
+Template tags are default html tags
+
+supported by modern browsers
+
+which allow us to specify some html code
+
+which is not loaded immediately
+
+which is not visible immediately
+
+which is not rendered immediately so to say
+
+but instead which can be reached via JavaScript
+
+and therefore also via TypeScript
+
+to then render it when we wanna render it
+
+to control it with JavaScript and TypeScript
+
+and there you see I have a form
+
+with free inputs basically
+
+a title, a description and a people input
+
+where we can decide what the title of our project is
+
+what the description of our project is
+
+and how many people can be assigned to it
+
+or should be assigned to it
+
+and then the add project button.
+
+Then we have another template
+
+which just holds a list item
+
+that will be used to render a single project
+
+in our list of projects
+
+which is then this template here
+
+there you'll see I have a header
+
+with a h2 section
+
+and then an unordered list
+
+and indeed that unordered list will later hold
+
+multiple single projects based on this template
+
+which will render the data entered here
+
+through the form at the top
+
+and everything will then be appended
+
+with the help of TypeScript
+
+to this div here with the id "app".
+
+Now, app.css just holds some css styles
+
+you can of course look through that
+
+I'll not focus on this here
+
+since it has nothing to do with TypeScript
+
+and now it's our job to write some TypeScript code
+
+which in the end fetches whatever the user enters here
+
+well, actually first of all which renders this form
+
+then fetches whatever the user enters
+
+validates what the user enters
+
+so the title, description and people has valid values
+
+listens to a click on this button
+
+or to the submission of the form to be precise
+
+then creates a new project
+
+so a new JavaScript object in the end
+
+which is stored in some array probably
+
+where this array is then rendered to this list
+
+and of course the entire list also needs to be added
+
+to the dom
+
+so these are all the steps
+
+and of course these are quite a few steps.
+
+Now if you're feeling very confident of course
+
+definitely take this as a chance to pause right now
+
+and try implementing this on your own
+
+no matter how it looks in the end
+
+that you just have a set up
+
+where this forum is visible
+
+where users can enter something there
+
+and where for every project you enter something
+
+you render a list item in this list
+
+which also should be visible
+
+if you reach that, that's already amazing
+
+but of course we'll also implement this
+
+step by step together
+
+and thereafter once this is implemented
+
+we'll also make sure that we actually render tool lists
+
+and we can switch projects between these lists
+
+with drag and drop and so on.
+
+So, first things first though let's get started.
+

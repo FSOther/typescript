@@ -1,0 +1,164 @@
+This course section here
+
+is an optional course section.
+
+You can skip it.
+
+You can take a look at the curriculum
+
+and just watch the lectures that sound interesting to you,
+
+but you can, of course, also watch it in whole
+
+because this section is not so much about TypeScript.
+
+Instead, it's about JavaScript, modern JavaScript.
+
+Though, modern is kind of a flexible term here
+
+because in this section,
+
+we'll dive into
+
+some crucial standard JavaScript syntax features,
+
+which are more or less modern,
+
+things like let, const, arrow functions,
+
+REST parameters, the spread operator, things like that,
+
+so that we all have the same knowledge base
+
+to build up on also for the rest of this course.
+
+Now, of course,
+
+some of the syntax shown here will already have been used
+
+in earlier sections,
+
+but in case you struggled with the syntax there,
+
+in case not everything was clear,
+
+this section here is for you.
+
+Also because even though the syntax covered
+
+in this section has been around for a couple of years now
+
+and is supported by all modern browsers,
+
+occasionally, you might be developing for a platform,
+
+for a browser,
+
+that may not support all those features.
+
+And in that case,
+
+you'll also learn in this section,
+
+TypeScript helps you
+
+because TypeScript is actually able to convert
+
+more or less modern JavaScript code
+
+to even older JavaScript code
+
+that would run in older browsers as well.
+
+So that's the purpose of this section.
+
+Now, I did record this section
+
+a couple of years ago already.
+
+The content is nonetheless totally fine
+
+and totally up-to-date still.
+
+The syntax hasn't changed,
+
+which is why I haven't rerecorded this section.
+
+But you will see that in this section,
+
+I have a starting project prepared for you,
+
+a starting project,
+
+which you'll find attached to this lecture here.
+
+You can download.
+
+It's a zip file,
+
+and then once you extracted it in the project,
+
+you can run npm install to install the dependencies.
+
+You can ignore the warnings here.
+
+The one dependency I am installing is a basic server
+
+that serves this HTML file that is in that project.
+
+Though, this file will not really be used
+
+in this section here.
+
+Instead, we'll write code in this app.ts file,
+
+and that file can still be compiled
+
+by running the tsc command,
+
+or you can run tsc -w
+
+to enter the TypeScript compiler in watch mode.
+
+And then you can also hide this terminal
+
+to continuously watch the TypeScript file
+
+and compile it and update the compiled app.js file
+
+as you change the TypeScript file.
+
+You can do that.
+
+Of course, you'll also still get warnings in VS Code
+
+if you make errors in the TypeScript file,
+
+so you might also not bother
+
+with compilation at all if you don't want to.
+
+This starting project also comes with a tsconfig.json file,
+
+which is pretty standard.
+
+It includes a couple of libraries,
+
+targets at least es6,
+
+which is the first JavaScript version
+
+that supports the modern features shown in this section.
+
+And strict is set to true.
+
+That's all important.
+
+Other than that, there is really nothing too fancy in here.
+
+So that's the starting project.
+
+That's the purpose of this section,
+
+and with that, let's dive right in.
+

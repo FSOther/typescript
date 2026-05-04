@@ -1,0 +1,50 @@
+And that's it for this basic introduction
+
+to using React with TypeScript.
+
+Now, of course there's more.
+
+There's more you can learn about React,
+
+and as mentioned before,
+
+that's simply not what this course is about.
+
+You can visit the official documentation
+
+or my complete React Guide course if you wanna learn all
+
+about React, including all the advanced stuff.
+
+I also have a dedicated React and TypeScript course
+
+if you wanna learn more about the nitty gritty details
+
+of using TypeScript with React
+
+and about the more complex React TypeScript scenarios
+
+you could run into.
+
+So having a look at this dedicated course I created
+
+might also be a good idea.
+
+But in this section here, I got you started
+
+with the most important base features
+
+you have to know when working with React and TypeScript,
+
+how to create a project, how to work with components,
+
+props, state, refs, form submissions.
+
+These are the things you'll use
+
+in basically all React projects.
+
+And now thanks to the section, you know
+
+how you can use them in conjunction with TypeScript.
+

@@ -1,0 +1,222 @@
+So what do all these options do?
+
+I'll simply walk through this file from top to bottom,
+
+but I'll also skip many options
+
+for the reasons mentioned in the previous lecture.
+
+Now, the file starts
+
+with some general project setup options,
+
+and for most projects,
+
+you can simply ignore these settings here.
+
+They are pretty advanced
+
+for specific advanced project configurations and setups.
+
+For example, this disableReferenceProjectLoad setting here
+
+is a setting that's useful if you're working in a project
+
+that actually consists of multiple projects
+
+that all use TypeScript.
+
+In such a situation, TypeScript would load all project files
+
+from all the projects into memory to understand your code
+
+and provide proper type checking.
+
+And since this can tremendously slow down TypeScript
+
+and the type checking process, you could unlock this setting
+
+and set it to true to make sure
+
+that TypeScript will not combine all sub projects
+
+in one project into its memory so that it is faster again.
+
+So we're talking about settings like this.
+
+As you can see, pretty advanced and niche.
+
+Now the language and environment part
+
+is a bit more interesting though.
+
+For example, the target,
+
+as you might notice,
+
+depending on the point in time where you're watching this,
+
+if you compile this TypeScript file
+
+and you get a JavaScript file,
+
+therefore, it might contain var instead of let,
+
+and it might, depending on your code,
+
+also contain some other older JavaScript features.
+
+The reason for that is that you can control
+
+to which version of JavaScript you could say
+
+that code should get compiled to.
+
+Here, the default setting for this project
+
+is a rather old version, ES2016,
+
+so a couple of years old.
+
+And which target you want to set here
+
+simply depends on the project you're building.
+
+If it's a browser based web application,
+
+so not on the backend, but on the frontend,
+
+and you know that you need to support super old browsers,
+
+then you might wanna go for something like ES2016.
+
+If you know that your target users
+
+will be using modern browsers,
+
+you could go for a more modern option like ES2022,
+
+or something like this.
+
+So you can simply tweak to which version
+
+of JavaScript the TypeScript code will be compiled
+
+and which language features the compiled code will use.
+
+Now with this change made, you might notice though
+
+that even now if you compile that file,
+
+it contains that older JavaScript code.
+
+And I'll get back to why that's the case in just a second.
+
+For the moment, let's ignore it.
+
+We'll fix it later.
+
+Nonetheless, setting the target here is a crucial setting,
+
+which does allow you to control
+
+which kind of JavaScript code will be produced,
+
+even if it's not working here yet,
+
+but we'll change this soon,
+
+and it's not related to this target setting.
+
+This setting is correct here as it is.
+
+Now the lib setting would allow you
+
+to include some standard libraries, so to say,
+
+some standard type libraries TypeScript is aware of.
+
+You might recall that earlier in this course,
+
+we were able to work with types like HTML element,
+
+those were built into TypeScript.
+
+Well, actually, technically, they're only kind of built in.
+
+Yes, they come together with TypeScript,
+
+but they're actually a separate type library,
+
+which is unlocked by default though.
+
+Here in this lib setting,
+
+you could control in detail
+
+which libraries you want to include, like the DOM library,
+
+which gives us all the HTML types.
+
+And if you scroll through this autocompletion list,
+
+you see there's a broad variety of prebuilt libraries
+
+that ship together with TypeScript
+
+that you could enable here.
+
+And since lib wants an array,
+
+you could enable multiple libraries.
+
+Now, if you disable this,
+
+you get the default set of libraries,
+
+which for example includes all these DOM types,
+
+all these HTML element types.
+
+If you're working in a project
+
+that uses JSX, a React project, for example,
+
+you can control how that JSX code should be treated
+
+when the TypeScript code
+
+that contains JSX is compiled to JavaScript code.
+
+Decorators is a feature we'll explore later in the course.
+
+Then you got more JSX settings,
+
+though I will say that in most projects
+
+that use JSX and TypeScript,
+
+you'll probably work with a project
+
+that has been configured for you already.
+
+You might be using a build tool like Vite,
+
+which uses TypeScript under the hood,
+
+and that's also something we'll get back
+
+to later in a separate section in this course.
+
+For now, I just wanna get you started
+
+with this configuration.
+
+But many of these options here
+
+will actually be configured for you
+
+when you use an existing project setup
+
+or a project setup that's created by tools like Vite.
+

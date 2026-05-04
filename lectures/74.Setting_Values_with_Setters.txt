@@ -1,0 +1,212 @@
+Now besides getters,
+
+TypeScript also knows the concept of setters,
+
+which are also methods you could say
+
+that are called right before a property is set.
+
+For example here, we could create this class
+
+in a slightly different way.
+
+Instead of having our constructor here,
+
+we could just add those properties
+
+like this and we would then get a complaint
+
+that they're not initialized.
+
+So we could initialize them to empty strings, let's say,
+
+so that we have some initial values right from the start.
+
+But now let's say we wanna make sure
+
+that whenever they're set, we check the input values
+
+before we actually store them in a property.
+
+That could be something we might wanna do,
+
+and a setter is perfect for that scenario.
+
+Now we can create such a setter by using the set keyword,
+
+and then we have to add the property name we want to use
+
+outside of this class.
+
+Like for example, first name.
+
+Now, since I'm already using the name up here,
+
+we got a name clash.
+
+And therefore you could, for example, prefix this
+
+with an underscore.
+
+So that first name is not used already.
+
+Then you again, add this like a method
+
+just as you did for a getter,
+
+and you'll then see that you also get an error here
+
+that a setter must have exactly one parameter,
+
+which kind of makes sense
+
+because a setter is all about setting a value,
+
+so that value must be accepted as a parameter.
+
+In this case,
+
+the first name must be accepted as a parameter.
+
+You can name this parameter whatever you want of course.
+
+Inside of the setter,
+
+you can then do whatever you want.
+
+For example, check this received value
+
+and throw an error if it's not valid.
+
+But ultimately you should store it in some property.
+
+So here we can store it in underscore first name.
+
+Now, to make this a bit more useful,
+
+we could then indeed add a check
+
+and check if name after trimming it
+
+to remove access whitespace at the beginning and end.
+
+If that's equal to an empty string,
+
+because we might not want that.
+
+So we could throw a new error,
+
+using the built-in error clause
+
+that's provided by JavaScript.
+
+Invalid name.
+
+And that would be a scenario for using a setter
+
+that you have this extra validation step you wanna run
+
+before the received value is actually stored.
+
+We can of course, then copy this,
+
+and do the same for the last name.
+
+Renamed this second setter to last name,
+
+and therefore renamed this property up here
+
+to underscore last name.
+
+And then here, also check the received name
+
+and store it in underscore last name if it's valid.
+
+Now, of course, underscore first name
+
+and last name are the actual properties
+
+that will eventually store the value.
+
+So it's these properties that should be used in a getter.
+
+With all that done,
+
+so with the setters and the getter added
+
+and set up like this,
+
+we can go to our user and create it like that
+
+because we no longer have a constructor function
+
+that would accept any arguments.
+
+You could still add one,
+
+but here in this example, I removed it,
+
+and therefore what we should do
+
+is manually store these values.
+
+And as you can see, I got a first
+
+and a last name property, which I can assign here,
+
+and it's a public property
+
+because we did not add private in front of the setter
+
+so we can access it from outside the class to set it.
+
+We can, for example, set a first name of Max
+
+and maybe a last name of nothing,
+
+which should not be allowed.
+
+But we'll see if that's the case soon.
+
+And therefore, even though first name
+
+and last name are also written like methods,
+
+just as together was, we're not using them like methods.
+
+We're not calling them here.
+
+Instead we're using them like properties
+
+because they use the special set keyword,
+
+which kind of turns them into enhanced properties,
+
+if you wanna call it like this.
+
+Well, with all that done, let's see if that code works
+
+or to be precise, if it throws an error as it should,
+
+because this is an empty string,
+
+which is invalid due to our check here.
+
+So let's compile the code
+
+and then let's run this advanced.js file.
+
+And indeed, that's looking good.
+
+I'm getting some error here.
+
+I'm getting the invalid name error,
+
+which is that custom error I'm throwing here.
+
+So that's working the way it should,
+
+and that's how you can use setters
+
+and getters with your classes.
+

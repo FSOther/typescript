@@ -1,0 +1,8 @@
+Useful Resources & Links
+Attached you find all the code snapshots for this module - you also find them attached to individual lectures throughout this module.
+
+These links might also be interesting:
+
+Official Webpack Docs: https://webpack.js.org/
+
+Tài nguyên cho bài giảng này

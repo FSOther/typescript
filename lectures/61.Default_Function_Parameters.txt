@@ -1,0 +1,92 @@
+Let's stick to functions.
+
+Another nice feature which is available in modern JavaScript
+
+is that you can assign default arguments
+
+to function parameters.
+
+Let's say here in our add function,
+
+for some reason, we wanted a default value for b.
+
+So we know we want to be able to add two numbers together.
+
+But in case you call this function with only one number,
+
+we'll assume a default for the second argument,
+
+or for the second parameter.
+
+We can do so by adding a equal sign here
+
+in the parameter list and then setting our default value.
+
+Which of course has to match our type.
+
+For example, one or whatever the default should be.
+
+And now this enables us to call this function
+
+with only one argument.
+
+So I could call it like this and TypeScript
+
+would not complain because it detects
+
+that we have a default argument here
+
+which is then taken for b.
+
+And therefore here I get a output of six
+
+because my default b is one and I add five, which makes six
+
+Now, one important note about default arguments here.
+
+They have to be last in the list.
+
+If you assign a default argument to a, for example,
+
+we'll have an issue, why?
+
+Because default arguments are not skipped
+
+when you call a function.
+
+So if I call a function here with one argument,
+
+then the arguments I'm passing in here
+
+are passed to the parameters in the same order.
+
+So calling the function with one argument,
+
+five in this case, passes this one argument
+
+to the first argument here in the parameter list.
+
+And since the second argument
+
+is not provided with a default, it's not optional.
+
+And hence we provide no second argument at all.
+
+So TypeScript, or JavaScript actually,
+
+does not look at your function definition
+
+and guess that you probably wanna skip the default argument
+
+and provide your value to the non-default one.
+
+Instead, it simply adheres to the order.
+
+And therefore you should set defaults from the right.
+
+So make sure that the parameters
+
+for which you don't accept default arguments
+
+come first before your default parameters.
+

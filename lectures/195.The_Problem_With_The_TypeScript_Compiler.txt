@@ -1,0 +1,130 @@
+For this section here,
+
+I created a brand new, very, very basic demo project,
+
+which you'll find attached.
+
+It's still not a super complex project, of course.
+
+It only consists of three source files, three code files,
+
+but it is a project that does not just consist of .ts files.
+
+Instead, I also got HTML and CSS files
+
+in this demo project here.
+
+And that, of course, is an important difference
+
+compared to most of the projects I showed you thus far
+
+in the course,
+
+because there we basically always build NodeJS projects.
+
+So, applications that we intended to run with NodeJS,
+
+and we only had .ts files there,
+
+which were compiled to .js in the end.
+
+Now here, I'm building a frontend project,
+
+a client side project, which should run in the browser.
+
+And therefore, I don't just have my TypeScript files,
+
+but I also have HTML and CSS files.
+
+And of course, you could also be building
+
+some NodeJS projects that don't just consist
+
+of TypeScript files, just to be clear about that.
+
+Well, and here in this demo,
+
+in this example here, I then have a problem.
+
+I don't just have TypeScript files here,
+
+but I'm trying to build this project
+
+with help of this build script here
+
+with help of the TSC command.
+
+So, that same TSC command,
+
+which we executed in the terminal before,
+
+here I am trying to execute it
+
+as part of a build script with help of npm.
+
+So, I'm trying to use the TypeScript compiler
+
+to build this project, and that's why I also have
+
+the tsconfig file here, which has these settings
+
+where I specifically make it clear
+
+that my code lives in the source directory,
+
+and that I wanna produce a dist directory.
+
+That could be a setup you have in such a project.
+
+Now, as a result, we can run npm run build
+
+to invoke that build script,
+
+which I created in the package.json file.
+
+So, to invoke this script here.
+
+But if I do that, everything works and I get a dist folder.
+
+But the dist folder only contains the app.js file,
+
+which contains the compiled code.
+
+And here specifically,
+
+I didn't really use a lot of TypeScript code,
+
+but there's a little bit of it, the exclamation mark.
+
+And I got the compiled code here,
+
+but I'm missing the HTML and CSS files here.
+
+And therefore, if I were to deploy
+
+the content of the dist folder,
+
+I would not end up with a website that can be visited
+
+because I only have the JavaScript file in here.
+
+And that's one fundamental problem you might face
+
+when trying to build projects
+
+with just the TypeScript compiler
+
+because it is in its core just a TypeScript compiler.
+
+It's there to compile TypeScript code,
+
+not to build entire web projects.
+
+So, not to copy, leave alone,
+
+maybe optimize or build other kinds of files.
+
+And that's a problem we're facing here,
+
+and for which we need a solution.
+

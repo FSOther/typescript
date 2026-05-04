@@ -1,0 +1,218 @@
+Another nice feature
+
+related to properties and methods,
+
+which exists also in JavaScript
+
+when you're using ES6 or later,
+
+but all the the typescripts
+
+are static properties and methods.
+
+Static properties and methods allow you to add properties
+
+and methods to classes which are not accessed
+
+on an instance of the class,
+
+so where you don't need to call new class name first,
+
+but which you access directly on the class.
+
+This is often used for utility functions
+
+that you want to group or map to a class logically,
+
+or global constants which you also wanna store in a class.
+
+An example built into JavaScript,
+
+which is not defined by typescript and not defined by you,
+
+but part of JavaScript in the browser
+
+is the Math constructor function,
+
+or class if you wanna call it like this,
+
+that's globally available in JavaScript,
+
+where you can access pi as a constant value
+
+to give you that pi number,
+
+or functions, or methods to be precise,
+
+like pow to calculate the power of something.
+
+These are methods and properties
+
+which you don't access on the instance of Math.
+
+You don't have to call new math first.
+
+Indeed that won't work, but you access these properties
+
+in methods directly on the class itself.
+
+So Math acts more like a name space
+
+as a grouping mechanism here
+
+and that's a common use case
+
+for static methods and properties
+
+and you can add them to your own classes as well.
+
+Let's say on Department we want to have a method
+
+that helps us create employees
+
+and that is something we might wanna be able to access
+
+without instantiating Department,
+
+because we typically instantiate
+
+our more specialized versions, IT department,
+
+and accounting department
+
+and we don't really wanna instantiate Department
+
+just to call a utility method
+
+and therefore we can add a method here,
+
+create Employee, let's say, where we want to get the name,
+
+which is a string as an argument
+
+and there we wanna return something.
+
+Now to make that a static method,
+
+which we can access without instantiating this class,
+
+we add the static keyword in front of this method
+
+and then in here we maybe return an object
+
+where we have the name property mapped to this name value.
+
+Now of course that's a very simple method,
+
+but you get the idea.
+
+Now to use that we could go down there
+
+where we execute our code
+
+and now let's say we want a new employee, employee1.
+
+Well then we can just get this
+
+with Department.createEmployee and pass in Max for example
+
+and if I then console.log(employee1)
+
+we should see an object with the name of Max.
+
+So if I save that, indeed here
+
+this is the employee we just created.
+
+So this would be a typical example for a static method.
+
+We call it directly on the class, without the new keyword,
+
+and therefore we use the class
+
+as a grouping mechanism you could say
+
+and if you would want to add a static property,
+
+you could do that as well.
+
+If you had something like the fiscalYear here
+
+that you currently wanna use in your company,
+
+you could set this to, let's say, 2020
+
+and then again to make it available
+
+without instantiating this
+
+you could add static in front of this property,
+
+or in front of that field and now access that.
+
+So now down there console.log.(mycreatedemployee).
+
+Here we can also access Department.fiscal.Year
+
+just like that without instantiating it
+
+and if we save that,
+
+unsurprisingly we'll see 2020 being logged here.
+
+So these are static methods and properties.
+
+One important word about them,
+
+or one thing you should keep in mind.
+
+When you add them on a class,
+
+you can't access them from inside your non static parts.
+
+So if you feel like
+
+accessing the fiscalYear here in the constructor,
+
+and you wanna console.log it here,
+
+this, as you can see will not work.
+
+I'm getting an error here that
+
+the property fiscalYear is a static member.
+
+We can't access this here because the constructor
+
+and basically anything in there, all the methods as well,
+
+which are not marked with static,
+
+and you can't mark the constructor as static, by the way,
+
+will not be able to access static properties,
+
+because this does refer
+
+to the instance created based on the class
+
+while the static property is not available on instance
+
+because the whole idea behind static properties
+
+and static methods is that they're detached from instances.
+
+So of course you can't access them with the this keyword.
+
+If you would want to use the static property
+
+or method from inside the class,
+
+you would have to use the class name here to access it.
+
+This gives you access to static properties
+
+and methods all from inside the class.
+
+That's one important thing to keep in mind.
+

@@ -1,0 +1,182 @@
+Now of course the special thing
+
+about TypeScript is not that you can write JavaScript code
+
+in your TypeScript files.
+
+I mean, that's important.
+
+Otherwise TypeScript would be an entirely new language,
+
+which would be bad
+
+because you would have to learn a new language
+
+and thankfully that's not the case.
+
+But of course you are using TypeScript
+
+in order to take advantage of TypeScript features
+
+like type assignments
+
+so that you can be clear that in certain places
+
+of your code you want a certain type of value.
+
+For example, we could create a name or a username variable,
+
+and let's say this variable is not initialized initially,
+
+but then we have some code.
+
+Let's assume we're building a more complex application here,
+
+and at some point we have received a value
+
+so that then we want to store the received value
+
+in this case, a hard-coded string in that variable.
+
+Now, of course, this is all super simple dummy code,
+
+not a realistic application,
+
+but of course it is realistic
+
+that you could be building an application
+
+where you have a variable username
+
+that initially has no value
+
+and that eventually will receive a value.
+
+In this case, it's just this hard coded string.
+
+Now as you can see, I'm not getting any error here
+
+in the IDE, and if I compile this code, I also get no error.
+
+So this seems to work, right?
+
+The compiled code looks pretty similar.
+
+I got VAR instead of let, but we can ignore this for now.
+
+Well, yes, this code works,
+
+but it's also not really taking advantage of TypeScript.
+
+And indeed, at least here at the point of time
+
+where I'm recording this,
+
+my IDE visuals studio code is showing me
+
+these three dots here beneath the username variable name,
+
+which indicated that there is some hint it wants to show me.
+
+And if I hover over this indeed, I get this hint here,
+
+that variable username implicitly has an any type.
+
+Now that's a type we'll get back to later,
+
+but we have a problem here
+
+because we did not set any explicit type for this variable.
+
+And if you are using TypeScript
+
+and you have an uninitialized variable,
+
+as it's the case here, you typically do want to set a type.
+
+So you want to use this TypeScript feature,
+
+which you also briefly saw in the first section already,
+
+where you add a colon in this case after the variable name
+
+and then after the colon, the name of the type of value
+
+that should be storable or that is expected,
+
+you could say for that variable.
+
+So here, if you want users to provide a string
+
+for this variable, you would set this to string.
+
+And this is now some TypeScript exclusive code.
+
+This is not standard JavaScript instead.
+
+This explicit type assignment
+
+with the colon and the name of the type,
+
+this is a feature provided by TypeScript.
+
+And string here is one of the built-in types
+
+that ship together with TypeScript.
+
+Another type would be number for example,
+
+which would set this variable
+
+to expect a value of type number,
+
+which is also why I'm now getting an error down here
+
+that a value of type string,
+
+the string max is not assignable
+
+to a variable that wants a number.
+
+That's how TypeScript works,
+
+and that's one of its most powerful features
+
+that you can explicitly set types for parameters
+
+as you saw it in the first section, but also variables.
+
+Now, number and string are just two
+
+of the built-in value types.
+
+There, for example, also is Boolean
+
+if you expect a Boolean value.
+
+So true or false.
+
+And there are other built-in types as well
+
+and will visit many of these types,
+
+all the important types through this course of of course.
+
+Now here we want a string,
+
+and now we're using TypeScript here.
+
+We're taking advantage of TypeScript here.
+
+As you saw in the first section already,
+
+if you now compile this file with the TSC command,
+
+you'll see that the compiled JavaScript file
+
+actually does not contain this type annotation anymore
+
+because as mentioned,
+
+that was a TypeScript specific feature.
+

@@ -1,0 +1,462 @@
+So this is now how we can
+
+manage multiple files with TypeScript.
+
+Now, one word about having multiple files,
+
+when you work with multiple files as we're doing it here,
+
+you can also import them into each other with modules,
+
+which you might know from vanilla JavaScript,
+
+there we have modules as well, it is something
+
+I'll cover in a dedicated section of this course though,
+
+so for now, we just have two files
+
+which are not imported into each other,
+
+but which are instead imported into index.html.
+
+Now with that out of the way though,
+
+we know that we can manage this as a project
+
+and that we can compile multiple files here.
+
+Now let's have a look at the tsconfig.json file
+
+because this is a crucial file for managing this project,
+
+it essentially tells TypeScript
+
+how it should compile these files.
+
+Now, before we dive into the compilerOptions where we,
+
+as the name suggests,
+
+can configure how the compiler behaves,
+
+let's scroll down to the place
+
+before the closing curly brace
+
+but after this nested closing curly brace,
+
+and let's see some of the options
+
+we can add here which don't effect the compiler
+
+or the compilation step behavior,
+
+but instead how the compiler works with this project,
+
+because there for example, you can set a exclude option.
+
+Now if you add exclude here, that will be an array,
+
+and what you can enter here are paths to files
+
+which should not be included in compilation
+
+when you run TSC on the entire project.
+
+So for example, here we could say
+
+we want to exclude analytics.ts from compilation,
+
+and of course, this doesn't make much sense here,
+
+but just to show how this works.
+
+If we do that and we now rerun tsc,
+
+and I first of all delete analytics.js
+
+so that we can see if it is recreated,
+
+if we now run tsc or tsc in watch mode,
+
+you see no analytics.js file is created,
+
+and the reason for that is that we're excluding that file.
+
+Now of course for this file,
+
+this doesn't make a lot of sense
+
+because I typically want to include it,
+
+but if you had a file that for some reason
+
+shouldn't be compiled, you can exclude it like this.
+
+You can also work with wildcards,
+
+and for example, if you had a file
+
+that's named analytics.dev.ts
+
+and you don't really wanna compile that,
+
+you could say all files that end dev.ts
+
+should not be compiled, and you can do that
+
+by also adding an asterisk here,
+
+which is a wildcard basically,
+
+and now TypeScript will ignore any files
+
+that have .dev.ts included.
+
+You could also add asterisk, asterisk, slash here,
+
+and that would mean any file with that pattern
+
+in any folder will be ignored.
+
+So these are things you can set up here,
+
+the only thing I want to set up here,
+
+and that is a setting that you will often find,
+
+is that I want to exclude node_modules,
+
+and the idea here is that I don't want to compile
+
+any TypeScript files I might have inside of node_modules.
+
+Now, node_modules is that folder
+
+that holds all the dependencies
+
+we install here in package.json
+
+and the dependencies of these dependencies,
+
+and therefore, these are third-party libraries
+
+we're importing, which we don't wanna touch,
+
+and if any of these libraries
+
+should ship some TypeScript code,
+
+then we certainly don't want to compile it,
+
+it will just slow down our compilation process,
+
+and in the worst case, it might even break our project.
+
+So therefore, it's quite common
+
+to exclude node_modules here, though I will say,
+
+if you don't specify the exclude option at all,
+
+node_modules is automatically excluded as a default setting,
+
+so you don't really need to add this option here,
+
+this would be the default, I just want to show
+
+that exclude exists and how you could use it
+
+if the only thing you want to exclude is node_modules,
+
+you don't have to add the exclude key at all.
+
+If you do add it though, you should set node_modules
+
+because otherwise, it will not exclude that.
+
+Now besides exclude, we also have include,
+
+and include allows you to do the opposite,
+
+it allows you to specifically tell TypeScript
+
+which files you wanna include in the compilation process,
+
+and anything that's not listed here will not compiled,
+
+so if I point at app.ts here, you'll see if I rerun tsc,
+
+we also will get no analytics.ts file,
+
+or no analytics.js file I should say.
+
+Why?
+
+Because analytics.js is not included in include,
+
+and as I said, if we do set the include key,
+
+then we really have to include
+
+everything we want to compile.
+
+So of course here, we could then also add analytics.ts here,
+
+and with that addition, we would start and compile it,
+
+as you see now, we have the analytics.js file,
+
+or as an alternative, we specify a whole folder here
+
+which typically holds the files we want to compile.
+
+Exclude by the way, if set alongst include
+
+will filter down include,
+
+so if we exclude some sub-folder of a folder
+
+that is part of include,
+
+then that excluded sub-folder will be excluded,
+
+so basically we compile include minus exclude.
+
+Now of course here, I don't want to set include,
+
+I want to compile all TypeScript files,
+
+and therefore I don't have to worry about that,
+
+excluding node_modules is all I need,
+
+and as I explained, theoretically
+
+I don't even need to add that
+
+because that would be excluded by default.
+
+Now you also have a files option,
+
+this allows you to point at the individual files,
+
+so it's a bit like include with the difference that here
+
+you can't specify whole folders which you want to include,
+
+instead you really just specify
+
+the individual files you want to compile,
+
+that might be a option for smaller projects
+
+where you know you will only work with free files,
+
+and for some reason you got
+
+a couple of other TypeScript files
+
+which you don't want to touch though,
+
+then you can set the list of files like this.
+
+In reality, you might not need
+
+that setting that often though.
+
+And therefore, that's it with the basic compilation
+
+or project management options here.So now that we have a understanding
+
+of how we can manage our files with the compiler,
+
+let's dive into the compiler options,
+
+because that's really interesting.
+
+This allows us to control
+
+how our TypeScript code is compiled,
+
+so not only which files,
+
+but also how the files which are getting compiled
+
+are treated by TypeScript.
+
+And there you see we have a bunch of options.
+
+You got short explanations next to these options.
+
+Some explanations arguably are a big cryptic.
+
+Others are quite clear.
+
+And I will say that a lot of these options,
+
+most of these options will not matter in most projects.
+
+So, you'll not set all of these options, not even close.
+
+You typically can ignore a lot of these options.
+
+Now I will pick up on the important options here
+
+throughout this course,
+
+because some options only make sense
+
+when we learn about a certain feature.
+
+And I want to dive into some options
+
+right now already though.
+
+And for that, let's go through the file from top to bottom
+
+and see what we got there.
+
+Let's start with the target option.
+
+As you see, this actually is set by default.
+
+It's not commented out.
+
+And what you do with this option
+
+is you tell TypeScript for which target JavaScript version
+
+you want to compile the code.
+
+Because what TypeScript does is
+
+it does not just compile new features
+
+like the type annotations
+
+that don't exist in JavaScript to JavaScript code.
+
+So it does not just take care that
+
+this here works.
+
+It also compiles the code to JavaScript
+
+that runs in a certain set of browsers.
+
+And you basically define which browsers
+
+support the compile code by setting the target.
+
+The default target here in this project as you see,
+
+the initial target which is getting set up is es5,
+
+which means all types of code is compiled down.
+
+We can actually see that.
+
+If I run TSC here to compile all my files,
+
+we see in app.ts I'm using let and const,
+
+but in app.js, we se var.
+
+And that happens because we got a target of es5
+
+and in es5 world, we don't have let and const.
+
+So the good thing here is that we can use TypeScript
+
+to generate code that works in older browsers as well.
+
+But it's totally up to use if we want to do that.
+
+Maybe we don't want to do that with TypeScript,
+
+because maybe we got some other build tool
+
+that will then take care about the JavaScript transpilation
+
+and therefore we don't want to have TypeScript do that,
+
+or maybe we wanna ship code
+
+that only works in modern browsers
+
+because we know our app only will run in modern browsers.
+
+And therefore, alternative options can be seen here
+
+if you delete the value
+
+and then here in vscode at least,
+
+if you hit Control + Space to get the auto-completion,
+
+you see a bunch of suggestions
+
+and you see all available values here.
+
+Now over time, this of course will change
+
+because we have got new JavaScript versions released.
+
+You saw we set this to es5 before.
+
+If you don't specify target at all,
+
+then right now, TypeScript compiles to es3 even,
+
+so it supports an even older version.
+
+But you can also go with es6, which is more modern,
+
+which, for example, supports const and let
+
+or take an even more recent version,
+
+es6 is equivalent to es2015, just for the record.
+
+So if we set this to es6, for example,
+
+and I rerun the tsc command
+
+after changing the tsconfig.json file,
+
+you will see that now in app.js, we got let and const,
+
+because now that is supported there.
+
+So that is up to you.
+
+Of course, the more modern
+
+of a JavaScript version you pick here,
+
+the more concise your generated code is
+
+because TypeScript has to compile less and less code,
+
+or it has to work around non-existing features
+
+in less situations, and therefore,
+
+the compiled code typically is done
+
+more concise and shorter.
+
+So that's target.
+
+What about the other options?
+
+
+
+Now of course, there is way more we can specify though,
+
+way more we can specify about the compiler itself
+
+and how it behaves during the compilation step.
+

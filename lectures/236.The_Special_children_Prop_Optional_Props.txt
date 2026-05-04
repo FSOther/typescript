@@ -1,0 +1,116 @@
+So let's say this header component here
+
+does not just need information about the image,
+
+but also wants to extract the special children prop value
+
+so that we could use our custom header component
+
+as a wrapper around any content we want
+
+and then just output that wrapped content like this
+
+inside of this header component.
+
+That's how the children prop works in React, right?
+
+Again, it's a core React concept.
+
+Has nothing to do with TypeScript.
+
+Well, TypeScript nonetheless has a problem with it.
+
+As you can see here,
+
+TypeScript complains that the children property
+
+does not exist on this header props interface.
+
+And it's of course right, we're not mentioning it here.
+
+So what can we do, it's this special property after all.
+
+Well, you can add it here.
+
+It is your interface.
+
+You can add any property you want.
+
+But now we of course need to know which type of value
+
+is getting used here internally by React
+
+for this special children prop.
+
+And the answer is a type we can import from React.
+
+So let's do that, it's the ReactNodeType
+
+and you can add type in front of it to make it clear
+
+that this will not be a class or a function
+
+or anything like that,
+
+but that it's just a type that's getting imported here.
+
+So that's the type we can use here.
+
+And React node is simply anything that can be returned
+
+and output by a component.
+
+So JSX code, for example.
+
+And that's exactly what children is.
+
+So now everything's fine here in the header.TSX file.
+
+Back in the app.TSX file,
+
+we can now wrap our header around some content.
+
+So for example, we could add a H1 element here
+
+and say your course goals.
+
+You also might notice that if I don't do that,
+
+I'm getting an error that the children property is missing
+
+and that's happening
+
+because I did not make it optional here.
+
+We could of course do that by adding a question mark.
+
+You can do that for any prop, of course,
+
+also for the image prop.
+
+You can make it optional if you want to.
+
+So children could be optional.
+
+Now you can use header without it,
+
+but you can also pass it to header, both works.
+
+And that's of course also worth knowing
+
+that you can make these props optional.
+
+Just like any other parameters
+
+or nested parameter properties you might expect
+
+in non-reactive component functions,
+
+it works in just the same way here in React.
+
+Well, and with that, I got my title here, great.
+
+And that's how you can use
+
+the built-in special children prop.
+

@@ -1,0 +1,166 @@
+We prepared our development workflow
+
+for Webpack here, configuring it
+
+for the Webpack dev server, setting the mode
+
+to development, and setting up source maps
+
+to improve our debugging experience,
+
+to give us better error messages and so on.
+
+Now for production, so when we want to prepare our code
+
+to upload it to a server where it then will be served
+
+to our end users, we typically want a different workflow.
+
+Therefore I'll add a new config
+
+called webpack.config.prod.js.
+
+This name is not up to you
+
+because Webpack will not look for it by default.
+
+We'll tell it to look for it in a second, though.
+
+Before we tell it, let's actually copy
+
+all of the development setup here over
+
+to this config.prod file but now let's fine tune it.
+
+We can set mode to production, for example.
+
+This will tell Webpack to do these optimizations,
+
+minify our code and so on,
+
+so you definitely want to set this here.
+
+We'll leave entry.
+
+In output we can't get rid of the public path
+
+because that was required for the Webpack dev server.
+
+Now we will not use it here, because for production,
+
+we want to run the Webpack script
+
+and generate our output written to disc
+
+and not served temporarily on a locally running server.
+
+We can set devtool to none
+
+to not generate any source maps here
+
+because in production we might not need them.
+
+Now the rest can stay as it is, but we will add more.
+
+At the bottom here, I want to add a plugins entry
+
+and set this to an array.
+
+Plugins are extra extensions or, well, plugins
+
+you can add to your Webpack workflow
+
+which will basically be applied to the entire output,
+
+to the entire project.
+
+Rules and module specifically
+
+are applied on a per file level.
+
+Plugins are applied to the general workflow.
+
+Here I want to add a plugin
+
+which automatically deletes everything
+
+in the dist folder before a new output is written there
+
+so that we always just have the latest,
+
+most recent output in the dist folder.
+
+For that, I'll install a brand new package
+
+with --save-dev and that's the clean-webpack-plugin.
+
+And this will help us clean up the dist folder,
+
+in our case, whenever we rebuild our project.
+
+So with that installed, let's import it here at the top.
+
+I'll name it CleanPlugin and import it by
+
+require clean-webpack-plugin
+
+and with it installed in the plugins array at the bottom,
+
+we just call new CleanPlugin.CleanWebpackPlugin
+
+and instantiate this.
+
+This is a constructor function and now instantiate it.
+
+This is all you need to do here
+
+and this will in the end tell Webpack
+
+that before it writes something to thIS output folder,
+
+it will clear everything that is in there.
+
+Now we got the finished production workflow.
+
+Now to use it, let's go to package.json
+
+and there let's adjust this build script.
+
+Here I want to tell Wepback to use this prod file,
+
+this production configuration file
+
+and we do so by adding --config
+
+and then webpack.config.prod.js here.
+
+This here should be whichever file name you chose
+
+and this instructs Webpack to use this configuration file
+
+instead of the default Webpack.config.js
+
+file it normally looks for.
+
+With that if you now run npn run build,
+
+it will build your app for production
+
+which means it gives you this optimized output.
+
+So if you wait, here we got the bundle.js file
+
+and this is now really the optimized code
+
+built for production and this together
+
+with your index.html file and the app.css file
+
+is what you would put onto a server here
+
+if you want to deploy your application.
+
+This is also the end of this module.
+
+Now let me sum up what we learned.
+

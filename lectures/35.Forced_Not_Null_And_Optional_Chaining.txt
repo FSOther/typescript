@@ -1,0 +1,214 @@
+So we had a look at null and undefined
+
+and especially null is a quite common type
+
+as you for example, also see at this form example here.
+
+Now here I showed you
+
+that in TypeScript, you can perform type narrowing,
+
+for example, with an if statement like this.
+
+And that is an important concept
+
+to which we'll also get back in a later section again
+
+with more details and more advanced type narrowing.
+
+But this is a very basic one
+
+where we narrow a type
+
+from being some type or null
+
+to that type that's not null, HTMLElement in this case,
+
+by checking if the thing we aim to work with,
+
+so if the element in this case, is not truthy.
+
+So if it is null, for example.
+
+In that case, we throw an error.
+
+That is type narrowing.
+
+Now of course, especially in simpler applications
+
+or in certain use cases, in certain scenarios,
+
+you might know with certainty
+
+that a certain element exists
+
+and therefore, adding a if check like this
+
+might be nice to have, but it also might be redundant,
+
+especially if you're quickly prototyping something,
+
+having to deal with this,
+
+having to add code like this can be annoying.
+
+In such situations,
+
+you can use a little workaround, so to say.
+
+You can add an exclamation mark after the code
+
+that potentially produces a null value.
+
+So after calling getElementById in this case
+
+because that is the code that potentially yields null.
+
+This exclamation mark in this place is a TypeScript feature
+
+and it tells TypeScript that the code in front of it,
+
+so this method here, which could in theory produce null,
+
+will not yield null here in this case.
+
+So you're convincing TypeScript, so to say,
+
+that this here will not yield null.
+
+And therefore, this is of course a dangerous operator
+
+if you wanna call it like this, to use
+
+because if you are wrong and this does return null,
+
+you silenced TypeScript,
+
+you got rid of that error related to inputEl,
+
+which we got down there without the exclamation mark.
+
+But if you're wrong, you will get a runtime error
+
+because TypeScript does not complain anymore.
+
+But of course when the app runs
+
+and this turns out to be null
+
+and you're accessing a property on something that's null,
+
+you'll get a runtime error.
+
+And therefore, you should be careful with this operator
+
+because you basically disable TypeScript
+
+or parts of TypeScript here when using it.
+
+Nonetheless, it can be useful if you just know
+
+that something is definitely not null in a certain place.
+
+In that case, you can use this exclamation mark operator
+
+to make sure that TypeScript
+
+does just infer HTMLElement here
+
+and ignores the potential null scenario.
+
+By the way, you can not just use that exclamation mark
+
+in the place where you get that value
+
+that's potentially null,
+
+but you could also use it in the place
+
+where you use that value.
+
+But typically, you'll see it being used in the place
+
+where you get the value, but both works.
+
+Now besides this exclamation mark, which tells TypeScript
+
+that something is definitely not null
+
+in a certain place where it could be null,
+
+besides using that,
+
+you could also use a question mark in the place
+
+where you use that potentially null value.
+
+And this is now actually,
+
+not a TypeScript-specific operator anymore.
+
+It used to be in the past,
+
+but it is a standard JavaScript operator now.
+
+And this operator tells JavaScript,
+
+and therefore also TypeScript, that you know
+
+that this value in front of it, inputEl, could be null,
+
+which is the case here.
+
+It could be an HTMLElement,
+
+but it could be null.
+
+With the question mark operator,
+
+you tell JavaScript and TypeScript
+
+that you know that this could be the case
+
+and that it should only perform the next step, so to say,
+
+and access the value property here if this is not null.
+
+So you could say it's an inline check
+
+whether inputEl is null,
+
+and if it is, it will not try to access the value property,
+
+but if inputEl is not null, it will try
+
+to access the value property.
+
+So that's a quick and elegant way
+
+of getting rid of an if statement like this
+
+without getting a runtime error
+
+if this turns out to be null.
+
+Of course, as a downside compared
+
+to that if statement solution,
+
+you have no fallback code that executes if this is null.
+
+Here, we for example, threw an error
+
+and we could have done anything if inputEl was null,
+
+including setting it to some value.
+
+That's not the case here with this shorter solution.
+
+But in certain situations,
+
+this might be the solution you want to go for.
+
+This question mark operator might be a decent choice then.
+

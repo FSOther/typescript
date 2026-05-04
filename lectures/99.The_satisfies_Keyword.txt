@@ -1,0 +1,304 @@
+Another more advanced TypeScript feature is
+
+the satisfies keyword, which is relatively new,
+
+not super new, but it hasn't been around forever
+
+and it can be a bit tricky to wrap your head
+
+around this keyword.
+
+So I'll try my best to explain it here.
+
+Let's say you have a variable or constant,
+
+doesn't matter, dataEntries,
+
+and in there I'll store an object
+
+with various key value pairs,
+
+so therefore I'll use the record utility type
+
+that's provided by TypeScript.
+
+And I'll say that I have string property names
+
+and then I'll have numbers for the actual values.
+
+And now let's say we have an initial value
+
+where we have an object with a couple of keys like entry1
+
+with some value, entry2,
+
+with some value like this.
+
+Now, further down in our code, we can of course interact
+
+with data entries and we can, for example,
+
+access entry1 with the dot notation or entry2,
+
+but also entry3, which does not exist here.
+
+But we can safely access this because TypeScript knows
+
+that data entries is in the end an object with any keys
+
+and values as long as the keys can be interpreted as strings
+
+and the values are numbers.
+
+So this is a valid property name
+
+from TypeScript's perspective.
+
+It does not check whether this property actually
+
+exists here or not.
+
+Sure, we could remove this type assignment
+
+and let's TypeScript infer a more specific object type here.
+
+And in that case we would get an error here,
+
+but if we have this type assignment, we won't.
+
+And let's say we need to assign a type here.
+
+We don't want to rely on type inference,
+
+because even though in this simple demo I'm hardcoding
+
+an initial value, we might be building a third party library
+
+where we wanna expose parts of our code to other developers
+
+that use that library
+
+and we might not know in advance which concrete values
+
+they will be using in their code.
+
+So put in other words,
+
+we might wanna write some type-safe code here
+
+where we don't actually know the exact value yet,
+
+even though in this simple demo here we do.
+
+So that's why we might want to set a tie.
+
+At the same time, we might want to get as good
+
+of a type inference as possible,
+
+and we might want to have as narrow of a type as possible,
+
+even though we're setting a relatively
+
+wide type definition here.
+
+And that's where the satisfies keyword can help us.
+
+Now, see how things change.
+
+If I remove this type assignment here and instead
+
+after the VLU, I add satisfies,
+
+and then my type definition.
+
+Satisfies also tells TypeScript
+
+that data entries will hold a record type
+
+with string properties and number of values.
+
+But when using satisfies,
+
+instead of the colon notation here,
+
+TypeScript will actually take a look at the value you are
+
+assigning to data entries.
+
+It will check whether that value fits this type here,
+
+if it's a valid type of value given the type
+
+you want it to satisfy.
+
+But then if that's the case as it is here,
+
+it will actually use the more specific type it can
+
+infer from that value.
+
+So put in other words, TypeScript will use the type you set
+
+after the satisfies keyword
+
+to check whether the actual value assigned
+
+to data entries is of that type.
+
+But it will then
+
+as a second step actually infer a more specific type from
+
+the concrete value you are setting.
+
+So the actual type set
+
+for data entries will not be record, string, number
+
+and allow access to any properties of any names,
+
+but instead it will be this concrete object,
+
+which has two properties named entry1 and entry2,
+
+which hold number values.
+
+The value type that can be inferred from
+
+that actual value you are assigning here beats
+
+the more broad, more flexible type you might be defining
+
+after it satisfies, the value just has to satisfy this type.
+
+But if it's then a bit more specific than this type,
+
+the more specific type will be used as a type
+
+for data entries, which is why entry3 can now
+
+not be accessed here.
+
+But entry2, for example, can.
+
+Now, this is definitely an advanced feature
+
+and to be honest,
+
+it is a feature you will very likely not use a lot.
+
+In my personal experience, I have found this keyword
+
+to be the most useful when working on libraries
+
+when writing code that's meant to be used
+
+by other people where you want
+
+to enforce some rules,
+
+but you want to provide the best possible TypeScript
+
+for the actual values that may then be
+
+provided by other developers in their code.
+
+Nonetheless, it is an important keyword to understand
+
+and be aware of.
+
+And if you have a scenario where you want
+
+to enforce a certain type,
+
+you don't know the concrete value at the point
+
+of time you're writing your code maybe,
+
+which we of course here do,
+
+but which might not always be the case.
+
+And you want to get the best possible type inference based
+
+on the actual value that is then received,
+
+satisfies can be a very useful keyword,
+
+a very useful TypeScript feature.
+
+And to give you a more concrete example for the usage
+
+of satisfies, I'm here on the React Router documentation.
+
+Now, you don't need to know React or React Router,
+
+no worries.
+
+I'm just showing you one library
+
+that's using the satisfies keyword.
+
+We won't write any React code here.
+
+In the documentation of this React Router library,
+
+which is a library that helps
+
+with loading different elements onto the page based
+
+on the URL path,
+
+in the documentation of the library,
+
+you can see that they recommend using
+
+this satisfies keyword here when defining the routes,
+
+the URL paths you wanna support in your application.
+
+And what they do here with help
+
+of the satisfies keyword is they allow you
+
+to define an array of routes in the end created
+
+with help of a route helper function
+
+provided by the library,
+
+but they enforce a certain RouteConfig structure.
+
+So they probably want this array to be an array full
+
+of such objects.
+
+However, they determine that using satisfies is the best way
+
+of enforcing this type here,
+
+because by using satisfies,
+
+your actual routes that are defined
+
+by you can be picked up by TypeScript
+
+and further down the road in this project,
+
+you can therefore get better type support if you want
+
+to navigate to a certain route,
+
+for example, TypeScript can understand which concrete routes
+
+you have to find because you're using satisfies here
+
+instead of a colon.
+
+So again, it is a use case
+
+where you want type-safety combined
+
+with flexibility in the end.
+

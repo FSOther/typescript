@@ -1,0 +1,30 @@
+[Maximilian Schwarzmuller] In the previous section,
+
+you learned how to use TypeScript
+
+with third-party libraries,
+
+including libraries that may not actively support TypeScript
+
+that are written in JavaScript only.
+
+In this section here,
+
+we're now going to practice
+
+what you learned in the previous section,
+
+or at least parts of it
+
+because we'll build a demo project with TypeScript
+
+and some selected third-party libraries in this section.
+
+Now, for that, we'll be back in that starting project,
+
+which you already saw in some of the previous sections,
+
+and we'll walk through the project setup, in detail,
+
+in the next lecture.
+

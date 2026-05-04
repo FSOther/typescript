@@ -1,0 +1,530 @@
+
+
+To implement this I will first of all
+
+create a interface ValidatorConfig,
+
+where I want to configure that storage I want to work with.
+
+My idea there is to have a couple of properties,
+
+and hence I use this index type notation here.
+
+Which are basically strings,
+
+where the value is yet another object.
+
+Because this here would be basically the class name
+
+for which we want to register some validated properties.
+
+And then in the object which we store there,
+
+we have the concrete properties of the class
+
+that have validators attached to them.
+
+So here we have the validatable property,
+
+if you wanna call it like this,
+
+which also will be a string key.
+
+And then the value for that should be an array of strings
+
+where basically we have something like
+
+required, positive, and so on.
+
+So something like that could be added here
+
+as a list of validators.
+
+Now we can create our registeredValidators config here,
+
+which should be of type ValidatorConfig
+
+which initially is an empty object.
+
+Because initially when the app starts
+
+when our third party library gets loaded,
+
+no validators have been registered yet.
+
+Well, and then here in our directors
+
+we want to add something to that registry.
+
+Now keep in mind that a property decorator function
+
+gets two arguments: the target, which is the prototype
+
+of the object the property sits on,
+
+or the constructor function if it were a static property,
+
+and the property name.
+
+These are the two arguments we get here,
+
+we don't get the descriptor for properties.
+
+Now we can go to our registered validators
+
+and there I wanna add a new entry for target.constructor.
+
+The prototype of the instance we're working with
+
+will have a constructor key which points at
+
+the constructor function that was used to create our object.
+
+And that, therefore, will basically be
+
+something like course here,
+
+so the name of that constructor function in the end
+
+can be retrieved from that constructor.
+
+Because constructor is a function
+
+we can use the name property,
+
+which exists on any function in JavaScript
+
+to get the function name, and this then will be
+
+the course name here for example.
+
+So now we register the class name as a key
+
+in registered validators.
+
+And the value for that then should be another object.
+
+So I set this equal to another object here.
+
+And in that object I also have
+
+a dynamically assigned property
+
+where I use my propName, so the property for which
+
+I want to add a validator as a key.
+
+Now the value here is an array of strings,
+
+and here I will add required as a string.
+
+Now of course this is a very naive validator.
+
+If we had other validators registered
+
+for this property already, I would now overwrite it here.
+
+So it would be better to first retrieve
+
+any existing validators and then copy them into this array
+
+and only add required to that existing array.
+
+Again, to save some time here,
+
+and to just show the general idea,
+
+I will have this more naive approach here.
+
+With that we got the required annotation though,
+
+let's now work on the positive number annotation.
+
+And of course, that's basically the same.
+
+I copy that code but I set this here to positive
+
+or whatever identifier you want to use
+
+and of course we have to make sure
+
+we accept the right arguments.
+
+So with that along with this what we added thus far,
+
+we register these properties and their validators
+
+in our global config when this class is defined.
+
+Now we just need to work on the validate function.
+
+The validate function should go through
+
+all registered validators, and then basically run
+
+different logic based on which validators it finds.
+
+So here first of all I want to retrieve the configuration
+
+for the concrete object we're dealing with.
+
+For that we need to find out which constructor function
+
+the object is based on and then get the validation config
+
+or the property validator mappings here
+
+which we set up for that object.
+
+So here I'll name this object validators,
+
+or objValidatorConfig maybe.
+
+And we reach out to the registered validators here
+
+and access a property which should be obj.constructor.name,
+
+same logic as before, we access the constructor property
+
+which exists on the prototype of the object
+
+and therefore we can access it directly on the object
+
+thanks to how JavaScript works
+
+and thanks to the prototype chain
+
+we will then reach out to the prototype
+
+if we can't find the constructor property
+
+on the object itself, and that will work.
+
+And therefore now we got the constructor name
+
+and we find out that, for example, this Course here
+
+is based on this Course class.
+
+So we look up any validator configuration
+
+we have for the Course class.
+
+So now we're looking at this object, basically.
+
+This is now in objValidatorConfig.
+
+Now of course we might not find this
+
+if we're trying to validate our object
+
+for which nothing was registered.
+
+So if we don't have any validator config,
+
+if we don't find anything there, I want to return true
+
+because then this certainly is valid, right?
+
+There is nothing to validate,
+
+so the object certainly is valid.
+
+Otherwise, if we do find it I want it to loop
+
+through this inner object here with a for in loop.
+
+So with that I loop through my properties
+
+for which I registered validators,
+
+with const prop in objValidatorConfig.
+
+This gives me access to all the property names
+
+for which we then might have validators.
+
+So now of course I need to go through
+
+all the validators we might have for a property.
+
+This always should be an array
+
+even if we only have one validator added.
+
+So we can use a for of loop here now
+
+and get the concrete validator, which we have,
+
+for the objValidatorConfig for this given property.
+
+So now we're getting things like positive or required,
+
+which are stored in the validator constant then.
+
+And then we could have a switch statement here,
+
+or of course call external functions
+
+based on which validator we find.
+
+But here I'll go with a built-in switch statement,
+
+switch on validator and then basically have different cases.
+
+For example, the required case here.
+
+Whoops, like this.
+
+Here, I want to return true if our property,
+
+which we're looking at...
+
+So this property on this object has a non-empty value.
+
+So I will return true if obj prop is truthy.
+
+And to convert this to a real true or false value
+
+we can use the double bang operator.
+
+Now I hear types of complaints that it doesn't know
+
+whether object has this property,
+
+so here we should actually change this to any
+
+to get this extra flexibility here.
+
+Of course you could also work on the types here.
+
+And for example, also turn your identifiers here
+
+into clearly defined types where Enums you work with
+
+and maybe also improve the typing here.
+
+Though, to be honest, since I want this to work
+
+with any object, it is hard to improve this in a way
+
+that TypeScript will like it.
+
+We could work with generic types
+
+but then again we would need kind of restrict ourselves
+
+to which objects the generic types
+
+should extend and accept therefore.
+
+So any might be our best option here to be really flexible
+
+and accept a lot of different objects
+
+in this validate function.
+
+Now back to the switch segment,
+
+the required case is one possibly case,
+
+we also got the positive case which we wanna handle.
+
+And there I want to return true
+
+if the property we're looking at is greater than zero.
+
+So if object prop is greater than zero,
+
+then this returns true, otherwise this will return false.
+
+Now if we don't make it into this for block
+
+or if we somehow have a loop
+
+that doesn't loop through anything
+
+because we haven't registered any validators,
+
+we passed an empty array here or something,
+
+so if you make it past this for loop,
+
+I will return true as a default as well.
+
+And now we return something in all circumstances
+
+and we can use validate.
+
+With that let's see whether it works, if we now save this,
+
+and we reload our app here and I try to submit this
+
+we get an error, invalid input please try again.
+
+If I enter some text here:
+
+JavaScript The Complete Guide,
+
+I still get this because my number is wrong.
+
+If I enter minus one here we also get this
+
+because that's not positive.
+
+If I enter a positive number however, it works.
+
+If I have a positive number but the first field is empty,
+
+then this also works,
+
+so that's something we'll have to work on.
+
+So let's find out what the problem is.
+
+And to find out I actually will add
+
+a little console log here and log the property
+
+we're looking at.
+
+We could of course also use break points
+
+and developer tools.
+
+Now if I click save here, you see the first thing
+
+which gets validated here is the price
+
+and thereafter we stop.
+
+So the price is the first property that gets validated.
+
+And that's the interesting thing here,
+
+the price is actually only property that matters here
+
+because we return in validate.
+
+That means the first time we find any validator
+
+that returns true or false, we immediately return
+
+and we don't care about the other validators.
+
+Now in the false case this is okay
+
+because if one element is false,
+
+if one property is false, is invalid,
+
+then we're fine not even looking at the others.
+
+But for the true case it's a problem.
+
+If we return true the first time
+
+one property meets our expectations, we have a problem.
+
+So we should enhance this by having
+
+a isValid property here, which initially is true.
+
+Is valid variable, I mean.
+
+And then here we set isValid equal to isValid and this here,
+
+and the same down here, set this equal to this.
+
+So that we don't return immediately,
+
+instead we just update isValid and we break thereafter
+
+to not fall through.
+
+The result of that is that in the end
+
+after all these loops isValid either still is true,
+
+but as soon as one of these checks here is false,
+
+thanks to how JavaScript works,
+
+the overall isValid value will be false
+
+because true combined with false will return false.
+
+And then down there we should return isValid.
+
+So now we ensure that all properties are checked
+
+and not just the first one JavaScript has a look at.
+
+This however will not be our only problem,
+
+we also have a problem here when we have a look at
+
+how we register our validator logic.
+
+I always overwrite the registered validators
+
+for a given class name with a new object.
+
+Instead we should add any existing validators here
+
+so that we don't do that.
+
+For example, we have the spread operator like that
+
+to take any existing key value pairs for that class name
+
+on the registered validators and add that first
+
+before we add our one, also down there of course.
+
+And now with that, if we save this,
+
+and we go back to our application here.
+
+If I have both empty, we fail.
+
+If we enter a valid price but we have
+
+a invalid title, we fail.
+
+If both is valid, we succeed.
+
+If we have a valid title but not price, we fail.
+
+Also with a negative price.
+
+And therefore this now looks good to me
+
+and this is now our first naive implementation
+
+of how such a validator could work
+
+with the help of TypeScript decorators.
+
+And keep in mind that all of that here,
+
+all the decorators, the validate function and the registry,
+
+would be hidden away from you.
+
+That could be part of a third party library
+
+which you're working on,
+
+of course in a more elaborate way than probably
+
+which you share with your end users.
+
+And you, as a end user, would just import these things,
+
+add these decorators, and call validate,
+
+and you would have a very convenient way
+
+of adding validation to your classes then.
+

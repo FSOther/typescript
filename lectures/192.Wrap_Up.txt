@@ -1,0 +1,144 @@
+And that's it for modules.
+
+Now using modules is a super useful, and important feature
+
+because it allows you to write more maintainable,
+
+and manageable code. Having it all in one file is a mess
+
+and really not an option
+
+for anything but really tiny projects.
+
+Using ever namespaces or ES modules
+
+is there for a way better alternative.
+
+Since it makes sure, that every file on its own
+
+is relatively small, and therefore stays manageable.
+
+And still, you end up with that entire,
+
+big application you want to have in the end.
+
+Now, when it comes to these two approaches,
+
+Namespaces and ES modules, the clear recommendation is
+
+ES modules, because you get that extra type safety,
+
+and you ensure that every file,
+
+has to clearly specify what it wants.
+
+With namespaces, it was enough
+
+if one file imported something,
+
+that another file also needs.
+
+The downs of this, if that one file,
+
+which imported the thing is removed
+
+that other file also breaks, without you noticing.
+
+At least, without you noticing before you run the code.
+
+So, therefore, use ES modules.
+
+Use namespaces in smaller projects,
+
+or if for some reason you can't use ES modules,
+
+And you can't use another bundler,
+
+which would translate such modules. To non module code,
+
+which all the works and all the browsers.
+
+But other than that use really use modules, ES modules.
+
+And what I just said is important.
+
+These modules here, right now the way we use them,
+
+only work in modern browsers.
+
+Because we rely on the browser,
+
+to basically import all these files. Right?
+
+Now, of course we want to build applications
+
+with typescript, that also run in all the browsers.
+
+Internet Explorer 9, for example.
+
+There this would not be supported.
+
+This Syntax, is not supported there.
+
+So, the app would not run there.
+
+We might also be using some other features
+
+that are not supported there, but mainly this here
+
+is not supported in all browsers.
+
+So, to make that work in all browsers,
+
+we can use a bundling tool. We can use Webpack for example.
+
+To bundle that together into one JavaScript file.
+
+So, that during development we have this multi file,
+
+strong typing experience, but when we ship our code
+
+we actually have one file only.
+
+And now were advantage of shipping one file
+
+instead of all these files we have here,
+
+is that we also insure that the browser
+
+doesn't have to download that many files.
+
+Because every file that has to be downloaded,
+
+is an extra roundtrip. In the network tab of the dev tools,
+
+you can actually see that.
+
+The area you see this waterfall chart,
+
+and you see this little white box
+
+at the beginning of ever block.
+
+This is basically the setup time
+
+it takes to setup the HDP request.
+
+So, even though the files we are downloading are very small
+
+as you can tell, this still takes some time
+
+because all the redundant extra setup,
+
+for every HDP request.
+
+So doing less requests is a good idea anyways,
+
+regardless of browser support.
+
+So, for these two reasons, browser support and less requests
+
+we'll have a look at bundling, with Webpack,
+
+in the next course section.
+

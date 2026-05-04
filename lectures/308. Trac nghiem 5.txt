@@ -1,0 +1,63 @@
+Câu hỏi 1:
+What's the core idea behind classes?
+
+x Classes are the sam eas JavaScript objects - just a different syntax.
+v Classes are blueprints for JavaScript objects.
+x Classes are a TypeScript-only feature that does neither exist in JavaScript, nor in other programming languages.
+
+
+Câu hỏi 2:
+What's a class property?
+
+x Basically a function in a class.
+v Basically a variable in a class. 
+x Basically a type definition in a class.
+
+Câu hỏi 3:
+What's the idea of the private and public modifiers?
+
+x Private marks properties as "readonly", i.e. the data stored in there can't be changed.
+x Public means that other developers are allowed to work with this property.
+v Private marks properties as "not accessible from outside the class".
+
+Câu hỏi 4:
+How can you shorten the following code in the best possible way?
+
+class Product {
+  title: string;
+  price: number;
+  private isListed: boolean;
+ 
+  constructor(name: string, pr: number) {
+    this.title = name;
+    this.price = pr;
+    this.isListed = true;
+  }
+}
+
+x class Product {
+    title: string;
+    price: number;
+    private isListed: boolean;
+
+    constructor(name: string, pr: number, listed: boolean) {
+        this.title = name;
+        this.price = pr;
+        this.isListed = listed;
+    }
+}
+
+x class Product {
+    constructor(name: string, pr: number) {
+        this.title = name;
+        this.price = pr;
+        this.isListed = true;
+    }
+}
+
+v class Product {
+    private isListed: boolean;
+    constructor(public title: string, public price: number) {
+        this.isListed = true;
+    }
+}

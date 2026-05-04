@@ -1,0 +1,122 @@
+At this point,
+
+we already had a brief first look
+
+at functions and TypeScript.
+
+Specifically, we had a look at function parameters,
+
+and you learned that you can also set an explicit type
+
+for those, but that you can, for example,
+
+also rely on type inference for those.
+
+Now I wanna dive a little bit deeper
+
+into functions in TypeScript
+
+because there is a bit more you should know about them.
+
+And for that, let's start simple again.
+
+Let's create a add function.
+
+And let's say that just as earlier in the course,
+
+we wanna accept two parameters here.
+
+Now, as you learned, you can
+
+and typically should assign types to these parameters
+
+unless you have an initial value
+
+from which the type can be inferred.
+
+But if you don't have that, which often will be the case,
+
+you should set a type to get that good TypeScript support.
+
+Otherwise, it will be of type any,
+
+and that's rarely what you want.
+
+So here I'll again go with two numbers,
+
+and then, of course, I can simply return the result
+
+of adding these two numbers.
+
+Now, what's interesting to note here
+
+and what you should know
+
+is that you can also add a type assignment
+
+in another place on this function here.
+
+You can add one after this parameter list,
+
+after the closing parentheses,
+
+before the opening curly brace here by adding a colon here.
+
+And the type you add here will then be the return value type
+
+of that function.
+
+So here we have the parameter value types,
+
+here it's the return value type of that function.
+
+And here I'm setting this to number
+
+because, of course, if I add two numbers,
+
+I'm creating a new number.
+
+And since that's what I return,
+
+this function returns a number.
+
+If I would convert this to string, I would get an error here
+
+because now I'm returning a number in a place
+
+where a string is expected to be returned.
+
+Now, for many functions, you don't need
+
+to add this return type though
+
+because TypeScript can infer it.
+
+After all, it sees what you're returning here
+
+and it sees that this will be a number.
+
+So it infers that the add function has a return type number.
+
+You can also see that if you hover over your function.
+
+Here you see the complete inferred type of that function,
+
+which includes the parameter types and also the return type.
+
+So in many cases, you don't need to set it,
+
+but since you will see it out there in certain projects,
+
+and since there are situations
+
+where you do need to specify it,
+
+and we'll see an example for that
+
+in one of the next lectures,
+
+you should know about this return type notation,
+
+even though as mentioned, in most cases, you can omit it.
+

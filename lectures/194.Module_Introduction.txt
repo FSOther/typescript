@@ -1,0 +1,42 @@
+At this point in the course,
+
+you learned quite a bit about TypeScript, its basics
+
+and also some more advanced features already,
+
+and up to this point,
+
+we always worked in relatively simple
+
+basic demo projects and project setups.
+
+Now, of course, it is more realistic
+
+that you might be working on more complex projects
+
+that consist of multiple files,
+
+and that might also not just consist of TypeScript files.
+
+Instead, you also might have HTML, CSS
+
+and all kinds of other files in such projects.
+
+That's why in this section we'll explore
+
+how you can build such TypeScript projects
+
+and how you can in general build
+
+and work with more complex TypeScript projects.
+
+And for that, we'll take a look
+
+beyond the tsc command, the TypeScript Compiler,
+
+which we installed way earlier in the course,
+
+and we'll take a look at alternative build tools.
+
+Most importantly, we'll take a look at Vite.
+

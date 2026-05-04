@@ -1,0 +1,128 @@
+Now that we got
+
+some crucial TypeScript class-related essentials,
+
+you could say out of the way, I wanna dive
+
+into some more advanced class-related features.
+
+For that, I'll add this advanced.TS file
+
+and we'll start with getters and setters.
+
+Let's say you again have a class called user,
+
+and in that class you have this constructor function.
+
+And there, let's say you wanna have two private properties,
+
+the first name property, which should be a string,
+
+and the last name property, which should also be a string.
+
+But now you also want to allow users
+
+to get the full name of this user,
+
+which is the combination of the first and the last name.
+
+And that should be a publicly available property.
+
+Well, you can achieve this with a getter,
+
+which is a special kind of property
+
+or method depending on how you wanna look at it.
+
+You create a getter in a class by using the get keyword,
+
+and then after that you add the name
+
+of the property you want to create,
+
+like full name, for example.
+
+The special thing here is that you do create this property
+
+like a method now, though.
+
+So you add parentheses here and a pair of curly braces.
+
+Inside of that method, you then must return a value.
+
+That's the error you are getting
+
+if you're not returning something,
+
+that you must return a value.
+
+Because a getter is basically a calculated
+
+or a computed property, you could say.
+
+A property which has its value derived
+
+on the fly when it's accessed, so to say.
+
+So here for example,
+
+we could return this dot first name plus a blank,
+
+plus this dot last name.
+
+And now if you instantiate this class,
+
+if you instantiate a new user like Max Schwarzmüller,
+
+which is my name here,
+
+I am actually getting a bunch of errors here
+
+because I have the same class name
+
+and same constant name in that other TypeScript file here.
+
+So I will delete that to get rid of these errors.
+
+And with that, if I do that,
+
+you'll see that I can create this user.
+
+But if I now try to log some information about the user,
+
+I can't access the first and last name properties
+
+because these are private.
+
+But I can access the full name property
+
+because that's a public one.
+
+I did not add private in front of it.
+
+We could do that, but I don't want to do that here.
+
+And indeed, you can now access full name like a property.
+
+You don't execute it like a method,
+
+even though it's defined like a method.
+
+But that's just not how getters work.
+
+Due to this get accessor here, as it's called,
+
+this is treated like a property and used like a property,
+
+but it's calculated on the fly when you access it.
+
+And therefore if you save this and you compile your code
+
+and you then execute this advance.JS file,
+
+you'll see whichever names you entered in the console
+
+and you'll see the full name, most importantly.
+
+So that's a getter and what you can do with it.
+

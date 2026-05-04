@@ -1,0 +1,154 @@
+For this, attached you'll
+
+find this starting project.
+
+It's the good old starting project we already know.
+
+And there in app.ts, we can write some code.
+
+In index.html, we got basically nothing.
+
+Now my goal here is very simple,
+
+I wanna build a simple web application
+
+where we can enter an address, then I want to look
+
+at this address and convert it into a pair of coordinates.
+
+And we'll do this with help of Google,
+
+with one of Google's APIs.
+
+And then I want to render these coordinates,
+
+I want to show these coordinates on a map,
+
+which we will also render with help of Google Maps
+
+or with help of Google, specifically with the help
+
+of the Google Maps JavaScript SDK.
+
+So we'll be working with two third party libraries here,
+
+this HDP ascending library and the Google Maps library.
+
+With that I'd say, let's get started.
+
+Let's get started by building the very basic skeleton.
+
+Now this is no html and no styling course,
+
+so we'll keep this fairly simple.
+
+I'll create a div here in index html
+
+which we'll get an id of map.
+
+My goal is to render the map in this div later.
+
+Now in this div at the moment, I'll add a paragraph
+
+where I say, Please enter an address.
+
+So that we see this paragraph whilst we haven't picked
+
+a place yet.
+
+Below this div I'll add a form without an action
+
+and without a method because I will handle it in TypeScript.
+
+And in this form I want to have an input of type "text",
+
+with an id of "address",
+
+and below that a button of type "submit",
+
+where I say SEARCH PLACE or SEARCH ADDRESS,
+
+whatever you wanna say.
+
+The goal is of course that when we submit this form,
+
+we get the value the user entered here,
+
+and then we convert this into coordinates,
+
+which we render here on the map.
+
+Now let's add some styling because we need at least
+
+some basic styling.
+
+Therefore I'll add a link here and point at "app.css",
+
+which is a file we have yet to add.
+
+In this CSS file I'll set up some very simple styles
+
+for the map.
+
+I'll give it the width of 90% and a height of let's say
+
+20rems, so that we see something on the screen,
+
+a border of one pixel solid and a light grayish look,
+
+a margin of two rem top and bottom and auto left and right
+
+to center it.
+
+And then I will use display flex in there to set up
+
+flex box where we can use justify content, center
+
+and align items center to center this paragraph
+
+which I show initially in the middle of this box.
+
+I will also set text align to center
+
+so that the text in the paragraph also is centered.
+
+With that for the form we can also select this
+
+by the form tag.
+
+Here I also want to use text align center
+
+to center this all in the middle of the screen,
+
+so to say.
+
+Give it a margin of two rem and auto so to add some spacing
+
+between the map and the form and that should be it.
+
+On the page we should now see something like this.
+
+Now I wanna change my font here,
+
+so for the overall html selector I'll set the font family
+
+to Sans Serif, but with that I'm good.
+
+And you can certainly style more.
+
+You can certainly style this input or the button,
+
+but I don't wanna worry too much
+
+about the styling part here.
+
+Instead I wanna make sure that this works.
+
+But feel free to of course to improve the styling here.
+
+With that prepared, however, let's make sure
+
+that now we actually fetch whatever the user entered here
+
+and looked it up with the help of Google.
+

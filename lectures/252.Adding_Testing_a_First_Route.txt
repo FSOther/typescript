@@ -1,0 +1,356 @@
+So we added all this code
+
+for managing todos with TypeScript in the end.
+
+Now it's time to set up some routes in that todo file here
+
+in the routes folder.
+
+And by the way, the data.ts file
+
+should actually not be in the routes folder,
+
+it should maybe live next to the app.ts file
+
+or in some other sub-folder.
+
+But now it's time to work on those todo routes.
+
+And for that, we can again use
+
+something from the Express package,
+
+because here, we can access a router
+
+by accessing express.Router,
+
+and that is simply an object
+
+that simplifies the process of defining routes
+
+that can be handled by Express.
+
+So request handlers in the end.
+
+For that, we should execute Router() as a function here,
+
+and then we can use this router object here
+
+and call .get() to register a GET route,
+
+.post() to register a POST route,
+
+.patch() for a PATCH route, and so on.
+
+And here, I'll start with a POST route, a route for /todos,
+
+which in the end should handle the creation of new todos.
+
+So if a request is sent to localhost:3000/todos,
+
+this route will be triggered.
+
+For that,
+
+we then have to set up a request handling function here
+
+where we get a request
+
+and a response argument automatically.
+
+That is how Express works.
+
+And since we add this function like this,
+
+TypeScript also understands the types of these values here.
+
+It understands that this will be a Request object
+
+and that this here, Response, will be a Response object.
+
+If we were to define this function as a standalone function,
+
+handlePostTodos or whatever you want to call it,
+
+you, of course, would also receive these two arguments,
+
+but now, TypeScript wouldn't know which types these are
+
+because it's a standalone function.
+
+So in that case,
+
+we have to specifically set those parameter types.
+
+For that, we should import from Express,
+
+Request and Response.
+
+And these types are available from the Express package
+
+because we installed this @types/express package here.
+
+So now we got Request and Response,
+
+and we can set them here.
+
+However, here I'll not use this more complex approach
+
+and instead just rely on the automatic type inference
+
+by adding this function as a second argument here
+
+to this route handler.
+
+Well, and then here,
+
+I expect to get some data attached to this request.
+
+So I want to extract something from the request body.
+
+To be precise, I expect to get the text
+
+by accessing request.body.text.
+
+Now, as you see,
+
+TypeScript is not complaining about this code
+
+because body is actually, in the end, of type any.
+
+Because we could be getting any kind of request body here
+
+in our route handler.
+
+The Express package and also the Express type package,
+
+of course, don't know which kind of request body
+
+we'll have attached to our request.
+
+So we should be careful about typos here.
+
+Now, you could theoretically,
+
+if you set it up as a standalone function, for example,
+
+take advantage of the fact
+
+that this Request type is a generic type,
+
+where you can, for example,
+
+define the type of the request body you expect to get.
+
+But as you see,
+
+there are a bunch of generic type parameters to be set up,
+
+so that can also be annoying and cumbersome.
+
+It's still worth noting that this option exists, though.
+
+Here, I'll live with the fact that this is of type any
+
+and extract my text like this.
+
+Next, I'll call addToDo(),
+
+and make sure that this import here is added,
+
+and also make sure that it's importing from .js.
+
+The file extension must be added here,
+
+that is a requirement by Node.js.
+
+And even though we're writing TypeScript code,
+
+it must be .js here, not .ts.
+
+That's a common mistake, but it must be .js.
+
+With that, we can call addTodo() and pass our text to it.
+
+Now, we'll get the added todo as a return value
+
+due to the way we wrote this addTodo function.
+
+And we can then therefore send back a response,
+
+for example, in JSON format.
+
+And here, I'll add a message "Todo added"
+
+and attach this addedTodo under a todo key
+
+to that outgoing response.
+
+And with that, we handled this POST route,
+
+and we added our first route handler.
+
+Now, we're not done at this point, though.
+
+You also have to export this router object now,
+
+for example, as a default, and then go to the app.ts file,
+
+and in there, import it,
+
+and then also replace this dummy route here with app.use()
+
+to register some middleware,
+
+which is a core concept in Express, of course,
+
+and register the todoRoutes middleware, for example.
+
+And for that, you should import todoRoutes from,
+
+and then go to that routes folder, todo.js,
+
+again adding this extension.
+
+That will register all the routes defined in this file.
+
+And, of course, at the moment, it's only one,
+
+but that will change.
+
+It will register all these routes
+
+as routes Express.js will be aware of.
+
+That's still not all, though,
+
+because since I'm trying to extract something
+
+from the request body here,
+
+we also have to make sure that for all incoming requests,
+
+Express.js is parsing the request for their bodies
+
+and for the data that might be attached to those requests.
+
+And that can be done by registering another middleware,
+
+the express.json() middleware,
+
+which is a middleware provided
+
+by the Express package itself,
+
+which will scan every incoming request
+
+for JSON formatted data.
+
+If such data is attached,
+
+it will make it available via the body property
+
+on the request object.
+
+That is how this works.
+
+Okay, and with that, finally, we have that all set up.
+
+We can now again run compile to hopefully compile this code.
+
+Seems like that works.
+
+And run npm start to start the server.
+
+And now we need a way of sending such a demo POST request.
+
+Now, for that, you can use tools like Postman,
+
+which is a software that's free to use
+
+that allows you to essentially test requests
+
+you send to REST APIs.
+
+But here in my case, I'm using a VS Code extension,
+
+the REST Client extension,
+
+which allows me to simply add .http files
+
+where I define requests to my project here
+
+and then send them from inside my project therefore.
+
+So what I'll do is I'll add a test folder.
+
+The name is up to you, though.
+
+And in there, have a new-todo.http file.
+
+Due to this extension installed,
+
+I can define a POST request here
+
+by adding the keyword POST here
+
+and then target http://localhost:3000/todos,
+
+/todos because, of course,
+
+that is the path I am listening to here in the end.
+
+Then I'll have to add the Content-Type header
+
+and set it to "application/json", which you can do like this
+
+to make sure that Express.js understands
+
+that some JSON formatted data
+
+will be attached to this request.
+
+And then add this request body by adding curly braces here
+
+and adding your JSON formatted data.
+
+In my case, there should be a text,
+
+for example, "Some new todo."
+
+And now you should be able to click "Send Request" here
+
+and hopefully get back a success response.
+
+In my case, here I am getting back a 200 status code
+
+and this newly added todo.
+
+So that is working.
+
+And with that, we now added our first route
+
+with help of Express and TypeScript in the end.
+
+Though, we didn't have to write
+
+a lot of TypeScript-specific code, thankfully.
+
+And that's in general how it often works.
+
+Very often, when you have type packages installed,
+
+you can rely on type inference, as we're doing it here
+
+with the request and response parameters,
+
+and write code just as you might know it
+
+from vanilla JavaScript.
+
+Still, we're getting all these TypeScript advantages
+
+as we saw here when we defined our data management code,
+
+for example.
+

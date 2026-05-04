@@ -1,0 +1,78 @@
+[Maximilian Schwarzmüller] Now, one last thing
+
+I wanna mention about this project
+
+because it's also interesting
+
+is that in the main.ts file,
+
+you'll see a bunch of imports up here.
+
+And these imports are rather interesting
+
+if you take a closer look at them
+
+because we're not just importing some other .ts file here.
+
+And here in vite projects we can use .ts
+
+in the import path instead of .js,
+
+which would also work, but you can use .ts.
+
+But we're not just doing that to import a TypeScript file.
+
+But in addition, we're also importing SVG files
+
+and a CSS file.
+
+And that's something you typically don't do
+
+and see in regular JavaScript code.
+
+But this is something that works in vite projects
+
+because vite, this tool which in the end
+
+handles the build process,
+
+is configured internally to understand imports like this
+
+and to resolve them.
+
+And in the end, what vite will do
+
+when it encounters imports like this
+
+is it will simply search for these files,
+
+for the SVG or CSS files,
+
+and also transform and optimize them
+
+if it's configured to do that,
+
+and then copy them into the dist folder.
+
+So these imports, which you see here,
+
+can't be found in the compiled JavaScript code, for example.
+
+If you search for .css here,
+
+you got no results.
+
+So you don't find that here,
+
+but it is part of the input TypeScript file.
+
+But that's only the case
+
+because vite, the build tool this project uses,
+
+takes care of such imports.
+
+So this is not a TypeScript feature or anything like that.
+
+Instead, that's a feature enabled by vite here.
+

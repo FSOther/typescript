@@ -1,0 +1,224 @@
+Sometimes in your program,
+
+you're going to deal with choices,
+
+you're going to deal with scenarios
+
+where you have a fixed set of available values
+
+you want to accept in a certain place.
+
+Sounds a little bit abstract. Let me give you an example.
+
+Let's say you have a user role variable,
+
+and a user could be an admin, an editor,
+
+a reader, a guest, whatever.
+
+Now you could represent these different roles via numbers.
+
+So, 0 could mean that the user is an admin.
+
+One could mean that they're a guest and so on.
+
+Of course, you could write code like this,
+
+but now user role accepts any kind of number,
+
+but you might want to restrict it to these specific numbers.
+
+And in addition, that's not just the only problem.
+
+Instead, having just a number like 0 here
+
+doesn't really tell you much if you read the code.
+
+Sure, here I have to comment,
+
+but let's say the comment is not there,
+
+then it's totally unclear what exactly 0 means
+
+and which other kinds of values should be allowed.
+
+Well, that's where you could use an enum,
+
+which is a newer feature offered by TypeScript,
+
+and it's a feature that's only available
+
+thanks to TypeScript.
+
+It's not part of vanilla Java script.
+
+You create an enum by using the enum keyword,
+
+followed by any identifier,
+
+any name for that enum of your choice,
+
+like for example, role.
+
+After that, you have a pair of curly braces
+
+and it's then between those curly braces,
+
+either in a new line or in the same line doesn't matter,
+
+where you can define different options you want to allow.
+
+So you can think of a enum as a type
+
+that only allows certain kinds of options.
+
+So for example, here we could add admin,
+
+editor and guest as options separated by commas like this.
+
+And again, you could also write this all in one line
+
+if you preferred that, that would be fine as well.
+
+But it's a bit more readable
+
+if you split it across multiple lines.
+
+Now you can use this enum role as a type,
+
+so it's kind of a custom type you created, you could say,
+
+this enum type.
+
+So here I'm using role.
+
+Now, interestingly enough,
+
+I am not getting an error for my 0 here.
+
+I do get one if I assign five or a string though,
+
+but 0 is allowed
+
+and I'll get back to why that's the case in just a second.
+
+But before I explain that, let me show you another way
+
+of setting a value for that variable
+
+because you cannot just use this enum here as a type,
+
+but you can also use it to grab one of these allowed values,
+
+so to say.
+
+By using role and then dot
+
+and then you see my IDE gives me some suggestions here.
+
+And I could, for example, set this user to be an admin.
+
+And then later on after running some code
+
+and after the user may be locked out,
+
+we could change it to guest.
+
+This is valid TypeScript code,
+
+using this enum feature to use a very specific value
+
+from a predefined list of allowed values.
+
+Now, what's quite interesting is to see
+
+what this gets compiled to.
+
+If I compile this choices.ts file,
+
+I get a choices.JS file of course,
+
+but in that file you'll see code that looks quite different,
+
+quite complex to be honest.
+
+You can see that this enum, as I mentioned before,
+
+is not a feature that's supported out of the box
+
+in JavaScript and therefore,
+
+TypeScript builds kind of a workaround,
+
+you could say in the JavaScript code.
+
+It builds an object which has these different identifiers,
+
+you could say.
+
+And then for these identifiers, numbers are being stored
+
+where the first identifier admin receives the number 0,
+
+editor receives 1 and guest receives 2.
+
+So, Role.Admin in the end just produces the number 0.
+
+Role.Guest gives us 2.
+
+And that's why previously,
+
+I did not get an error when storing 0 as a number
+
+in a variable that wants a value of type role.
+
+Because under the hood,
+
+these different options are represented by numbers
+
+where the first option receives 0, the second one, 1,
+
+the third one, 2 and so on.
+
+However, you could change this if you wanted to.
+
+You could overwrite these defaults.
+
+For example, by assigning 1 as a value for admin here,
+
+counting will start at 1
+
+and now admin will have the number 1,
+
+editor will receive the number 2 and guest, as you see,
+
+if you hover over that will receive the number 3.
+
+And for that reason, I'm now getting an error
+
+when I try to store the number 0 in that variable
+
+because there no longer is an option that maps to a 0.
+
+So that's just how that works under the hood.
+
+You can also store strings here as values.
+
+You then just need to assign a string to every option
+
+since TypeScript of course, can't infer
+
+what should come after admin for the second option.
+
+It can do that for numbers because it simply counts up,
+
+but it can't do that for strings.
+
+That's another option.
+
+But in the most simple, straightforward way of using enums,
+
+you can use them like this
+
+to define a list of allowed values, so to say.
+

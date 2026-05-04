@@ -1,0 +1,10 @@
+Configuring Code Quality Checks
+Besides configuring compilation & type checking, you can also use the tsconfig.json file to enable some "quality of life" checks - checks that are not directly related to types but that can help you improve your code quality.
+
+
+
+{
+  "noUnusedLocals": true, // helps you detect unused variable
+  "noUnusedParameters": true, // helps you detect unused function parameters
+  "noFallthroughCasesInSwitch": true // helps you detect switch cases without break or return
+}

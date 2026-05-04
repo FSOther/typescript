@@ -1,0 +1,522 @@
+I want to start with the namespace feature.
+
+Now to show you how it works,
+
+I will grab these two interfaces here.
+
+The drag and drop interfaces,
+
+cut them from app.ts and add a new file,
+
+dragdropinterfaces.ts for example.
+
+Now we can paste it in there and now to use namespaces,
+
+all we have to do is we have to add the keyword namespace
+
+and then curly braces.
+
+Now we also have to give this namespace a name
+
+and here I'll name it DD Interfaces for a drag and drop,
+
+the name is up to you though.
+
+Now, this year is a TypeScript feature,
+
+not a JavaScript feature.
+
+It is not compiled to Vanilla JavaScript
+
+because there is no direct equivalent for it.
+
+Instead TypeScript will basically compile it to an object
+
+you could say.
+
+To an object where the things you will put
+
+into the namespace then are stored on properties,
+
+but you won't have to worry about that
+
+because all the resolving of access to these properties
+
+and that everything works will be taken care of
+
+by TypeScript.
+
+So now we can move these interfaces into the namespace
+
+and with that we're almost done.
+
+Now we have one problem, however,
+
+these interfaces are now only available in this namespace.
+
+By the way,
+
+you can not just put interfaces into a namespace
+
+you can put anything in there,
+
+classes,
+
+constants,
+
+whatever you want.
+
+Whatever you want can be put in a namespace.
+
+So basically you can wrap a namespace
+
+around any code you have.
+
+But the problem we have is that these features,
+
+these interfaces here
+
+are now only available inside of that namespace.
+
+Now as you see, we have nothing else in there.
+
+Now of course we could bring the code
+
+that depends on them back into this namespace,
+
+but then again we would blow to this
+
+because turns out we have quite long class
+
+that depends on these interfaces.
+
+We have the project list class and the project item class.
+
+They depend on these interfaces,
+
+so there would be a lot we have to add to that namespace.
+
+Therefore, what you can do
+
+is you can add the export keyword in front of an interface
+
+to export a feature from a namespace.
+
+Now what this means is that now these interfaces
+
+are available inside of this namespace,
+
+but also outside of this file.
+
+And we'll see how this works in a second,
+
+but with that we make this interface
+
+or whatever we are exporting.
+
+This is not restricted to interfaces of course
+
+available outside of this file as well
+
+if we then basically import or use that namespace.
+
+And of course again
+
+you cannot just export interfaces in a namespace
+
+but anything.
+
+Now with that, the question just is,
+
+how do we import this namespace
+
+now back into app.ts
+
+and for that, TypeScript has special syntax you can use.
+
+Let's back to the top of app.ts
+
+and now here you add three forward slashes,
+
+important three, not just two
+
+because this is actually not a normal comment
+
+what we're creating now
+
+this will actually be syntax picked up by TypeScript
+
+a special comment, you could say TypeScript understands
+
+if it starts with three slashes.
+
+There you write a self-closing XML tag,
+
+so opening angle bracket,
+
+then forward slash closing angle bracket
+
+and in their
+
+reference path equals
+
+and then here the name of the file you want to import.
+
+In my case here dragdropinterfaces.ts.
+
+Now, this is understood and picked up by TypeScript
+
+because as I mentioned with the three starting slashes,
+
+it's a special syntax TypeScript understands
+
+just as it understands this reference thing.
+
+This is not Vanilla JavaScript
+
+Vanilla JavaScript does not notice
+
+and this is not what it will look like once it is compiled.
+
+Now, what does does achieve though?
+
+This achieves that now this namespace DD Interfaces
+
+is available in app.ts.
+
+However, if you scroll down,
+
+you see my editors still complains
+
+and if we tried to save it
+
+as we all do good compilation errors.
+
+So, it doesn't seem to be available.
+
+The draggable interface doesn't seem to be available here.
+
+Well, there is a special thing about namespaces.
+
+You can use them to split your code
+
+and remember when I said earlier
+
+that what you have in a namespace
+
+can be used from anywhere in that namespace.
+
+Well, it turns out
+
+you can split namespaces across multiple files
+
+by exporting things in a namespace
+
+and then using this special import syntax,
+
+but you then have to put the things
+
+that want to use something from that import namespace
+
+or from that imported file
+
+into the same namespace.
+
+Hence maybe DD Interfaces is not the best name.
+
+Maybe we just named as App.
+
+Now, if we named as app here,
+
+we can go to app.ts
+
+and create a namespace of the same name here,
+
+namespace App.
+
+And now for the moment,
+
+let's put everything here into that namespace
+
+and now you see the error is gone
+
+There are no red dots on the right.
+
+However, if I saved that,
+
+I'll still get errors here.
+
+For example, that finished project list is not used.
+
+Well, that is correct
+
+I am not using that.
+
+I am not needing it either,
+
+so we can simply remove these concepts here.
+
+With that, if we saved this,
+
+now it compiled without errors.
+
+The question just is
+
+what's the result of this compilation?
+
+Do we have one or two files now?
+
+Well, let's have a look at the disc folder
+
+and there you see you've got an App JS file
+
+and then some code here
+
+and a drag and drop interface JS file.
+
+So we've got two files as a result.
+
+Now the dragon drop interface file actually is pretty empty
+
+because you learned
+
+that interfaces are basically not compiled to anything.
+
+There is no JavaScript equivalent for an interface.
+
+It's a pure TypeScript feature.
+
+So we can import it with the TypeScript syntax here
+
+to use it and get all the type improvements we learned
+
+but in production
+
+it doesn't matter if it's in a separate file or not.
+
+So off course, the question is
+
+what if we now put something that does exist in production,
+
+that does exist in JavaScript as well
+
+into a separate file.
+
+For example, does enum and the project class here,
+
+I'll grab both,
+
+create a new file,
+
+project dash model TS
+
+and put my project status enum and project class in there.
+
+Now just as before
+
+we can add a namespace here,
+
+the name has to be App,
+
+so it has to be done namespace
+
+where we then also want to use it
+
+and we have to export these features in there,
+
+so that we can use them in other files
+
+in the same namespace,
+
+but an other files as well.
+
+Now back in app.ts,
+
+we have to import that second file.
+
+So I'll duplicate this import
+
+and all the import project dash model ts.
+
+if I saved that and now is compiled
+
+and we see a project model JavaScript file.
+
+And in there,
+
+we see some code.
+
+The question is does our application now work?
+
+For that, let's reload it
+
+and let's try adding a project here
+
+and you see,
+
+we get an error.
+
+Cannot read property active of undefined.
+
+The reason for that simply is that
+
+our files are compiled standalone.
+
+Namespaces exist in TypeScript world
+
+as I said, there is no JavaScript equivalence for it.
+
+So the problem we have here is that in TypeScript world,
+
+everything is great
+
+because TypeScript is able to find all the things we need.
+
+For example,
+
+when I say project here,
+
+when I referenced the project type here
+
+on the project state class,
+
+this project type,
+
+this project class
+
+is defined in the project model.
+
+Now TypeScript does not complain your incompletion
+
+because we import that model,
+
+but import here really just means
+
+we tell TypeScript where to find that type
+
+once it is compiled to JavaScript,
+
+disconnection is basically destroyed.
+
+So in JavaScript code when is executes
+
+and when we then try to create a new project
+
+by instantiating project,
+
+JavaScript doesn't find this project class
+
+or constructor function.
+
+So we have to make sure we carry over disconnection.
+
+And for that we can go to the TS (mumbles)
+
+and there set this out file option.
+
+We can comment this in
+
+and the idea behind the out file
+
+is that you tell TypeScript
+
+that it should concatenate namespaces.
+
+So these references,
+
+which it has during compilation
+
+into one single JavaScript file
+
+instead of compiling multiple JavaScript files.
+
+So here for out file we can say
+
+we want to have a file in the disc folder,
+
+which we named maybe bundle.js
+
+And if we do that and save that,
+
+we'll actually get an error here.
+
+We'll get an error
+
+that only AMD and system modules
+
+are supported alongside out file.
+
+Now, we don't need to understand everything here
+
+There basically are different ways of loading
+
+or bundling different JavaScript files into one
+
+for historic reasons and how it is all developed
+
+and you can learn more about these different bundled types
+
+in an attached resource if you want to,
+
+you don't need to though.
+
+So basically what we need to do here
+
+is we need to set module
+
+which is already highlighted as an error here,
+
+not to common JS,
+
+but to AMD for example.
+
+If we do that, it compiles without issues
+
+even though it's still complains here,
+
+but it didn't pick up that I changed it
+
+and now what happens is actually
+
+that there is a new bundle JS file in dist.
+
+If I remove all JavaScript files in the disc folder
+
+and I restart my TSC dash we process
+
+so the compiler
+
+you'll see only that bundle JS file is generated.
+
+This file will hold all our code in the compiled
+
+and translated version
+
+and therefore now in index HTML,
+
+we just have to import bundle JS here instead of App JS.
+
+And if we do so and we reload here,
+
+we have a working application again
+
+where we can use drag and drop everything
+
+because now it's all in one file,
+
+but only in the final result.
+
+During development,
+
+we have these namespaces here,
+
+which is one step in the right direction
+
+because it is already as a bit more manageable.
+
+Now let's split this into even more files
+
+before we then have a look at the average splitting option
+
+TS modules.
+

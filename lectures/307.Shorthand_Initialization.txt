@@ -1,0 +1,138 @@
+Now that we learned about private and public,
+
+I also wanna turn name into a private property.
+
+And now here we have a little bit of a,
+
+not really an issue,
+
+but a little bit of a inconvenience.
+
+We have that name field here,
+
+then we get a value for it here in the constructor,
+
+and then we store that value for that field
+
+here in the constructor, in the field.
+
+We can do that,
+
+and it's certainly very clear what we're doing here.
+
+But, in a lot of use cases, you'll have a lot of classes
+
+where all the properties you have,
+
+all the fields you have,
+
+are initialized to the constructor.
+
+And therefore, often,
+
+you might find yourself writing a couple of properties,
+
+a couple of fields like this at the top
+
+no matter if they're private or public -
+
+and then you just repeat all of that
+
+down there in the constructor,
+
+just to then initialize these values here
+
+in the constructor function.
+
+You don't have to do that.
+
+Instead of doing this double-initialization code here,
+
+you can get rid of your field definitions up there.
+
+And now you see you will get an error.
+
+But you can also get rid of this here,
+
+and instead, now simply add the access modifier
+
+in front of the parameter.
+
+So if it should be public, add public.
+
+Let's say, for the name, we keep it public now.
+
+If it should be private, add private.
+
+Here, you have to add public
+
+because this now is an explicit instruction for typescript,
+
+that tells typescript that you want to
+
+not just get these arguments here in the constructor,
+
+but that you want to create properties for this class
+
+with the exact same names.
+
+And therefore, here, we should also rename n to name.
+
+So that the name property is created
+
+on the creator class.
+
+So this is simply a shortcut
+
+for this double-initialization code here.
+
+Where you had to find your fields,
+
+and then store the value,
+
+now we're doing it all in one go.
+
+We define which arguments the constructor takes,
+
+and then for every argument
+
+which has such a access modifier in front of it,
+
+a property of the same name is created,
+
+and the value for the argument
+
+is stored in that created property.
+
+So now we just have to fix our department creation here,
+
+and add an ID because I added this new argument.
+
+And now what you'll see is
+
+that when we call describe down there,
+
+and I do actually, I'll put the ID there as well,
+
+maybe by changing this department user string,
+
+literal here,
+
+Department
+
+this.id
+
+and then here this.name,
+
+you will see that this all still works.
+
+It compiles without errors here.
+
+And here we get the output with our ID
+
+and with our name.
+
+Because of that little shortcut,
+
+we also saved some code for all of that.
+

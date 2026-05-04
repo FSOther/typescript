@@ -1,0 +1,186 @@
+Now there is one other TypeScript feature
+
+related to object types that is now really related
+
+to object types.
+
+Let's say you have a scenario where you want
+
+to create a variable, data, whatever the name may be,
+
+and in there you plan to store an object
+
+that may hold various key value pairs,
+
+but, and that's the important part,
+
+right now when you write the code,
+
+you don't actually know yet which keys
+
+will be stored in that object.
+
+So you might wanna say that data should eventually be
+
+any object with any key value pairs,
+
+and you might be tempted to use this syntax,
+
+but as you learned in the last lecture, this will not work
+
+because this just means data must be any value
+
+once a value is assigned.
+
+So initially, of course, it's unassigned
+
+and therefore undefined, but once we start assigning values,
+
+null and undefined are not allowed, but anything else is.
+
+So that's not what I want here.
+
+I want data to be an object, not a string, not a number,
+
+but I just don't care about the actual key value pairs.
+
+I don't care about the actual key names,
+
+the actual property names.
+
+I don't know yet if there will be a name or age property
+
+or anything like that.
+
+And a use case like this is fairly common.
+
+That's why TypeScript gives you a built in type,
+
+the record type that can be used in such scenarios
+
+because the record type, which again is provided
+
+by TypeScript, it's built in, in the end
+
+tells TypeScript that something should be an object.
+
+So the record type means that some value must be an object,
+
+but it's a flexible type or a flexible kind of object
+
+you could say.
+
+Because the record type is actually a generic type,
+
+which is a concept we'll explore
+
+in greater detail a bit later.
+
+In the end, it simply means that it is a type
+
+that is meant to work together with other types,
+
+that needs extra type information to work correctly.
+
+Generic types can be recognized by the angle brackets
+
+that are used in conjunction with them.
+
+And here the idea is that you are telling TypeScript
+
+that you want data to be an object
+
+full of records.
+
+You could say full of entries, full of key value pairs.
+
+And between the angle brackets,
+
+you now need to define the type of value used for the keys
+
+and the type of value stored under those keys.
+
+So for example, in a JavaScript object,
+
+when you define a key name
+
+and a value of Max, the key actually has the type string.
+
+Because even though we don't have quotes here,
+
+this is technically a string and we could add quotes here.
+
+Indeed, this is allowed by JavaScript.
+
+So strings are valid key types in JavaScript.
+
+Another valid key type would be number.
+
+You can also use numbers as keys in your objects.
+
+Another valid key type would also be symbols,
+
+but we can ignore that here.
+
+Therefore here we can say that we, for example,
+
+want to use string key types
+
+so that we'll have something like name or age
+
+or hobbies as keys.
+
+And then separated by a comma you specify the type
+
+of values you plan to store under those keys.
+
+And here we could say that we will store numbers
+
+or strings, let's say.
+
+And with that, data is now no longer allowed to be a string,
+
+no matter if it's empty or not.
+
+Instead, it must be an object
+
+because record forces you to use an object.
+
+Record means that you want to use an object,
+
+and it must either be an empty object
+
+or an object where you have keys
+
+that can be identified as strings,
+
+like entry1 or just entry or whatever.
+
+And then the value must be either a number or a string.
+
+So one is allowed,
+
+and for entry two, a string would be allowed, for example.
+
+So some string.
+
+And therefore, whenever you need a flexible object type,
+
+if you need to define the type for an object
+
+where you don't know in advance,
+
+which key value pairs will be in there,
+
+where you might also, for example, dynamically add
+
+or remove key value pairs,
+
+you can use this built in record type
+
+and just tell TypeScript which type of value you'll use
+
+for your keys and which type of value you'll use
+
+for your actual values that are stored under those keys.
+

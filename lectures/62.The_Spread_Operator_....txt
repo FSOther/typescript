@@ -1,0 +1,180 @@
+Lecture resources:
+- https://academind.com/learn/javascript/reference-vs-primitive-values/
+- 
+
+We also got useful features related
+
+to arrays an objects and how we can retrieve
+
+the data that's stored in arrays and objects.
+
+Now, for that, let's add a new array here,
+
+let's say hobbies and that can be an array of strings.
+
+Like sports and cooking here and now obviously
+
+we can retrieve elements by index here,
+
+like this for example.
+
+But, you should know these basic JavaScript things.
+
+Next Gen JavaScript, introduce a nice feature if we want
+
+to extract all values of an array.
+
+When could you need that?
+
+Well let's say you have the active hobbies
+
+and that's an array where I do have hiking as a hobby,
+
+and now I want to add sports and cooking.
+
+Now we can add an item to active hobbies by calling
+
+push, by the way in case you're wondering how I can
+
+push to a constant, keep in mind that arrays are objects
+
+and objects are reference values.
+
+When we push we change a memory but not the address.
+
+If this doesn't tell you anything check the additional
+
+resources I attached to this lecture regarding that topic,
+
+so back to this example then, we can push here,
+
+but push, if we push in the hobbies, we'll add hobbies
+
+as a new array in the array, so as a new nested arrays.
+
+Which types would actually detects it, it tells me that
+
+if I want to add a string array
+
+to an array of strings, that's not okay.
+
+So instead push takes single values so we could
+
+pass hobbies zero, actually push even takes an
+
+unlimited amount of arguments so that we can push
+
+multiple items in order at once like that.
+
+But that's a bit cumbersome and that's where
+
+the Spread Operator comes in.
+
+It looks like this, it's three dots and yes this
+
+looks strange but this is a valid JavaScript Operator
+
+supported by [Hypescript?] and after that we specify
+
+or we point at the array or object as you will also learn,
+
+that we want to spread.
+
+So what this does is, it tells JavaScript in the end
+
+because that's a Vanilla JavaScript Operator
+
+available in Modern JavaScript, so it tells JavaScript
+
+to pull out all the elements after the array
+
+and basically add them as a list of values,
+
+so not as an array but a list of individual values
+
+in the place where you used an Operator,
+
+so here for example is a list of arguments
+
+passed to push and now a place where you could use
+
+that is directly when you create a new array.
+
+There you can also spread an existing array into that array.
+
+So basically whenever you need a comma separated list
+
+of values, you can use the Spread Operator with
+
+an array to get such a comma separated list.
+
+That's the idea of the Spread Operator
+
+and therefore it's really useful for pulling out
+
+elements of an array.
+
+The Spread Operator, all that it does not just exist
+
+on arrays, it also exists on objects.
+
+Let's say we have a person which has a name key,
+
+Max and an h key which is 30
+
+and now we want to create a copied person.
+
+Now if we just assign a person like this,
+
+what we're doing is actually we're copying the pointer
+
+at this person object in memory
+
+into this copy person constant.
+
+And again, check my reference value resources attached
+
+if that doesn't tell you much.
+
+So, we're not really creating a copy of that object.
+
+Now to create a real copy, we can use the
+
+spread operator with objects.
+
+We create a new object with curly braces
+
+and then we use the Spread Operator, three dots
+
+with our first object which you want to copy.
+
+Now what this does is it pulls out all the elements
+
+but of course here the elements are key value pairs
+
+not single values like an array.
+
+Here we got key value pairs.
+
+So these key value pairs are pulled out of there
+
+and then can be used anywhere where you need key
+
+value pairs, which typically is a never object you
+
+might be added them to.
+
+So therefore, to this otherwise empty object,
+
+the key value pairs of person are now added
+
+and since we created a new object here,
+
+and just add it to key value pairs,
+
+we got a perfect copy of the original object
+
+and not just of the pointer that
+
+points to the object in memory.
+

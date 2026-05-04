@@ -1,0 +1,158 @@
+Now last but not least,
+
+there is one other class that's supported by TypeScript,
+
+which unlike these classes we had a look at thus far,
+
+does only exist in TypeScript
+
+and is not a vanilla JavaScript feature.
+
+And that would be an abstract class.
+
+Let's say We wanna have a class called UIElement,
+
+which should define a base class
+
+for various UIElements we might have on our website.
+
+So such a UIElement should maybe have a property
+
+called identifier, which identifies the UIElement.
+
+So of course we might set this up
+
+with help of a constructor therefore,
+
+just as you learned it.
+
+And maybe we wanna have a method, clone,
+
+that can be used to simply duplicate such an element.
+
+And in here we would have the logic
+
+to duplicate the UI element.
+
+Maybe the clone method also takes a targetLocation,
+
+which could be another string or anything like this.
+
+This could of course also be any other type.
+
+So that could be such a UI element class.
+
+But now let's say,
+
+that we then actually have more specialized element classes
+
+that should build up on this UI element class.
+
+We could have one for a log in form UI element,
+
+we could have another one for some tabs or some SideDrawer.
+
+And that's exactly the idea behind abstract classes.
+
+The idea is that you can't directly instantiate
+
+these classes.
+
+If I were to add a UI element here
+
+by using the UI element constructor like this,
+
+I would get an error that I cannot create an instance
+
+of an abstract class
+
+because abstract classes are meant to only work
+
+as base classes other classes should inherit from.
+
+So base classes should not be usable
+
+or instantiatble themselves.
+
+Instead, they should only act as base classes.
+
+So that we could add a SideDrawerElement class,
+
+which extends the UIElement class.
+
+That's the idea behind abstract classes.
+
+They should be extended by other classes.
+
+And now the SideDrawerElement class
+
+would have this clone method, which of course can be used
+
+and it would have this identifier property,
+
+but we could now add more.
+
+For example, here, we could add a constructor
+
+where we do accept this identifier as in a base class
+
+but where in addition,
+
+we might want to have a position property,
+
+which is either left or right, let's say
+
+to define where exactly the SideDrawer should be shown.
+
+And inside of the constructor, as you learned it before,
+
+you then must call the super method.
+
+And in this case, we must forward the identifier here
+
+to that super method
+
+so to the constructor of the base class.
+
+Because the base class constructor here
+
+does take one argument, one parameter.
+
+So we must pass this value
+
+to the base class constructor here.
+
+And then we could add more properties and more methods here.
+
+And that's the idea behind abstract classes.
+
+Therefore, it's of course a never
+
+a bit more advanced feature,
+
+which you might not need all the time,
+
+but especially when working on more complex projects
+
+or when building third party libraries,
+
+you might have certain classes
+
+that shouldn't be usable themselves directly,
+
+but that instead should only act as base classes.
+
+And in such cases you can decorate them
+
+with the abstract keyword.
+
+And again, as mentioned, this abstract keyword,
+
+this feature only exists in TypeScript.
+
+If you were to compile this code to JavaScript,
+
+you will not find the abstract keyword there
+
+because it is a pure TypeScript feature.
+

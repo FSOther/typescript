@@ -1,0 +1,208 @@
+Now there's one last special type
+
+I wanna introduce you to,
+
+a type that might look weird at first,
+
+but that can be very useful.
+
+It's the unknown type
+
+and it's typically used in conjunction with functions.
+
+Let's say we have a process function,
+
+which should process some value
+
+that might be retrieved from a database,
+
+from a backend server, from an API,
+
+from a file, anything like this.
+
+We, the developer, might not know
+
+in detail what this value will look like in advance
+
+because we might have different potential data sources
+
+that could be used by our program.
+
+In such a scenario, we could of course, create a union type
+
+that lists all the potential values
+
+we might be getting here,
+
+all the potential types of values we might be working with.
+
+And that would be a good solution,
+
+but we might not even know
+
+which kinds of values we might eventually get.
+
+In that case, we could use the any type,
+
+but of course with that, anything is allowed
+
+without any restrictions.
+
+And that's where the unknown type comes into play.
+
+It's a bit like any, but then it's not.
+
+And the important difference is that
+
+if you have the any type,
+
+you can use this value in any way you want
+
+and you'll never get an error.
+
+I can try to call a log method on val
+
+and TypeScript won't complain
+
+because any does allow anything.
+
+You are basically back to vanilla JavaScript with that.
+
+With unknown, that's different.
+
+Now I'm getting an error
+
+that val might not have a log method in the end,
+
+that it is of type unknown.
+
+And what unknown does is it forces you, the developer,
+
+to add some extra if checks
+
+before you use the received value in a certain place.
+
+For example, here you could add a if check
+
+and check if type of val is equal to object,
+
+which is a type built into JavaScript
+
+because keep in mind,
+
+the type of operator is a JavaScript operator
+
+to check the type of something at runtime.
+
+An object is then one of the types JavaScript knows
+
+and if val is truthy,
+
+for example, with two exclamation marks
+
+to check that it's not falsy,
+
+and if there is a log property
+
+in val with the in operator,
+
+which is also standard JavaScript,
+
+all this here is standard JavaScript.
+
+And if type of val.log is equal to function,
+
+which is another type JavaScript knows.
+
+Now that's a pretty complex if check,
+
+but if we perform this if check,
+
+we can safely call log in there.
+
+As you see, the error now went away.
+
+And again, this is a pretty complex example here,
+
+pretty complex code.
+
+You could try to check this in other ways.
+
+My main point here is that unknown forces you
+
+to perform checks like this.
+
+Unknown forces you to make sure
+
+that you can safely execute this code
+
+by checking for a bunch of conditions,
+
+in this case here, before we run this code
+
+so that you can't run into a runtime error.
+
+With any, all this here would not be required.
+
+You could just call val.log like this,
+
+but if this does not turn out to be an object,
+
+if it's null or anything like that,
+
+you'd get a runtime error.
+
+With unknown, you can't get an unknown error with this code
+
+because this code here only executes if val is an object,
+
+if it is not null, if it has a log property
+
+and if that property is a function.
+
+And that's the idea behind unknown.
+
+It's definitely a bit of a more advanced types,
+
+can be very useful if you're writing very generic code,
+
+if you're writing library code
+
+where you might not know in advance
+
+how your code is going to be used
+
+and with which kind of values.
+
+In such cases, unknown can be very useful.
+
+It is a bit more advanced, but it is a commonly used type
+
+and therefore, an essential type of TypeScript.
+
+Now, when it comes to type narrowing,
+
+which is again, what we're doing here in the end,
+
+we're narrowing down val
+
+to be an object with a log method.
+
+When it comes to that, as mentioned,
+
+that is also something we'll explore again
+
+later in the course in a more general way.
+
+But it is important to understand
+
+that TypeScript does evaluate the overall code base
+
+to derive the type of val in this place here
+
+and that the unknown type is a pretty useful type
+
+in situations where you don't know
+
+with which kind of value you are going to work.
+

@@ -1,0 +1,170 @@
+Now in order to use React with TypeScript,
+
+we need a React project
+
+and we'll create one with help of Vite,
+
+which is a very popular
+
+project creation and management tool, you could say.
+
+It has lots of features and in this course,
+
+we will not dive deeply into Vite,
+
+but we can use it to create projects
+
+and to do that, all you have to do
+
+is run "npm create vite@latest"
+
+and then choose any project name of your choice,
+
+like "react-ts" for React TypeScript.
+
+The name is up to you though.
+
+Hit enter and you should then be asked
+
+which blueprint or which template
+
+you want to use for this project and as you can see,
+
+Vite supports a broad variety of frameworks
+
+and project setups.
+
+Here, I'll go for React
+
+and choose TypeScript,
+
+and that's it.
+
+That created a new folder,
+
+which is set up for using React with TypeScript.
+
+Now, here I am in this newly created project,
+
+and as you can see,
+
+a bunch of files and folders were created for us,
+
+including a tsconfig.json file,
+
+which references some more detailed config.json files,
+
+so that you don't have to configure TypeScript on your own.
+
+You can of course do that if you want to.
+
+You can tweak those settings,
+
+but you should know what you're doing if you are doing that,
+
+but you can absolutely do that.
+
+The defaults should be fine for most projects though.
+
+In the package.json file,
+
+you'll also find a bunch of dependencies
+
+and for example, you'll find some types dependencies
+
+with React specific types.
+
+Here for me, it also created a project for React 18,
+
+so I'll quickly fix that by installing React 19,
+
+which is the latest version
+
+at the point of time where I'm recording this,
+
+because of course, I wanna show you how to use TypeScript
+
+with that latest version of React.
+
+I'll also update those types packages
+
+to include the types for React 19,
+
+just like this.
+
+Okay and with that, the project is prepared.
+
+Of course, you can also install any other dependencies
+
+you might need in your project.
+
+Now in that project, you'll also find a src folder,
+
+which includes some source files for a basic demo app
+
+and you can run that demo app for development
+
+by running this dev script,
+
+which starts a development server,
+
+which will watch your files
+
+and automatically reload your site
+
+whenever you save a change to a file.
+
+So by running "npm run dev",
+
+you can start that development server.
+
+Once you're ready for shipping to production,
+
+you can run the build script with "npm run build"
+
+to in the end, produce
+
+a production ready version of your app,
+
+which will also include compilation of your code
+
+to produce JavaScript code instead of TypeScript
+
+and then you can run that build version,
+
+but for development, it's "npm run dev",
+
+which will of course also behind the scenes,
+
+compile your code on the fly so that in the browser,
+
+it's actually the compiled JavaScript code that's running.
+
+So if I now visit local host 5173,
+
+which is the default port used by Vite,
+
+I see this project there
+
+and here, I can click this counter, for example,
+
+to change that number
+
+and that is a React and TypeScript app up and running.
+
+You'll also find my project snapshot
+
+attached to this lecture
+
+so that you can start with that same base app,
+
+which I have here
+
+and now we can dive a bit deeper
+
+and see how we can use React with TypeScript
+
+and how we can use concepts like components, props,
+
+state, and so on in a TypeScript world.
+

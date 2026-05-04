@@ -1,0 +1,164 @@
+At the moment I'm not using the webpack-dev server.
+
+Now using it is very straight forward, though.
+
+We just have to the package.json file
+
+and now there instead of "lite-server"
+
+let's use "webpack-dev-server", like this.
+
+And now let's start npm start again.
+
+Now what you'll see is
+
+that this now spins up a server running
+
+on local host 8080,
+
+and it spins up the webpack build work flow.
+
+So now if you visit local host 8080
+
+we see our project there.
+
+The interesting thing now is
+
+if we change something in code,
+
+for example, if you adjust ERA console log here,
+
+And it is saved and then you watch the bottom here,
+
+you see it recompiles.
+
+However, if you reload you don't see the log here
+
+And also in the sources tab,
+
+in the webpack source tab,
+
+if you go to app.ts, you don't see the log here.
+
+So it actually did not load the correct code.
+
+This becomes clearer if I delete this bundle.js file here.
+
+If I now restart this npm start process,
+
+you will see it still works, and by the way,
+
+don't wonder that the dist folder stays empty now,
+
+in the webpack-dev server mode
+
+the bundle is generated in memory only,
+
+so it is there and it is loaded by the dev server,
+
+but it's not actually written to the dist.
+
+But you'll see that if you reload,
+
+this page now also crashes.
+
+Now, I said the file would be there,
+
+but it doesn't seem like it's there, right?
+
+Now it's missing on the dist as I said,
+
+and of course we are importing from dist/bundle.js
+
+and index.html, but indeed you can believe me
+
+it is generated in memory.
+
+The problem just is
+
+things are not wired up correctly at the moment.
+
+To tweak this we have to go to the webpack.config.js file
+
+and there, in output, actually add a publicPath key
+
+and set this to "dist."
+
+If you now save this and restart,
+
+now you see it reloads
+
+and now you see "Hi" here.
+
+In the sources tab you now also see
+
+that correct output there.
+
+If you go to the dot folder,
+
+source app.ts you see the console log statement.
+
+And if I now go to app.ts and delete that,
+
+it rebuilds and now the console log statement is gone there.
+
+This is just an additional configuration
+
+that is needed for the webpack-dev server
+
+to really understand where the output is written to
+
+and where it is relative to the index.html file.
+
+Because by default the webpack-dev server
+
+serves an index.html file,
+
+it finds in the same folder as you run this script here.
+
+Which is correct, but then it doesn't make the connection
+
+to the dist folder correctly,
+
+which is why we have to inform webpack-dev server
+
+with publicPath where to find our assests,
+
+so our bundle.js file in this case.
+
+Now if we quit the development server
+
+there is one other setting
+
+I wanna apply here in development mode.
+
+And I'll do this right at the top of the exported object.
+
+I'll set mode to "development."
+
+This will in the end tell webpack
+
+that here we're building for development
+
+and that it will do fewer optimizations
+
+to improve our development experience,
+
+make debugging even easier,
+
+and give us more meaningful error messages, for example.
+
+So in development we also
+
+definitely wanna add this key here.
+
+And with that and the webpack-dev server configured,
+
+we now get the finished development work flow.
+
+Now for production,
+
+we'll need to adjust this work flow a bit
+
+because there we want a different output.
+

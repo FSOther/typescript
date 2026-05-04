@@ -1,0 +1,254 @@
+Let's stick to arrays and objects.
+
+Another important syntax,
+
+which you'll see a lot in modern JavaScript
+
+and also Typescript projects,
+
+is array and object destructuring.
+
+How does it work?
+
+Well, let's start with our array which we got,
+
+the hobbies array which got two hobbies.
+
+Let's say you want to extract these two hobbies
+
+and store them in variables or constants.
+
+Of course, we can do that with
+
+hobby one equal hobbies
+
+for index zero,
+
+which is the first element.
+
+And the same maybe with hobby two for hobbies at index one.
+
+This will pull out these two elements
+
+and store them in constants.
+
+It took us two lines of code,
+
+and the more elements you want to retrieve,
+
+the more lines of code it takes us.
+
+Array destructuring allows us to shorten it.
+
+With array destructuring,
+
+which also works with let by the way not just with const,
+
+you add square brackets on the left side of the equal sign,
+
+which is an unusual place.
+
+Haven't seen that before.
+
+And on the right side you have the array,
+
+which you want to destructure.
+
+Now destructure really means
+
+that you pull elements out of the array.
+
+And here on the left side between these square brackets,
+
+you store them in constants,
+
+or if you use let, in variables.
+
+So here, we could then have hobby one and hobby two.
+
+And what this syntax does is,
+
+it goes through the hobbies array,
+
+takes the first element
+
+and stores it in a constant with this name,
+
+takes the second element,
+
+stores it in a constant with this name.
+
+You can even add rest parameters here
+
+and have remaining hobbies here
+
+in case the hobbies array had more elements than just two.
+
+Then all the remaining elements which you didn't pull out
+
+into hobby one or hobby two
+
+will be stored in a new array called remaining hobbies.
+
+So they will be merged together into a new array.
+
+By the way destructuring does not change the original array.
+
+So if we console.log hobbies, hobby one, and hobby two here,
+
+you will see that hobbies is still the old array.
+
+It's not empty or anything like that.
+
+So the values which we pulled out in quotes
+
+are really just copied into new constants or variables,
+
+not really removed from the array.
+
+Now that's array destructuring.
+
+We've got the same for objects.
+
+We've got our person here.
+
+Now let's say we want to store name and age
+
+in standalone constants, or variables.
+
+Just as array destructuring,
+
+object destructuring works with both const and let.
+
+Here I'll go with const.
+
+And now we can use curly braces
+
+on the left side of the equal sign.
+
+Although a new syntax, I guess.
+
+And have our object, or the variable pointing at the object
+
+on the right side.
+
+Now by the way, please note,
+
+this is not an object type I'm assigning here.
+
+I don't have a colon here.
+
+It's really just curly braces like this on the left side
+
+without a colon after some constant name.
+
+So I'm not assigning the type of the value
+
+that could be stored a constant.
+
+I'm really just using a special syntax.
+
+Because here, we now also can refer
+
+to property names we have in an object,
+
+for example, name and age,
+
+to pull the values for these keys out of person
+
+and store them in constants of the same name.
+
+Now here I'm getting errors
+
+because at the very top I already have a age variable.
+
+And name turns out to be a globally available variable
+
+which exists anyways.
+
+So there, the workaround would be
+
+to really just use a different key name here,
+
+firstName, for example.
+
+And now we can pull out the value by that key here.
+
+So this is how object destructuring works.
+
+The important thing here is for array destructuring,
+
+elements are pulled out in order
+
+because an array is an ordered list.
+
+In objects, the order is not always guaranteed,
+
+and therefore, we don't pull elements out by position,
+
+but by key name.
+
+So the values, or the names you specify here
+
+between the curly braces,
+
+are not arbitrary.
+
+You can't come up with names here.
+
+These have to be property names you find in the object,
+
+so that the values for these keys
+
+can be pulled out of the object
+
+And then they're stored in constants or variables
+
+of the same name.
+
+If you would want to override that name,
+
+you could do so with a colon here.
+
+Again, it's not a type assignment here.
+
+It just sets a new name.
+
+So this is all JavaScript syntax,
+
+has nothing to do with Typescript.
+
+So here we could store this
+
+in a userName constant for example.
+
+And therefore, thereafter,
+
+we can console.log userName and age,
+
+but not firstName,
+
+because it basically overwrote firstName
+
+to be named userName in the constant which we create
+
+when we pull out values here.
+
+Age is not overwritten, so we can use it like that.
+
+Again, this is not a type assignment here.
+
+This is JavaScript syntax,
+
+where we alias rename a property
+
+we're pulling out of person.
+
+Also, just as before with the array,
+
+the person object itself has not changed.
+
+We really just copy these values out of the object.
+
+And therefore, we get this output here.
+

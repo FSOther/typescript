@@ -1,0 +1,302 @@
+So to tell Webpack what to do
+
+with TypeScript files, we need to add a new entry
+
+to the configuration object here.
+
+And that's the module property.
+
+Module also takes a JavaScript object
+
+to then configure it.
+
+A module in the end is just a file,
+
+so here we tell Webpack how to work with the files it finds,
+
+like with the app.ts file, and then also
+
+once it understands that file, how to deal
+
+with all the imports in the file.
+
+So how should Webpack deal with these files?
+
+Well, we tell Webpack by adding a rules array here,
+
+because you can set up multiple rules
+
+that should be applied to all the files.
+
+Here we only need one, but in more complex projects,
+
+where you also want to use Webpack to handle CSS files,
+
+or images, or anything like that,
+
+you can add more rules for different types of files.
+
+And as mentioned before, the official docs
+
+are a great place to learn more about loaders,
+
+which you in the end use to teach Webpack
+
+more about different files, and to learn more
+
+about Webpack in general.
+
+So here, we will add such a loader actually.
+
+A loader is simply a package that tells Webpack
+
+how to deal with certain files,
+
+and of course here, we got the ts loader,
+
+which helps us tell Webpack
+
+how to deal with TypeScript files.
+
+So we add a rule which is just a JavaScript object,
+
+where we first of all add a test property.
+
+This describes a test Webpack will perform
+
+on any file it finds to find out whether this rule here
+
+applies to that file or not.
+
+And the test here is a regular expression.
+
+And there I wanna tell Webpack that any file
+
+which ends with .ts should be used
+
+or should be handled by this rule.
+
+A regular expression that checks for the file extension
+
+can use a backslash here, and then .ts,
+
+and then a dollar sign.
+
+This is our regular expression which then tells Webpack
+
+that you wanna check for files that end with .ts.
+
+Then, you also have to specify what Webpack should do
+
+with those files, and you do that with the use keyword here.
+
+And there, you specify the loader Webpack should use,
+
+in my case, ts-loader.
+
+So we tell Webpack that any TypeScript file it finds
+
+should be handled by the TypeScript loader
+
+which then in turn knows what to do with such a file.
+
+The ts-loader will automatically
+
+take the tsconfig.json file into account
+
+so we don't need to specify any extra configuration here.
+
+Just one configuration that never hurts,
+
+exclude node modules as a regular expression
+
+so that Webpack also doesn't try to look into node modules.
+
+With that we need to add one extra configuration here
+
+after the module configuration, and that's the resolve key.
+
+There we tell Webpack which file extensions it adds
+
+to the imports it finds.
+
+I said Webpack would add extensions on its own,
+
+and by default, it will look for .js files.
+
+Now here we want Webpack to look for .ts files,
+
+and then for here in resolve, we can add
+
+a extensions property, set as equal to an array,
+
+and tell Webpack that it should look for .ts files
+
+as well as .js files.
+
+So now Webpack will basically look for such files
+
+and then bundle all files that have these extensions,
+
+which you are importing together.
+
+And that's our setup almost finished for the moment,
+
+our configuration file almost finished
+
+for the moment at least.
+
+With that we just should go to tsconfig as well,
+
+and there make sure that you set sourceMap to true.
+
+This will help us debug our code,
+
+and Webpack supports this as well.
+
+There we now just also have to add an entry,
+
+maybe here below output,
+
+and that's a devtool key.
+
+And there, the value should be inline-source-map
+
+as a string.
+
+This then tells Webpack that there will be
+
+generated source maps already,
+
+which it should extract and basically wire up correctly
+
+to the bundle it generates, so that whilst we get
+
+such a bundle, we still have a great development experience.
+
+Now with that we can use Webpack, and the question is
+
+how do we use it?
+
+A simple way of using it is to go to the package.json file,
+
+and there let's add a script.
+
+For example, build.
+
+You can give it any name you want
+
+here in the scripts section.
+
+And there, simply run Webpack,
+
+so just type webpack like this.
+
+Let's now also go to the dist folder,
+
+and in the end remove everything that's in there,
+
+and with that save, now run npm run build
+
+and let's see whether that works.
+
+And it fails...
+
+Yeah, I simply got a typo,
+
+that should not be devtools, but devtool here.
+
+So change this to devtool in the configuration file
+
+and now let's repeat npm run build.
+
+And, with that you can ignore the warning you get here.
+
+You will see that in the dist file,
+
+you have a bundled js file.
+
+And what you see in there also already
+
+is quite unreadable code,
+
+because we have this minification in action here actually.
+
+So this actually already is this optimized code as well.
+
+Now before we see how we can also work
+
+with different configurations here,
+
+let's actually go to the index.html file,
+
+and adjust our imports here
+
+and point bundle.js,
+
+and for the moment, since we're not using
+
+Webpack Dev Server yet, let's run npm start
+
+to bring up that index.html file again.
+
+And if you now reload this page,
+
+you see this works!
+
+If we enter something here,
+
+our project works the way it should,
+
+and it imports the bundled js file here,
+
+so only one file instead of all these individual files.
+
+And that already is an enhancement.
+
+Here we already have the bundled code
+
+which avoids all these unnecessary htp requests.
+
+And if you go to the sources tab by the way,
+
+and you wanna debug your code,
+
+you'll find this Webpack folder,
+
+and in there a source folder,
+
+and there you can go to your TypeScript files.
+
+And for example, here, on project-input,
+
+you can also set a break point here
+
+on gatherUserInput, and if you now press the button,
+
+it pauses there,
+
+and you can debug your code.
+
+And that's the source maps coming in,
+
+which really help us developing
+
+and which make our life as a developer easier.
+
+We got this optimized code, but thanks to the source maps
+
+we can debug our original TypeScript code here.
+
+So we already have a pretty amazing setup,
+
+which gives us a lot of optimizations already,
+
+now let's finish this and make sure
+
+we actually have the Webpack Dev Server included,
+
+and we then actually have two workflows,
+
+one for production, and one for development.
+

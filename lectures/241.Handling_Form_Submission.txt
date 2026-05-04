@@ -1,0 +1,166 @@
+Now our little demo application here
+
+is missing a form that allows us to add new goals.
+
+And that would of course be nice to have.
+
+And handling forms would also be something
+
+that would be interesting to see
+
+in conjunction with TypeScript
+
+being used in this application.
+
+That's why I prepared this NewGoal.tsx file here,
+
+because in there I wanna have a form
+
+we can use for adding a new goal to this list of goals.
+
+So of course we should again export
+
+a component function here named NewGoal, for example.
+
+And in that component function,
+
+I wanna return a form using the built-in form element.
+
+In that form I then wanna have a paragraph
+
+which wraps a label for
+
+with the text Your goal, for example,
+
+which will be connected to an input.
+
+I'll give that input and id of goal, set the type to text.
+
+And on that label I'll set the htmlFor prop to goal,
+
+to link that label to the input with that id.
+
+I'll then copy this paragraph, paste it in,
+
+and add a second input field with a label of Short summary,
+
+use summary here and for the id
+
+leave the type set to text.
+
+And below that add yet another paragraph,
+
+which includes a button with a caption of Add Goal.
+
+That's a very basic form that should allow us
+
+to add a new goal.
+
+Now of course, we need to handle the submission of that form
+
+and then extract the submitted data and create a new goal.
+
+And when it comes to doing that, there are different ways
+
+of doing that in React.
+
+Since we're using React 19 here,
+
+or if you're using any version higher than that,
+
+we could use the form action's feature
+
+that was introduced with React 19.
+
+I covered that in my React course, but here I won't use it.
+
+Instead, I'll handle the submission manually,
+
+which is arguably the approach you'll see
+
+in more React projects being used.
+
+Also, because this action approach was only added
+
+with React 19, so all older React projects can't use it.
+
+To handle the submission manually,
+
+we should listen to the onSubmit event
+
+or to the submit event with the onSubmit prop here.
+
+And then define a function
+
+that should be triggered upon submission.
+
+And I'll name that function handleSubmit,
+
+and set this as a value for onSubmit.
+
+Now, handleSubmit will automatically receive
+
+an event object.
+
+Now, event needs a type annotation here
+
+to make TypeScript happy,
+
+because otherwise it would be of type any
+
+which is not allowed due to our strict rules.
+
+Now which type should we add here though?
+
+Well, if we hover over onSubmit,
+
+we see that this actually should be a FormEventHandler.
+
+That's the type of value we can pass to onSubmit.
+
+Now, what is a FormEventHandler though?
+
+Well, that is a function
+
+that receives an event argument
+
+and the type of that event argument should be FormEvent,
+
+which is a type imported from React.
+
+How do I know that?
+
+From reading documentation and from experience.
+
+Now, FormEvent is actually a generic type
+
+which needs a little piece of extra information
+
+it needs to know to which HTML element it is connected.
+
+And in that case that will be a HTMLFormElement.
+
+Might sound obvious, but you still need to add it.
+
+And that's the type for this event parameter
+
+on this function that is passed as a value to onSubmit.
+
+Inside of handleSubmit,
+
+we can now call event.preventDefault
+
+to prevent the browser default,
+
+and then we can handle the submission manually here
+
+on the client side in JavaScript with React.
+
+And of course handling the form submission
+
+on the client side
+
+means that we need to extract the submitted data.
+
+And for that, we again got multiple choices.
+

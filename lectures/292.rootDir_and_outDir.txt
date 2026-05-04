@@ -1,0 +1,278 @@
+Let's move on.
+
+We got the outFile option here,
+
+now this option does not matter to us right now,
+
+it won't work right now.
+
+More interesting to us is outDIR and rootDir.
+
+The bigger your project gets,
+
+the more you might want to organize your files.
+
+Typically, you don't just want to have your files
+
+lie around here in your
+
+root level project folder.
+
+Instead, what you often will see in projects is
+
+that you have a source folder,
+
+and you have a dist folder,
+
+next, next.
+
+So, the dist folder has the job of holding all the output,
+
+so all the JavaScript files, let's say.
+
+And the source folder might hold all our TypeScript files.
+
+So we can move the TypeScript files into the source folder,
+
+and if I now delete the JavaScript folder,
+
+we have the problem that if we compile everything,
+
+these TypeScript files are compiled because TypeScript,
+
+the compiler does look into sub-folders,
+
+but the output sits next to our input files.
+
+And that's something we can control with the outDir,
+
+for example.
+
+If we set outDir, we can tell the types with the compiler
+
+where the created file should be stored.
+
+We could set this to dist.
+
+Now if we do that, then if you run chia seed
+
+you will see that the JavaScript files, indeed,
+
+are not placed in the source folder,
+
+but in the dist folder.
+
+Now we just have to adjust our index.html file,
+
+and there point at dist/app.js
+
+and dist/analytics.js or alternatively
+
+move the index.html file into the dist folder
+
+but then our def server wouldn't work correctly
+
+anymore right now.
+
+So let's just adjust these imports
+
+and with that, we got a working application still,
+
+as you see,
+
+but now with a cleaner project structure.
+
+Now the good thing is,
+
+if we had a sub-folder here,
+
+an analytics folder, let's say,
+
+and we had our TypeScript file in there,
+
+then if we re-compile,
+
+and it does not matter if you do it with this command
+
+or the watch mode,
+
+this folder structure you have the source folder
+
+will all be replicated in the dist folder
+
+which is, of course, very convenient
+
+because that makes sure that
+
+you can import the files basically as you would import them
+
+in the source folder, as well,
+
+so that the structure you set up there is kept.
+
+Now you can also set the root directory
+
+and set this specifically at the folder
+
+where your files are stored in,
+
+like in this example, source,
+
+to make sure that the types of compiler does not
+
+look in our folders.
+
+That's also something you can do
+
+with the include option down there, right?
+
+But with root directory,
+
+the types of compiler will not just look
+
+only at that source folder
+
+it also makes sure that the project structure,
+
+you set up there,
+
+is kept in a dist folder.
+
+Now it did so by default before, as you saw,
+
+but keep in mind that before
+
+it would have included any TypeScript files here,
+
+all the outset of source,
+
+so, for example, if you comment this out temporarily
+
+if we had a user folder here on the top level
+
+with a user.ts file
+
+where we have a user name of Max let's say,
+
+then if we compile this,
+
+you will all just see that user folder
+
+in the dist folder.
+
+And now the source folder is included as well
+
+because now we have a typescript file on a higher level
+
+and therefore the typescript compiler thinks that
+
+our whole project again is the input
+
+and it replicates the folder structure it finds there
+
+in the dist folder.
+
+Now that's, of course, not what we would want
+
+and that's where the
+
+rootDir option helps us.
+
+Now if we set this to source,
+
+even if we had other folders
+
+with TypeScript files in there on the root level
+
+they would not be included in the output
+
+and the source folder itself
+
+would not suddenly end up there.
+
+So often you set both rootDir and outDir
+
+to be really clear regarding where you input files live
+
+and where your output files would be generated in.
+
+If we move on, we can ignore composite.
+
+We can have a look at removeComments.
+
+Should be pretty clear if you set this,
+
+then any comments
+
+you might have in your TypeScript files,
+
+will be removed in the compiled JavaScript files.
+
+So if I comment this in and I compile my code,
+
+you see an app.ts, I have a comment.
+
+An app.js, it's not there.
+
+So you can do that to make your files smaller
+
+and the effort might be a nice option.
+
+You can also set noEmit if you don't want to
+
+generate any JavaScript files.
+
+Now this might sound strange
+
+because that's the idea of TypeScript,
+
+but if you just want to check
+
+whether your files are correct
+
+but you don't want to write all these output files,
+
+to save some time, for example, in a bigger project,
+
+then you could set this to "true"
+
+to just have the types of compiler
+
+check your files and report any potential errors
+
+without actually creating an output file.
+
+importHelpers is not really important to us,
+
+here we can ignore that.
+
+downlevelIteration is an advanced option.
+
+It is interesting when you
+
+compile your code to older versions of JavaScript
+
+and you work with four loops.
+
+Then in some rare scenarios, you could run into issues
+
+where the compilation doesn't work correctly.
+
+This option, if you turn it on,
+
+give you a more exact compilation,
+
+which will work in these niche cases,
+
+so therefore you might think you should always turn it on,
+
+but it will also the output more where those code.
+
+So you should only turn this on
+
+if you have loops and you see that your generated code
+
+suddenly behaves differently than it should
+
+regarding those loops.
+

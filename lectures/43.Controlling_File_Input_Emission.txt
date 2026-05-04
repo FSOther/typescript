@@ -1,0 +1,226 @@
+Now the module setting here is interesting
+
+because it allows you how imports and exports work
+
+in this project,
+
+and a good choice here for Node.js projects is node next.
+
+This will simply support modern Node.js import
+
+and export statements.
+
+In a project where the code will be bundled
+
+by a bundler like webpack
+
+or where you might be using Vite,
+
+you might want preserve there for example.
+
+But again, this is something
+
+which will typically be set for you.
+
+RootDir is an interesting setting
+
+because if you're not working on a project
+
+where everything is set up for you,
+
+you can use it to control
+
+which folder will contain your source files.
+
+For example, I could add a source folder
+
+and move my app.ts file into that
+
+so that the app.ts file is in that source folder.
+
+And then here I could set the rootDir to this src folder,
+
+and now the TypeScript compiler would look for
+
+TypeScript files in that src folder,
+
+at least if it's invoked correctly,
+
+which is something I'll get back to soon.
+
+Now then we got more options here for configuring
+
+how files will be resolved and loaded.
+
+And most settings here can again be ignored
+
+and we can keep the defaults,
+
+actually all these remaining settings here,
+
+but what's interesting is this JavaScript
+
+support part here now.
+
+Because you can actually mix and match
+
+TypeScript and JavaScript code
+
+and combine both in the same project,
+
+if you want to, you can have TypeScript files
+
+and next to that you could have a JavaScript file,
+
+which is not compiled to JavaScript
+
+because it is already JavaScript.
+
+You could have the combination
+
+of both files in your project if you allow JavaScript,
+
+then the compiler will not complain
+
+if you have a TypeScript file that also interacts
+
+with a JavaScript file, for example.
+
+Now you could even turn on some basic type checking
+
+in JavaScript files as well.
+
+Obviously you don't have file annotations there,
+
+but TypeScript can infer types for certain places and so on.
+
+So you could turn this on
+
+to get at least some TypeScript benefits,
+
+even if you're just using JavaScript.
+
+And then we got this emit area here.
+
+Again, lots of settings which you will rarely need.
+
+Interesting is the sourceMap part,
+
+which you can set to true,
+
+so that when TypeScript compiles the code,
+
+it also generates source maps,
+
+which can help with debugging your running application.
+
+And the outDir part that's also also interesting.
+
+This allows you to specify a directory
+
+in which your compiled files will be stored,
+
+like for example, dist.
+
+Now I could add a dist folder, which initially is empty,
+
+but which should be populated
+
+with the compiled files once the compiler runs you.
+
+You could also add a out file if you wanted
+
+to bundle multiple input files into one single output file
+
+so that you could even use the TypeScript compiler
+
+as a bundler.
+
+Though, I will say
+
+that in most projects you will not do that
+
+and you'll instead use a dedicated bundler like webpack
+
+or a built tool like Vite,
+
+which also has bundling capabilities,
+
+simply because these tools
+
+have way more capabilities, may be faster,
+
+and also offer more features.
+
+But in theory, TypeScript can also be used
+
+as a basic bundler.
+
+Now removeComments should be obvious.
+
+NoEmit would allow you to tell TypeScript
+
+to actually not output any files when it compiles the code
+
+so that it essentially just checks the code
+
+but does not produce an output,
+
+if you wanted that.
+
+And you also have a setting like noEmitOnError,
+
+which for example ensures
+
+that no new files are created and output
+
+if there is an error during compilation,
+
+because interestingly enough,
+
+by default when you compile TypeScript code,
+
+it will generate a JavaScript output file,
+
+even if there is an error,
+
+a type error in your TypeScript code.
+
+Now, if you set noEmitOnError to true,
+
+this will no longer happen
+
+and output files will only be created
+
+if the compilation process finished without an error.
+
+So that can be interesting too.
+
+Now, we then have some settings
+
+that deal with differences in
+
+how the ES module system works
+
+in JavaScript and how imports and exports work
+
+under different rules, very advanced,
+
+and typically all the controlled by the tool you are using
+
+for creating projects.
+
+And instead, it's this type checking part
+
+that's most interesting to you as a developer, typically,
+
+because all these other parts are often controlled for you,
+
+it's just important
+
+to understand some essential there like the target,
+
+but it's the type checking part that's most interesting
+
+to developers typically.
+

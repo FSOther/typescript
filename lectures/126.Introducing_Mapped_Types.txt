@@ -1,0 +1,276 @@
+Another kind of derived type
+
+or feature for deriving types is the mapped-types feature
+
+offered by TypeScript.
+
+And the idea behind mapped-types
+
+is that you have a relatively simple
+
+and straightforward way of converting one object type
+
+to another kind of object type.
+
+And here's an example.
+
+Let's say you are describing a type,
+
+maybe called Operations, which in the end is there
+
+to define some object type.
+
+Let's say an object type
+
+where you have two methods in that object,
+
+an add method, which maybe takes two parameters
+
+of type number A and B, and which returns a number,
+
+and a subtract method, which does the same essentially.
+
+It takes two parameters of type number
+
+and returns a number.
+
+And just again, to be very clear,
+
+we're defining a type here, not an object value.
+
+We're defining an object type instead.
+
+And add and subtract are in the end two properties
+
+that store functions as values.
+
+Hence, they become methods.
+
+We have the add and subtract method.
+
+And here we have regular function type definitions
+
+as you learned it earlier in the course.
+
+We're defining the parameter list
+
+and the types of the parameters
+
+and then the return value of that function.
+
+And we could then create a new variable, mathOperations,
+
+which is of type Operations, so which uses this type.
+
+And here we would then create an object value.
+
+And in order to satisfy this type definition,
+
+we now need to add these two methods.
+
+A add method, which takes these two parameters,
+
+A and B, which are of type number,
+
+and which then returns a number, for example,
+
+by adding A and B.
+
+And then we also must add a subtract method,
+
+which also takes two parameters of type number
+
+and then returns a number, for example, like this.
+
+So that would be a way of using this operations type.
+
+But of course that's really nothing new.
+
+We've worked with object types before.
+
+But now let's say you want to add a new additional type
+
+Results could be the name,
+
+which should have a similar shape, add and subtract,
+
+but here you want to store just the results
+
+of these operations, not the methods, not the functions.
+
+So you wanna store just a number for both.
+
+Of course you could define results like this
+
+and you could then use it
+
+by adding a new variable or constant,
+
+mathResults, which uses the Results type.
+
+And here you then would have your object
+
+where you add the add property,
+
+reach out to the mathOperations variable
+
+and call add with two numbers, for example,
+
+and store a value for subtract by calling
+
+mathOperations.subtract and passing two numbers to it.
+
+That would be a way of using the Results type
+
+to define such an object.
+
+Again, this is nothing new.
+
+But, as you can see here,
+
+this results object type is kind of
+
+related to this operations object type.
+
+It has the same property names here
+
+and it then just stores the results
+
+of calling these methods.
+
+Of course here it's a very simple type,
+
+so defining it like this is no problem.
+
+But if this would be a more complex object,
+
+it could become annoying to define it like this
+
+if it's closely related to another object.
+
+And that's exactly where mapped-types can help you.
+
+Because instead of manually defining
+
+this object type like this,
+
+you can actually turn this Results type
+
+into a generic type
+
+by adding such a generic type parameter called T,
+
+in this example.
+
+And then you can add dynamic properties to this object type
+
+by basing them on the property names
+
+of some other object type.
+
+And the syntax for doing so is
+
+to add another type placeholder here,
+
+which was not defined between those angle brackets.
+
+And that could be K, or key, it doesn't matter,
+
+in keyof T.
+
+So I'm using that keyof TypeScript operator
+
+I introduced earlier
+
+to get all the keys, all the property names
+
+of this T parameter here, of this T placeholder,
+
+so of the concrete type we get for T,
+
+assuming that it will be an object type.
+
+And then we can use this in operator,
+
+which is also offered by TypeScript,
+
+in this place to go through all those keys
+
+and map them to keys in this object type
+
+so that we add the same keys
+
+that we got on this incoming object type here,
+
+whichever that will be, in this object type.
+
+We simply add all the keys to that object type.
+
+And we then set the type of value that will be stored
+
+for all those keys to any type of our choice.
+
+For example, number or to a union type,
+
+like number or string, whatever you need.
+
+But here I'll use number
+
+because I know that my results type should simply store
+
+a bunch of numbers for different operations
+
+that are defined in some other object.
+
+Well, and with that we created a mapped- type in the end.
+
+This here is a mapped-type.
+
+We're taking all the properties of some other object type
+
+and we're adding them with a clearly defined value type
+
+to this object type.
+
+And this object type is
+
+therefore based on this first object type
+
+or on whichever object type is passed in
+
+for this type parameter.
+
+So here we can use it down here
+
+by adding the angle brackets when using results,
+
+and by then in our case here, passing this operations type
+
+for this type placeholder to Results, like this.
+
+And with that TypeScript, we'll understand
+
+that mathResults should be an object type of this shape,
+
+which in the end will contain all the keys
+
+of this type that we're passing in here
+
+between the angle brackets.
+
+So it will be an object that has a add and subtract key,
+
+but the value stored for both keys will be number
+
+because that's what we define in our results type here.
+
+And as a result, we can use our results type in conjunction
+
+with the operations type, like this, to store this object.
+
+And therefore this mapped-type feature can be very useful
+
+if you wanna base one type, one object type, I should say,
+
+on some other object type.
+

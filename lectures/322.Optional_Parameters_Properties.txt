@@ -1,0 +1,182 @@
+Let's come back to interfaces for objects.
+
+You can also define optional properties
+
+in interfaces and also in classes, as I will show you.
+
+For that, you add your property name, let's say
+
+'outputName' here, can be whatever you want of course,
+
+and that should be a string.
+
+I don't want to force every class based on Named
+
+to have that.
+
+It should be optional whether you want to have it or not.
+
+You can specify an optional property
+
+by adding a question mark after the property name.
+
+This tells Tivescript that this property
+
+might exist in classes that implement this interface
+
+but it doesn't have to.
+
+And therefore, we get no error here in 'Person'
+
+even though I don't have an output name property
+
+because it is optional.
+
+Now of course, I can add output name here
+
+and initialize this with some value
+
+or use it like any other property but I don't have to.
+
+Now on a class you can also have an optional property.
+
+Let's same name here should be optional,
+
+because maybe we don't get a value here for N.
+
+We can add a question mark here as well
+
+in our class.
+
+We now just also have to make it optional here in Named
+
+otherwise we violate against our interface
+
+which forces this to be a string.
+
+Now I'm saying this can be optional.
+
+So here it's not optional,
+
+and here when I set this equal to N,
+
+I only want to do this if N is truthy,
+
+if it is set.
+
+So only if it's not an empty string for example.
+
+Otherwise, name will not be set and that is okay
+
+because I turned it to be an optional property
+
+both here in the interface but also in my class.
+
+Now here, when we construct a new object,
+
+we could do this without passing in a name.
+
+To allow that, we have to go to the constructor
+
+and provide a default value here
+
+or also add a question mark here.
+
+This is all to allow it.
+
+You can add optional parameters
+
+either by providing a default fall back value
+
+or by adding a question mark
+
+in which case the default value will be undefined.
+
+And now we can call this constructor without a value
+
+because we have that optional parameter
+
+and because we have the optional property that is okay,
+
+we don't need to initialize it.
+
+And hence thereafter if you greet,
+
+well this name of course will yield undefined.
+
+So probably we should check here as well
+
+if we got a name,
+
+and if we do we console.log this.
+
+Else, we console.log "hi" without any reference
+
+to the name because we don't have one.
+
+If we say that if everything compiles
+
+and we see just hi here
+
+because it didn't provide a name.
+
+So that would be optional properties
+
+both in a class and in an interface
+
+and also in my constructor list here.
+
+Now just to make it really clear again,
+
+these three things are only loosely related.
+
+You can an optional property in an interface
+
+and then implement it as a non optional property
+
+in the class.
+
+You then just have to make sure that your logic is such
+
+that this is always initialized otherwise you get an error
+
+as you just saw.
+
+Or you have an optional property in an interface
+
+and an optional property in your class,
+
+then you don't have to assign a value in all cases here.
+
+And in addition and totally unrelated here,
+
+you can have optional parameters
+
+in functions and therefore also in methods
+
+including the constructor method.
+
+Optional parameters are defined either
+
+with the question mark,
+
+where the default value if not set is therefore undefined
+
+or simply by assigning a default value like this.
+
+Then as you learn, this is also optional
+
+and the default value will be assumed if you don't pass in
+
+a more specific value.
+
+So this gives you more flexibility
+
+in how you structure your classes,
+
+and when we talk about interfaces,
+
+how you structure your contracts
+
+classes might need to adhere to.
+

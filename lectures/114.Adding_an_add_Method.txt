@@ -1,0 +1,258 @@
+So, how can we store that value
+
+in the ListNode?
+
+Well, we need to work on the ListNode class a little bit,
+
+because in this ListNode, I wanna store a value.
+
+That's the main task of this ListNode.
+
+It should be a value container.
+
+So, we could add a value property here
+
+and we'll worry about the type in a second,
+
+but I also want to instantiate this ListNode
+
+at the same point where I assign a value
+
+for the value property.
+
+And hence, we can use TypeScript shortcut
+
+where we define a constructor,
+
+accept the value here as a parameter,
+
+and worry about the type later.
+
+And add public here to make it public accessible
+
+and create a property of the same name
+
+as this parameter automatically.
+
+That's this TypeScript shortcut
+
+I mentioned earlier in the course.
+
+We're taking advantage of it here
+
+to keep this code a bit more concise.
+
+Now, what about that value type?
+
+Which kind of value do we want here?
+
+Well, again, this should be generic.
+
+We should be able to store all kinds of values.
+
+So, again, I'll make ListNode a generic class as well,
+
+and then use this T type placeholder here.
+
+Like this.
+
+The ListNode should also store
+
+some other kind of information, though.
+
+It should store a link to the next node in line,
+
+at least potentially if we have more than one value
+
+in a LinkedList.
+
+That's why I'll also add a next property here,
+
+and I'll set this type of the next property
+
+to ListNode, so to the same class
+
+because I wanna store a value of the same type
+
+of type ListNode here under that next property
+
+so that will be my link to the next item in line.
+
+Therefore, I'll forward this type here
+
+to this ListNode type here,
+
+and I'll make it optional,
+
+because we might not have a next node.
+
+If it's the last node
+
+that has been inserted into this LinkedList,
+
+there is no next node yet.
+
+So, it may be undefined.
+
+That's what we ensure by adding this question mark.
+
+Now, down here in the LinkedList,
+
+we now need to change this type here for a root
+
+and forward this generic type to it, so to say.
+
+And now, as a next step, we can make sure
+
+that we create a new ListNode and store that value
+
+whenever this add method here in the LinkedList gets called.
+
+So, here in the add method, I wanna create a new node
+
+by instantiating the ListNode,
+
+so this class we just worked on,
+
+and I wanna pass my value to ListNode.
+
+I then don't need to add those angle brackets here
+
+to pass the concrete type value for ListNode to it,
+
+because TypeScript is able to infer that
+
+from the value that's passed to ListNode.
+
+Of course here, the concrete type is still generic,
+
+but it will not be generic anymore
+
+once we instantiate LinkedList itself.
+
+So we kind of passed that concrete type here,
+
+number or string,
+
+through the LinkedList to the ListNode in the end.
+
+So, that's the node.
+
+Now, this node must be stored here in this LinkedList class.
+
+And that's easy if there is no element in that class yet,
+
+so if root is undefined, if no value has been added yet,
+
+then it's pretty easy,
+
+because then we just need to set root equal to node.
+
+But of course, it's not that easy anymore
+
+if we have at least one item in the LinkedList already,
+
+because then the new item should be added
+
+at the end of the list and the item in front of it,
+
+which previously was the last item,
+
+must be updated to point at the newly added node
+
+through its next property.
+
+Therefore, this code down here needs to change.
+
+We need to check if we don't have a root node yet.
+
+And in that case, I wanna set this root
+
+to my newly added node.
+
+But if we do have a root node already,
+
+I instead wanna update the last node
+
+of this list of nodes,
+
+which are, in the end, managed here.
+
+In this case here,
+
+that we're not inserting the first node ever
+
+into this link list,
+
+I wanna store my current node,
+
+which I'm currently evaluating
+
+in a helper variable that could be named current.
+
+And I'll start with the node stored under root,
+
+but I'll then add a while loop here
+
+to go through all the nodes, step by step,
+
+that I have in that LinkedList.
+
+And I can do this by simply targeting current.next.
+
+Now, next is either undefined or it is a node.
+
+If it's undefined, it will be a falsey value
+
+and the while loop will exit, because it keeps on looping
+
+as long as this is a truthy value,
+
+which will only be the case as long as next points
+
+at a node object.
+
+Therefore, inside of the while loop,
+
+I'll update current to point at current.next,
+
+so at the next node,
+
+and therefore this loop will keep on going
+
+until we have a node where the next value is undefined,
+
+so until we reached the last node to put it like this,
+
+then the loop will end.
+
+So, this loop will give us the last node
+
+in that list of nodes.
+
+And then it's on that last node
+
+where I'll set next, which currently is undefined,
+
+to this node,
+
+this node here, which has been inserted,
+
+which holds that new value.
+
+And this is the only thing we need to do
+
+to append this new node with this new value
+
+to the end of this LinkedList.
+
+Now, outside of this, if check here,
+
+I'll also change this length and increment it by 1,
+
+because either way, if it's the first element or not,
+
+we added one element to the LinkedList.
+
+And with that, we got the finished add method.
+

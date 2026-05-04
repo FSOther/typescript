@@ -1,0 +1,94 @@
+Now here's something interesting
+
+about defining those component types though.
+
+As I explained, you can simply define your own interface
+
+or type like this, and assign it like this.
+
+And that is the recommended way
+
+of setting up your types.
+
+But there also is an alternative,
+
+especially in older React projects.
+
+You might see your prop types being defined
+
+in a different way.
+
+And I want to show you that approach as well
+
+so that you know it.
+
+Instead of defining your function like this,
+
+what you'll see sometimes is that a variable
+
+or constant is defined, named CourseGoals, for example.
+
+And this constant or variable then holds an arrow function,
+
+which is your component function,
+
+and it's then this constant or variable that is exported.
+
+Now to pass the important type information to this function,
+
+a type is then assigned to CourseGoals.
+
+And that type is often set to FC,
+
+which is a type imported from React.
+
+So that's a type.
+
+The type annotation is technically not needed,
+
+but often useful to indicate that it's a type.
+
+This stands for functional component or function component,
+
+and it's a generic type.
+
+And you can pass your props type
+
+to that generic type as a type parameter,
+
+so in my case, CourseGoalsProps.
+
+And if you do that, you can then, again,
+
+accept your props object here and it will be of that type.
+
+TypeScript understands this
+
+because this generic type parameter is mapped
+
+to this parameter type here.
+
+And of course you can therefore also use destructuring.
+
+And that code will work just as well as the other code.
+
+That's perfectly fine code.
+
+It's just a bit more complicated to write, you could say,
+
+which is also why this approach here is recommended
+
+instead of using that other approach.
+
+But you can, of course, use whichever approach you prefer.
+
+This one is the more modern recommended one though.
+
+But you will also sometimes see this approach, this syntax,
+
+and that's why I wanted to show it to you.
+
+Now, we can also get rid of that type import
+
+because we don't need it anymore.
+

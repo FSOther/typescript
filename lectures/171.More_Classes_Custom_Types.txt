@@ -1,0 +1,324 @@
+As a next step, I wanna work on these types here,
+
+the any type I'm using here for my assigned projects,
+
+for the listeners here,
+
+and also for the projects in the project state.
+
+Of course, here, I don't wanna work with any,
+
+it would make more sense to have
+
+a dedicated project class or project type, which we can use.
+
+And indeed, I will create a class for that
+
+project
+
+type,
+
+simply by using class project
+
+so that we have a way of building project objects,
+
+which always have the same structure.
+
+Right now I'm doing it down there with the literal notation.
+
+The downside of that, of course, is that we have to remember
+
+that it's description and not Desc.
+
+that we need an ID, which is a string,
+
+and so on.
+
+So that's where a custom type can help us
+
+and I'll create a class and not an interface
+
+or a Custom type with the type keyword
+
+because I want to be able to instantiate it.
+
+So how should such a class look like
+
+or such a project look like to be precise?
+
+Well, I'll add a constructor
+
+and then use this shortcut of assigning arguments
+
+or parameters to the constructor,
+
+which then automatically become properties as well,
+
+by adding the accessor at the beginning,
+
+Public, in this case,
+
+and then the name of the argument and property,
+
+and then the type.
+
+And here every project should have an ID.
+
+Every project should have a title,
+
+which also is a string, just like the ID.
+
+It should have a description,
+
+which is a string,
+
+it should have a People property,
+
+which is a number
+
+that's the number of people assigned to a project.
+
+And one thing I also want to add,
+
+which we didn't have thus far,
+
+is actually a project status.
+
+Because right now when we add a project here,
+
+it appears in both lists.
+
+Now, I want to add status to a project
+
+which of course can be changed
+
+so that we actually can filter for active projects
+
+in the first box and finished projects in a second box.
+
+So to be only show the right projects at every box.
+
+So for that I'll add another public property here, status.
+
+And now the question of course is
+
+which type should this status have?
+
+Now we could use a union type with two literal types
+
+Active and Finished what we used earlier already.
+
+But here, I always want to introduce
+
+or reintroduce another type you learned about,
+
+and that's the Enum.
+
+The Enum perfect here because we have exactly two options.
+
+And here in the context of this project object,
+
+we also don't need a text which makes sense to humans,
+
+which we store as a value,
+
+but we really just need some identifier.
+
+So here I'll add a new Enum project status.
+
+And I want to have two values there,
+
+Active and Finished.
+
+And then here, this status will be of type
+
+project status just like that.
+
+This is now my project class.
+
+With that here, we can say that this is an array
+
+of projects using that project class.
+
+And of course, when we create a project here,
+
+we do that by using new project
+
+project,
+
+not project state.
+
+And here to project we forward an ID in this case,
+
+as mentioned before,
+
+a random number which we convert to a string,
+
+then the title,
+
+then the description,
+
+then the NUM of People here,
+
+and then also, of course, that's status, right.
+
+And one thing I want to have here in this application
+
+in this demo project is that every new project
+
+by default is active.
+
+So when we create a new project here,
+
+we assign projectstatus.active
+
+here as a value for the status
+
+with that, we have to project which we add.
+
+And now there's one other place
+
+where we need the project class.
+
+And that is here in project List class
+
+there, we have the Assign projects property.
+
+And of course, that should always be an array of projects.
+
+Now with that we're using Beta typing.
+
+And one advantage is that here in render projects,
+
+we now also get auto completion here, for example.
+
+And we would also get an error,
+
+a compilation error if we try to save that,
+
+because now TypeScript understands
+
+with which types we're working here.
+
+So that's the project Class and how we can use that.
+
+Project class isn't the only class However,
+
+we also have the Listener here.
+
+And for that, I'll add a new custom type Listener.
+
+The name is of course up to you.
+
+And I just use a type here because I wanna basically
+
+encode a function type with one word.
+
+So what do we mean with that?
+
+Well, of course, a listener here in our application
+
+is just a function, right?
+
+What we stored in the listeners array
+
+is just a bunch of functions
+
+Add Listener pushes a new function,
+
+and when something changes,
+
+we execute that function.
+
+So here a listener is really just a function.
+
+But it is a function that receives our
+
+items,
+
+certain items in our case and array of projects.
+
+And that then does something with it.
+
+Now to be precise here, of course,
+
+to define a function type,
+
+we don't have curly braces here,
+
+but instead as you learned the return type,
+
+and that will be wide,
+
+which means we don't care about any value
+
+that Listener function might return.
+
+In the place where we work with listeners.
+
+We don't need any return type.
+
+We just want to ensure that
+
+whoever passes as such a listener
+
+expects to get some items when the listener fires.
+
+With that here, we can say that Listeners
+
+is an array of listener well functions in the end.
+
+And here, when I push listener function,
+
+I need to make clear that it's not just any function,
+
+but that it's a type of listener,
+
+then everything works.
+
+Now in the place where we use Add Listener,
+
+which is down there,
+
+we now also, of course,
+
+can enhance our typing and make it clear that here,
+
+we will actually get a bunch of projects.
+
+So now with that, we set up our listener,
+
+we added the project type, and that changes nothing here.
+
+If we now add something that works,
+
+and if I add a second item,
+
+that still gets added besides
+
+the first item being added again,
+
+as well, and we're not doing any filtering
+
+in any of the lists at all.
+
+So before we continue working on our parts,
+
+let's make sure we're not having
+
+this duplication here inside of a single list,
+
+and also not the duplication across both boxes here,
+
+but that instead,
+
+only active projects are Showing up here
+
+and only finished projects
+
+and therefore initially no projects show up here
+
+in finished projects.
+
+So let's fix that.
+

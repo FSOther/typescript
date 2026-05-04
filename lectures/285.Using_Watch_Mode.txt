@@ -1,0 +1,94 @@
+Now, to get started,
+
+I want to make sure that
+
+I don't have to rerun this command here;
+
+this TFC command where I point at a file
+
+after every change I make.
+
+Because right now, whenever I change something here,
+
+in my TypeScript file,
+
+and I want to reflect that in my output file,
+
+and on this webpage here,
+
+we have to save the file, run the compilation again,
+
+and then reload this file;
+
+or, if we have our NPM start process running,
+
+which we should have,
+
+then at least our browser will automatically reload,
+
+if we don't directly open the file,
+
+but instead are on localhost: 3000.
+
+But nonetheless, even though with that
+
+reloading automatically,
+
+we still have to manually rerun the compilation command.
+
+So, to get rid of that,
+
+we can enter watch mode.
+
+That means we can tell TypeScript to watch a file,
+
+and whenever that file changes, TypeScript will recompile.
+
+So, for that we can still run the same command,
+
+but now we add --watch at the end,
+
+or just -w.
+
+If we do that, then we are in watch mode on that file,
+
+and now, whenever we change anything in there,
+
+and we save that,
+
+so that the file on the disk technically changes as well,
+
+you see, this automatically recompiles,
+
+and of course,
+
+this also means that
+
+if we would do anything which is not allowed,
+
+like for example, reassigning to a constant,
+
+and then a wrong type as well.
+
+Whenever we try to do that,
+
+of course, it all recompiles,
+
+but then, just as if we manually run the command,
+
+we see the compilation error down there.
+
+So, watch mode is already a big improvement.
+
+The downside is that we still have to
+
+specifically target this file here.
+
+And at the moment, of course,
+
+this is the only file we're working with,
+
+but typically in bigger projects,
+
+that's not necessarily the case.
+

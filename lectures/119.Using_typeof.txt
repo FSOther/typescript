@@ -1,0 +1,166 @@
+[Maximilian Schwarzmuller] So let's jump right in.
+
+I'm again in a brand new project
+
+and I created a new file in there, typeof.ts,
+
+and it's an empty file.
+
+And you might wonder about the file name typeof.ts,
+
+because I did already cover the type of operator
+
+earlier in the course.
+
+You might recall that I mentioned earlier in the course
+
+that JavaScript itself without TypeScript
+
+also knows types.
+
+It just doesn't enforce them as strictly
+
+as TypeScript does.
+
+But JavaScript knows types.
+
+For example, if you have a username variable
+
+and you then console log type of username,
+
+that's all just JavaScript.
+
+There's no TypeScript in this code.
+
+This typeof operator is a JavaScript operator.
+
+It's an operator that's built into JavaScript
+
+to give you the typeof something
+
+as a string stored in a string during runtime.
+
+So for example, here with this code,
+
+if you would compile this here
+
+and you would then run this newly created typeof.js file,
+
+you would see string in the console
+
+because the typeof username is string.
+
+But again, that's all just JavaScript here.
+
+But now here's the new part.
+
+TypeScript also has a typeof operator just like JavaScript.
+
+And which operator you use simply depends on
+
+where you use it,
+
+and it will then automatically be the right one.
+
+You don't need to control that.
+
+For example, here in an expression,
+
+in a JavaScript expression,
+
+we're using the built-in JavaScript typeof operator.
+
+But let's say we're now creating a new type, a custom type,
+
+a type alias.
+
+So we're in TypeScript world now we're building a type
+
+and we want to build a type user name,
+
+let's say with an uppercase U,
+
+so that we don't have a name clash with that constant.
+
+And here I want to store the typeof the value
+
+that's stored in that username constant.
+
+Now of course we know that this is a string,
+
+so we could just write string here.
+
+And now we would essentially be renaming
+
+the built-in string type in TypeScript world to username.
+
+But let's say we don't know in advance
+
+which typeof value is stored in that constant.
+
+Of course, here in this simple example we do,
+
+but we'll just start simple to introduce this feature.
+
+So let's assume we don't know the typeof value
+
+stored in username.
+
+Well then we could use typeof here as well,
+
+followed by the identifier of the thing
+
+of the constant in this case that stores the value of
+
+which we want to know the type.
+
+Now here, if we use typeof here in a place
+
+where we're defining a type, which is the case
+
+after the equal sign when using TypeScripts type keyword,
+
+when we're using typeof in a place
+
+where we're dealing with TypeScript,
+
+then it'll automatically use typescripts typeof operator.
+
+And what does this operator do now?
+
+Well, kind of the same as the JavaScript typeof operator.
+
+It gives us the typeof the thing that comes after it.
+
+So of the value stored in this constant here,
+
+and therefore username now stores Max here as a type.
+
+And you might've expected that it stores string.
+
+But since username here is a const, it can never be assigned
+
+to any other string than Max.
+
+And TypeScript understands that, which is why username holds
+
+that Max string literal type.
+
+If username were a variable
+
+and it could therefore be assigned to other values,
+
+username would store string.
+
+So that's the typeof operator in TypeScripts world.
+
+But of course, this was just a simple example
+
+to introduce it.
+
+Now let me show you a more realistic
+
+or useful example where using the typeof operator
+
+might make a bit more sense.
+

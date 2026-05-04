@@ -1,0 +1,204 @@
+So now that we have
+
+a properly configured project,
+
+let's dive a bit deeper into how you can debug your project
+
+or how you can have a great development flow.
+
+I show you my basic IDE set up at the beginning
+
+of this course.
+
+Really make sure you got the right extensions installed.
+
+There for TypeScript, it comes down to ESLint
+
+which can help you with linting your TypeScript code.
+
+So with improving the code quality
+
+though you might need additional configuration
+
+for ESLint to have an effect.
+
+It can help you in more advanced projects still
+
+more interesting than that,
+
+you wanna really use Prettier
+
+to automatically format your code
+
+and have a nicely formatted code
+
+and you might wanna give Debugger for Chrome a try
+
+because that allows you to debug your TypeScript files
+
+even from inside VS Code
+
+through Chrome but without using the Chrome Dev Tools.
+
+Of course, you can use those as well
+
+as you learned.
+
+If you do enable sourceMaps here,
+
+which you can of course, always do,
+
+you get these translated files there as well
+
+which is really nice.
+
+But you can also use VS Code.
+
+You can place breakpoints here,
+
+let's say in the clickHandler
+
+and now to launch your files here
+
+through VS Code, you need to enable sourceMaps as well
+
+but we still will be able to use VS Code
+
+instead of the browser Dev Tools.
+
+So enable sourceMaps, place your breakpoint
+
+and then go to Debug, Start Debugging.
+
+Now, the first time you run this,
+
+it should ask you for the environment
+
+and there with that Debugger for Chrome extension installed,
+
+you should be able to choose Chrome.
+
+It will now go to a laucnh.json file
+
+where you configure how it should launch that
+
+and there you should point it at localhost:3000
+
+because that's where our development server is running
+
+and of course, that process, so the npm start process
+
+should be up and running.
+
+To point at localhost:3000 there
+
+and as a webRoot, you can leave that placeholder here
+
+which means this project folder
+
+is assumed to be the host of your files
+
+which is the case and now compile your code
+
+so that the sourceMaps also are generated
+
+after setting the sourceMaps config to true
+
+so that we now have these in the JavaScript code.
+
+Then with your breakpoint added here
+
+and your launch.json configured,
+
+let's run debugging here.
+
+Start debugging now for real
+
+and it will open up a new tab now automatically.
+
+This tab will be closed
+
+whenever you quit the debugging process
+
+or if you close the tab, the debugging process will quit.
+
+So now with that, you enter this debugging view here
+
+in VS Code where you can track variables,
+
+watch certain expressions
+
+and see the current call stack
+
+and if you now click on Click Me,
+
+you should be taken back into the editor
+
+and code execution pauses
+
+at your breakpoint in the TypeScript file
+
+and now you can walk through the file her,
+
+inspect local values for this keyword
+
+or for the message variable, for example,
+
+script-wide variables you might have
+
+and global variables you got access to global objects.
+
+You can watch certain expressions
+
+like message + multiple exclamation marks
+
+and well, then you can always track the value
+
+which is in there here in this window if you wanted to
+
+so that would work.
+
+And you can see the current function call stack,
+
+for example, that would occur in the clickHandler
+
+and now you can step through your code
+
+with these controls to step to the next step,
+
+skipping over the next function call,
+
+stepping into the function call
+
+or stepping out of the current function call
+
+and the call stack, of course, here will adjust according
+
+to that and with that,
+
+can ignore this browser thing here,
+
+with that, you can always resume code execution
+
+by clicking the play button
+
+and only pause whenever you reach
+
+your breakpoint the next time.
+
+So this is how you can debug code.
+
+You can remove a breakpoint by clicking on it.
+
+This is how you can debug code
+
+from inside VS Code
+
+with the help of the built-in debugging tools,
+
+the Chrome Debugger extension,
+
+derived configuration and soureMaps
+
+which are set up in your TypeScript config.
+

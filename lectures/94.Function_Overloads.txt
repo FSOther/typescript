@@ -1,0 +1,174 @@
+Another, a bit more niche TypeScript feature
+
+that can sometimes come in handy
+
+and that you might encounter out there in the wild
+
+is function overloading or function overloads
+
+as it's also called.
+
+For this, I added a new file functions.ts,
+
+though the name of course doesn't matter.
+
+And let's say in there we have a function getLength.
+
+And now here, I wanna get some items, some value,
+
+which should either be a string
+
+or an array of anything.
+
+So an array of any kind of value.
+
+And this is a case where I wanna use any,
+
+because I really don't care about
+
+what's inside of this array.
+
+Now of course, here, I could return val.length
+
+since strings also have a length property in JavaScript.
+
+But let's say if I get a string,
+
+I wanna return some text that says X words.
+
+So that outputs the number of words
+
+in that string as a string, so as a text.
+
+For that, we can check if the type of val
+
+is equal to string.
+
+So we add a type guard.
+
+And if that is the case, I can get my numberOfWords,
+
+for example, by using val,
+
+by splitting it,
+
+by searching for blank spaces between the words,
+
+and by then getting the length of the array
+
+that is produced by that.
+
+Now this might not be perfect,
+
+but this would be one naive implementation of this feature.
+
+And then here, I can return my numberOfWords.
+
+Or to be precise as mentioned,
+
+I wanna return some text
+
+that includes the numberOfWords here.
+
+So I can use a template literal,
+
+a standard JavaScript feature to produce a string
+
+that says X words,
+
+where X is the number of words we identified.
+
+Else, if we make it past this if check,
+
+I wanna return val.length
+
+because if I make it past this if check,
+
+value is not a string, but some array.
+
+And in that case, I simply wanna output
+
+the number of items in that array.
+
+getLength, therefore, returns either a string or a number
+
+depending on how we use it.
+
+So if I call getLength with some text like, does this work?
+
+I get my numberOfWords here
+
+because I'm passing in a string,
+
+and therefore, this code will run.
+
+I get my number of items instead if I call getLength
+
+with an array that contains some items,
+
+no matter if there are strings like in this example or not.
+
+So this code would work,
+
+and we would be using some features
+
+about which you already learned,
+
+union types, type guards, and so on.
+
+But we have one problem here
+
+or one thing that could be improved.
+
+At the moment, TypeScript correctly infers
+
+that getLength will return a union type value.
+
+It will return a value that's either a string or a number.
+
+However, TypeScript, at least at the point of time
+
+where I'm recording this,
+
+does not understand that numOfWords here will be a string
+
+because this code here ran because we passed in a string.
+
+Instead it still thinks that it's either a string
+
+or a number, which generally is correct,
+
+but we know that in this case, it would be a string.
+
+But the problem is that
+
+if we wanted to work with that string
+
+and we for example, wanted to get its length,
+
+the number of characters in it,
+
+we would get an error
+
+that this does not exist on this union type,
+
+because if it's the number case,
+
+there wouldn't be a length property.
+
+Now again, we know that it will be a string here
+
+and we could, therefore, use type casting like this,
+
+for example, to convince TypeScript
+
+and get rid of this error so that this code would work.
+
+But that's not ideal.
+
+There has to be a better way.
+
+And that's exactly one scenario where function overloading
+
+or function overloads can help you.
+

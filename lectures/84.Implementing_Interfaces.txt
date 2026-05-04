@@ -1,0 +1,112 @@
+Now, interfaces, as you learned,
+
+can be used to describe object types.
+
+There is one other super useful thing you can do
+
+with interfaces though.
+
+Besides using them here to define object types,
+
+you can also use them in conjunction with classes.
+
+Let's say we wanna have an AuthenticatableUser class.
+
+And the idea here is that this is a user
+
+where we might store all kinds of user data, like the name
+
+and the address, but we also wanna make sure
+
+that we have all the logic in that class
+
+that makes this user authenticable.
+
+So a login method and a logout method.
+
+Now, to force ourselves and other developers
+
+that might be working on the same project
+
+to build this class in a certain way
+
+and to use certain clearly defined property
+
+and method names, we can implement an interface
+
+with the implements keyword, like this.
+
+This implements keyword is another TypeScript feature
+
+that works in conjunction with the interface keyword
+
+because the implements keyword forces a class
+
+to implement the structure
+
+of the interface you're implementing.
+
+And you could implement multiple interfaces here,
+
+by the way, simply by separating them with commas.
+
+So here in this case, I'm getting an error
+
+because my class does not implement
+
+the Authenticable interface correctly.
+
+To implement it correctly, we need to add the email
+
+and password properties, for example, here by adding them
+
+to the constructor like this.
+
+And we must add the login and logout methods,
+
+again, the concrete implementations
+
+of these methods with all the logic inside
+
+of them, like this.
+
+And now the error goes away.
+
+And that's therefore,
+
+one other thing you can do with interfaces.
+
+You can use them as contracts, you could say,
+
+that force a class to have a certain shape.
+
+And this, again, can be useful if you're working
+
+in bigger projects with other developers,
+
+or if you're building some third-party library
+
+that should be used in a certain way
+
+because with interfaces, you can ensure
+
+that a class will have a certain shape.
+
+This class could have more than the properties defined
+
+by this interface.
+
+We could also have like a userName property here.
+
+That would be fine.
+
+You can have more than you need to have due
+
+to the interface, but you must at least have the properties
+
+and methods defined by the interface.
+
+And that's therefore a great way of ensuring that a class
+
+does have a certain minimal shape, so to say.
+

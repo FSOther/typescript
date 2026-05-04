@@ -1,0 +1,46 @@
+Lecture resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+In some JavaScript,
+
+and therefore also TypeScript projects,
+
+you will work with classes.
+
+And therefore in this section,
+
+we'll explore how TypeScript helps you
+
+with working with classes,
+
+what it adds to vanilla JavaScript
+
+when it comes to working with classes.
+
+And we'll also explore the concept of interfaces,
+
+which, unlike classes, is a TypeScript-exclusive feature,
+
+because that's really important.
+
+Classes are a JavaScript feature.
+
+TypeScript, however,
+
+as you will see throughout this section,
+
+enhances this feature
+
+with certain extra features, you could say.
+
+But classes themselves are a JavaScript feature,
+
+just enhanced by TypeScript.
+
+Interfaces, however,
+
+as you will see throughout this section,
+
+are a TypeScript-exclusive feature
+
+that can be used in conjunction with classes, though.
+

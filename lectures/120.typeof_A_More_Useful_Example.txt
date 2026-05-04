@@ -1,0 +1,160 @@
+So here was a basic type of example,
+
+but of course here we could have just written string
+
+because we know that username holds a string value.
+
+And if we wanted for whatever reason,
+
+assign a custom type alias to that built in string type
+
+and use that instead of string,
+
+we could do it like this
+
+instead of using the TypeScript type of operator.
+
+But let's say you are having a more complex value.
+
+Let's say you have a settings object.
+
+So here I'm not defining any type.
+
+I have a settings JavaScript object instead.
+
+And let's say in there you have a difficulty property,
+
+which maybe holds easy as a value,
+
+a min level which holds 10,
+
+a did start boolean, which might be false,
+
+and a players array,
+
+which could be an array with two strings.
+
+So you might have this JavaScript object
+
+in your application in some place.
+
+And now let's say you want
+
+to write the type that describes this object
+
+so that you could use it on some function parameters
+
+somewhere else in your code, for example.
+
+Well, of course you could add a new type settings like this
+
+and then you could create an object type as you learned it,
+
+create a new object,
+
+and then make sure you got all the keys
+
+that are up there without introducing a typo.
+
+So difficulty is string,
+
+min level is a number, and so on.
+
+You could do that and that would then allow you,
+
+if you completed this type,
+
+which I haven't yet, that would then allow you
+
+to add a function
+
+load data where you might expect to get some settings,
+
+which are of that settings type,
+
+and where you then do something
+
+and you could then call that function
+
+and pass these settings here to that function
+
+and work with that data in there.
+
+And again, we should complete this object type.
+
+I just didn't do that here
+
+because manually typing
+
+that object type based on some value, which we already have,
+
+is a bit annoying and also error prone.
+
+It's easy to introduce a typo here,
+
+which might then cause some problems further down
+
+in your code, somewhere else in your code.
+
+And that's why you could instead use the type
+
+of operator here, then pass the settings,
+
+constant in this case here, to it so to say.
+
+And the type settings here
+
+will then automatically be derived for you by TypeScript,
+
+thanks to Typescripts type of operator here.
+
+So in this case, TypeScript would infer
+
+that settings is a object type,
+
+which has a difficulty property,
+
+which holds a value of type string and so on.
+
+You see all the other key value pairs
+
+or key value type descriptions
+
+if you want to call it like this here.
+
+And that's a more useful scenario
+
+for using this type of operator.
+
+And you wouldn't even have
+
+to create a custom settings type if you don't want it to.
+
+You could instead also use the type
+
+of operator here in the parameter list.
+
+You just would need to make sure
+
+that you don't have the same parameter name
+
+as you have a value name here.
+
+But you could then use type of here,
+
+you don't have to use it in conjunction
+
+with the type keyword.
+
+This is not required.
+
+You can use it outside of type alias
+
+and custom types as well.
+
+And that's therefore another useful feature
+
+offered by TypeScript,
+
+which allows you to derive types from values.
+

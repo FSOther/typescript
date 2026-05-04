@@ -1,0 +1,570 @@
+Name spaces are pretty nice,
+
+but they're not necessarily perfect.
+
+We saw one problem in the last lecture
+
+where I manually added all the pendencies to each file.
+
+When I remove, drag and drop from project list,
+
+yes for example, it still compiles
+
+without errors.
+
+This is not ideal.
+
+Now, it might or might not work,
+
+depending on whether some other file imports
+
+the drag-drop model which I,
+
+in the end, need here.
+
+Which here would be the case.
+
+So technically, even after removing this,
+
+it works here.
+
+But this is not great, this is pretty dangerous.
+
+If we rely on the fact that some file
+
+will handle it for us, well if we then delete
+
+or change that file which saved our ass,
+
+we suddenly change something totally unrelated
+
+and our app stops working.
+
+We definitely don't want that.
+
+So it would be nice if we had imports and exports
+
+that clearly state what we import from which file.
+
+And if we need something here,
+
+Drag Target for example,
+
+and we're not importing it explicitly,
+
+we get an error.
+
+That is basically what we want.
+
+And we get this behavior with ES6 modules.
+
+Now, ES6 modules also exist
+
+outside of the type of the world,
+
+modern browsers support them natively,
+
+where the browser will then basically download
+
+all the pendencies of a file when it executes.
+
+But types could also imports them and then
+
+gets the initial type support when we use them.
+
+Now how do ES6 modules work?
+
+Let's again start with drag and drop.
+
+Let's remove that name space thing
+
+which is a pure types confeature.
+
+Let's keep the export key word though.
+
+The export key word is not just the
+
+there to work with name spaces,
+
+it's actually a default Java script syntax
+
+which is all as important by typ script.
+
+It means that you export this interphase
+
+and this one here as well
+
+from this file and you can then import it
+
+into another file.
+
+In our case here we need it in the project item
+
+and project list files.
+
+Now let's start with the project item.
+
+To import something from ES module
+
+so with that ES module synthax,
+
+you specify import at the top of the file
+
+or near the top of the file
+
+before you start writing any actual code.
+
+Import from and then you point at that file
+
+with a relative path from the file on in which
+
+you are importing.
+
+So in this case we need to go up I level
+
+with two dots and a slash.
+
+So that we are in the source folder,
+
+and then we need to go here to the modules folder
+
+and import drag and drop.
+
+Now important, add dot JS here,
+
+because you need to import as if this already
+
+were compiled, because this will be taken over
+
+into vanilla Java script and then it should
+
+look for Java script there
+
+so for Java script files so dot JS needs
+
+to be added.
+
+Now you import something from there
+
+and for than you add curly braces
+
+between which you specify what you want to import
+
+from that file.
+
+There I already get auto completion
+
+I wanna import draggable.
+
+Now draggable is available here and types
+
+sees that it's not available and is happy.
+
+Now we need to convert everything so that it can
+
+show at run time.
+
+So lets get rid of the name space here as well.
+
+Now have to close the curly brace as well.
+
+And now for example here now we get what we want,
+
+we get errors, we get component error,
+
+project, this is all missing.
+
+So let's export and import all these things.
+
+For example in base component
+
+get rid of the name space,
+
+keep the export key word as you learned.
+
+Get rid of the closing curly brace
+
+and reformat and project import.
+
+We can always get rid of the name space.
+
+And all of the references here, you can actually
+
+delete all reference imports you have anywhere.
+
+Get rid of all the name space curly braces.
+
+Project list, get rid of all the name space
+
+and the references, get rid of the closing
+
+curly brace down there.
+
+And decorators, get rid of the name space
+
+and the closing curly brace
+
+and drag and drop, we already got rid of it.
+
+Project, get rid of the name space and the
+
+closing curly brace.
+
+Project stayed unsurprisingly get rid of the
+
+name space and the closing.
+
+Curly brace here we actually were relying on
+
+project being imported by some other file,
+
+I didn't have references to it here.
+
+So that was that dangerous behavior
+
+I was talking about.
+
+This could have failed if we wouldn't import
+
+or if we wouldn't reference our project part
+
+in the name space in some other file.
+
+So that definitively was not ideal.
+
+But with that let's continue our refactoring.
+
+In validation here get rid of the name space here
+
+and all of the closing curly brace
+
+here at the bottom.
+
+And last but not least an app TS,
+
+get rid of these imports and of the name space.
+
+So now we got errors everywhere
+
+but now we can start over.
+
+Now let's maybe start over in the base component.
+
+This is looking good, it's not complaining
+
+seems to have everything it wants.
+
+Project import, well, it is complaining.
+
+For example there we need to component.
+
+So let's add a import at the top and lets import
+
+component from dot slash base component.
+
+This is how you import relatively
+
+if something is in the same folder.
+
+Dot slash at the beginning, then the file name
+
+and then all is important dot JS.
+
+Don't forget the dot JS at the end.
+
+Now we also need the validatable interphase
+
+here and the validate method, auto mind
+
+and project state.
+
+So let's import all these things
+
+let's import from dot slash, or no
+
+go up one level then util then validation
+
+dot JS, let's import from That File,
+
+validatable and the validate function
+
+and import auto bind from,
+
+going up one level decorators autobind JS.
+
+And last but not least the project state
+
+let's import from going up one level
+
+state project state JS .
+
+From there we can import the project state
+
+constant that we export there.
+
+Now these are all the imports we need here
+
+to make this file work.
+
+So let's move on to project item now.
+
+In there we need autobind we need component
+
+we need the project model.
+
+So let's add all these things.
+
+Let's for example import the project model from
+
+dot dot slash models project JS.
+
+Let's also add component
+
+which lives in the same folder .
+
+So import dot slash base component JS
+
+and auto bind, let's import auto bind
+
+from dot dot slash decorators auto bind JS.
+
+And now this file here also has everything it needs.
+
+Now let's move on to project list.
+
+Here in project list we also need the component
+
+as on so on, so we'll actually copy that over here
+
+from project item add it to project list TS,
+
+but we don't need draggoble here but to
+
+drag target instead so let's import that.
+
+And in addition we need the project state
+
+the project status.
+
+Yeah, these are the things we need.
+
+And also the project item class.
+
+So from the project model file we can also
+
+import project status.
+
+You can import multiple exported things from
+
+one of the same file by simply
+
+separating them with a comma between
+
+these curly braces just as you are seeing it here.
+
+We also import the project state constant
+
+from the state folder,
+
+project state JS and also import
+
+last but not least, here at the very bottom
+
+we need it, the project item class.
+
+So import project item from dot slash
+
+project item dot JS.
+
+So let's move on.
+
+Autobind is fine, project status complaining
+
+there we need the project model.
+
+So at the top let's import
+
+project from going up one level
+
+models project dot JS.
+
+We also are using project status in here so let's
+
+import that from that same file'
+
+And with that, last but not least
+
+we get the app TS file
+
+there we need to import project input.
+
+from dot slash components project input.
+
+JS and the project list
+
+from project list JS'
+
+If we now saved this it should compile
+
+without errors and now we are using ES6 modules
+
+to organize our imports and exports.
+
+If we have a look at the browser though
+
+we got an error.
+
+Now the reason for that is if we check the dist
+
+folder we got our bundle JS file right.
+
+Now we need to switch TS config again.
+
+For one here, we shouldn't use AMD now
+
+but instead ES twenty fifteen.
+
+Than is basically the code word for ES6 which was
+
+the agma script version that
+
+introduced ES modules.
+
+So we're basically telling type script
+
+don't transform our imports to anything,
+
+keep them as they are.
+
+Modern browsers will understand it.
+
+So that's important, also make sure you have a
+
+target of ES6 or higher here'
+
+You now also should comment out the out file again,
+
+because that's not supported with ES modules.
+
+And with that what you get in the dist folder
+
+is basically a replication of your source folder
+
+but with Java script files.
+
+So now we also need to go back to the index
+
+HDML file and import app JS again,
+
+because we got an app JS file
+
+in the dist folder now.
+
+And again this app JS file will have you're
+
+import statements in there, because, as I mentioned,
+
+this is supported by Java script, by modern
+
+Java script engines and by modern browsers.
+
+And the browser will resolve
+
+these imports for you therefore.
+
+So if we now reload this, huh
+
+we still get an error.
+
+Cannot use import statement outside a module.
+
+Well modern browsers support this sintex
+
+but you have to tell them that you wanna use it.
+
+And you do tell them by removing the (mumbles) here
+
+and instead on the script tag, where you
+
+import a file which has these imports statements.
+
+You use type equals module.
+
+If you now safe this, you see
+
+this works and now if we add something here
+
+we get the working application again.
+
+Now if you inspect the network tab by the way
+
+you will see that if you reload, there are
+
+a bunch of network requests going on,
+
+if I zoom out a bit we can see it better.
+
+All our Java script files are requested here.
+
+They are requested automatically by the browser
+
+when it encounters our import.
+
+So it starts with app JS, then it sees the
+
+import to project input JS.
+
+Here and hence of course the next request goes
+
+to project input.
+
+It also does the same for project list.
+
+Now in project input for example it would
+
+see a input from base component JS
+
+which is why it also imports
+
+prob base component JS.
+
+So that's done by the browser here
+
+we take advantage of it and now we have another
+
+way of splitting our files but with the
+
+additional advantage that we clearly state
+
+what we need from each file and
+
+if we omit an import, type-script yells at us,
+
+which it didn't do with the previous approach,
+
+which is way this approach is actually my
+
+recommendation and why it is the defacto standard
+
+way of importing and exporting.
+
+Now, if you've worked with type script before
+
+in other projects, let's say in a angular project,
+
+you might also be used to not having to specify
+
+a file extension here
+
+Well, we'll also be able
+
+to omit that once we add
+
+web pack and a bill tool.
+
+As long as we don't have that and we rely on the
+
+browser to import our files you need
+
+to add that extra extension.
+

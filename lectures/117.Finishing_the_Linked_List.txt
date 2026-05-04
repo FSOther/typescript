@@ -1,0 +1,70 @@
+Lecture resource: https://github.com/mschwarzmueller/understanding-typescript-resources/blob/main/attachments/09-classes-generics-practice/linked-list.ts
+
+Now, attached to this lecture,
+
+you find an updated version
+
+of this linked-list.ts file,
+
+because in that attached file,
+
+you find the same class with extra methods
+
+for inserting a value at a specific position
+
+and for deleting a value at a specific position.
+
+You can go through that code on your own and explore it.
+
+There are no new TypeScript features in there,
+
+and since this is not a data structures course,
+
+I have a separate course on that,
+
+if you wanna learn more about data structures,
+
+since this is not such a course here,
+
+I won't waste your time going through the details
+
+of these methods or linked lists in general.
+
+In the end, the logic in both of these methods
+
+is to loop through all the elements in that linked list,
+
+element by element, node by node,
+
+until we reach the position we wanna reach,
+
+and then we either add that new node in between
+
+the node at that position and the next node
+
+or we remove that node,
+
+and in both cases, we have to update the links
+
+of the neighboring nodes,
+
+the next properties of the neighboring nodes.
+
+That's what's happening here,
+
+but as mentioned, from a TypeScript perspective,
+
+there is nothing new here,
+
+and therefore, this simply is hopefully a useful exercise
+
+that does not just introduce you to this data structure
+
+or show you one way of building this data structure,
+
+but that, even more importantly, shows you how to work
+
+with classes, private properties, public properties,
+
+and so on, and generic types in TypeScript.
+

@@ -1,0 +1,260 @@
+For this I got a
+
+little starting project for you.
+
+You find it attached.
+
+It's the same starting project
+
+we used over and over again.
+
+You start the development server with npm-start
+
+and then I started the TypeScript compilation in watch mode
+
+with tsc-w in a separate terminal.
+
+So here in my built-in terminal I got two tabs.
+
+One with the development server
+
+which you should keep up and running
+
+so that it watches for changes
+
+and reloads the page and keeps the server up and running
+
+and another tab where I have that
+
+running TypeScript compilation watcher.
+
+Now with that we can work in the
+
+app.ts file which is empty right now
+
+and start writing some code there
+
+and I want to start right away
+
+by defining a class which we can use.
+
+We do this by using the class keyword, just like that
+
+and then the name of the class
+
+and there let's say we're building an app,
+
+a web application, a user interface
+
+for some web tool that allows us to manage
+
+our different departments we might have in our company.
+
+Maybe we're building some kind of
+
+company internal tool whatever it is
+
+and we need to have multiple departments there.
+
+Now we could use objects to manage
+
+the data for the different departments
+
+and we might then also add methods there to each object
+
+so that we can render that department
+
+information on to the screen
+
+and to simplify the creation of these different
+
+department objects which will all look the same,
+
+is to create a department class.
+
+So we could name this class Department.
+
+The name is totally up to you.
+
+The convention is that it starts with an uppercase character
+
+to make it clear that this is a class.
+
+Now if you've been around to JavaScript development
+
+for a longer time you might know the idea
+
+of constructor functions by the way
+
+and classes in the end are syntactic
+
+sugar for that you could say,
+
+but we'll see that once we compile our code.
+
+So here we have our class Department
+
+and now in there we might have a name property.
+
+You can add it just like this,
+
+without any let or const in front of it
+
+just like this, directly in the class
+
+and then of course you can also assign a type to this.
+
+You do that by adding a colon here
+
+and then the type for example string and that's important.
+
+This might look like an object but it isn't an object.
+
+In an object you use key-value pairs
+
+with a colon to have a key name
+
+and then the value for the key.
+
+Here that's not the case.
+
+This is a so-called field of a class.
+
+You create a class with curly braces as well
+
+but here this is not a key-value pair,
+
+this just defines the name of a
+
+key you will have in the object
+
+which you will create based on the class
+
+and you define the value type that key will hold in the end.
+
+You can also set an initial value here with the = 'DEFAULT'
+
+but you don't need to do that.
+
+Instead another thing you commonly have in classes
+
+is a special function in there, a so-called method.
+
+Functions in objects are simply called methods,
+
+which is the constructor method.
+
+We can add it like this and this is a reserved word.
+
+Constructor is a reserved key word understood by TypeScript
+
+and by modern JavaScript as well
+
+and this is essentially a function tied to this class
+
+and tied to any object you create based on the class
+
+which is executed when the object is being created.
+
+So this allows you to basically do some initialization work
+
+for the object you're building.
+
+Now in there you could accept an argument.
+
+Let's name it n maybe which could also be of type string
+
+and then you wanna store that in your name field here
+
+or you can do this by reaching
+
+out to name with the this keyword
+
+and storing n in it.
+
+What this does is it sets the value of the name field,
+
+also called property so of the name property,
+
+to the value you're getting on n
+
+when a department object is created.
+
+Now how could we create such a department object?
+
+Nothing easier than that.
+
+Outside of the class you created by using the new keyword
+
+which is also built into TypeScript and JavaScript
+
+and then you repeat the name of the class,
+
+then you add parentheses
+
+and this would create a new department object
+
+but the constructor's called at this point of time
+
+when you execute this class like this with the new keyword
+
+and the constructor here takes an argument, a string.
+
+Now you pass constructor arguments
+
+to this department call here so between these parentheses.
+
+So here we could name this Accounting
+
+because maybe we're building the accounting department here.
+
+Now this will now create a new
+
+JavaScript object based on this blueprint.
+
+So now we can store this in a constant for example
+
+and then console.log.accounting here to see what we get.
+
+If we now save that
+
+and we then go back to our page here
+
+and have a look at the development
+
+console here in the def tools,
+
+we should our Department object here.
+
+It's a regular JavaScript object,
+
+just has this Department type attached to it you could say
+
+and in the end it's an object with
+
+one key-value pair, where the key is name
+
+because that's what we defined up there
+
+and the value is Accounting.
+
+We have this Accounting value here
+
+because we're passing this
+
+as an argument to the constructor.
+
+There we are accepting such a string,
+
+restoring the value in this field
+
+and fields are in the end just translated to properties,
+
+the object based on the class will have there after.
+
+So this is how we can create a simple class
+
+and what the general idea is.
+
+Now let's see what we actually get in JavaScript.
+

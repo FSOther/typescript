@@ -1,0 +1,33 @@
+Câu hỏi 1:
+Why are "Types" useful and offer an advantage compare to vanilla JavaScript?
+x Types allow you to use brand-new language features that run in the browser.
+v Types allow you to detect errors early and avoid some runtime errors.
+x Types don't offer any significant advantages but simply offer a different way of writing code.
+
+Câu hỏi 2:
+Will the following code throw a compilation error?
+
+let userName: string;
+userName = 'Maximilian';
+userName = false;
+
+v Yes. 
+x No, because a string is assigned first.
+x No, because "string" is a default JavaScript type.
+
+Câu hỏi 3:
+Does this code rely on type inference?
+
+const age: number = 29;
+
+x Yes, definitely!
+v Not really - a type is assigned explicitly as well.
+
+Câu hỏi 4:
+What's the difference between JavaScript types (e.g. typeof 'Max' => 'string') and TypeScript types (e.g. const name: string = '...')?
+
+x There is no difference.
+x JavaScript doesn't know any types.
+v TS types are checked during compilation, JS types during runtime.
+
+

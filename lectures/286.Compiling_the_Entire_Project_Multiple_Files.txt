@@ -1,0 +1,172 @@
+So as I mentioned in the last lecture,
+
+watch mode is a great start
+
+but what if we have more than one TypeScript file?
+
+What if we also have an analytics.ts file
+
+where we hypothetically send analytics data to our server?
+
+Now, here to just have anything in there,
+
+I'll just put in a console.log statement
+
+but of course, you could be sending HTTP requests
+
+to your analytics service here as I said.
+
+So let's say we also did import this file here
+
+in our index.html file.
+
+If we point at analytics.js here
+
+which does not exist yet
+
+but which will exist after compilation,
+
+then we could be loading these two files
+
+and of course, we wanna compile both files
+
+whenever one of them changes.
+
+Now, for that, it would be nice
+
+if we could enter some general watch mode
+
+where we just run tsc like this
+
+so without pointing at a file
+
+and it just watches our entire project folder
+
+and recompiles any TypeScript file that might change.
+
+Well, turns out that this is possible.
+
+For that we just need to tell TypeScript
+
+that this here is one project
+
+that should be managed with TypeScript
+
+and we do that by first of all,
+
+and we only need to do this once,
+
+running tsc --init.
+
+So I'm not pointing at a specific file here,
+
+I just run tsc and then --init here
+
+and again, this is only required once.
+
+It will initialize this project
+
+in which you run this command as a TypeScript project.
+
+That means it will now basically tell TypeScript
+
+that everything in the folder
+
+where you run this command and therefore it's important
+
+that you navigated into the right folder
+
+before you ran this command
+
+with the built-in terminal here in VS Code.
+
+I'm automatically in this project folder
+
+where my files are so that this project
+
+is now managed by TypeScript.
+
+So let's hit Enter
+
+and what this does is it creates this tsconfig.json file.
+
+This basically is the indicator for TypeScript
+
+that the project in which this file lies
+
+and all sub folders of this folder
+
+should be managed by TypeScript.
+
+Now, if we have a look into this file,
+
+we see there a bunch of options,
+
+most of them commented out,
+
+they're just there so that you see that you could set them
+
+and you've got a short explanation here as well
+
+but we don't have to worry about those right now.
+
+We'll dive into them in a second.
+
+For the moment, let's just close this file here
+
+and let's see what this gives us
+
+because what it does give us
+
+is that we can now run just tsc like this
+
+without pointing at a specific file.
+
+And what this will do is it will tell TypeScript
+
+to go ahead and compile all TypeScript files
+
+so all .ts files it can find in this project
+
+so if I hit Enter here,
+
+you see, this takes a while,
+
+and now what we got is this analytics.js file
+
+and this app.js file.
+
+Now, the analytics.js file was just created
+
+by TypeScript because it found
+
+that we have the analytics.ts file
+
+and as I said, it will now compile all TypeScript files
+
+in the project.
+
+And of course, this can also be combined with watch mode.
+
+You can run tsc -w
+
+or --watch as I showed before
+
+and this will now enter watch mode for all TypeScript files.
+
+So now whenever I change one of them
+
+and I save it, it will recompile.
+
+It will recompile that file
+
+that changed and therefore, all the reflected change
+
+in the JavaScript file.
+
+And it's now here.
+
+If I got back to my page, we see sending data as well
+
+because now the analytics.ts file was also compiled.
+

@@ -1,0 +1,182 @@
+So I explored the basics of Zod,
+
+that the idea is that you can perform a runtime validation
+
+in a TypeScript-like way without actually using TypeScript,
+
+because this is, of course, all JavaScript code here.
+
+We're not using any TypeScript features here,
+
+but we're using names that are familiar from TypeScript.
+
+And besides that, there's also one other thing we get.
+
+If parse does not throw an error,
+
+then parsedData will actually be of
+
+whichever type we define up here.
+
+So without us defining any type
+
+or passing any type name to any generic method,
+
+without us doing anything like that,
+
+we get type safety here
+
+that if parsedData is set,
+
+if this does not throw an error,
+
+it will be of type number.
+
+And that's a huge thing!
+
+That is, again, leveraging TypeScript
+
+without us defining a type explicitly.
+
+Instead, we're leveraging it through Zod,
+
+which is a TypeScript first library.
+
+So in my case here, for example,
+
+I actually want dataSchema to be an object
+
+because in my data.json file,
+
+it is an object with three properties.
+
+So I want it to be an object,
+
+and then I pass an object to this object method
+
+where I can further describe the shape of this object.
+
+For example, that I want a title property in there,
+
+and that should be a string,
+
+so I use z.string.
+
+Again, not using TypeScript here, but Zod,
+
+so that we can have this code work at runtime.
+
+Then I want an ID, which should be a number,
+
+so it's id: z.number,
+
+and I want a values array,
+
+which contains a bunch of strings.
+
+So, it's values: z.array.
+
+You see, Zod offers all these building blocks you need.
+
+It allows you to define object shapes, array shapes,
+
+work with numbers, strings, booleans, whatever you need.
+
+So we have that.
+
+And then in that array,
+
+I want to have a bunch of strings.
+
+By the way, if I maybe also have some raw numbers in there,
+
+and I wanna support both strings and numbers,
+
+I could instead say
+
+that this array should contain a union type,
+
+which you can define with z.union,
+
+which is strings or numbers.
+
+That needs to be wrapped with square brackets though.
+
+So of course it takes some time
+
+to get used to this Zod syntax,
+
+and you need to know which methods
+
+are made available by Zod
+
+but you can learn about that
+
+in the official documentation, of course.
+
+There you'll learn about
+
+all the methods that are available,
+
+and how you can use them to define types
+
+and configure error messages that might be thrown and so on.
+
+It's a really powerful library.
+
+With that, I got a basic schema,
+
+and again, down here I get the proper type
+
+in my TypeScript code because I'm using Zod.
+
+So I know that if here, parse does not throw an error,
+
+parsedData will be an object with a title that's a string,
+
+an ID that's a number,
+
+and values, that's an array
+
+of either strings or numbers,
+
+so using a union type here,
+
+simply because of how we define our dataSchema here.
+
+So to make this work,
+
+what I'll do here is I'll actually call JSON.parse here,
+
+and call toString here
+
+on the result of calling readFileSync
+
+so that this buffer is converted to a string,
+
+and then it's converted from a string in JSON format
+
+to a JavaScript object.
+
+But you see here, it's of type any,
+
+because TypeScript has no chance of knowing
+
+what's inside of that file,
+
+what's inside of that parsed string.
+
+But down here we got proper TypeScript support
+
+because of Zod, and that's why Zod can be so amazing.
+
+So with that, if I compile this again
+
+and I then run the compiled code again,
+
+you see this time it runs without issues
+
+because I now did define the proper schema
+
+for the kind of data I have.
+

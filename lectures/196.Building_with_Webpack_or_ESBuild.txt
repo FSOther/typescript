@@ -1,0 +1,152 @@
+So what could be a potential solution
+
+to our problem here?
+
+Well, we could try to write some build script,
+
+build script written in JavaScript or a shell script,
+
+anything like that, and we could try to invoke that here
+
+in our build script, in the package.json file,
+
+in addition to compiling the TypeScript code.
+
+And in that build script,
+
+we could copy all non-TypeScript files
+
+from the source folder to the dist folder.
+
+We could do something like that,
+
+and that could be a perfectly fine approach if you like it,
+
+especially maybe if it's a relatively simple project,
+
+but it might also not be the best possible approach.
+
+Instead, we have tools like Webpack
+
+that aim to help us with building and managing projects,
+
+web projects that consist of all kinds of different files.
+
+And Webpack is a very popular solution,
+
+because it is a tool that can handle all kinds of file types
+
+and bundle them together and optimize them, transform them,
+
+and then spit out a folder
+
+that contains all those changed and transformed
+
+and build files.
+
+And Webpack is still very popular today,
+
+and it especially has been super popular in the past.
+
+Now, working with Webpack,
+
+that would be a topic on its own.
+
+You could create an entire course about Webpack,
+
+about using it, configuring it, and so on.
+
+But thankfully, there definitely already exists
+
+courses for that.
+
+But even more importantly than that,
+
+you typically don't need to do that,
+
+because you'll often work with project setups
+
+where such a Webpack configuration
+
+has already been created for you.
+
+You might have a dedicated team member
+
+if you're working in a bigger company
+
+and on more complex projects that handles that.
+
+And as a TypeScript Developer, you definitely don't need
+
+to know how to configure Webpack.
+
+In addition, Webpack, as I mentioned,
+
+still is super popular and gets used a lot,
+
+but it's not the most modern
+
+or trending tool to be used
+
+for managing projects and for compiling files.
+
+Instead, there are alternatives like esbuild,
+
+which have become extremely popular over the past years,
+
+mainly because of their performance.
+
+I mean, here on their official page,
+
+you can see which numbers they show
+
+for building and transforming a project
+
+that consists of multiple files,
+
+and you see that they claim that they're super fast,
+
+and indeed, esbuild is extremely fast.
+
+And esbuild would be a popular alternative to Webpack,
+
+which you can also use to build and optimize and compile
+
+and change and copy all kinds of files.
+
+So you could use esbuild or Webpack
+
+and configure them in your project
+
+to manage how all the files
+
+in the source folder are handled.
+
+And to manage that, the HTML file gets copied
+
+to the dist folder, the CSS file gets copied too,
+
+and maybe also gets transformed to support older browsers
+
+or something like that,
+
+and that the TypeScript file gets compiled.
+
+Because both esbuild and Webpack
+
+also support TypeScript compilation.
+
+You can learn about that in the official documentation,
+
+but again, you typically don't need to become
+
+a Webpack or esbuild expert,
+
+because typically, you'll work with projects
+
+where these tools have already been set up for you.
+
+And I'll show you one extremely valuable and popular tool
+
+for creating such projects in the next lecture.
+

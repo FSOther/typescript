@@ -1,0 +1,56 @@
+Now when it comes to functions,
+
+there's one special return type you should be aware of.
+
+Let's say you have a function log,
+
+which takes a message, which is of type string,
+
+and which then just console logs it.
+
+Now, this of course, is kind of a useless function here
+
+because we just wrap another function with it,
+
+but of course we could be doing more in there.
+
+This is just a simple example.
+
+But what's important about this function
+
+is that it has no return statement.
+
+It does not return anything.
+
+And in such situations,
+
+the return type of this function is void.
+
+You might know that from some other programming languages.
+
+It, in the end, simply means this function returns nothing.
+
+Just as before, you typically don't need to set that though
+
+because it's inferred.
+
+If you hover over log, you see TypeScript infers
+
+that the return type is a void here.
+
+But it's important to know about this void type here
+
+because it's a special type which you use in combination
+
+with functions or with function return values.
+
+You don't use it anywhere else in your TypeScript code.
+
+You'll not use void as a type for a variable
+
+or a parameter,
+
+but it is a very common return type for functions
+
+if those functions simply don't return anything.
+

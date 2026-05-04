@@ -1,0 +1,182 @@
+Now, you're not limited
+
+to building generic types
+
+as we're doing it here with DataStore.
+
+Instead, you can also build generic functions.
+
+For example, we could build a merge function,
+
+which should accept two parameters, let's say.
+
+And the idea is that these two parameters
+
+get merged together, let's say simply into an array.
+
+Obviously, this is kind of a redundant function,
+
+but it's just a simple demo.
+
+We could be doing anything in here,
+
+including more complex tasks.
+
+Now, we're facing one problem here though,
+
+and that problem is that we don't know necessarily
+
+in advance which kinds of values we'll get here.
+
+Will a and b be strings, numbers, Booleans, objects?
+
+Will a be a string and b be an object?
+
+It's all possible.
+
+Therefore, of course, we could use the any type.
+
+That would allow us to use this merge function
+
+with all kinds of values but we'll also face a problem then.
+
+If I create an ids constant or variable here
+
+and I merge one and two,
+
+I'm getting back a value that is of type any array,
+
+so an array full of anything, which makes sense
+
+because TypeScript only knows that a and b
+
+will be any kind of value.
+
+Therefore, merge returns an array full
+
+of any kinds of values.
+
+And as a consequence, if I work with the values
+
+that have emerged here, I get no auto completion.
+
+TypeScript doesn't know which kinds
+
+of values these are if I'm working with numbers,
+
+with strings, it doesn't know that
+
+because the concrete type information
+
+that these here are numbers gets lost
+
+after merge is done with those values due
+
+to us setting these parameters to any here.
+
+That's simply how TypeScript works.
+
+And that's therefore another scenario where generic types
+
+or where this generics feature can help us
+
+because we can turn this function,
+
+this merge function here into a generic function.
+
+And we do this in the same way
+
+that we turned this DataStore type here
+
+into a generic type.
+
+We add angle brackets after the function name,
+
+and then between those angle brackets,
+
+we specify a placeholder, for example, T again.
+
+And it's the placeholder,
+
+not a concrete type-like string here
+
+because here we're defining our generic function.
+
+Here we don't know the exact kind
+
+of value we'll eventually work with yet.
+
+Instead, merge should be a function that can be used
+
+with all kinds of value types, hence this type placeholder
+
+because it's now this type placeholder that we'll use here
+
+for the parameters instead of any.
+
+As a result, TypeScript understands
+
+that merge will return an array full of values
+
+that have the type of our placeholder here.
+
+Therefore, when we use merge, we can add the angle brackets
+
+and add number here since I'm passing some numbers to merge.
+
+And consequently, TypeScript understands
+
+that ids is an array of numbers
+
+because number is the concrete value type we plugged in
+
+for our type placeholder here.
+
+Now, even better than that, in situations like this,
+
+you can omit those angle brackets here.
+
+You can also add them as you saw, but you can omit them
+
+because TypeScript is able to infer
+
+that merge will return an array of numbers here
+
+because it simply takes a look at the value types
+
+of the two arguments you're passing to merge.
+
+Since you're using the placeholder here
+
+for these parameters, TypeScript understands
+
+that if you're passing in numbers here, number is the type
+
+that's being used for the placeholder in this place
+
+when using the merge function like this.
+
+And quite often when working with generics,
+
+you'll be able to rely on TypeScript's inferential skills.
+
+It has quite good inference.
+
+Indeed here with the array example up there,
+
+we also could have omitted this.
+
+TypeScript would've inferred that this is an array full
+
+of strings without our explicit annotation here as well.
+
+I just added it to show you this example,
+
+but TypeScript is good at inferring types
+
+when using with generic types.
+
+And that's therefore a good example for a generic function
+
+and how you could build such a function.
+

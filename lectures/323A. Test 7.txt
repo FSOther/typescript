@@ -1,0 +1,12 @@
+Câu hỏi 1:
+What's a core difference between a class and an interface?
+
+x Interfaces have to be instantiated, classes don't.
+x Interfaces are compiled to JavaScript code, classes are not.
+v Interfaces can't be instantiated and are not compiled, classes can be instantiated and are compiled.
+
+Câu hỏi 2:
+Which of the following example is NOT a valid use-case for an interface?
+x You want to create 'contract' that forces an implementing class to have certain methods or properties. 
+x You want to define the structure of an object.
+v You want to store a union type.

@@ -1,0 +1,216 @@
+So how can we handle the data
+
+that was submitted?
+
+How can we extract it?
+
+Well, one approach would be to use the useState hook
+
+and manage the state of every input field here
+
+inside of the new goal component
+
+and update it with every keystroke
+
+in one of those inputs.
+
+That's one common approach.
+
+But we already saw how we can use state
+
+or to use useState hook with TypeScript.
+
+That's why I will show you the other popular approach
+
+You'll see in many React projects.
+
+You can use refs for extracting submitted values.
+
+Now a ref can be created by using the useRef hook,
+
+which is imported from React, and which is not a type.
+
+And then I'll add a goalRef,
+
+and a summaryRef.
+
+Now as you see, TypeScript is not happy
+
+about this usage of useRef.
+
+It expects to get one argument.
+
+Because these refs are in the end objects
+
+that can be attached to HTML elements,
+
+you could say, or to JSX elements to be more precise.
+
+And actually you can also use them for managing data
+
+and not attach them to any element at all,
+
+but a common way of using refs
+
+is to attach them to JSX elements.
+
+Nonetheless, you need to give them an initial value,
+
+which they have before they're attached, so to say.
+
+And typically, null is used as a value here.
+
+With that, you see TypeScript is happy
+
+and this useRef related error disappears.
+
+We still get an error here that this is not being used,
+
+but we'll fix this soon.
+
+To be precise, we'll fix it now
+
+because we can now go to the goal input here for example,
+
+add the special ref prop,
+
+and set this equal to goalRef,
+
+and do the same here for the summary.
+
+Add ref and set this equal to summaryRef.
+
+This attaches these ref objects to these elements
+
+and under the hood React will now store the values
+
+that are inserted into these inputs in those ref objects.
+
+In handleSubmit, we can therefore use these refs
+
+to extract the entered values.
+
+So I can get my entered goal by using my goalRef.
+
+And then you need to access .current,
+
+that's just how refs work.
+
+And then in there you'll find the value stored in that ref.
+
+And the value stored in that ref
+
+is actually not the plain text entered value,
+
+instead it's the entire input element
+
+to which the ref was attached.
+
+So therefore, you should access .value
+
+because this input element under the hood
+
+is represented by an object that has a value property.
+
+This has nothing to do with React or TypeScript,
+
+that's just how JavaScript works.
+
+The input elements have underlying DOM objects
+
+which have value properties.
+
+Nonetheless, I'm getting an error here,
+
+that current is possibly null, and that is correct,
+
+it is null initially, for example.
+
+Now we know that by the time the form is submitted,
+
+these ref objects have definitely been attached
+
+to these inputs though.
+
+So we can add an exclamation mark here to make it clear
+
+that this will not be null here inside of handleSubmit.
+
+That's not possible.
+
+But now I get a different error.
+
+Value does not exist on type never.
+
+And what does this mean?
+
+Well, we're getting this error
+
+because initially I'm setting my refs to null,
+
+and then the story ends.
+
+That's all the type information I give TypeScript.
+
+The fact that I then added as a value for the ref prop here
+
+does not help TypeScript understand
+
+which kind of value will ultimately be stored in that ref.
+
+You might think it does,
+
+but that's just not something TypeScript understands.
+
+So we need to let TypeScript know ahead of time
+
+which kind of value will be stored by this ref.
+
+And we do that by taking advantage
+
+of the generic nature of useRef.
+
+You don't have to set a generic type,
+
+but in that case, TypeScript infers the type managed
+
+by useRef from the initial value,
+
+which is not correct here.
+
+So, I will instead add
+
+an explicit generic type assignment here
+
+and set this to HTMLInputElement written like this,
+
+and the casing is important.
+
+Now do the same for the second ref.
+
+This tells TypeScript that these ref objects
+
+will initially hold null, but eventually they'll store
+
+HTML input element objects,
+
+because that's what we connect them to.
+
+Well, and with that, this error went away.
+
+And now I can also get my entered summary
+
+by using goalReF.current!.value.
+
+Now you could add validation here
+
+and check if the user entered empty values, for example,
+
+but here I'll ignore that, and instead I wanna now pass
+
+that extracted information to the app component
+
+where I manage my list of goals.
+
+And that's what we'll do next.
+

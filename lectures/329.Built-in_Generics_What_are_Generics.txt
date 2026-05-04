@@ -1,0 +1,400 @@
+For that again,
+
+I'm back in our dummy Project Setup,
+
+which we used over and over again.
+
+In there, we can run NPM starts
+
+to bring up that development server.
+
+And then in a new terminal window with the server running
+
+in a different terminal window,
+
+I running TSC dash W to start my
+
+TypeScript compilation process and keep that up and running.
+
+With that of course, we got an empty page
+
+because there's nothing on it
+
+but now we can play around in the app TS file
+
+and get started with generics.
+
+And I think it's easiest to understand generics
+
+if we have a look at a default type,
+
+which is built into TypeScript
+
+with which we actually worked a lot
+
+which turns out to be a generic
+
+and that would be an array.
+
+Let's say we have an array of names.
+
+Max and Manual let's say.
+
+So we get two names in there
+
+then of course, the type of the name's constant
+
+is an array of strings.
+
+Now actually, we could think of this
+
+as two types being combined.
+
+Just as you can have an object with different properties
+
+where in every property you might be
+
+storing a different type.
+
+An array always just a thing with different data in it,
+
+in this case with strings in it.
+
+So we actually have the array type, just an array
+
+and if I would remove the names here and cut them,
+
+you would see that TypeScript would infer this
+
+to be an array of type anything with any data in there.
+
+Indeed TypeScript knows the array type.
+
+So we could say, this here should be an array
+
+but as you see if I specified like this,
+
+we get an error even though I can tell you that
+
+this array type, like this exists to TypeScript.
+
+But we see that it's a generic type
+
+and that it requires one type argument.
+
+And now, that's something we haven't seen before.
+
+We never heard about generic types before.
+
+Now, this strange notation here,
+
+whenever you see something like this in TypeScript,
+
+you're dealing with a generic type.
+
+A generic type is a type which is kind of connected
+
+with some other type and is really flexible regarding
+
+which exact type that other type is.
+
+Sounds difficult?
+
+Well, let's go back to that array example.
+
+We know that we want to store an array here.
+
+So an array itself could be a type,
+
+it's a list of data that on its own
+
+already makes up a type, you could say.
+
+Just like an object is a type on its own,
+
+even if we don't know yet which data will go in there.
+
+So an array is a type on its own.
+
+But an array of course stores data
+
+of a certain type in there.
+
+Now the array type itself does not care
+
+which type of data is stored in there.
+
+The array type does not care whether you're storing a list
+
+of strings, of numbers, of objects,
+
+or of mixed data.
+
+The array type really doesn't care
+
+but it does care about getting at least some information,
+
+Even if you're telling it I don't know,
+
+by setting this to type any array.
+
+It's better than not specifying anything.
+
+Now, this is one way of defining an array type,
+
+the type of data which is stored in there
+
+and then square brackets.
+
+The other way, which would create exactly the same type
+
+would be to use that Array thing
+
+and then these angle brackets.
+
+And now between these angle brackets,
+
+you specify the type of data,
+
+which should go into the array.
+
+For example a string,
+
+and this here is 100% the same as defining this type here.
+
+Of course, here you could also use a union type to say,
+
+this array stores strings or numbers
+
+or use any if you don't want to say anything about the type
+
+or as we just had it string.
+
+So this is a generic type,
+
+a generic type built into TypeScript.
+
+A type which is connected to a another type,
+
+where we want to know which our type that is
+
+so to TypeScript can give us better support.
+
+Because here for example,
+
+if we know that what we store in there will be a string,
+
+well, then we know whenever I access
+
+an element in that array,
+
+I can do string stuff with it.
+
+I can call all these string methods for example
+
+and TypeScript will not complain because it knows,
+
+well this array hold strings.
+
+That's the idea of generic types.
+
+A certain type in this case the array type
+
+might simply work better or work at all
+
+if you provide an additional information
+
+about a type of data that's provided in this array type
+
+and of course, the array type is just one example.
+
+Another generic type which is built into TypeScript
+
+is the promise type.
+
+Now promises are a JavaScript feature, right?
+
+It's not a TypeScript feature.
+
+You can create promises in JavaScript
+
+and in case you're not sure what promises are,
+
+attached you find the link.
+
+A promise can be created by using new promise.
+
+Again, this is a constructor function,
+
+a class built into JavaScript
+
+and the promise constructor function takes one argument
+
+which itself is a function
+
+which then in turn will get two arguments eventually
+
+a resolve and a reject function.
+
+Now these will be passed on automatically
+
+to us by JavaScript in the browser.
+
+And then in a promise we can for example set a timer
+
+and then in that callback function of that timer,
+
+we could resolve the outer promise.
+
+So in here in this callback function,
+
+we could call the resolve and say this is done.
+
+Now when we do so this promise here creates a new object,
+
+a promise object which is stored in the promise constant.
+
+Now, this promise constant actually has a specific type.
+
+It's of type promise and then again,
+
+you see these angle brackets
+
+because this promise eventually will resolve to something.
+
+Now here it says unknown
+
+because TypeScript is not fully able to understand
+
+that we actually will resolve to a string here.
+
+But therefore we could say this is a promise,
+
+which eventually will yield a string
+
+and we do so by again using our generic type.
+
+The main type is promise,
+
+but a promise just like an array,
+
+kind of works together with other types.
+
+An array used other types because its stored data in it,
+
+data of certain types,
+
+and the promise works together with other types
+
+because eventually it kind of returns some data of some type
+
+and in this case that's a promise
+
+which eventually returns a string.
+
+Now again, why is that useful?
+
+Why is this extra type information useful?
+
+Well, if we just had a promise type here
+
+and that would not be allowed
+
+but if we said promise of type anything,
+
+which would basically the same as of types
+
+wouldn't know generic types
+
+if it wouldn't have any information about what we get back.
+
+Well then on this promise of course,
+
+we can use them as we can do an all promises
+
+and eventually we'll get some data
+
+but we know nothing about that data.
+
+I can't call a string method on it, for example.
+
+Well I can because it's any in this case
+
+but I don't get any particular TypeScript support.
+
+I could also try stuff on it, which definitely won't work.
+
+For example, if we turn this around
+
+and we return a number here,
+
+I could still call a string method here
+
+because TypeScript has no information
+
+about the data this promise will eventually yield.
+
+Now with generic types,
+
+we give that information to TypeScript.
+
+We can tell TypeScript that this promise
+
+will eventually yield a string
+
+or in this case, a number
+
+and then TypeScript can warn us here.
+
+If I try to save this, it will give us an error
+
+because it knows hey this promise eventually
+
+will yield a number and you can call split on that.
+
+So we get better type safety with generic types.
+
+So you're really flexible regarding what you do
+
+with that generic type information.
+
+An array knows which data it stores,
+
+a promise knows which data it returns.
+
+If you build your own generic classes or functions,
+
+you might do something totally different than there.
+
+But in the end generic types help you
+
+to get additional type information if you've got
+
+a more complex class or more complex function
+
+that does something with the data that's coming in,
+
+in a way where it doesn't really care
+
+about the data being of one particular type,
+
+but where you want to store the type information
+
+off the incoming data to get better TypeScript support
+
+whenever you work with your generic type.
+
+So whenever you work with that promise, or data array,
+
+that's basically the idea of generics.
+
+So this here, all were built in generics.
+
+Let's comment that out.
+
+Let's now build our own generic type word.
+
+Let's use our own generic types.
+
+cảnh báo thông tin
+Lên lịch thời gian học

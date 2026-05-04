@@ -1,0 +1,64 @@
+So at this point,
+
+you learned quite a bit about TypeScript
+
+and its most important essential features already.
+
+Now, you learned about these features
+
+by exploring basic simple snippets.
+
+In this section here,
+
+we're going to change this, at least a little bit,
+
+because in this section,
+
+we'll build a first basic
+
+but nonetheless a first demo project,
+
+where we'll use
+
+some of those essential features you learned about
+
+in the previous sections.
+
+Now, we won't use all the features here.
+
+It's always hard to put them all into one project
+
+whilst keeping the project basic and simple
+
+at the same time.
+
+But we'll take a look
+
+at some of the most important features,
+
+and we'll build an investment calculator application
+
+with TypeScript in this section here.
+
+Now it will be an investment calculator
+
+that runs in the terminal only,
+
+and the values will be hard-coded in the code
+
+for the moment.
+
+Later in this course,
+
+we'll also take a look
+
+at some more interactive demo projects,
+
+but nonetheless, we'll build a demo project
+
+that allows us to apply
+
+some of the essential TypeScript knowledge you gained
+
+over the last lectures.
+

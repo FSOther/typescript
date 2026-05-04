@@ -1,0 +1,90 @@
+Now to conclude this section,
+
+I also want to explore optional values,
+
+optional value types.
+
+Optional values in TypeScript to be precise.
+
+For example, you could have a function, generateError,
+
+which aims to throw a new Error object.
+
+And you might want to accept a message here,
+
+which is then passed to that Error object.
+
+But now what if this message here
+
+should actually be optional?
+
+So put in other words,
+
+you might want to call generateError like this
+
+without getting an error here in TypeScript.
+
+Now to achieve this, you can set this message parameter
+
+to be optional by adding a question mark after it
+
+before you add this colon and the type assignment.
+
+This tells TypeScript that this parameter is optional,
+
+that it may be specified, but that you don't have to.
+
+So you can call generateError like this
+
+without getting an error, but you can of course
+
+also pass an argument to it,
+
+"An error occurred!"
+
+Of course, this argument must have the type
+
+of this expected parameter though, if you set it.
+
+But that's how you can set up an optional parameter.
+
+And you cannot just set up optional parameters,
+
+but you can also set up optional properties
+
+when working with object types.
+
+So if you're defining a user object type here,
+
+you might have a name again and an age,
+
+and then let's say this user might have a role,
+
+which could be admin or guest let's say.
+
+But you also might be fine with no role being set here.
+
+You can also achieve this by adding a question mark here.
+
+Now role is an optional property which may be added
+
+to objects of this type,
+
+but which does not have to be added.
+
+And optional types, defined by adding a question mark
+
+right after the property name or the parameter name here
+
+before the type assignment,
+
+these kind of types are also important
+
+because it turns out that in many programs
+
+you need to work with optional values,
+
+which might not exist,
+
+and this is how you can define them in TypeScript.
+

@@ -1,0 +1,60 @@
+Up to this point in the course,
+
+we typically always only worked in one code file,
+
+or even if we had multiple files,
+
+we didn't connect them.
+
+That will change in this section here
+
+because this section is about modules and namespaces,
+
+which are TypeScript features
+
+and to some extent, also JavaScript features in general,
+
+that help you split your code across multiple files
+
+and yet then kind of connect it again
+
+so that you can organize your code across multiple files,
+
+but you can import and export from these different files
+
+so that you can, for example,
+
+use a function to find in File A in File B.
+
+Now, in this section here,
+
+we'll again use this starting project,
+
+which you'll find attached,,
+
+where you need to download the zip file, extract it,
+
+run npm install to install all dependencies,
+
+and npm start to start the development server,
+
+which will serve this index.html file.
+
+And then in a separate tab,
+
+you can also run the TypeScript compiler
+
+with tsc or tsc -w to enter watch mode
+
+to pick up any changes you save to your TypeScript code.
+
+And in this section,
+
+we'll now finally also start writing TypeScript code
+
+that's split across multiple files,
+
+and we'll explore
+
+the different approaches TypeScript gives you for that.
+

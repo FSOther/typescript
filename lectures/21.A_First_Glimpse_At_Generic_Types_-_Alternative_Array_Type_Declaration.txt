@@ -1,0 +1,66 @@
+So you learned how
+
+you can define array types.
+
+I also wanna show you an alternative way
+
+of writing this type here.
+
+There is nothing wrong with writing it like this,
+
+and this might be the more intuitive way
+
+of defining this type, but there is an alternative.
+
+So I'll comment out this first version
+
+and then write this type differently.
+
+Instead of using the square brackets here,
+
+I'll use the special Array type name here,
+
+followed by angle brackets, opening and closing.
+
+And the parentheses can now be removed here.
+
+Now this might look weird,
+
+but that's another way of describing an array type.
+
+This is a so-called generic type.
+
+It's a feature about which you will learn way more
+
+later in the course, because it's a cool,
+
+but also a bit more advanced feature.
+
+But in the end, such a generic type is really just
+
+a combination of multiple types,
+
+which is exactly what an array type is too.
+
+So TypeScript gives you this simpler way
+
+of describing an array type, but you could also use,
+
+but you could also use this approach here instead.
+
+And I'm showing you this way of writing
+
+such a array type already,
+
+because you will encounter it out there in some projects.
+
+And to make sure that you're not confused,
+
+I wanna make it very clear that this, just like this,
+
+describes an array type.
+
+It tells TypeScript that users should hold an Array
+
+full of either string or number values.
+

@@ -1,0 +1,284 @@
+So we get two issues,
+
+if we want to call them like that, to fix.
+
+Now I want to start
+
+with the issue that projects show up in both boxes.
+
+I want to introduce some filtering
+
+and the best place to filter is,
+
+of course, our listener function.
+
+If we go to the place where we register our listener,
+
+here in the project list clause.
+
+Then, here, we get a- a list of projects, right?
+
+Now, that list of projects comprises all projects.
+
+Now, inside of the project list clause however,
+
+we're only interested in active or finished projects.
+
+Now, here, by the way,
+
+we could also theoretically use our enum but, actually,
+
+I need the concrete values stored
+
+in the enum down there or in the type down there
+
+and, therefore, here I don't want
+
+to use a enum always
+
+because I want to show the string literal types.
+
+So, what we'll do here inside of our listener function is,
+
+before we store the projects and render them,
+
+we want to filter them.
+
+So, here we have our relevant projects,
+
+you could say, and that's, of course, projects filtered.
+
+The filter method is a default method which exists
+
+on any array in JavaScript.
+
+This takes a function which then executes
+
+on every item in that projects array
+
+and when this function here returns true,
+
+we keep the item
+
+in a newly created array which is then stored
+
+in relevant projects.
+
+If this function returns false, we drop the item,
+
+not from the original list,
+
+but in the new list which is generated
+
+and which is stored in relevant projects.
+
+So, in here, we have to return true or false depending
+
+on whether we want to keep the project or not.
+
+And for that, of course, we just need to look at the status.
+
+Project status is a enum and we want
+
+to check whether project status is equal
+
+to project status active if we're
+
+in an active project list,
+
+so if the type property is active,
+
+or if the project status is finished if we're
+
+in a finished list.
+
+So here I'll actually write a- a real function body
+
+by wrapping this with curly braces,
+
+not using the arrow function shortcut
+
+and then we can check,
+
+if this type is equal active,
+
+then I want to return
+
+the result of this check here else
+
+and therefore, simply after this if statement,
+
+I want to return the comparison
+
+to the finished project status.
+
+With that, we get our relevant projects
+
+which we can now store here,
+
+in assigned projects.
+
+So, let's now see whether it works.
+
+If I reload,
+
+and we add a project here,
+
+does this work?
+
+This works and, you see,
+
+it only is added to active projects,
+
+not to finished projects.
+
+However, if I add a second project here,
+
+we still have that duplication going on.
+
+Now, that's related to how we render our projects.
+
+Inside of render projects,
+
+we always go through all our project items
+
+and append them to the list.
+
+Now, the problem with that, of course,
+
+is that we already might have a project item rendered
+
+out onto the screen.
+
+Now, the best possible solution here would be
+
+to kind of run some comparison
+
+where you check what has already been rendered
+
+and what you need to render,
+
+to avoid unnecessary re rendering.
+
+However, running this comparison
+
+by looking at the real DOM also costs quite a bit
+
+of performance.
+
+For this application here, it's therefore perfectly fine
+
+to simply take our list element
+
+and clear all its content by setting inner HTML
+
+to an empty string,
+
+which means we get rid of all list items
+
+and then re render.
+
+That means that whenever we add a new project,
+
+we re render all projects but,
+
+for the purpose of this project here,
+
+for this application here,
+
+that is absolutely fine.
+
+So, now with that, if we save that,
+
+let's give it another try.
+
+"Does this work?" is the first project
+
+and now if I add another project here,
+
+you see, it gets added
+
+but the other project doesn't get added again.
+
+Whoops and, now, here I got (mumbles) error
+
+because the description wasn't long enough.
+
+So, this now all works, as you can tell
+
+and we're rendering these projects
+
+in the way they should be rendered
+
+which, of course, is right.
+
+And, with that, the application doesn't look too bad.
+
+The one thing that's missing is some drag
+
+and drop functionality or some way
+
+of getting projects from this first list to the second list.
+
+We're also not really outputting the
+
+other information we got,
+
+description and number of people.
+
+So, that's also not great.
+
+And, we also have a bit of code duplication
+
+when we actually have a look at project list
+
+at this clause here
+
+and at the project input clause.
+
+In both we have template element, host element and element
+
+and we have an attach method and so on.
+
+So, I want to improve the code here
+
+and reuse some code by using inheritance
+
+and using a base clause and, thereafter,
+
+I also want to create a dedicated clause
+
+for every project item
+
+where we then just instantiate
+
+that project item clause inside
+
+of project list instead
+
+of appending a list item manually, like this
+
+and then inside that 'to be created' project item clause,
+
+that appending part should happen
+
+and then I also want
+
+to output more information about the project item,
+
+including its description
+
+and the number of people assigned.
+
+So, there is some work left to do
+
+and, before we work on the project item
+
+in that form in which I want to have it,
+
+let's actually make sure we,
+
+first of all add some inheritance to make our project list
+
+and project input, or certain parts of it, more reusable.
+

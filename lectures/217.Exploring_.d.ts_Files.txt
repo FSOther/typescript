@@ -1,0 +1,262 @@
+Okay, so you'll learn about this trick
+
+or dissolution, it's not really a trick,
+
+it's simply how you use JavaScript libraries
+
+in TypeScript projects
+
+where you install the @types package
+
+that adds the missing types to the project.
+
+Now, let's take a closer look
+
+at what we actually installed here though.
+
+And we can do this here on GitHub
+
+or of course also in our node modules folder
+
+because that is ultimately where the libraries
+
+that we use in a given project are downloaded to
+
+and stored in.
+
+So here we see the @types folder,
+
+and in there we see the lodash sub folder
+
+and in there we have essentially all the files,
+
+we can also see here like add.d.ts, after.d.ts,
+
+we find those here as well.
+
+And these are simply files that contain type definitions
+
+for the different utility methods offered by lodash.
+
+So for example, we also find a chunk.d.ts file here
+
+and also in our node modules folder, of course.
+
+Now if we explore that file,
+
+we can see that in this case here, it's a very simple file
+
+that just imports chunk from dot/index
+
+and then exports it again.
+
+So let's take a look at this index file.
+
+If I search for it, here let's go down, here is index.d.ts.
+
+If we take a look at that file,
+
+we can see that in there we got some weird code.
+
+Now this code is a bit less weird
+
+if you actually go through the namespace
+
+and modules section in this course.
+
+There you learn that this syntax here,
+
+which looks like a bunch of comments,
+
+is actually not a bunch of comments,
+
+but instead a TypeScript feature where you can,
+
+well as the name suggests, reference and kind of imports
+
+and merge together different TypeScript
+
+or TypeScript definition files in this case
+
+to basically include them all in one file
+
+or in the scope of one file without actually putting
+
+all the code into the same file
+
+simply to make it a bit more manageable.
+
+But again, I do dive a bit deeper into that
+
+in the namespaces and modules course section.
+
+What you also see in this file here
+
+before we take a look at these files is that
+
+the declare keyword is used here,
+
+which you might not have seen before,
+
+which is a TypeScript keyword that can be used
+
+to declare something like a constant or a namespace,
+
+which again is covered in that namespaces
+
+and modules course section to let TypeScript know
+
+on a global level about the existence of a certain name
+
+or how certain types are grouped together.
+
+But that's not too important right now.
+
+Instead, let's take a look at one of these files here,
+
+one of the files that are referenced here,
+
+in this case, the array.d.ts file,
+
+which we find in the common sub folder.
+
+So let's dig into that common sub folder,
+
+go to the array.d.ts file, which is yet another .d.ts file.
+
+And in there we now finally find a bit more code.
+
+Now we again find the declare keyword here,
+
+which is used here to group all of the types defined here
+
+to gather into one common module called index,
+
+which is the same module name used
+
+in all the other files in this common folder.
+
+To simply ensure that even though all these types
+
+are stored in different files,
+
+TypeScript treats them as all belonging together.
+
+That's really all that's to that declare module thing here.
+
+It's used here to split those type definitions
+
+across multiple files
+
+and yet have them be treated
+
+as if they were all defined together
+
+in one in the same file.
+
+By the way, you might never write code like this
+
+because it's really only needed
+
+if you are writing your own types definition files,
+
+which you really only need to do if you're maintaining
+
+a library that should be usable by others
+
+where you also want to provide type definitions.
+
+If you're building a TypeScript application,
+
+as we have been doing so far throughout this course,
+
+you don't really need to declare things.
+
+You just write your TypeScript code in there.
+
+So that's needed here to define those types
+
+for a library.
+
+But if you're not building a library,
+
+you will very likely never need
+
+to write code like this.
+
+Anyways, what's inside of that declared module?
+
+Well, here we find interfaces, for example, or type aliases
+
+so things we already learned about.
+
+We for example, also find this interface
+
+which contains the definition of the chunk method,
+
+and actually we find multiple definitions
+
+on different interfaces since the chunk method can be used
+
+in different ways in the end.
+
+Here, for example, we find the definition
+
+for the chunk method as we used it
+
+where an array is passed to it and then a size.
+
+And here we see that chunk is a generic method in this case
+
+since we could of course use it from the lodash Library
+
+on an array with any kind of data in it.
+
+So that is what we installed,
+
+and again, you will very likely never need
+
+to write code like this.
+
+I'm just showing you this code so that you understand
+
+what's happening behind the scenes.
+
+And what is happening behind the scenes is in the end
+
+that we installed a bunch of type definitions
+
+that are used by TypeScript behind the scenes
+
+to understand the types of this JavaScript library.
+
+That's the important thing here.
+
+So for you as an application developer,
+
+you don't need to worry
+
+about writing these type definition files.
+
+Instead, you just need to know
+
+that when you're using a JavaScript library
+
+in a TypeScript project
+
+and you are having problems with missing types
+
+as we did initially here with the lodash library,
+
+you can fix those problems
+
+by installing the respective @types helper library,
+
+in this case, the lodash @types helper library.
+
+And that gives you those d.ts files,
+
+which simply contain the type definitions needed
+
+by TypeScript.
+

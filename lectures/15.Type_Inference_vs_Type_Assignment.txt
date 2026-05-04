@@ -1,0 +1,128 @@
+So, in this very simple code here,
+
+we have an explicit type assignment,
+
+also called a type annotation.
+
+This feature where you have a colon
+
+and then thereafter the name of the type,
+
+that's called a type assignment or a type annotation.
+
+Now, you'll sometimes also have the case
+
+that you might have a variable, let's say userAge,
+
+which has a value right from the start,
+
+so which has an initial value assigned to it.
+
+In this case, you might notice
+
+that I'm not getting these three dots below userAge,
+
+which I got for username before,
+
+and the reason for that is
+
+that indeed here TypeScript is able
+
+to infer the type of value
+
+that should be stored in that variable
+
+from the initial value that was assigned to it.
+
+Now, it was not able to infer a type for userName,
+
+because if you just have the variable userName like this,
+
+how would TypeScript know from this single line
+
+which type of value should be stored in there?
+
+It can't know.
+
+That's why an explicit type assignment makes sense
+
+in such situations.
+
+For a userAge here for this example, it's different though.
+
+Here, we have an initial value
+
+and TypeScript will then take a look at that initial value
+
+and use the type of this value as a type for this variable.
+
+Therefore, if you thereafter
+
+try to assign a string to userAge,
+
+you'll get an error.
+
+It looks like a number,
+
+but it is a string, since it's wrapped by quotes.
+
+You'll get an error that
+
+a value of type string is not assignable to a variable
+
+that expects to get a value of type number,
+
+because, indeed, if you hover over userAge
+
+up here where it's created,
+
+you'll see that this is the type
+
+that's inferred by TypeScript.
+
+You could still explicitly set it like this,
+
+but you don't have to.
+
+That's, by the way, all important,
+
+if you have an initial value assigned,
+
+you don't set the type like this or anything like that.
+
+Instead, the colon followed by the type name
+
+always goes right after the variable name like this.
+
+So you could do this,
+
+but it's really not necessary
+
+if you have an initial value assigned,
+
+and it's indeed considered a good practice
+
+to not do unnecessary explicit type assignments like this.
+
+If you have no initial type,
+
+you should definitely assign a type explicitly,
+
+but if you have an initial type,
+
+you should rely on Typescripts inference
+
+unless you have a strong reason
+
+to overwrite the inferred type,
+
+which I don't have here.
+
+But with that, I'll comment this out,
+
+since it will throw an error otherwise.
+
+But with that, we now also learned about type inference,
+
+another crucial TypeScript feature.
+

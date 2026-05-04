@@ -1,0 +1,57 @@
+Welcome to this course about TypeScript.
+
+It's great to have you on board.
+
+My name is Maximilian Schwarzmüller,
+
+and I will be your instructor in this course
+
+where I will get you started with TypeScript
+
+and where I will cover all those key concepts,
+
+including advanced concepts, that you need to know
+
+to confidently use TypeScript in your future projects
+
+because TypeScript is an amazing language.
+
+It builds up on JavaScript, as you will learn,
+
+and therefore, if you know JavaScript,
+
+which is a course prerequisite,
+
+learning TypeScript will be straightforward,
+
+but it makes JavaScript better,
+
+as you will see throughout this course.
+
+TypeScript isn't difficult or anything like that,
+
+but it does have its tricky parts and aspects.
+
+And that's why, in this course, we'll start at the basics.
+
+We'll learn what exactly TypeScript is,
+
+how the core TypeScript syntax looks like,
+
+which core TypeScript features you need to know
+
+before we then, step by step, dive deeper into TypeScript
+
+and explore the more difficult
+
+and advanced concepts so that, by the end of the course,
+
+you'll be able to use TypeScript in your future projects.
+
+And with that, let's dive right in,
+
+and let's start with maybe the most important questions.
+
+What exactly is TypeScript, and why would you use it
+
+instead of just JavaScript?

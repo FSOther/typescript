@@ -1,0 +1,174 @@
+For this section
+
+and for this demo project here,
+
+I am in a brand new empty project folder.
+
+And the first thing I'll do here
+
+is that I'll run tsc --init
+
+to create such a tsconfig.json file
+
+about which you also learned
+
+in the previous lectures and sections.
+
+This file will allow us to run the tsc command
+
+to compile all the files that exist in this project folder
+
+so that we don't have to target files individually.
+
+For this basic project, it actually doesn't matter too much,
+
+but since we learned about this configuration file
+
+and this setup, I also wanna use it here.
+
+Now, in this tsconfig.json file,
+
+I'll change the target to ES2022.
+
+You can, of course, pick any target you want
+
+and besides that, I'll keep all the default settings,
+
+whichever that may be
+
+at the point of time you are watching the video.
+
+They will be all right.
+
+Most importantly, the strict setting here should be set
+
+to true to make sure that strict type checking is enabled.
+
+And with that, we can build our calculator
+
+and I'll store the code in a calculator.ts file,
+
+.ts, of course, because we'll write TypeScript code.
+
+Well, and now the question is
+
+how this calculator should work.
+
+And, of course, there would be different ways
+
+of building it.
+
+You could also build it such that it's interactive
+
+and allows users to enter values
+
+but here, I'll keep it very simple.
+
+I'll hard code all the values into the code
+
+and I'll focus on simply calculating investment amounts
+
+at the end of different years.
+
+So my idea in the end is to have a function,
+
+calculateInvestment, let's say,
+
+into which I can pass some data, some investment data,
+
+some data that describes my investment strategy.
+
+And that data should, for example,
+
+be the initial amount I wanna invest,
+
+the annual contribution.
+
+So how much extra money is poured
+
+into this investment every year,
+
+the expected return rate for every year
+
+and the duration, So how long I wanna keep that investment
+
+and how long I wanna contribute to it, so to say.
+
+These four pieces of information should be passed
+
+as an input to calculateInvestment.
+
+And then I expect to get back a return value,
+
+which should be an array of investment results.
+
+So an array of objects, for example,
+
+but it could be structured in any way
+
+where every individual result describes one year,
+
+so that I got my total amount invested
+
+and the amount it's worth at the end
+
+of the first year in the first entry of this array.
+
+And then the same data for the second year
+
+in the second entry, and so on.
+
+That's my idea here.
+
+Well, and then I wanna add another function,
+
+printResults, where I can pass my results
+
+as a value to it.
+
+And that should be this result array that is produced
+
+by calculateInvestment.
+
+And in here, I then wanna print, output, the result data
+
+and maybe output it across multiple lines
+
+to make it a bit easier to read.
+
+Well, and then I wanna call calculateInvestment
+
+with my data.
+
+So with any kind of data here,
+
+and I wanna get back my results,
+
+and then, of course, call printResults
+
+and pass the results to that function to output them.
+
+That's, in the end, the entire code.
+
+It's not super complex, but that's, in the end,
+
+the demo application I wanna build here.
+
+And you can now definitely try building this
+
+on your own first without my help.
+
+You can try coming up with some logic
+
+to derive these results.
+
+And most importantly, you should try to come up
+
+with some type definitions, type annotations
+
+wherever they may be needed
+
+so that you built this project on your own.
+
+In the next lectures, we'll then build it together.
+

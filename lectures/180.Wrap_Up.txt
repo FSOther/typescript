@@ -1,0 +1,52 @@
+And this is it for this little demo project.
+
+Now, of course there is always more you could do,
+
+but here we're already using a bunch of nice types
+
+of features you learned about throughout this course.
+
+And with this project, you hopefully have a better idea
+
+of when you use which feature, why certain features
+
+like decorators and interfaces exist, how they can help us,
+
+and how we can write type-safe, scalable code.
+
+Now, definitely feel free to build up on this project,
+
+add more features on your own,
+
+explore what you could change there,
+
+and simply practice working with typescript.
+
+I'm happy with the current state and in the next module,
+
+I now wanna tackle a quite obvious problem.
+
+We got one super huge file here.
+
+So, splitting this up into multiple files would really help
+
+us with managing our code base.
+
+Because, right now if we wanna change something somewhere,
+
+we always have to scroll for the entire file
+
+and find the place where we wanna make a change.
+
+That's not ideal.
+
+There's already quite a lot of code,
+
+in even bigger projects it would be totally unmanageable.
+
+So, in the next module we'll have a look
+
+at the features types it gives us that help us
+
+with splitting our code across multiple files.
+

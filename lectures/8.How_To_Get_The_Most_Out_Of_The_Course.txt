@@ -1,0 +1,148 @@
+Before we really dive into TypeScript
+
+and all its core features,
+
+there's one last thing I want to get out of the way.
+
+I want to ensure that you get the most out of this course,
+
+and therefore I got a couple of recommendations
+
+you might want to consider following
+
+when going through that course.
+
+And it all starts with watching the videos
+
+because of course it is a video-based course.
+
+But, with that, I mean that you should, for example,
+
+take advantage of the fact
+
+that you can adjust the playback speed of those videos.
+
+Speed me up if I'm going to slow for your taste,
+
+or slow me down if I'm going too fast.
+
+You can, of course, also take advantage of the fact
+
+that it's a video-on-demand course,
+
+so if something's not clear immediately,
+
+or if you had to take a break,
+
+and you forgot some things,
+
+definitely rewatch videos.
+
+That is the idea of a video-on-demand course.
+
+You can watch videos and sections as often as needed.
+
+Also, follow the curriculum, at least for the first sections
+
+because I took great care to create a curriculum
+
+that walks you through TypeScript, step by step,
+
+where all those sections,
+
+in the end, build up on each other,
+
+In the later parts of the course,
+
+where we dive into more advanced features
+
+and where you, for example, learn about things
+
+like using React with TypeScript,
+
+you can definitely also skip sections
+
+or switch the order,
+
+but especially for the first couple of sections
+
+where you learn about all those essentials,
+
+you should stick to the curriculum order.
+
+That's my recommendation.
+
+I also recommend that you code along,
+
+and that you practice what you learn
+
+because only practice makes perfect.
+
+Sounds obvious, but a lot of students don't do that.
+
+Feel free to deviate from the course code.
+
+You don't have to type exactly what I'm typing.
+
+Play around with TypeScript.
+
+Explore how things change if you change types
+
+or if you combine different TypeScript features
+
+you learned about.
+
+Use the knowledge you gain throughout this course,
+
+and also use it in your future projects
+
+even if it's just dummy projects.
+
+But apply what you learned.
+
+Now, of course, when coding along
+
+and when practicing and applying what you learned,
+
+you'll also encounter problems and errors.
+
+That is totally normal.
+
+And, therefore, of course you should try
+
+to fix those problems.
+
+And I strongly recommend that you first try doing that
+
+on your own,
+
+that you don't immediately reach out
+
+for AI, Google, or the course Q&A section.
+
+These resources are there to help you if you need them,
+
+and you definitely should go for them at some point,
+
+but definitely try solving problems on your own first
+
+because otherwise you won't learn a lot.
+
+And especially also when it comes to the course Q&A section,
+
+take advantage of the fact
+
+that you cannot just ask there,
+
+but that you can also answer
+
+because, by helping other students solve their problems,
+
+you'll learn so much more than if you just ask.
+
+So these are my recommendations,
+
+and, therefore, let's now dive in,
+
+and let's learn more about TypeScript.
+

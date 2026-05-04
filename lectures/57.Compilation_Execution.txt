@@ -1,0 +1,136 @@
+So let's use these functions
+
+which we built here.
+
+Let's use the calculate investment function here,
+
+and for that, we need to pass some data to it.
+
+And that data should be of type investment data.
+
+So it should be an object that has this shape.
+
+Therefore, I'll add a new constant here, investment data,
+
+which should be of type investment data.
+
+And I'm adding an explicit type assignment here
+
+so that TypeScript forces me
+
+to pass the right values into this object.
+
+You wouldn't have to add it here,
+
+TypeScript would then infer the type.
+
+But adding it makes sure that we get an error
+
+as long as we haven't passed the right kind of data
+
+into this object.
+
+And then we have to,
+
+well, add data for these four properties.
+
+Like for the initial amount,
+
+which could be 1000 or 5,000 or anything like that.
+
+Then for the annual contribution, which could be 500.
+
+The expected return rate, which could be 0.08
+
+for 8% per year.
+
+And the duration, which could be 10 years.
+
+And it's now this investment data
+
+that's passed as an argument, as a value
+
+to calculate investment like this.
+
+Well, and that should then yield some results,
+
+which are of type calculation result,
+
+which we can output with print results.
+
+And with all that done, we wrote all the code
+
+using some of those
+
+essential TypeScript features you learn about
+
+that is required here
+
+to hopefully calculate our investment results here.
+
+Now, to give this a try,
+
+we can run tsc to compile this file,
+
+and we don't need to target the file
+
+since we have such a tsconfig.json file in the project.
+
+So running the compiler like this should work.
+
+And it did, it added this JavaScript file.
+
+And if we take a look at this JavaScript file,
+
+we can see that it,
+
+of course, contains pretty much the same code.
+
+It would be kind of strange if it didn't,
+
+but it contains the same code
+
+without all these type annotations.
+
+That's the one important difference in the end.
+
+But now we can run this by running node calculator.js,
+
+and this will now output this data.
+
+And you can see that we get per year data
+
+with the different results for the different years.
+
+And of course, this year is then the end result
+
+at the end of this 10 year time horizon,
+
+which I have set up here.
+
+So here we can see that if we invested
+
+$5,000, let's say initially,
+
+and then 500 per year,
+
+so 10,000 overall,
+
+if we did that, then at the end of year 10,
+
+we would have a total amount of $18,000, for example.
+
+And of course, you could now rerun this
+
+with different numbers, adjust it in any way you want,
+
+and maybe also even add more features to it
+
+if you feel like it.
+
+But that's a basic example
+
+of how we can use sum TypeScript features
+
+in a basic node JS application.
+

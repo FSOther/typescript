@@ -1,0 +1,410 @@
+So we can return something
+
+on Method Decorators,
+
+and that something should be a descriptor,
+
+which allows us to change the method
+
+or change the configuration of the method.
+
+And this is something I wanna do here.
+
+Before that, I will first of all go to the index HTML file
+
+and there, let's add a button.
+
+Click Me, a very simple button,
+
+in my app.ts file, I now want to make sure
+
+that when we click this button
+
+we execute a method on an object.
+
+And for that, I will simply add a new class here,
+
+first of all, printer.
+
+And in there I wanna have a property message
+
+which is just this works, so a simple string stored in there
+
+and then I want to have a show message method in there
+
+where I simply console log this message.
+
+So, of course, this is kind of a simple dummy class
+
+but none the less, this allows me to show you
+
+what I want to show you.
+
+Let's select the button to door now,
+
+with document query selector button
+
+and let's add an event listener to it.
+
+Now, first of all, I'll add my exclamation mark here
+
+to make it clear to TypeScript that this exists,
+
+that this will not be null,
+
+and then I will add an event listener,
+
+a click event listener, and then I want to trigger
+
+this show message method here.
+
+For that, I will create a new printer here, like this,
+
+and then here point at p.showMessage,
+
+that's my idea here.
+
+Now, if we save that,
+
+and we go back to our page and I click on this button,
+
+we get undefined here, though,
+
+we don't get our message being shown.
+
+And the reason for that is that with an event listener,
+
+if we point at a function that should be executed
+
+the this keyword inside of that function
+
+will not have the same context or reference
+
+as it has if we call just p.ShowMessage,
+
+in this case, this would refer to the printer.
+
+No, in the scenario here where we use an event listener,
+
+this will refer to the target of the event,
+
+because addEventListener in the end binds this
+
+in the function which is to be executed
+
+to the target of the event.
+
+And of course, I don't want this.
+
+Now, a common workaround here
+
+would be to use the bind method
+
+and bind showMessage to p, or bind this in showMessage to p
+
+so that when this executes, this is not referring
+
+to what addEventListener wants it to refer to
+
+but instead this inside of showMessage
+
+will refer to this p, to this object here again.
+
+And if we're now, if we reload here
+
+and I clear this again, now we see this works!
+
+Now, that is all default JavaScript.
+
+Now, we'll build a decorator,
+
+which we can add to this method,
+
+which will automatically bind this to the surrounding class,
+
+so to the object this method belongs to,
+
+every time it's called, no matter where we call it.
+
+So for that, above the printer I'll add a new function
+
+and I will name it autobind because that is, in the end,
+
+what we do and that will be my decorator autobind.
+
+Can also of course use a capital starting character
+
+to stay in line with our other namings
+
+but again, you can use either of the two
+
+when you define a decorator function.
+
+Now this here will be my decorator already
+
+and in there we get a couple of arguments.
+
+We get the target, as you'll learn, and that is any.
+
+It is either the prototype of the object
+
+we're working with or it's the constructor function
+
+if we would be adding this to a static method
+
+but here it will be the prototype
+
+because we will add it to a instance method.
+
+Then we have the method name or the property name
+
+but since we add it to a method
+
+we can call this method name, makes more sense.
+
+If this is a string or a symbol
+
+or it could also be a number, of course,
+
+but here we know we will typically work with strings
+
+so we can also just go with string here,
+
+depending on where you plan on adding this decorator
+
+and how generic it should be
+
+and last but not least, we get the descriptor here
+
+which will be of type PropertyDescriptor as alert.
+
+So now we've got these three arguments
+
+which we all used on Log3
+
+which was our method decorator before.
+
+Now, in autobind, and I now want to make sure
+
+that we always set the this keyword
+
+to this object this method belongs to again.
+
+Now how can we achieve this?
+
+First of all, I have to get access
+
+to the method which should be called.
+
+And this will be possible with the help of our descriptor,
+
+because if you reload the app
+
+and you have a look at such a method descriptor down there
+
+you see we get the value property
+
+in the descriptor and that points at the function.
+
+Because the value of this property is a function,
+
+in this case, a method is just a property
+
+with a function as a value.
+
+So the value key holds the original function,
+
+therefore, here, we can extract the original method,
+
+if we wanna call it like this
+
+by accessing descriptor.value.
+
+This will give us access to the, well, original method.
+
+Next, I will set up a new adjusted descriptor,
+
+this will, in the end, be what we return later.
+
+Now this will be an object
+
+and it will be of type property descriptor.
+
+Now in this object here we can add all the things
+
+we can add to a property descriptor.
+
+And for example, can set this to configurable, true,
+
+set enumerable to false, so that this does not show up
+
+in foreign loops,
+
+and now add a getter here, and that's new.
+
+I add a getter here, which is a method,
+
+or a property that holds a function, which is the same,
+
+so that we can execute some extra logic
+
+when users try to access this property.
+
+So that we don't just directly execute the value
+
+of this property, so the function,
+
+but that we can step in and do some extra work
+
+before we execute the function.
+
+That's the idea here.
+
+So I don't add a value property to this descriptor here,
+
+I just have a getter and again,
+
+the getter basically is like having a value property
+
+with extra logic that runs before the value is returned.
+
+Now, in here I want to have my bound function
+
+where I can use the original method we extracted up here
+
+and we call bind and bind this.
+
+And now the bequest, of course,
+
+is what does this refer to in here?
+
+Keep in mind it's inside of this getter method
+
+so this will refer to whatever is responsible
+
+for triggering this getter method.
+
+And that's the trick now,
+
+the getter method will be triggered
+
+by the concrete object to which it belongs,
+
+so this inside of the getter method
+
+will always refer to the object
+
+on which we defined the getter.
+
+This will not be overwritten by addEventListener
+
+because the getter is like an extra layer
+
+between our function that's being executed
+
+and the object to which it belongs
+
+and the Event Listener.
+
+So therefore, this in here will refer
+
+to the object on which we originally defined the method.
+
+So we can safely bind this for the original method
+
+and ensure that now this inside of the original method
+
+will also refer to the exact same object.
+
+Now I will return the bound function here
+
+and thereafter, outside of this adjusted descriptor,
+
+return the adjusted descriptor.
+
+So that's our decorator function,
+
+returning a new descriptor object,
+
+and therefore this descriptor object
+
+will override the old descriptor,
+
+that is what TypeScript will do with it.
+
+TypeScript will then replace the old methods descriptor,
+
+so the old methods configuration
+
+with this new configuration here,
+
+which added this extra getter layer.
+
+Now, I'm not interested in target and method name here,
+
+of course, so to avoid errors I will name this underscore
+
+and this here underscore two.
+
+Again, just to tell TypeScript that I'm not interested
+
+in these values but I need to accept them.
+
+And now let's add autobind to showMessage here.
+
+So here, I will add at Autobind,
+
+and make sure that you removed bind down there
+
+in the event listener, and save this.
+
+And now let's have a look at that,
+
+let's click Click Me, and you should see This Works!
+
+If I reload, this works.
+
+Because this is now bound correctly.
+
+And just to verify that it's really our decorator
+
+that makes a difference here,
+
+if I would remove the binding here
+
+in my getter and the decorator
+
+and I save that, you see that if it is now reloads
+
+and we click Click me, we see undefined again.
+
+So it's really this extra getter layer
+
+which does its work here
+
+which ensures that this is always bound correctly
+
+no matter how you call showMessage.
+
+If we called it like this directly on the object
+
+it will work, if we call it here like this
+
+with an event listener, it also works.
+
+So you see this works here,
+
+which in the end is coming from this showMessage call
+
+and then you also see it works if I click on the button.
+
+So this is one neat example
+
+of how you can utilize decorators
+
+to build a quite amazing functionality
+
+and save you the hassle of manually calling bind everywhere.
+
+Instead, you just bind it like this.
+

@@ -1,0 +1,442 @@
+So, now that we're able to fetch the user input
+
+and all the validated with the help of our TypeScript,
+
+the driven validation logic here.
+
+Let's move on and let's make sure we do more
+
+with that gathered user input than just output it
+
+in the console.
+
+Because at the moment,
+
+there's of course is what we're doing, right.
+
+In the end, I'm just printing the things deed information
+
+we gathered to do console,
+
+and that's not our final goal in this application.
+
+Instead, the goal is, should be that we also rendered
+
+this list of projects here based on this template,
+
+where every project item is based on this template here.
+
+And we output the information that we gathered here.
+
+So, that will be the next thing, I wanna work on.
+
+Besides having our project input clause here,
+
+which is responsible for rendering the forum
+
+and gathering the user input,
+
+I wanna have the number of clause
+
+which is responsible for rendering a list of projects.
+
+And actually we'll split that into two clauses.
+
+One clause for the list
+
+and one class per project item in the list.
+
+And then we need to find some way of passing that
+
+gathered input here basically to our project list
+
+and add a new item to it.
+
+So let's tackle this step by step, I'd say,
+
+and let's start by adding a project list class.
+
+Now at the exact place where you added, it's up to you.
+
+The order does not matter because Java script in the end
+
+will parse this entire file entirely before it executes it.
+
+So, it will be aware of all classes.
+
+Still, I will add it here above the project input clause
+
+because I'd kind off rely on the project list clause,
+
+which I'm about to build inside of the project input class,
+
+but again it does really matter.
+
+So, here I'll have my project list clause, project list,
+
+and the idea of this clause here is a bit related
+
+to what we did in a project input.
+
+I wanna reach out to my template here and then render it
+
+in a certain place off the application.
+
+And therefore, what we can do here is we can again
+
+add a constructor, we can add the fields we need
+
+and there will need to template element
+
+and the host element in the end,
+
+so, we can add both here to our project list.
+
+We'll also need to element itself,
+
+I'd say so the concrete element, which is getting rendered.
+
+And the types will differ though.
+
+The host element will still be a div
+
+because I wanna render that list in that div here as well.
+
+But the concrete element, which we do render.
+
+Of course, it's not a form element, but if we have a look
+
+at our list template here,
+
+we see there's a section inside of it.
+
+So, we have a section element.
+
+Now turns out there is no element and those section element,
+
+so we'll just have a regular HTML element
+
+because every element has this type here for some tax.
+
+There are more specialized types if they are,
+
+and we can just use HTML type.
+
+So, now of course we need to get access to these elements.
+
+So, we can copy this code here
+
+actually from the constructor of the project input
+
+added to the constructor of project list
+
+and now adjust some things.
+
+For example, my template element of course now doesn't have
+
+an idea of project input.
+
+That's now project list instead.
+
+So, let's copy that and use this here to select the element.
+
+I will still cost it, and I still know with certainty
+
+that I get it so dis doesn't change.
+
+The host elements still is to death with the ID app.
+
+So this does not change.
+
+Then I import my content and then I, well, the store,
+
+the first element.
+
+Off the import, the template.
+
+So basically the first element in the template, which is the
+
+section, I stored that in the element property here.
+
+However, this is not an HTML form element.
+
+It's just an HTML element here.
+
+Now we also can assign an ID here and actually did, should
+
+be dynamic, not hard-coded because we'll have more than one
+
+list of projects.
+
+I want to have tool lists in the final app, one for the act
+
+of projects and one for the enact of projects, and they
+
+offer, I want to get some additional information to
+
+constructor.
+
+The type of the project, and I'll use stats, TypeScript
+
+shortcut.
+
+You learn about where you can add an accessor in front of
+
+the parameter, private or public to automatically create a
+
+property of the same name and store the value that's passed
+
+an on this argument in that equally named property.
+
+So now this class will have a property name to type as well.
+
+And now the question is, what's the type of this type
+
+parameter?
+
+And this should actually be a literal type and a union type.
+
+It's either active or finished.
+
+We even have active projects or finished projects.
+
+So that's an argument I expect to get when the project list
+
+is instantiated.
+
+And with dad, we have to type property D ID should be then
+
+be based on this.
+
+It should be, and for dad, I use a template literal here.
+
+It should be type dash projects, so either active dash
+
+projects or finished dash projects.
+
+That's my idea here.
+
+You can always use this dot type so that TypeScript
+
+understands that we're using this property and that it's not
+
+unused.
+
+So with that, we're getting access to all the core elements
+
+and we're adding an ID to the section, which we get out of
+
+our template.
+
+Now, of course, we want a, we want to render it right?
+
+That's the idea for this all, again, at a private method.
+
+Attach justice.
+
+We had it in the project input and in there it's now the
+
+goal queue.
+
+Well, attach this to the Dom to now render dad list to the
+
+Dom.
+
+So instead of attach, I will actually do the same as I did
+
+an attach for the project form.
+
+So we can copy that line here and attitude attach.
+
+I have my host element and I want to insert an adjacent
+
+element.
+
+After the beginning, and this should be the element.
+
+We extract that from the template here.
+
+However, I actually don't want to do that after the
+
+beginning, but instead before end, which means before the
+
+closing, tack off the host element and then we can call
+
+attach here in the constructor, of course, to attach our
+
+created element here to the Dom.
+
+Now there is one important difference compared
+
+to the project input though for this list.
+
+It's not done with just adding the list to the Dom.
+
+The input was finished, right?
+
+The form here was finished.
+
+We had all the inputs there.
+
+All we needed to do was set up an event listener.
+
+Now for the list here, we actually haven't had her with an
+
+empty.
+
+H to tech, for example, and I wanna add some texts there.
+
+So I will add a number.
+
+New method to your private method.
+
+Render or content could be a fitting name.
+
+And my idea here is to fill the blank spaces in that
+
+template with some life year.
+
+For that.
+
+Let's go to dead render content method, and there are a
+
+couple of things I want to do.
+
+One thing is stat for dead unordered list, which is part of
+
+my project list here.
+
+I wanna add an ID to it.
+
+Of course you don't have to do that, but I want to do that
+
+so that if we need to select it later, we can do that with
+
+these.
+
+So I'll create a list ID here is stored in a constant, and
+
+this will be a template literal, so it will be a string
+
+where we can inject dynamic content, and I want to base this
+
+on the type of the surrounding project list, so off the
+
+surrounding section, and then add projects list thereafter.
+
+Now we can reach out to the an order list, which we get in
+
+our element, which is stat section year, right element is
+
+dead section.
+
+So to get the unordered list inside of there, we can, for
+
+example, use a query selector and search for the first, and
+
+in this case only unordered list.
+
+We know we will get one because we know there will be one
+
+and then we can add an ID here, which should be the list ID.
+
+That's one thing which I want to do.
+
+I also want to set the text content off that age to tag here
+
+and for this we can reach out to this element, query
+
+selector.
+
+Find the first and only HQ tag.
+
+We know we will find one, hence the exclamation Mark to rule
+
+out dead null case and set the text content equal to this to
+
+type to upper case.
+
+Remember type is ever active.
+
+We're finished with two opera case.
+
+We convert this to all caps plus projects, so does a Sten.
+
+Simply the heading forward is section.
+
+And now with that, we're, we're generally done.
+
+We have no items in that list yet.
+
+We'll work on this later, but we're generally done.
+
+We can call this render a content or after we attached it to
+
+the Dom, for example.
+
+Now it would be nice to see those in action.
+
+Of course, again, list items ends on will be missing, but it
+
+would be nice to see something in action here.
+
+Well for that, let's go to the bottom of the file where we
+
+instantiate the project input and there we cannot always
+
+instantiate our lists.
+
+We have the active project list, which we instantiate, but
+
+calling new project list.
+
+And there we have to pass in that type argument, which is
+
+either active or finished here.
+
+Since I'm rendering the active list, I of course pass
+
+inactive.
+
+And then here we have the finished project list where I of
+
+course, passing finished.
+
+If we now safe that it should compile without errors.
+
+And hence what you should see if you go back are these two
+
+empty sections here with the headings here and well, the
+
+empty space where later items will be added, project items
+
+will be added.
+
+Now for the moment, we have no such project items, snow.
+
+So as a next step, we should
+
+work on some way of making sure
+
+that when we click add project, that we create a new project
+
+in code.
+
+So a new data structure which represents a project, and that
+
+we then pass this information about this new project to the
+
+act of projects.
+
+List here to this active project section, because every new
+
+project should be active by default.
+
+This will be our next goal, and again, there will be many
+
+different ways of implementing this.
+
+We'll do it together with one way I came up with in the next
+
+lecture.
+

@@ -1,0 +1,244 @@
+So that was a very basic class.
+
+Now when building classes,
+
+they often get more complex than that.
+
+And you might want to store more data in there.
+
+Let's say a department all should have employees.
+
+That could be an array,
+
+and initially it might be an empty array.
+
+And to also be a bit more precise about
+
+what you want to store in there,
+
+it could be a string array to keep it relatively simple.
+
+Now we could have a method here addEmployee.
+
+There we want an employee as an argument,
+
+which should just be a string in our example.
+
+Then we can set this.employees.push.
+
+So push a new employee onto our employee's array
+
+with this code.
+
+Now we can also add another method,
+
+printEmployeeInformation.
+
+And there I want to console.log(this.employees.length)
+
+and I also want to console.log(this.employees) itself.
+
+Now if we go down here, now we can comment out
+
+this code here, which would break again
+
+because we again don't fit the department description
+
+with our object down there.
+
+And instead here, on this accounting department,
+
+we can add an employee, let's say Max.
+
+And another employee, let's say Manu.
+
+And then besides describing it,
+
+I also want to get my employee information down there.
+
+If we save this, we should get this output,
+
+two employees and here's some information.
+
+Now that's all nice to have.
+
+One problem we have with this class is
+
+that we could change employees from outside,
+
+not only with add employee,
+
+but by directly accessing the employee's property,
+
+just as we can do it for the name as well, by the way.
+
+So what I mean is we could also go to accounting,
+
+and then reach out to employees,
+
+and maybe add another employee at index two,
+
+and there pass an Anna, like that.
+
+If we do that and we save it,
+
+we get three employees and we get Anna.
+
+Now you might think, well great, we got another way.
+
+Well when building more complex applications,
+
+you typically want to avoid something like this though.
+
+You wanna make sure that there is one clear path,
+
+one way of using your class, and that things like that,
+
+alternative ways of using it,
+
+are not really supported.
+
+Because if you're working in a bigger team,
+
+well then one colleague is going
+
+to use this approach for adding an employee
+
+and another colleague might use this approach.
+
+And you don't want this.
+
+You want to have one uniform way of doing this.
+
+Also, because maybe in the add employee method,
+
+you do more than just add it to the array.
+
+Maybe you first of all want
+
+to have some validation etc in here.
+
+So you might have extra code in there,
+
+which simply does not execute
+
+if you directly assign a new value
+
+or add a new value to the array with this line here.
+
+So you don't want to permit that employees
+
+is accessible like this from outside of the class.
+
+And TypeScript's got you covered.
+
+You can turn employees here into a private property,
+
+a private field by adding a private keyword
+
+in front of it.
+
+Now what private means is
+
+that employees is now a property,
+
+which is only accessible from inside the class,
+
+so from inside the creative object.
+
+So any method inside of the department class
+
+is able to still work with employees.
+
+But you can't access like this anymore.
+
+Here you see I'm now getting an error.
+
+If I try to save this, I get a compilation error
+
+that the property 'employees' is private
+
+and only accessible within the class 'department'.
+
+So now we force that when employees
+
+should be added to this department,
+
+people have to use the addEmployee method.
+
+Because they get an error if they write code like this.
+
+This is a so-called modifier here, the private keyword.
+
+And besides private, we also got public,
+
+which is the default though.
+
+You don't need to add public.
+
+So name like this is exactly the same
+
+as name with public in front of it.
+
+The difference is that public properties
+
+are accessible from outside.
+
+So for example here, I could also reach out to name
+
+and assign a new name here if I wanted to.
+
+That is possible.
+
+For private properties, this here is not possible.
+
+We can only use them from inside.
+
+Technically, by the way,
+
+JavaScript doesn't know public and private.
+
+Only in very modern versions added recently
+
+such a thing exists.
+
+In the past, JavaScript didn't know
+
+private or public properties.
+
+All properties always were public there.
+
+TypeScript introduces this feature,
+
+which of course does not work during runtime however,
+
+because JavaScript until recently
+
+only knew public properties.
+
+So this line here, frozen error
+
+during TypeScript compilation.
+
+If you compile it to JavaScript nonetheless,
+
+this code will still execute at runtime without errors
+
+because again, JavaScript on its own,
+
+until recently didn't know this concept.
+
+So depending on the version you're compiling for,
+
+it still won't know it.
+
+And therefore, TypeScript only supports this
+
+because it checks it during compilation,
+
+not at runtime.
+
+With it however, we can avoid code like this
+
+and force everyone to write cleaner code.
+

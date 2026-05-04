@@ -1,0 +1,38 @@
+In this module, let's dive
+
+into classes and interfaces.
+
+Now, the concept of classes might not totally be new to you.
+
+Classes also exist in vanilla JavaScript,
+
+in modern vanilla JavaScript at least.
+
+But if you haven't really worked with modern JavaScript,
+
+then you might not know classes.
+
+Or if you're relatively new to JavaScript,
+
+you might also not know about them yet.
+
+So I'll introduce you to classes
+
+in this module as well.
+
+And entirely new, in JavaScript world at least,
+
+are interfaces.
+
+So in this module, we'll explore what these things are
+
+and why we use them and we'll have a detailed look
+
+at classes and there also the concept called inheritance.
+
+And at interfaces, what they bring to the table,
+
+how they're compiled to JavaScript,
+
+and why we might use these features.
+

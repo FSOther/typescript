@@ -1,0 +1,184 @@
+The last interesting type
+
+I want to show in this module is the never type.
+
+Now we saw a function that returned void.
+
+So that never returns anything.
+
+Never is another type functions can return.
+
+And that might sound strange.
+
+Let's have a look at how it works.
+
+Let's say we have a function generateError.
+
+Here I expect to get a message, which is a string,
+
+and maybe some error code, which might be a number.
+
+Now inside of this functions, let's say,
+
+we throw an error.
+
+So this should essentially be a utility function
+
+that generates error objects and throws them.
+
+So here we might throw an object,
+
+which we can do in JavaScript.
+
+We can throw any object or any value as an error,
+
+and that should have a message property,
+
+in which I store the value of my message argument here.
+
+And I want to have a error code property,
+
+let's say erase the word, the code argument in .
+
+So it is with the invalid function,
+
+and we can call this with an error occurred,
+
+for example, and a code of 500.
+
+If we do that, and we compile this file here,
+
+we see that once this reloads we get our error,
+
+well as an error here.
+
+And this might sound pretty abstract,
+
+but actually, it isn't.
+
+Having utility functions like this
+
+would be pretty standard in bigger applications
+
+where you don't manually want to throw an error
+
+in 10 different places of your app,
+
+and where you want to reach out to one convenient function
+
+that builds the error object for you
+
+and maybe also throws it immediately,
+
+so that you can call this function with different inputs
+
+but you always have an error being thrown.
+
+Now the interesting thing about this function is,
+
+it does not just return void.
+
+I actually can specify that it returns void,
+
+because of course returns nothing,
+
+but actually it does not just return nothing,
+
+if we are totally honest, this function returns never.
+
+This function never produces a return value.
+
+If I were to try to restore the return value here,
+
+in a console log result,
+
+and I then compile my code in this execute,
+
+we see there is no undefined being logged here,
+
+because since an error is thrown,
+
+this essentially crashes our script, you could say.
+
+It cancels our script.
+
+And this will always be the case for this function.
+
+Of course we can wrap it in try catch
+
+so that we can still continue in this script,
+
+but this function essentially never produces a value.
+
+This function always crashes the script
+
+or this part of the script,
+
+if you are using try catch,
+
+and therefore never returns anything.
+
+And hence the return type of this function
+
+actually is not just void, but also never.
+
+Now the interesting thing is,
+
+if you hover over it without assigning never,
+
+you see the inferred type is void.
+
+Alls because never is a newer type,
+
+it's been around for some time now,
+
+but it wasn't built into the first versions of TypeScript,
+
+and therefore void is typically assumed,
+
+and it's not horrible to leave it at that.
+
+But you can be very clear
+
+and explicitly set never as the return type
+
+to make it really clear that this never returns anything.
+
+So from a code-quality perspective,
+
+this might be clearer regarding your intentions
+
+and make it really clear
+
+to our developers reading your code
+
+that this function is intended to never return anything,
+
+and to essentially crash or break your script,
+
+or that part of the script.
+
+Another function that would never return,
+
+by the way, would be a function with an infinite loop.
+
+So if we have while (true) in there,
+
+that creates an infinite loop,
+
+and that therefore also would be a function
+
+that never returns.
+
+The error function here,
+
+or the function that generates a frozen error
+
+probably is the more common use-case, though.
+
+So never, also an interesting type,
+
+which you can use on functions
+
+for cases like this one here.
+

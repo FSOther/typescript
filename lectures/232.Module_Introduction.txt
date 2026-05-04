@@ -1,0 +1,54 @@
+As a TypeScript developer,
+
+chances are pretty high that at some point
+
+you might want to work with React and TypeScript.
+
+And of course, you can combine these two
+
+extremely popular technologies.
+
+And in fact, I have a complete course about React
+
+and TypeScript if you want to dive way deeper.
+
+But in this section here,
+
+I'll get you started with combining the two.
+
+And you will learn how you can set up
+
+a React and TypeScript project,
+
+how you can work with types in a React project,
+
+and which common types you might encounter
+
+from time to time,
+
+how you can type your components and so on,
+
+and how you can compile and run your React
+
+and TypeScript project.
+
+Now, it's worth noting that for this section here,
+
+I assume that you have basic React knowledge.
+
+This section here is not about teaching you React.
+
+I have a complete course just about React
+
+if you want to learn all about that.
+
+And you can, of course, also visit
+
+the official documentation on react.dev.
+
+So, for this section, I assume basic React knowledge,
+
+and I'll just show you how you can use it
+
+in conjunction with TypeScript.
+

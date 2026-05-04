@@ -1,0 +1,154 @@
+So we need to update the list of goals
+
+with the data from the newly submitted goal,
+
+which we have here in the NewGoal component.
+
+And that's, by the way, also why this list
+
+of goals gets managed here in the App component,
+
+because it's needed by both the CourseGoals component
+
+and the NewGoal component.
+
+So I lifted the state up,
+
+which is another very common pattern in TypeScript.
+
+Now how can we update our array of goals here
+
+in the App component from inside the NewGoal component file?
+
+Well, just as we updated it for deleting a goal.
+
+We pass a special prop to the NewGoal component.
+
+In this case, the first prop ever we receive here.
+
+So I'll add another interface, NewGoalProps,
+
+where I want to have a onAdd function.
+
+And here I want to have a function
+
+that receives the text parameter, which is of type string,
+
+and a summary parameter, which is of type string,
+
+and returns nothing.
+
+And now we can set NewGoalProps here
+
+as our prop type, and extract this onAdd function.
+
+And then of course use it.
+
+And I want to use it here
+
+after potentially validating the received input.
+
+I'll call onAdd and forward enteredGoal
+
+and enteredSummary.
+
+So that's how we receive, extract,
+
+and use onAdd in the NewGoal component.
+
+Now in App, in this App component,
+
+we need to define this function.
+
+So here I'll add my handleAddGoal function,
+
+and I expect to get my text here and my summary.
+
+And then again, we need to update the goal's array
+
+by calling setGoals.
+
+And again, it will be based on the previous state
+
+of this goals array,
+
+so I'll use this function form
+
+and return a new array where I add a NewGoal.
+
+We can simply do that by calling concat,
+
+which adds a new array item
+
+and then returns a new copy of the array, so to say.
+
+And I will add an object where the ID is set equal
+
+to Math.random, let's say, to get a random number
+
+where the title should be set equal to text,
+
+and the summary is set equal to that summary here.
+
+And actually, I named that key description.
+
+TypeScript helps us here, if I think it's called summary,
+
+and I try to set it like this,
+
+I'm getting an error here, which looks super scary,
+
+but which in the end tells me that
+
+the "Object literal may only specify known properties,
+
+and 'summary' does not exist in type,"
+
+and then I see my goal object type definition.
+
+And I see that it should be called description.
+
+So even though this might look scary,
+
+reading those error messages is a good idea.
+
+So here it's description,
+
+which is set equal to the value I get
+
+on my summary parameter.
+
+Now, handleAddGoal is a value I passed
+
+to the NewGoal component.
+
+To be precise, I'll add the NewGoal component here,
+
+above CourseGoals, let's say.
+
+And of course, import it.
+
+and then set onAdd={handleAddGoal}.
+
+And that's it.
+
+That should establish the connection
+
+between the App component and the NewGoal component.
+
+And we're now using Refs
+
+for extracting those entered values.
+
+So let's give it a try.
+
+I can see my form here.
+
+And if I enter something and click Add Goal,
+
+this is added here.
+
+So, extracting the values via Refs
+
+and updating the state both works.
+

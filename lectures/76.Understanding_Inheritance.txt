@@ -1,0 +1,136 @@
+So you did learn a lot
+
+about classes at this point.
+
+One other important thing you can do with classes,
+
+not just in TypeScript
+
+but also in vanilla JavaScript, is you can extend them,
+
+you can use inheritance, which can also be a useful feature.
+
+For example, here I have my user base class,
+
+which defines a user as an object
+
+that has a first name and last name,
+
+and this full name getter
+
+and this static EID property and this static greet method.
+
+Now, what if we wanna build another class
+
+that builds up on that user?
+
+For example, we could have an employee class,
+
+which should have a first name and a last name
+
+and a full name and all these things.
+
+But in addition, we want to have a job title in there
+
+and maybe a work method.
+
+Well, you can use the extends keyword,
+
+not just in TypeScript.
+
+Again, as mentioned, this is a JavaScript feature,
+
+so you could use it there as well
+
+if you were not using TypeScript.
+
+But you can use the extends keyword to define a base class
+
+this class should build up on.
+
+In my case here, user.
+
+And now employee is a class that inherits all the properties
+
+and methods from the user class
+
+and can in addition, add its own properties and methods.
+
+And you could also overwrite the properties
+
+and methods of the base class.
+
+So here, for example, we could add a constructor
+
+and then make sure
+
+that we have a public property called job title,
+
+which should be of type string.
+
+So that's a new property which is added
+
+to this employee class now.
+
+Now what you have to do when you're using the constructor
+
+in a class that inherits from some other class,
+
+is inside of that constructor,
+
+you must call the special super function,
+
+which is a built-in function, a built-in keyword,
+
+which simply ensures that the constructor
+
+of the base class is getting called as well.
+
+You have to do that when extending a class.
+
+In the constructor, if you add the constructor,
+
+you must call the base class constructor
+
+with help of the super keyword, the super function as well.
+
+By the way, you can also use super
+
+to access the base class object
+
+and for example, set a first name here, like this.
+
+That's also possible from inside the extending class.
+
+If the constructor
+
+of the base class would take some parameters,
+
+which is not the case here.
+
+I did not define a custom constructor here,
+
+but if it were to take some extra parameters,
+
+you would have to pass these parameters here
+
+to the base class constructor when calling super.
+
+But here we don't have a custom constructor
+
+in the base class, so we just call super like this.
+
+And as mentioned,
+
+you could now also add custom methods here,
+
+like a work method, which does something
+
+and do whatever you want to do.
+
+Inheritance is really all about building up on a base class
+
+and then adding anything you want to that class
+
+that is building up on that base class.
+

@@ -1,0 +1,27 @@
+Câu hỏi 1:
+What's a "static method"?
+
+v A method you call directly on a class, not on an object created based on it. 
+x You have no "static method", only "static properties".
+x A method which you can only call once. 
+
+Câu hỏi 2:
+What's the idea behind "inheritance"?
+
+x Inheritance makes the creation of multiple objects with the same structure easier.
+v Inheritance allows you to share some common functionality and yet create more specialized blueprints.
+x Inheritance allows you to have more fine-grained control over the properties and methods in a class.
+
+Câu hỏi 3:
+What's an abstract class?
+
+x A class that always uses inheritance (i.e. that always extends another class).
+v A class that can't be instantiated but has to be extended.
+x A class that uses teh singleton pattern and hence has a private constructor.
+
+Câu hỏi 4:
+What's the idea behind "singleton classes"?
+
+x You can't extend singleton classes. 
+x You can't call methods more than once on a singleton classes.
+v You only ever have one instance of a singleton class.

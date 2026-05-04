@@ -1,0 +1,68 @@
+[Maximilian Schwarzmüller] So now that we got started
+
+with TypeScript,
+
+and now that you got a first understanding of what it is
+
+and why you might want to use it,
+
+you might wonder what exactly you can expect
+
+from this course, what you'll learn throughout this course.
+
+And this is quite a big course
+
+because we'll start with the essentials.
+
+We'll start by learning all about assigning
+
+and inferring types and what data actually means.
+
+We'll learn about built-in types
+
+and essential types you'll use all the times,
+
+and we'll also learn how you can, for example,
+
+build your own custom types.
+
+But we won't stop there.
+
+We won't stop after learning about these essentials.
+
+Instead, we'll then gradually dive deeper and deeper,
+
+and you can, of course, take a look at the course curriculum
+
+to see what's coming up
+
+and about which features you will learn.
+
+But we will, for example,
+
+cover important topics like working with classes
+
+and interfaces and what that is.
+
+We'll explore generic and derived types,
+
+a quite advanced but very important feature.
+
+We'll explore decorators, a niche feature,
+
+which nonetheless is pretty important,
+
+and we'll do all that
+
+by diving into many small demos and code snippets
+
+and some slightly bigger demo projects
+
+so that by the end of the course,
+
+you really have a good understanding of what TypeScript is,
+
+which core features it offers,
+
+and how you can use it in your future projects.
+

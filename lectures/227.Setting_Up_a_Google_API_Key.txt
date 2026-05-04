@@ -1,0 +1,124 @@
+You can search for Google
+
+Geocoding API and you will find the official
+
+Geocoding API Docs.
+
+The Geocoding API is an open API,
+
+which you can use to translate an address
+
+to a pair of coordinates
+
+or a pair of coordinates to an address.
+
+Now here, we wanna do a look up,
+
+where we provide an address.
+
+So, this normal geocoding request here
+
+and get back coordinates.
+
+Now for that, we can send a request
+
+to this URL but we need an API key to do that.
+
+And we can get one for free.
+
+All you need for that is a Google account
+
+and (mumbling) a credit card.
+
+Unfortunately, you need that.
+
+It will be free because there's a very generous
+
+free tier, which you can use every month
+
+and we will not exceed that free tier
+
+with what we're doing here.
+
+But still you need a credit card
+
+to be able to use Google Maps features, unfortunately.
+
+If you don't have such a credit card,
+
+unfortunately, you can't use the API.
+
+So, create a Google account
+
+and then to get such an API key,
+
+click on get started here.
+
+And get started will take you to a page
+
+where you can tell Google which features you want.
+
+And we want the Places feature
+
+because that includes the geocoding API
+
+but we also want the Maps feature
+
+because that will include the Google Maps
+
+Java Script SDK, which we need a little bit later.
+
+So, check these two and then click continue.
+
+Next, you have to select a project
+
+for which you want to enable this.
+
+And you can even create a new one
+
+or pick an existing one.
+
+Once you do that, you are forwarded
+
+and you should be asked whenever you want to
+
+set up billing for this account.
+
+Simply confirm this.
+
+And after a while of waiting and loading,
+
+you will be presented your API key,
+
+which you can use.
+
+Side note, you can also restrict the apps,
+
+which are able to use that key
+
+in this Google developer Console.
+
+But here, we can just copy that key
+
+and use it in our project.
+
+So, let's store that key.
+
+Maybe here in a constant.
+
+Google API key.
+
+And let's next focus on sending a request.
+
+For that, let's again Google for Google Geocoding API,
+
+so that we get this URL again here.
+
+This URL is the URL to which we need to send the request.
+
+And for that, we need some way of sending
+
+a request from inside our type script
+
+and therefore Java Script code.
+

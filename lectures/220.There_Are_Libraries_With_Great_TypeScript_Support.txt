@@ -1,0 +1,84 @@
+So you did now learn how you can use
+
+a JavaScript library like Lodash in a TypeScript project,
+
+and that you might need to install
+
+those extra type definitions to help TypeScript
+
+understand the types of the functions and variables
+
+and so on used by that library.
+
+But since TypeScript is extremely popular,
+
+there are also libraries that are written
+
+with TypeScript in mind,
+
+so that are not written in plain JavaScript,
+
+but that are in instead written in TypeScript.
+
+And there are even libraries
+
+that are written in a TypeScript-first way you could say,
+
+so that are meant to be used with TypeScript.
+
+And an example for such a library would be Zod,
+
+and average example would be Prisma,
+
+though you can also use Prisma with just JavaScript,
+
+but it's written in TypeScript.
+
+And therefore, particularly easy to use
+
+in TypeScript projects.
+
+Zod is written as a TypeScript-first library.
+
+So it's meant to be used with TypeScript.
+
+It's really meant to be used in a TypeScript project.
+
+Now, Prisma is not TypeScript-first.
+
+You can use it in vanilla JavaScript projects as well.
+
+But this Prisma library, for example,
+
+since it is actually written in TypeScript, as you can see,
+
+if you explore the code in there, you'll find a bunch
+
+of TypeScript files in there.
+
+Since it is written in TypeScript, you actually don't need
+
+to install an extra types package when using Prisma
+
+because the library you install
+
+when running npm install Prisma, for example,
+
+will already contain TypeScript code and type definitions.
+
+So that would be an example for a library
+
+that does not require an extra types helper library.
+
+But Zod is an even more interesting library
+
+because unlike Prisma, it's not written
+
+with TypeScript in mind
+
+and great TypeScript support built in,
+
+but instead as mentioned, it's a TypeScript-first library,
+
+and I wanna explore what that means.
+

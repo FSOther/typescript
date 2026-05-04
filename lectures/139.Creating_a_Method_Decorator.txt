@@ -1,0 +1,176 @@
+So that's how you can build
+
+and use a decorator
+
+and you can do anything you want with it in the end,
+
+since you can return an updated version
+
+of the thing you're attaching it to.
+
+You can use it to add more properties, methods,
+
+and that can make it a really powerful feature.
+
+You could, for example, create a decorator
+
+and share it as a library
+
+so that other developers can use it
+
+that enhances any kind of class it's added to
+
+by adding extra methods to it or anything like that.
+
+So that's really a powerful feature to consider
+
+and be aware of.
+
+Here, however, I'll leave it at that
+
+and instead move on to a different kind
+
+of decorator you can build
+
+because as mentioned,
+
+you don't just have class decorators,
+
+instead you also have decorators
+
+that can be added to methods or fields.
+
+So let's build a method decorator here,
+
+so a decorator that can be added to this greet method.
+
+For that, I'll add a function here
+
+because decorators are functions,
+
+no matter which kind of decorator you're building,
+
+and I'll name it autobind
+
+and you'll see why soon.
+
+Now again, it's just a regular function
+
+and we can use it as a decorator
+
+and attach it to the greet method
+
+by adding it in front of it
+
+in the same line or in the line
+
+before it with the add symbol
+
+and then the name of the function.
+
+Again, I'm getting an error
+
+that I'm accepting too few arguments
+
+because just as before, I must accept a target.
+
+And here the type of target will be function
+
+because a method is just a function,
+
+and function is a type built into TypeScript.
+
+Alternatively, I could also define my own function type
+
+and accept any amount of arguments here
+
+and return anything.
+
+Now with that, the error went away,
+
+but just as before we'll also get a context object,
+
+which here will be of type class method decorator context.
+
+Well, and then again, inside of the function body
+
+of this autobind decorator function,
+
+we can do whatever we want.
+
+We can log something whenever the decorator is executed,
+
+so whenever it has been attached,
+
+but we can also try manipulating the method
+
+we're attaching it to.
+
+But to get started,
+
+I'll start by logging the target and the context
+
+so that we can again see what's inside of that
+
+and let me actually do that like this here.
+
+Now with that, without any changes to the code down there,
+
+I can compile this code, execute it,
+
+and see a bunch of logs from before,
+
+but it's the very first log that's my method decorator here
+
+because the method gets initialized
+
+before the class initialization is done.
+
+That's why the decorator added to that method executes
+
+before the class decorator executes
+
+because all these decorators only execute once the thing
+
+they have been attached to is done initializing.
+
+And you see here, it's the greet function,
+
+the greet method that's being logged,
+
+and the context object then has a bit more information
+
+than we had on the class context before.
+
+We see that the kind
+
+of thing the decorator is added to is a method,
+
+that the name of that thing,
+
+the name of that method is greet.
+
+It's not a static method.
+
+It would be if I added the static keyword in front of it,
+
+but here it's not.
+
+And it's also not a private method.
+
+Now this access object here is actually an object
+
+that gives us indirect access to the function
+
+through has and get methods, but we don't need that here.
+
+Instead, it's this add initializer method
+
+that will become important soon.
+
+Because at the moment,
+
+this decorator of course isn't too useful,
+
+but we're going to change this next.
+

@@ -1,0 +1,164 @@
+Arrays and tuples are helpful features.
+
+Sometimes, quite often, actually, you are going to deal
+
+with objects though when working with JavaScript.
+
+It would be quite common to you, for example,
+
+have a user variable that should contain an object
+
+where you might have a name and an age, let's say.
+
+That's not uncommon at all,
+
+and that's why TypeScript is well-prepared
+
+for dealing with objects and object types.
+
+Indeed, if you assign this kind of value to this variable
+
+and you hover over the variable,
+
+you see the inferred type for this value,
+
+so that's now not an object value here.
+
+That, instead, is an inferred object type,
+
+and as you can see here for this value,
+
+where I have an object with a name and an age property,
+
+where name is a string and age is a number,
+
+TypeScript infers that user will hold an object
+
+where we have a name and age property
+
+where name is a string and age is a number,
+
+which makes a lot of sense.
+
+Of course, you could also explicitly assign this type here
+
+like this if you wanted to, so this might look weird,
+
+and this might look like you're defining an object value,
+
+but actually, since we're on the left side
+
+of the equal sign, after the colon, after the variable name,
+
+this here is not a value, but a type definition,
+
+an object type definition.
+
+And here, you can really, again,
+
+use any types you already know.
+
+If age should also be a number or a string,
+
+you could use a union type here.
+
+If you want to have a hobbies array in there, you can do so.
+
+You can have a nested array in that you user object.
+
+Now, a hobbies property is required,
+
+and it must hold an array of strings.
+
+You can also have a nested object in there, like a role,
+
+where maybe you want to have an object
+
+where you have a description, which is a string,
+
+and an ID, which is a number.
+
+You can really get creative, and as you see,
+
+you can really write quite complex type definitions,
+
+but it still is a type definition,
+
+and it is a feature provided by TypeScript,
+
+and indeed, you will quite frequently deal with object types
+
+when working with TypeScript,
+
+so it's really important to understand that defining them,
+
+in the end, is really straightforward.
+
+It's almost like writing a object in code,
+
+just that you're not dealing with values,
+
+but with types here.
+
+Now, of course,
+
+now that I added this more complex object type here,
+
+I'm getting an error that the type I'm actually assigning
+
+to user, which is the type of this value,
+
+which is a quite simple object here,
+
+a simple object with only two properties,
+
+that this does not satisfy my type condition, you could say,
+
+because I'm expecting a type that has way more properties,
+
+a name, an age, but also hobbies and a role,
+
+and currently, I'm not passing such a value.
+
+So here, we would have to add hobbies,
+
+and I'm getting autocompletion now
+
+due to my type definition here,
+
+which is another very useful feature.
+
+My IDE understands that a hobbies property is expected here,
+
+so it helps me write that, and in there,
+
+I then can set up my hobbies array with sports and cooking,
+
+and again, if I would add a number here, I'd get an error,
+
+because hobbies, as defined up here,
+
+must be an array of strings.
+
+So we get that TypeScript support all the way down
+
+even to the most deeply nested properties,
+
+and speaking of nested properties,
+
+here, we also need a role property,
+
+which holds a nested object where I then have,
+
+as my IDE correctly understands, a description,
+
+which could be admin, and an ID, which could be five.
+
+And now with this value here, this error up here went away
+
+because now, we are passing a value to user
+
+that satisfies this type definition,
+
+and that's how you can work with object types in TypeScript.
+

@@ -1,0 +1,46 @@
+So now that you know
+
+what TypeScript is and why you might want to use it,
+
+we'll dive into the most important TypeScript essentials,
+
+the core TypeScript features you'll essentially need to know
+
+for any kind of TypeScript project you might be working on.
+
+Therefore, this section here will give you the foundation,
+
+we'll build up on throughout the rest of this course,
+
+as we'll also dive into more advanced topics
+
+later in this course.
+
+But in this section here,
+
+we'll explore the basic built in types
+
+that are supported by TypeScript.
+
+We'll explore how you can work with object
+
+and array types with TypeScript.
+
+We'll take a look at function types, creating custom types,
+
+and some special types
+
+or special TypeScript features you'll need to know
+
+so things that you'll be able to use TypeScript
+
+in your future projects.
+
+And so that after this section,
+
+you'll be ready to dive deeper into TypeScript
+
+with the next sections.
+
+But first, let's explore these essentials.
+

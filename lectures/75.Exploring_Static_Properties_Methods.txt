@@ -1,0 +1,92 @@
+Now, besides setters and gatherers,
+
+there also is one other kind of property
+
+and actually also method you can add to your classes.
+
+And that would be static properties or methods.
+
+And here I'll simply add them
+
+below my setters and gatherers.
+
+You do add a static property by using the static keyword
+
+and then any property name of your choice, like for example,
+
+eid for entity ID or whatever.
+
+And then this could be user, it's just an example.
+
+Now, it looks pretty much like a regular property,
+
+but it has this static keyword in front of it.
+
+So not public, not private, but static.
+
+And the special thing about a static property
+
+is that you can access it on the class itself,
+
+so not on an object
+
+that's created based on a class,
+
+like the firstName and lastName and fullName properties,
+
+but on the class itself.
+
+So before even creating an object here,
+
+we could console.log(User.eid).
+
+So here I'm using the User class itself,
+
+but without the new keyword.
+
+The new keyword is used
+
+to create a new instance based on that class.
+
+So we're using that class as a blueprint
+
+with the new keyword.
+
+Here, I'm just using the class itself.
+
+I can't really access firstName and lastName here
+
+because those belong to concrete instances of the class
+
+but static properties can be accessed on the class itself.
+
+And this can be a useful feature, for example,
+
+also in conjunction with methods.
+
+We could add a static greet method here, for example,
+
+which simply prints 'Hello!'
+
+If that's a method
+
+that doesn't need any instance-specific data,
+
+if this method doesn't need access to the firstName
+
+and lastName, for example, then we can absolutely create it
+
+as a static method, and as a result,
+
+we can call it directly on the class.
+
+This can especially be useful if you're building some kind
+
+of utility classes, for example, which group a bunch
+
+of utility methods.
+
+Therefore it's a feature you'll likely not use all the time,
+
+but from time to time, it can indeed be useful.
+

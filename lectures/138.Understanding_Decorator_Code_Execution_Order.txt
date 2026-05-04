@@ -1,0 +1,108 @@
+Now, of course in this example I have here,
+
+I'm returning a new class
+
+that's based on the input class, so to say.
+
+And I'm adding the age property.
+
+Now, since my decorator is named logger,
+
+that's probably not the kind of behavior you would expect.
+
+So what I want to do instead here
+
+is add the constructor function,
+
+which I can add like this.
+
+Accept any amount of arguments, of any type.
+
+And then in there, first of all,
+
+execute the constructor of the base class.
+
+So of the person class, by forwarding all those arguments
+
+by using the spread operator on this args rest parameter.
+
+And then I want to console log, class constructor.
+
+Because it's a logger decorator after all.
+
+And here I just wanna log some information
+
+at different points of time.
+
+First, when the class is defined in the end
+
+and the decorator is first executed,
+
+but then also whenever a new instance
+
+of the class is created.
+
+And here I can also console log this
+
+to log the concrete instance that has been created.
+
+And by doing that, I can, for example, delete this code
+
+and instead create a second, new person.
+
+And if I do that and I compile the code
+
+and I execute it, you see I'm getting a bunch
+
+of logs down here, these logs.
+
+And I'm getting them because I have my logs here
+
+in this returned, class constructor.
+
+And that makes a bit more sense
+
+for a decorator named logger.
+
+Now what you can also see here in those log messages
+
+is that these different log statements are executed
+
+at different points of time.
+
+The text logger decorator, followed
+
+by information about the target
+
+and the context is actually, written to the log is output.
+
+When that class definition is parsed
+
+by JavaScript, the text class constructor
+
+and the information about the concrete class instance
+
+on the other hand, is output multiple times.
+
+Once for every instantiation of the class.
+
+So there is a timing difference here
+
+between class definition where the logger decorator
+
+is attached and parsed and class instantiation
+
+where the constructor is executed.
+
+That's just all the worth noting here.
+
+The code directly in the decorator,
+
+like these log statements where I log target
+
+and context is executed right when the thing,
+
+the decorator is attached to is defined.
+
+So when the class is defined here.
+

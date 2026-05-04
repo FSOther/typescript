@@ -1,0 +1,12 @@
+Fixing a Typo
+In the last lecture, I made a small typo - handleSubmit should look like this:
+
+function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+ 
+    const enteredGoal = goalRef.current!.value;
+    const enteredSummary = summaryRef.current!.value;
+ 
+    // validation...
+    onAdd(enteredGoal, enteredSummary);
+  }

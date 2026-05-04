@@ -1,0 +1,72 @@
+Now that we got started
+
+with decorators in the last section,
+
+we can dive a bit deeper into those decorators
+
+and in this section here,
+
+we'll actually explore the experimental decorators,
+
+which have been supported by TypeScript
+
+for pretty much ever.
+
+Now actually, that's the older decorators syntax.
+
+We took a look at the official decorators syntax
+
+in the last section,
+
+but it's there for the decorators syntax you'll probably see
+
+in more projects out there because it has been around
+
+for a longer time period when working with TypeScript.
+
+Therefore, in this section we'll explore
+
+how you can create decorators using this older syntax,
+
+and we'll again work in this starting project structure here
+
+because I recorded this section a couple
+
+of years ago already, but the syntax hasn't changed.
+
+The lectures in this section here are still perfectly fine.
+
+You'll learn all about this experimental decorators syntax
+
+in great detail in this section here.
+
+But I'm using this starting project for this section.
+
+You find it attached, you can download it, unzip it,
+
+run npm install.
+
+Once you did so though, that's actually optional
+
+because you could start a little development server here
+
+to serve this index HTML file.
+
+But for this section, we'll mostly work in the app ts file.
+
+So all you need to do there is run tsc
+
+to compile that file if you want to,
+
+or tsc-w to enter the compiler in watch mode
+
+and watch the file and compile it whenever changes are made.
+
+You also don't have to care about this at all
+
+if you don't want to, because ultimately, of course,
+
+you'll still get errors here in vs code
+
+if you do write code that happens to produce an error.
+

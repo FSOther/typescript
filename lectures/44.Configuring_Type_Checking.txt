@@ -1,0 +1,124 @@
+So what's this type checking part all about?
+
+Well, this type checking part contains a bunch of settings
+
+that allow you to control in detail how strict TypeScript is
+
+and about which kind of potential errors it will complain.
+
+If you set strict to true, which is the default,
+
+you turn on most of this settings,
+
+so you got a pretty strict type checker then,
+
+which actually does not allow a lot of things.
+
+For example, with strict set to true,
+
+if you have a function ad which accepts two parameters
+
+like this, you will see I'm getting errors here for a and b
+
+and if you recall,
+
+this was actually not the case earlier in the course.
+
+There, I was getting a warning essentially
+
+that a and b are of type any,
+
+but I was not getting an error.
+
+Now I do because my IDE picks up this tsconfig file
+
+and their strict is set to true and with strict set to true,
+
+this no implicit any setting is for example,
+
+also set to true.
+
+We could also individually set this to true,
+
+but that's not required
+
+if you have strict already set to true
+
+and no implicit any for example,
+
+which is the error this here is referring to in the end,
+
+tells you that if you want a value to really be of type any,
+
+which is typically not recommended,
+
+but if you want it to be of type any,
+
+you should explicitly set it to that.
+
+This ensures that you're not accidentally
+
+working with some values of type any
+
+in places where you simply forgot to set a type.
+
+So that's what this setting does for example,
+
+and as mentioned, it is included in strict true.
+
+We also got other settings like strict null checks,
+
+which ensures that you can't accidentally
+
+work with a value that might be null.
+
+We saw that in action earlier already actually,
+
+and a bunch of other settings
+
+where these descriptions on the right here
+
+should also help you understand
+
+which specific scenarios they handle,
+
+or which specific errors might be caught here.
+
+Therefore, it is recommended for most TypeScript project
+
+to set strict to true
+
+because by having a very strict type checker,
+
+you get the most benefits out of TypeScript
+
+because it then really forces you to write good code
+
+and to not have these tiny potential errors in your code,
+
+even though it can sometimes be annoying
+
+that you're getting a lot of errors,
+
+but ultimately, it should help you write better code
+
+and that's there for the configuration file.
+
+Obviously, I only touched on a few of these options
+
+because there simply are way too many and as mentioned,
+
+most of them are simply pretty niche and advanced
+
+and if they're needed, they're typically set for you
+
+because typically, you'll be using a project setup
+
+where this is configured for you
+
+and where you then just might want to tweak
+
+the strictness of TypeScript in that project
+
+and maybe also the target.
+

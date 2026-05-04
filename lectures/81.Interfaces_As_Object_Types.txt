@@ -1,0 +1,54 @@
+So how can we use this interface?
+
+Well, as mentioned one way of using an interface,
+
+and one very common way of using interfaces,
+
+is that you use them just like object types.
+
+So you could create a new user object, let's say,
+
+and this user should be of type Authenticatable, like this.
+
+Now if you wanna assign a value to this variable,
+
+it must be an object
+
+and it must be an object that has this shape.
+
+So it must be an object
+
+where you have an email property like test@example.com,
+
+and where you have a password property like abc1.
+
+And in addition, you must have these two methods
+
+because they're also a part of this interface.
+
+So here I'll add a login method and a logout method.
+
+And here, since we are now defining a concrete value,
+
+you will add the actual implementation of these methods.
+
+So you will add your logic.
+
+For example, here, you could reach out to a database,
+
+check credentials, create a session, and so on.
+
+And here at logout, you could clear the session,
+
+anything like that.
+
+So you would add the concrete logic here,
+
+because here we have a regular value, a normal object value,
+
+but an object value that has the shape described
+
+by this Authenticatable interface.
+
+That's the idea of using interfaces as object types.
+

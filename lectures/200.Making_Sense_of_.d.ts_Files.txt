@@ -1,0 +1,94 @@
+[Maximilian Schwarzmüller] Now, one other thing we had
+
+in this project was this .d.ts file.
+
+What's that?
+
+Well, that file contains rather strange code,
+
+code that you won't see too often in TypeScript projects
+
+and in the end .d.ts files are TypeScript declaration files
+
+or type declaration files.
+
+And the idea behind such files
+
+is that they don't specify code
+
+that should be executed like main .ts does.
+
+This file here contains a bunch of
+
+JavaScript/TypeScript code
+
+that eventually should be executed after being compiled.
+
+Well, .d.ts files contain just type definitions
+
+that can be used by other files,
+
+but that can't be executed,
+
+so that doesn't compile to JavaScript code,
+
+but that would compile to nothing
+
+because it contains just type definitions, for example.
+
+And this reference thing here,
+
+which is the only code in this .d.ts file,
+
+simply points at some other file
+
+that is part of the vite project.
+
+If you control or command click on vite/client here
+
+you should be taken to this client.d.ts file,
+
+which is part of the vite package,
+
+which is stored in the node modules folder.
+
+And there you see a bunch of type definitions
+
+and this declare thing here,
+
+which in the end just declares TypeScript information.
+
+So that's all just type information,
+
+which can't be executed as JavaScript code.
+
+It's used under the hood to get proper TypeScript support
+
+to avoid errors, to get good IDE support,
+
+but it's not meant to be executed.
+
+You could write .d.ts files on your own
+
+in Project if you knew that you had a file
+
+that only contains type definitions.
+
+But you can also just write a regular .d.ts file
+
+without the .d because you won't get any problems
+
+if you try to compile a file that doesn't lead
+
+to any executable JavaScript code.
+
+We had cases like this before in the course too.
+
+This .d.ts file thing is mostly important for libraries,
+
+so if you're building a library
+
+so that you can ship type definitions
+
+along with your compiled TypeScript code.
+

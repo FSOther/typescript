@@ -1,0 +1,138 @@
+There also is a very useful variation
+
+of that indexed access type feature here.
+
+Here, we're using it with the property key permissions
+
+to extract the type that's stored for that property.
+
+And that is a very common way of using this feature,
+
+but you are not limited to using it
+
+with property names like permissions or age or name
+
+or whatever else you have in your object.
+
+Instead, you can also use it on arrays
+
+to extract the value type of the elements
+
+that are stored in the array.
+
+For example, also here, Perms is an array
+
+of objects that have this shape.
+
+So the Perms type describes an array type
+
+where the array holds objects of this shape.
+
+Now, what if I wanted a Perm type that describes the shape
+
+of an individual permission?
+
+So not of an array of permissions,
+
+but just of this permission object
+
+without the square brackets, so to say.
+
+Of course, again, we could copy and paste it,
+
+but for the reasons mentioned before,
+
+I don't wanna do that here.
+
+Well, what you can do instead is use your array type Perms,
+
+stores an array.
+
+Use square brackets, but now use number here,
+
+the number type identifier.
+
+This tells TypeScript that you want to extract
+
+the type of the elements that are stored
+
+for the different indexes
+
+in the array you are accessing here.
+
+So in the Perms array, in the permissions array.
+
+And therefore Perm now has just the object type
+
+without the square brackets
+
+because we're using this special TypeScript syntax
+
+where we put number between those square brackets
+
+to access the type of the value that's stored in an array.
+
+And of course, this feature does not just work
+
+for this nested object array type here.
+
+You could also have a Names type,
+
+which is simply a string array,
+
+so a very simple string array.
+
+And then if you wanted to get the type of value
+
+that's stored in that array,
+
+just the type of value that's stored in there,
+
+we of course know that it will be string.
+
+But you could also use this feature I just explained,
+
+Names, square bracket, number,
+
+to let TypeScript look into this array type here
+
+and take a look at the type of the values
+
+that will be stored in that array,
+
+and then give you just that value type.
+
+Therefore Name would be string in this case
+
+because it is an array of strings.
+
+So that's a very useful variation
+
+or extension of this indexed access type feature.
+
+You can use it on properties with property names
+
+to get the types of values that are expected
+
+for those properties.
+
+But you can also use it
+
+with this square bracket number syntax here to get the types
+
+of the values that are stored in some array.
+
+And again, we're all in TypeScript land here.
+
+This is all not runtime JavaScript code.
+
+This is all TypeScript code instead.
+
+If I were to compile this indexed-access-types.ts file here,
+
+you would notice that it's essentially an empty file
+
+because again, there's nothing JavaScript-ish in there.
+
+I'm just defining a bunch of types here.
+

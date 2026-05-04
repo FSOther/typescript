@@ -1,0 +1,9 @@
+Useful Resources & Links
+Attached you find all the code snapshots for this module - you also find them attached to individual lectures throughout this module.
+
+These links might also be interesting:
+
+More on Drag & Drop: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+
+Tài nguyên cho bài giảng này
+* prj-01 -> 16.zip links.

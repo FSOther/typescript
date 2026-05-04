@@ -1,0 +1,360 @@
+Visually, we are able to drag and drop
+
+but technically in JavaScript of course,
+
+our script has no idea of what's happening.
+
+But to us humans of course, it's clear
+
+that we're dragging this exact item here.
+
+But if we have a look at our code,
+
+how would JavaScript know what's getting dragged where?
+
+How would we update our state
+
+based on the information we have right now?
+
+It wouldn't really be possible.
+
+So to make that work in JavaScript
+
+we have to go back to the class
+
+of our draggable item, the project item.
+
+There, in the dragStartHandler,
+
+logging the event of the console
+
+isn't everything we should do.
+
+Actually we don't need to do that at all.
+
+Instead, let's now use our event object here
+
+because that has a data transfer property.
+
+This is special for drag events,
+
+that you have such a data transfer property.
+
+And on that property,
+
+you can attach data to the drag event
+
+and you'll later be able to extract
+
+that data upon a drop
+
+and the browser in JavaScript behind the scenes,
+
+will store that data during the drag operation
+
+and ensure that the data you get when the drop happens
+
+is the same data you attach here.
+
+For that you can call, setData, on data transfer,
+
+but data transfer could actually be null.
+
+So we have to add an exclamation mark here,
+
+we of course know that it won't be null here.
+
+You might wonder why could it be null?
+
+Well the drag event is always the same kind of event
+
+but based on which listener triggers it
+
+or which exact event you're listening to,
+
+data transfer is not necessarily available.
+
+So not all drag-related events
+
+give you an event object that has
+
+the data transfer object.
+
+The dragStartHandler
+
+which fires up on the drag start event however,
+
+does have it so here we can safely call setData.
+
+And now setData takes two arguments here.
+
+The first argument is an identifier
+
+of the format of the data,
+
+and there you've got certain possible formats available.
+
+Attached you'll find a deep dive into drag and drop
+
+with JavaScript where you can learn way more about them.
+
+You'll also learn more about it
+
+in my JavaScript Complete Guide course by the way.
+
+Here we need the text/plain format
+
+which means we're just going to attach
+
+some plain text asked data that is transferred,
+
+and that's important.
+
+We're not going to attach our objects here,
+
+our project itself,
+
+we'll just keep getting trapped.
+
+So not the complete project which can be rendered here.
+
+Instead, it actually suffices to attach
+
+the ID of the project because this will later allow us
+
+to fetch that project from our state.
+
+So attaching the ID is all we need to do.
+
+We wanna transfer only a small amount of data,
+
+this will also saves us some memory.
+
+So now with that, we're attaching data to the drag event.
+
+One other thing I wanna do is,
+
+on data transfer where we again,
+
+have to add the exclamation mark,
+
+I'll set the effectAllowed property to move.
+
+This basically controls how the cursor will look,
+
+and tells the browser a little bit about our intention,
+
+that we plan to move an element from A to B.
+
+An alternative could be copy,
+
+where you then get different cursor
+
+which indicates to the user
+
+that you're copying and not moving,
+
+but here we wanna move the element
+
+which means upon a drop,
+
+we remove it on its original place
+
+and add it to the new place.
+
+So now data is attached here and that is step number one.
+
+Let's now go back to the place
+
+where we want the drop to happen,
+
+which is the project list.
+
+There, it starts in the dragLeaveHandler.
+
+Now in this application, in this project here,
+
+we only have one drag and drop operation
+
+and that is our projects here.
+
+In bigger applications you might have different pieces
+
+on the page that can be dragged and dropped
+
+and you don't wanna make everything droppable everywhere.
+
+So therefore, here in the dragOverHandler,
+
+which fires when you enter a draggable area
+
+with an item attached to the mouse,
+
+I wanna check if a drag really is allowed here.
+
+For that, I will check if event.dataTransfer,
+
+here it is available as well,
+
+so if that is available,
+
+and then, if it is available,
+
+the data transfer types property
+
+has a first value which is equal to text/plain.
+
+That simply means, is the data attached to our drag event,
+
+is that of that format?
+
+Which it of course is
+
+because that is the format we set up
+
+in the dragStartHandler here.
+
+So for example, here it would not allow dropping images
+
+or something like that
+
+which would have a different data format.
+
+I've just allowed dropping of plain text.
+
+Of course I now also need to replace
+
+underscore with an event again
+
+because I'm referring to it here.
+
+Now if that is the case then I know I wanna allow a drop
+
+so then I will update the background.
+
+And just one other important thing we gotta do,
+
+you have to call event.preventDefault.
+
+But why do we have to call that?
+
+Because in JavaScript a drag and drop
+
+works such that a drop is actually only allowed,
+
+so the drop event will only trigger on an element,
+
+if in the drag overHandler on that same element
+
+you called preventDefault.
+
+You can think of this as the following.
+
+The default for JavaScript drag and drop events
+
+is to not allow dropping
+
+so you have to prevent default in the drag overHandler
+
+to tell JavaScript and the browser
+
+that for this element,
+
+in this case for this section for this projectless class
+
+you wanna allow a drop.
+
+So only if you do this is a dragOverHandler
+
+the drop event will actually trigger
+
+when the user lets go.
+
+Otherwise if the user lets go,
+
+the drop event will not fire.
+
+So with that, the drop handler will
+
+then eventually execute of course,
+
+because now we are allowing this to happen.
+
+So here in the drop handler we can now accept the event,
+
+and for the moment let's just console.log the event
+
+here like this to see whether this works.
+
+We now save everything, we add a new item here,
+
+and I drag this.
+
+If I drop it here in finished projects
+
+you see this drag event is firing here.
+
+And that's coming from line 236
+
+which indeed is this line in the drop handler.
+
+Now if we inspect the drag event here in the browser,
+
+you see we have a bunch of data in here
+
+and we also have that data transfer property.
+
+And in there you see the effect we allowed,
+
+which is Move,
+
+and you'll also see nothing in there.
+
+Well, only because the data was already cleared
+
+after this was being put into the console.
+
+And since we put in the object here
+
+and objects are reference types,
+
+well, we see the latest snapshot where the data's lost.
+
+Actually at the point of time we are dropping this,
+
+we will be able to extract data from data transfer.
+
+And I can prove this to you.
+
+Of course we can simply access data transfer
+
+and there you have a getData method,
+
+and now we wanna get the data with this text/plain format
+
+and that should be the project ID we attached
+
+to our data transfer package on the project item.
+
+So if we now save this
+
+and we re-add the project here,
+
+and drag this here,
+
+you see this here indeed, is the ID of this project item.
+
+We can see that if we inspect it
+
+because we also add it here as an ID,
+
+0.2167, looks like this ID to me.
+
+So we are successfully transferring the ID.
+
+Now we're almost there.
+
+Now we just have to update our state behind the scenes
+
+and then rerender DUI.
+

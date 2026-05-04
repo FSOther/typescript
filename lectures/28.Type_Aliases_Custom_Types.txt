@@ -1,0 +1,156 @@
+Now when dealing with literal types combined
+
+with union types,
+
+so when dealing with options like this here,
+
+you can end up with quite long type definitions,
+
+which can especially become a problem
+
+if you want to use the same type definition
+
+in different places in your code.
+
+Let's say we have a function access here,
+
+which expects to get the role of a user as a parameter,
+
+and then it does something.
+
+Now of course, we probably want to accept a role parameter,
+
+which has the same type as user role.
+
+So of course we can copy this union type,
+
+which uses these three literal type values here
+
+and assign it here.
+
+But as you know, when writing code,
+
+copy and pasting is often not the best idea,
+
+because if we now change one of these options,
+
+or if we add a fourth option here, like reader,
+
+then we would have to do the same down here.
+
+And it's easy to forget something here
+
+and to introduce subtle bugs,
+
+and it's also simply some unnecessary work.
+
+That's why TypeScript also allows us
+
+to create so-called type aliases
+
+or custom types as I also like to call them.
+
+You can use the type keyword which is offered by TypeScript,
+
+so which is not a JavaScript keyword,
+
+just like enum, which also comes from TypeScript.
+
+And you can use this type keyword to create a custom type,
+
+a type alias, like for example, role.
+
+I used the same name before for my enum,
+
+but since I commented out this code,
+
+I can use it again here.
+
+And now you can use an equal sign here
+
+to store a type definition under that alias.
+
+So now even though we're on the right side
+
+of the equal sign here,
+
+we're still setting up a type definition
+
+due to this type keyword
+
+because the entire purpose
+
+of this type keyword is to allow us
+
+to store a type definition under a custom name.
+
+And this is an extremely useful feature
+
+when dealing with union types.
+
+You could theoretically also store the built-in number type
+
+under your own custom name,
+
+but this would probably not make too much sense.
+
+But you could do that as well just so that you know.
+
+But when dealing with long, complex types,
+
+which you also might want to use
+
+in different places in your code,
+
+this type alias feature really shines
+
+because now you can use your custom type name,
+
+role, here in all the places where you use that type.
+
+So here for that variable.
+
+And also here for this role parameter in my axis function.
+
+I can easily define this type once
+
+and then reuse that type definition
+
+in all the places where I need it.
+
+So this is another extremely important TypeScript feature,
+
+which you'll very likely use a lot.
+
+It can also be useful when dealing with object types
+
+because those can also become quite complex.
+
+And here you could simply define a user type,
+
+which stores an object type definition,
+
+where every user might have a name and an age
+
+and a role, which is of my role type, let's say.
+
+And then maybe a list of permissions,
+
+which could be simply an array of strings.
+
+Now, this user type is stored under the name user,
+
+and you can easily use this complex object type
+
+in all the places you want by simply using this user type.
+
+That's another common use case
+
+for using this type alias feature.
+
+And therefore,
+
+it's another feature you definitely should know,
+
+and now you do.
+

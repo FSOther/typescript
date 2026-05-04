@@ -1,0 +1,84 @@
+There was a lot of talking
+
+about interfaces and classes now.
+
+Now let's look under the hood
+
+and see what JavaScript actually produces
+
+or offers as an alternative to interface.
+
+We learned that for class code,
+
+in the end it depends on the version we're compiling for.
+
+If you compile for es6 here in the ts conflict,
+
+then our output would use the class keyword.
+
+Since we compiled for es5 here,
+
+we instead see this workaround using construct
+
+or functions in the end.
+
+What, however, happens for interfaces?
+
+Well, let's have a look at the app.js file.
+
+And there you see nothing.
+
+You'll not see any translations for our interfaces.
+
+AddFn, Named, Greetable.
+
+You don't find these things anywhere in app.js.
+
+You just find our function here,
+
+you find our constructor function for the person object,
+
+so basically that translation for the person class,
+
+and the other code.
+
+You find no reference at any interface.
+
+And there's a good reason for that.
+
+There is no translation for interfaces.
+
+JavaScript doesn't know about this feature.
+
+It's a pure TypeScript feature,
+
+only available during development and compilation.
+
+So you can use it to improve your code.
+
+No output for that will end up
+
+in your JavaScript files though,
+
+so therefore it's a pure development feature
+
+helping you to write better code,
+
+clearly structured code following clear rules.
+
+At runtime, no trace will be left of these interfaces.
+
+You'll not see anything related to the interfaces
+
+in your code, only functions, classes,
+
+and all the other code is compiled in output.
+
+Interfaces are simply dumped, you could say.
+
+They're used during compilation to check your code
+
+and then they're ignored.
+
+There is nothing that would be output for them.
+

@@ -1,0 +1,132 @@
+Now there is another interesting return type,
+
+which you'll also see sometimes with functions.
+
+And for that, let's say, we have a function logAndThrow.
+
+And here we expect to get some error message.
+
+So this might be a function we call in a place in our code,
+
+if something goes wrong.
+
+And then in there we maybe log the error message.
+
+But then we also throw a new error,
+
+let's say, a new error which wraps that error message.
+
+And here this new error thing is,
+
+a built in feature of JavaScript.
+
+It's not TypeScript exclusive.
+
+You could do this in just JavaScript as well.
+
+That's how you can create error objects there.
+
+So this is a utility function you might be using
+
+in your code, if you wanna log an error
+
+and then throw it essentially.
+
+Now the return type of this function is interesting
+
+because it is void.
+
+But you could override it to never.
+
+And that's a never special type offered by TypeScript.
+
+As you saw it inferred void here, at least at the point
+
+of time where I'm recording this
+
+because yes, this function doesn't return anything,
+
+but actually you could overwrite the inferred type to never,
+
+which is a bit more specific and which is a type
+
+provided by TypeScript,
+
+because never means that this function,
+
+you could say, will never complete.
+
+Yes, it will not return anything,
+
+but it will not return anything
+
+because it will never return.
+
+This log function up here will at some point be finished
+
+and then just not return anything.
+
+This function on the other hand, will not finish,
+
+you could say because it froze in error,
+
+which could crash your program,
+
+if you're not catching it somewhere else.
+
+So there is a subtle difference here.
+
+And this difference can be expressed
+
+by using this never type.
+
+Now you might not care too much about that.
+
+You might be fine with the inferred void type,
+
+but you will see that never type
+
+in certain places in other projects.
+
+And by explicitly setting it, you can make sure
+
+that you'll never accidentally use that function
+
+and try to store a return value in a variable
+
+or constant, because if you try to do so,
+
+that constant or variable will have the never type inferred
+
+since the function returns never.
+
+And if you then try to use that
+
+and try to access some property
+
+or anything like that, that won't work
+
+because TypeScript knows
+
+that this will never contain a value, so to say.
+
+So it's kind of philosophical, the difference between
+
+never and void, but I hopefully could get the point across.
+
+As mentioned, it often won't matter
+
+if you specify this or not.
+
+But if you see it somewhere, now you know what it's about.
+
+And if you do create a function that froze an error
+
+and that will therefore never return an error,
+
+you might just set that return type here
+
+to make sure that this function can never be used somewhere
+
+where a value is expected or anything like that.
+

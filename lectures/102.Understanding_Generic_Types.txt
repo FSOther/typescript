@@ -1,0 +1,73 @@
+So what are generic types?
+
+What's special about this type here?
+
+Well, you could come up
+
+with pretty complex descriptions
+
+and explanations for generic types,
+
+but in the end I like to describe generic types as types
+
+that need to work together with other types.
+
+So types where multiple types need
+
+to work together in order
+
+to accurately describe a certain value type.
+
+So put in our words, the type of this value here is
+
+that it's an array full of strings.
+
+So we got two kind of types working together here.
+
+The array type and the string type you could say.
+
+And that's in the end what Generics are all about.
+
+It's about combinations of types,
+
+and that's important,
+
+it's about building flexible things.
+
+It's about describing flexible types
+
+because here the array type, which is the generic type,
+
+in this case here,
+
+it's always the thing in front of the angle brackets.
+
+That's the actual generic type if you want to be correct.
+
+So this array type here is pretty flexible
+
+because you can use this array type to describe all kinds
+
+of arrays that contain all kinds of value types.
+
+Here in this concrete example,
+
+we just make it clear
+
+that this generic, flexible array type will work together
+
+with the string type, so to say,
+
+to describe a value which is an array full of strings.
+
+And that's the entire idea behind generic types in the end,
+
+that you create flexible types
+
+where multiple types in the end work together.
+
+And with this knowledge,
+
+we can now also build our own generic types
+
+and work with generic types.

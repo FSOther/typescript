@@ -1,0 +1,130 @@
+So deriving these results is great.
+
+Of course, I now also want to output them here
+
+with the printResults function.
+
+And for that, printResults
+
+wants a bunch of results as an input.
+
+And here I'll actually assume
+
+that it wants the same kind of input that we produce
+
+as an output here on calculateInvestment.
+
+So a value of type CalculationResult,
+
+which is either an array of results or a string.
+
+So I'll reuse this type, which makes it even more useful
+
+to have it as a separate type
+
+so that we don't have to copy and paste this definition.
+
+So I'll reuse this name here
+
+and use that as a data type for my results parameter.
+
+Well, and then in here, you can output this
+
+in however way you want,
+
+but I'll start with an if check, with a type guard,
+
+and check if the type of results is equal to string.
+
+So if I got such a string error message as a result,
+
+so to say.
+
+And if that's the case,
+
+I want to console.log that of course,
+
+I want to output that string.
+
+But I also want to return
+
+so that no other code thereafter gets executed
+
+if we got such a string.
+
+And this here, this type of operator
+
+is a standard JavaScript feature as you learned,
+
+which allows us to look into a value
+
+and determine the type of a value at runtime
+
+and then execute code
+
+depending on which type of value we're dealing with here.
+
+So if you got a string, I'm outputting it
+
+and I'm then returning.
+
+If we make it past the safe check,
+
+we know that we don't have a string,
+
+but instead an array of investment results,
+
+and therefore in that case, we can use a for loop,
+
+a for of loop, to loop through all our year end results here
+
+that are stored in that results array,
+
+and then output information for every year.
+
+For example, console.log the yearEndResult.year.
+
+So the identifier, year one, year two, and so on.
+
+Then thereafter, console.log a template literal string
+
+maybe again with those backticks
+
+where I say Total: and a blank.
+
+And then I inject yearEndResult.totalAmount.
+
+And then here I'll use JavaScript's toFixed method,
+
+which you can use on numbers
+
+and which you can use without problems here
+
+because TypeScript understands that this is a number,
+
+to make sure that we simply omit everything
+
+after the decimal.
+
+Well, and then I'll copy that
+
+and also output the total contributions
+
+and output the yearEndResult.totalContributions.
+
+And we can also call toFixed on that.
+
+And then output the total interest earned
+
+by outputting the totalInterestEarned and using toFixed.
+
+Well, and then if we want to,
+
+we can also simply output a bunch of dashes here
+
+to separate those years from each other like that.
+
+And with that, I'm outputting those year by year results.
+
+Now we just need to verify whether that all works.
+

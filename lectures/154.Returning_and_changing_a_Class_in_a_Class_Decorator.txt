@@ -1,0 +1,430 @@
+In order to do
+
+more advanced things with decorators
+
+you will have to note that some decorators
+
+for example, class decorators
+
+but also method decorators, for example,
+
+actually are also capable of returning something.
+
+Now, I'm not returning anything
+
+at any decorator.
+
+I'm not talking about
+
+the decorator function,
+
+which gets returned in the decorator factory.
+
+I really mean a return value
+
+inside of the decorator function,
+
+and we don't have any such value anywhere.
+
+Now in the WithTemplate function,
+
+in this WithTemplate decorator function, I should say,
+
+we could add such a return value.
+
+And what you can return
+
+and what TypeScript is able to use,
+
+depends on which kind of decorator you're working with.
+
+Here, we're working with
+
+a decorator that gets added to a class,
+
+and in such a decorator function,
+
+you can return a new constructor function,
+
+which will replace the old one.
+
+So which will replace the class
+
+to which you added to decorator you could say.
+
+So here we can return a new function,
+
+a new constructor function,
+
+or simply return a new class, in the end,
+
+because a class, the class keyword,
+
+allows us to use this syntactic sugar
+
+to create such a constructor function,
+
+and the class I create here doesn't need to have a name,
+
+but we can and we should
+
+extend the constructor we're getting here.
+
+So what I'm doing here now
+
+is in my decorator function here,
+
+I'm returning a new class,
+
+and again keep in mind
+
+that's just syntactic sugar
+
+for a constructor function,
+
+so I'm returning a constructor function, in the end,
+
+which is based on the original constructor function,
+
+so that I keep all the properties of my original class,
+
+of my original constructor function,
+
+we don't necessarily have to do that,
+
+but I don't want to lose my properties here,
+
+so I will do it.
+
+And then in here we can add new functionality.
+
+For example, and I will have to change some names here,
+
+I can add a new constructor function in there,
+
+and to avoid confusion,
+
+I'll rename the constructor I'm getting here.
+
+So the class in which I added this decorator,
+
+I'll name this here, originalConstructor
+
+and copy that all over here.
+
+And now, instead of this constructor function here,
+
+I have to call super
+
+to call this original constructor function
+
+from inside of it,
+
+because if you add a constructor function
+
+in a class that extends another class,
+
+which is, in the end, what we're doing here,
+
+then you have to call super.
+
+And now in here you can write any logic you want.
+
+And, for example, here, we could move this
+
+template rendering logic here,
+
+out of our decorator function
+
+into this new constructor function
+
+we're returning here.
+
+So again, really keep in mind
+
+that we're creating a class here
+
+which in the end just
+
+creates a constructor function
+
+with this logic in it.
+
+So now what I'm trying to do is,
+
+I try to replace the class.
+
+The constructor function to which we added our decorator
+
+with a new class, with a new constructor function,
+
+where I still execute the old logic,
+
+but where I also add my own new logic,
+
+and therefore, now the template
+
+should actually only be rendered to the DOM
+
+if I really instantiate my object here.
+
+And not all the time,
+
+when this decorator function is executed,
+
+which as you learned,
+
+happens as soon as we define the class.
+
+Now a little tweak here,
+
+I don't call my original constructor in here anymore,
+
+instead we can just access this.name
+
+to get the name property value
+
+of the instance we are creating.
+
+Now we get a little complaint down there
+
+regarding the types not being correct.
+
+To fix that though, we can turn our decorator function
+
+into a generic function where we get a type,
+
+and set this as the type of original constructor,
+
+and now make clear
+
+that this will actually be
+
+basically a constructor function,
+
+and we can make that clear
+
+by assigning a special type, an object type,
+
+where we set a new property,
+
+this is a reserve name of course,
+
+but it tells TypeScript
+
+that in the end this will be an object
+
+that can be newed.
+
+So that will be a constructor function,
+
+a function we can call with the new keyword
+
+to generate a new object.
+
+And this new function, this new method,
+
+which the object T is based on will have,
+
+will get any amount of arguments,
+
+so I'm using rest parameters here
+
+to accept as many arguments as you want,
+
+so that they're really flexible regarding the arguments
+
+that can be passed to the constructor
+
+of the class we're trying to change.
+
+Add the new function
+
+will then in the end return an object here.
+
+Now I should also just copy that defination
+
+of the rest parameter to my constructor here,
+
+so that this constructor is also capable
+
+of accepting all the arguments we might be getting,
+
+so that we can, basically instantiate Person
+
+with any arguments you want to pass in here.
+
+With any arguments we might also need here,
+
+in the original constructor function.
+
+And with that the only problem we'll face
+
+is that we don't know that such a name property exists,
+
+and correctly so, we don't know
+
+to which class we'll add this WithTemplate decorator,
+
+so we don't know if there will be a name property
+
+on the class we add it to.
+
+But, we can fix this
+
+by simply telling TypeScript
+
+that the object T is based on,
+
+so our original constructor function,
+
+will not just produce any object,
+
+but actually will produce an object
+
+with a name property which will be of type string
+
+and that is correct.
+
+Our WithTemplate decorator is added to a class,
+
+which will have a name property.
+
+If I would comment this out,
+
+we would get an error,
+
+because now we would try to add this decorator
+
+to a class which does not fulfill this criterium
+
+but here, this does fulfill it.
+
+Now, I get an error here when I try to compile this,
+
+because I'm not using args here,
+
+we can change this to an _
+
+to tell typescript that we know we don't use it
+
+and that we wanna ignore this.
+
+This is a valid parameter name,
+
+it's just a special name which typescript takes as a
+
+I get it, I need to accept it,
+
+but I won't use it parameter.
+
+And with that, it all compiles and if we reload,
+
+you see, we still see Max on the page here.
+
+The interesting thing just is,
+
+if we now remove that code
+
+where we instantiate Person
+
+if I comment this out
+
+so that I just find a Person class,
+
+but I never instantiate it anywhere,
+
+you see as it reloads we don't see Max on the screen.
+
+All the decorators still execute,
+
+but we don't render anything to the screen anymore.
+
+And the reason for that,
+
+is that we now enhanced our decorator here even more,
+
+by taking advantage of it's feature
+
+where we can return a new value
+
+or in this case a new constructor function.
+
+In the case of the class decorator.
+
+This is a new constructor function, or a new class,
+
+which, as I explained, is just syntactic sugar
+
+for the constructor function,
+
+and this constructor function, therefore,
+
+replaces our original class,
+
+our original constructor function.
+
+Now, since I called super in here,
+
+we save the original function.
+
+We save the original class,
+
+everything we initialize here basically still happens,
+
+because I do that in my replacing constructor as well,
+
+and I extend the original class.
+
+So we save everything that was in the original class.
+
+You don't have to do that,
+
+but I am doing it here,
+
+because I don't want to lose that original data.
+
+But, behind the scenes,
+
+I replace the class with my new custom class here,
+
+and that allows us to add extra logic,
+
+that should run when the class is instantiated.
+
+And now all of a sudden we are able to add logic
+
+that does not run when the class is defined,
+
+but when the class is instantiated.
+
+And this therefore should be a great first example
+
+of the full power you can unleash with decorators
+
+if you really understand what you can do with them.
+
+And you can not just define them as functions,
+
+and you can not just define them with factor functions.
+
+In some decorators, like the class decorator,
+
+you can also return something
+
+to replace the thing you added the decorator to
+
+in our case the class,
+
+with a new class that can implement the old class
+
+but also add its new custom logic.
+
+And with that, if we comment this back in,
+
+we again render Max to the screen
+
+with our own class
+
+that replaces, or that extends and replaces the old class.
+

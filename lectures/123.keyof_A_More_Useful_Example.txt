@@ -1,0 +1,220 @@
+So what's the benefit of this keyof operator?
+
+Where would this be useful?
+
+Well, for example, if you wanted
+
+to create a utility function called getProp, let's say,
+
+this should be a function which expects two parameters,
+
+an object and a key.
+
+And the idea of this function is
+
+that it then extracts the value stored under that key
+
+using this regular JavaScript syntax here.
+
+So that's not TypeScript.
+
+This is normal JavaScript syntax
+
+for dynamically extracting some value
+
+based on some key from some object.
+
+So you could extract a value like this.
+
+And then here in this utility function,
+
+which could be part of our library or framework
+
+or application we're building,
+
+we might wanna check if val is undefined
+
+or if val is null.
+
+And in those cases, instead of returning undefined or null,
+
+which we would do if we would return val
+
+without that if check.
+
+Instead, if we make it into the if check,
+
+we might want to throw a new error,
+
+'Accessing undefined or null value',
+
+because this might then help us write better code
+
+in other parts of our application.
+
+If we can use this utility function with the knowledge
+
+that it will never return undefined or null,
+
+because in those cases, it would throw an error.
+
+So having a utility function like this could be useful
+
+in certain applications.
+
+But how should we now type these parameters?
+
+Well, we might want to turn getProp
+
+into a generic function here
+
+so that we can use it with any object,
+
+and we don't have to define
+
+how these objects should look like right now
+
+when defining this function.
+
+So we could use this Generic T placeholder here for object.
+
+We might wanna make sure that we get some object though,
+
+and not a number or string.
+
+So we can use extends object
+
+and you learned about Generic types
+
+and the extends keyword in the previous section, of course.
+
+So in case this doesn't tell you anything,
+
+definitely revisit that previous section.
+
+So that would be one placeholder we might want to use.
+
+But now for the key here, you might already guess it,
+
+we only wanna allow keys that exist in that object
+
+that we're getting as a first parameter.
+
+And that's where the keyof operator
+
+or this keyof TypeScript feature can help us.
+
+We can add a second placeholder to this Generic function,
+
+a second type placeholder
+
+and name it K or U, doesn't matter.
+
+And we want to use that for the key.
+
+But now this shouldn't be any kind of value of any type.
+
+Instead, U should extend the list of keys of our object,
+
+which is stored in that T placeholder.
+
+So I'm aware that this looks pretty complex now,
+
+but in the end, it isn't that difficult.
+
+We're just saying that we have two placeholders,
+
+two type placeholders in this getProp function
+
+and we use them for the first and second parameters
+
+so that these two parameters are of different types.
+
+The first placeholder simply says that we want some object.
+
+So the value for the object parameter should be some object.
+
+Now the value for the key though,
+
+should be one of the keys of our object
+
+and that's what we're saying here,
+
+that this type of value we're getting
+
+for the second parameter must be a type
+
+that extends the list of keys of the first parameter value.
+
+So of the object we're getting for the first parameter.
+
+That's what we're saying here.
+
+And with that all done,
+
+we could create a new constant here,
+
+user, for example, to keep it simple again,
+
+where we might have some name and some age, doesn't matter.
+
+And we could then call getProp to extract the value
+
+and pass user to getProp,
+
+and then as a second parameter,
+
+you see we have to pass a string,
+
+which is one of the two keys we have in that object.
+
+For example, age,
+
+and now val would be a number.
+
+We get all this inference
+
+due to how we wrote this getProp function.
+
+And of course, we can use the getProp function
+
+with any values now,
+
+not just with user objects that have this shape.
+
+We could have some random data object
+
+which has an ID, which is a number maybe,
+
+which has a boolean, let's say,
+
+and which maybe has a nested array
+
+of random numbers like this.
+
+And even with that, we could call getProp,
+
+pass the data to it,
+
+and then get assistance when extracting values.
+
+For example, the isStored value
+
+and TypeScript would infer that isStored is a boolean.
+
+And that's an example
+
+where the keyof operator is pretty useful
+
+because it in this case, allows you
+
+to kind of link these two placeholders together
+
+by saying that the second placeholder, U, the type
+
+that will be inserted for that placeholder
+
+should be one of the keys of the value that's received
+
+for the first placeholder, for T in this example.
+

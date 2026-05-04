@@ -1,0 +1,270 @@
+So now that we know
+
+about TypeScript fundamentals and how it differs
+
+and all this related to JavaScript,
+
+let's dig a bit deeper
+
+into the different core types TypeScript knows.
+
+The number is the type we see here, and as I explained,
+
+there is no difference
+
+between integers like the five here and floats or doubles,
+
+as it would be called in other programming languages,
+
+like 2.8 here.
+
+Indeed, in JavaScript, and the same is true in TypeScript,
+
+all numbers are floats by default.
+
+So, for JavaScript, and therefore, also for TypeScript,
+
+there is no difference between five like this
+
+and five like this.
+
+It's the same number, essentially.
+
+Now, besides numbers, we also have other core types.
+
+And that would be strings, so text, and booleans.
+
+Let's also have a look at those.
+
+We actually saw all of those in action here in this
+
+if statement already, which we learned is a bit redundant.
+
+Nonetheless, this here would be a string.
+
+Also, of course, five
+
+with quotes would be a string because it's text.
+
+And the result, for example, of this comparison here,
+
+that would be a boolean.
+
+This operator, the triple equal sign
+
+or the negated equality operator here,
+
+that produces true or false.
+
+And, of course,
+
+we can either produce a dynamically innerRef check,
+
+which we'll often do.
+
+Or we initialize a variable with a true or false value,
+
+so let's do both here.
+
+Here, we could add a new constant, "printResult".
+
+And set this to true, for example.
+
+And just to make it really clear,
+
+this could be a variable as well.
+
+It doesn't have to be const.
+
+It can be a variable, which you would create
+
+with let in JavaScript.
+
+But since I don't plan on changing it here, I will go
+
+with a constant.
+
+And we could pass this as a third parameter here.
+
+Let's say we pass in "printResult", which holds true here.
+
+Now we immediately get an error, of course,
+
+because our add function does not support a third argument.
+
+We see, "Expected two arguments but got three".
+
+So, therefore, we have
+
+to make sure we support a third argument.
+
+And there, we could add a "showResult" parameter.
+
+You could name it "printResult" here as well.
+
+I'm going with "showResult"
+
+to avoid confusion regarding the naming, but, technically,
+
+these two names would not clash.
+
+So, here, I'll name it "showResult".
+
+And I want to make sure that this is of type boolean
+
+by setting this to boolean.
+
+Again, by adding a colon after the parameter here
+
+and then by adding the name of the type.
+
+Now this function accepts this, and now
+
+what we can do is we can add a if check here and check
+
+"if showResult", if this is true, we can, of course,
+
+compare it to true.
+
+But as you know in JavaScript,
+
+you can also just pass in the truthy or falsy value here.
+
+And JavaScript will evaluate it, and
+
+if this yields true somehow or a truthy value in general,
+
+then we'll make it into the if block.
+
+Otherwise, we won't.
+
+And let's say we do make it in here, and then I want
+
+to "console.log n1 plus n2".
+
+Otherwise, in the else case, if we don't make it in there,
+
+then I want to return this.
+
+So now this is a function
+
+which sometimes returns a value
+
+and sometimes does not return a value,
+
+but output it immediately.
+
+Now you could argue, if you wanna write such a function,
+
+which is kind of unpredictable or
+
+which might behave unexpectedly
+
+if you're passing a true here.
+
+But here, we're doing it.
+
+So this function only sometimes returns.
+
+Sometimes it also does not return, but instead,
+
+just logs something to the console.
+
+Now here, we can actually call add just like this
+
+and don't need to store it in result and don't need
+
+to console.log result because, with "printResult" set
+
+to true, add itself.
+
+So the function itself will print the result.
+
+Hence, if we now save that
+
+and we recompile our app.ts file here with the tsc command.
+
+Once this is done, the page will reload,
+
+and we still see our output here.
+
+But now it's coming from line six.
+
+And if we have a look, line six is, indeed,
+
+inside the function.
+
+So this is a boolean.
+
+Now let's say we wanna customize the output.
+
+In the if here, we have a "resultPhrase" constant here
+
+where we say, "Result is" colon and then some white space.
+
+And we pass that in as well with "resultPhrase" here.
+
+Well, then we could expect this as a argument here as well.
+
+Phrase, which would yield pipe string, by adding a colon.
+
+And then string is the name of the type,
+
+and now we could use that phrase to output it as part
+
+of our result output if we're printing the result right
+
+in the function.
+
+So then, here, we could have "phrase plus n1 plus n2".
+
+And if we do that and we recompile
+
+by repeating that command,
+
+we'll see that this phrase is part of the result.
+
+But we also, now, reintroduced the old bug
+
+because I have a string, which I combine with two numbers.
+
+Everything is converted to a string here, and
+
+that's not what I want.
+
+To avoid this, in this function,
+
+we could add a result variable here.
+
+Or a result constant and store our result here.
+
+This will now be treated in a mathematical way
+
+because only numbers are involved, and then, here,
+
+we could combine that with phrase or just return it.
+
+And now, since this is never directly calculated together
+
+with a string, this will always be a number.
+
+And, yes, then here, this number combined
+
+with this string will be converted to a string.
+
+But since the mathematical calculation finished before that,
+
+we'll have the right result.
+
+So now if we repeat that and then recompile,
+
+we get the right output.
+
+So now these are the core data types in action.
+
+Let's now make sure we fully understand
+
+how types are assigned and, also,
+
+why we don't explicitly assign types down there.
+

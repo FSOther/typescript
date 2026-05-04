@@ -1,0 +1,156 @@
+So, in order to get started with interfaces,
+
+I'll add a new TypeScript file
+
+and I'll name it interfaces.ts.
+
+And in that file, we can create a first interface,
+
+similar to what we had on the slide before
+
+by using this interface keyword.
+
+And this is now a keyword that only exists in TypeScript.
+
+You can't define interfaces in JavaScript.
+
+Now, after the interface keyword,
+
+you have the name of your interface,
+
+like for example, Authenticatable,
+
+though the name of course is up to you.
+
+Could be anything you want.
+
+Here, I'm choosing this name though,
+
+because with this interface,
+
+I wanna describe objects
+
+that implement certain properties and methods
+
+that can help with authentication
+
+if we were building an application
+
+where we need authentication.
+
+So, I'm trying to choose a name here that describes
+
+what this interface is all about.
+
+And this interface, the way I'll structure it,
+
+will be all about making something,
+
+a user object, for example, authenticatable.
+
+But ultimately, you can choose any name you want here.
+
+And you will see different naming conventions
+
+in different projects, by the way.
+
+Now, you then have a pair of opening and closing
+
+curly braces, just as if you were defining a class.
+
+It's pretty similar up to this point,
+
+but then between those curly braces,
+
+you only describe a type,
+
+an object type to be precise.
+
+You don't have the actual implementation
+
+of an object or a class here.
+
+You don't have any values in here.
+
+When defining a class, you had values in there.
+
+We assigned a string here,
+
+we had logic in here in this setter.
+
+So, inside of a class you have values and you have logic.
+
+Inside of an interface definition.
+
+You have neither.
+
+Instead, you could say that objects
+
+that adhere to this Authenticatable interface, so to say,
+
+so that have the shape of this Authenticatable interface,
+
+if you wanna call it like this,
+
+that such objects should have an email field,
+
+let's say, which should be of type string.
+
+And maybe they should also have a password field
+
+that should be of type string.
+
+They also could have other fields in addition to that,
+
+but here, I'll use these two.
+
+And I'll say that objects that, well,
+
+adhere to this Authenticatable interface
+
+should have a login method
+
+and they should have a logout method.
+
+And now, here's the interesting thing.
+
+When defining the interface,
+
+you don't add curly braces here.
+
+You don't add any logic here, because, again,
+
+an interface is not about containing any values or logic,
+
+you just define the shape of something.
+
+And if I wanna say that an object
+
+that has this shape should have a login method,
+
+I only need to describe the shape
+
+or the type of that login method.
+
+So, whether it should have any parameters,
+
+for example, like this,
+
+or what the return value type should be.
+
+So, here, I could describe Authenticatable objects
+
+as objects that have email and password properties,
+
+and log in and log out methods
+
+where both methods take no parameters and return nothing.
+
+That would be one way of building such a type
+
+or of defining such a type, such an interface.
+
+And with that interface defined like this,
+
+you can then, in the next step, use it.
+

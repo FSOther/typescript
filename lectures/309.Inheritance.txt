@@ -1,0 +1,320 @@
+So we work with our department
+
+quite a bit here and I created my accounting department.
+
+Now for the application we're building,
+
+we might need departments, of course,
+
+but we might need more information
+
+for the specific types of departments.
+
+We might have an IT department,
+
+which has an ID, which has a name, which has employees,
+
+but which also has administrators,
+
+something which only the IT department has for example.
+
+We might have the accounting department
+
+which might also have an ID, a name, and employees,
+
+but it might also have, let's say, reports.
+
+An array of reports it generated, and so on.
+
+So you might have some base properties and also methods
+
+which all departments should have,
+
+but then we might have specialized versions
+
+of these departments with their own specific properties
+
+and methods which only that department might have.
+
+An inheritance can help us implement something like this.
+
+So how can we utilize inheritance here?
+
+Well we have our class department.
+
+Now let's create these specialized departments.
+
+So here we could have a class IT department.
+
+And in this class here, I want to utilize the name
+
+and the ID and the employees of the general department
+
+but I want to add my own features.
+
+Now we can inherit the department class
+
+by using the extends keyword here
+
+and then the class we want to inherit.
+
+In this case, that's department.
+
+Now, important you can only inherit from one class,
+
+so you can't inherit from multiple classes,
+
+if you would need that.
+
+So now, here, I'm inheriting from department
+
+and one consequence is that if I now create
+
+an IT department here, I indeed can call it like this,
+
+with this kind of constructor, even though
+
+the IT department class is empty.
+
+If we save that, we indeed see it works as before,
+
+because when we inherit from another class,
+
+the class which inherits automatically gets everything
+
+the base class, department in this case, has,
+
+including its constructor, so as long as we don't add
+
+a dedicated constructor for this inherited class,
+
+so for this subclass, the base class' constructor,
+
+so this constructor is automatically used
+
+when we instantiate our subclass.
+
+So we in the end magically call the base class constructor
+
+with the arguments we're passing here.
+
+Now we can add our own constructor, though,
+
+by adding constructor here in IT department
+
+and now you see I'm getting errors.
+
+For one, we now of course should accept
+
+the data we're getting here, though we could argue
+
+the name should not be something we need to pass in here.
+
+And it shouldn't also be accounting.
+
+But instead here, the name of the department,
+
+since it's the IT department class, can always be IT.
+
+I still want to accept my ID though,
+
+but now I want to essentially forward that
+
+just like the fixed name IT,
+
+to the constructor of department.
+
+And for that we have a special keyword we can,
+
+and in this case we have to, use.
+
+And that's super.
+
+Whenever you add your own constructor
+
+in a class that inherits from another class,
+
+you have to add super in the inheriting class
+
+and you have to execute it like a function.
+
+Super here calls the constructor of the base class,
+
+so department constructor in this case.
+
+And now the other super takes the arguments
+
+of the parent class constructor, the ID, and the name.
+
+So here I can forward ID, so ID which I'm getting here
+
+is just passed to super, and I can hard code
+
+a value for the name, like IT.
+
+So this will now call the constructor
+
+of the base class from inside the subclass.
+
+Now, important, you have to call super first
+
+in your constructor before you do anything
+
+with the "this" keyword.
+
+So if you plan on assigning any other special properties
+
+here you have to do that after calling super.
+
+And indeed I want to add my own special properties here.
+
+We could add our admins here.
+
+Let's say as a private, or as a public, actually.
+
+As a public property, admins,
+
+and that should be an array of strings, let's say.
+
+Well then I don't want to forward this
+
+to my base class because the department class
+
+doesn't want any administrator data.
+
+Instead, I want to store this in a property of IT department
+
+so here we can then add admins as a field
+
+which takes a couple of administrators
+
+and store admins in there,
+
+or because I'm using public in here,
+
+I'm already using that shortcut where a property
+
+of the same name will be created and the data
+
+we feed into this argument is stored
+
+in that automatically created property.
+
+Still to make it clear that super has to be called first,
+
+I'll take the longer route, add admins here, like that,
+
+and then here say, this.admins = admins.
+
+Again, the shortcut would be shorter.
+
+I'm doing this here to show and make it really clear
+
+that if you are using something that uses the "this" keyword
+
+you have to do that after calling super.
+
+And with that if we save that, I'm going to get an error,
+
+because I'm not passing in any admins,
+
+so let's do that here.
+
+Max is the only admin I'm passing in here.
+
+Now we can save that and compiled it without errors
+
+and now here, indeed we see our department here.
+
+It now has the name IT.
+
+And if we console log the entire department,
+
+and we may be able to rename this from accounting to IT
+
+and then console.log IT here.
+
+Of course renaming that was optional, just makes more sense,
+
+given that we're building an IT department here.
+
+Now that I console logged the entire department,
+
+we indeed see we got admins, but we also got employees
+
+and everything which I set up in my department class here.
+
+So that's inheritance in action,
+
+a very useful feature, because now of course,
+
+we can also create our accounting department here
+
+by extending department
+
+and there we can then add our accounting specific things.
+
+So we can still use a constructor here,
+
+and now maybe with the shortcut,
+
+accept a couple of reports here
+
+which might be a private property
+
+and then we have addReport which takes text,
+
+which should be a string, and then we reach out
+
+to reports here and push text as an item into the report
+
+and maybe we also have getReports here
+
+and there we just console.log (this.reports)
+
+or we name it printReports, therefore it makes more sense.
+
+And now we would have a very special version
+
+of a department with two methods
+
+which the base department doesn't have
+
+and with an extra property
+
+which the base department doesn't have.
+
+And still, we get everything from the base department.
+
+The name, which I'll set to accounting here,
+
+and the ID, which we also forward
+
+to the base department constructor.
+
+And so with that, down there,
+
+if we create our accounting here
+
+with new AccountingDepartment,
+
+we can feed in our ID and then our reports.
+
+Let's say that's an empty array initially.
+
+Then we can call addReport, something went wrong,
+
+never that good of course, in the accounting I guess,
+
+and then we can also print our reports here like that
+
+and with all of that it compiles just fine
+
+and we get the report here and we see,
+
+the IT department for example, wouldn't have any reports.
+
+The accounting department does because of inheritance,
+
+where we inherit certain features and add our own features.
+

@@ -1,0 +1,54 @@
+Now that we explored classes in TypeScript
+
+and what you can do with them
+
+and how TypeScript helps you with using classes,
+
+it's time to move on to interfaces.
+
+And of course for that, first of all,
+
+I wanna clarify what exactly an interface is.
+
+Well, first of all, it's a TypeScript only feature.
+
+There is no interface in JavaScript.
+
+And in TypeScript, an interface in the end,
+
+allows you to define a type of an object,
+
+and at the same time, it's essentially a contract
+
+that can be implemented by classes.
+
+Now that might sound very abstract,
+
+but of course we'll see it in action soon.
+
+But here you also have a first example.
+
+On the left side, you see how an interface
+
+is defined in TypeScript with help
+
+of this interface keyword.
+
+And on the right side, you see how you can either use it
+
+as a type to describe an object, the shape of an object,
+
+or how you can use it with the implements keyword
+
+on a class to force this class
+
+to implement the structure of this interface
+
+or the shape of this interface, so to say.
+
+But we'll take a look at interfaces
+
+and their usage both as an object type
+
+and as a contract over the next lectures.
+

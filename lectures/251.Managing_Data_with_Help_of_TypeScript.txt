@@ -1,0 +1,320 @@
+[Maximilian Schwarzmüller] So, what I wanna build here
+
+is a simple Todo management REST API.
+
+So, I wanna accept different kinds of requests,
+
+get requests, post requests and so on,
+
+and manage a list of TODOS.
+
+And for now I'll just manage that list of TODOS
+
+in memory here
+
+because this section of course is not about building
+
+a super complex node express application,
+
+but instead it's about getting you started
+
+with TypeScript and node and express.
+
+Therefore what I'll do here,
+
+is I'll add a new sub folder routes,
+
+and in there I'll add a to todo.ts file
+
+where I wanna define those different Todo routes
+
+I want expose.
+
+I'll also add a data.ts file
+
+in which I wanna manage my data, my TODOS data
+
+or to be precise in that data.ts file
+
+I want have a TODOS array,
+
+which I'll use as a dummy database kind of,
+
+to manage all TODOS in memory shared across
+
+all requests and users therefore,
+
+but for this demo that is okay.
+
+And then I'll export various functions.
+
+Add Todo function which accepts some text
+
+which should be of type string
+
+because of course we're using TypeScript here,
+
+where I want to reach out to TODOS
+
+and push a new Todo object onto this array
+
+where I want to have an ID where I'll use math.random,
+
+which is not a perfectly unique ID
+
+but good enough for this demo
+
+and where I'll store this text.
+
+So, setting a text property equal
+
+to the value I receive on this text argument.
+
+I also wanna make it clear which shape these objects
+
+in my TODOS array will have,
+
+and therefore I'll add a type or interface here.
+
+Doesn't matter in this case I'll go for an interface
+
+which I'll call to do,
+
+where I'll define that ID will be a number
+
+and text will be a string
+
+so that I want to have these two properties in every Todo
+
+and that these are the types of these properties.
+
+And with that we can add a type assignment here to TODOS
+
+because otherwise it's not really clear
+
+which kind of values will go into that array.
+
+And I'll set this to Todo array.
+
+So, if I had a typo here
+
+and had tid for Todo ID,
+
+the editor would warn me
+
+because that's not in line with the type I defined up here.
+
+Because ultimately it is about taking advantage
+
+of TypeScript here.
+
+Now of course add to do is not all I want.
+
+I also want to have a function get to do where I want
+
+to get a Todo by ID.
+
+And for that here I'll return,
+
+actually here I also wanna return the Todo that was added.
+
+So, I'll actually pull that out of here,
+
+store that in a new constant
+
+and then add that new constant here
+
+and also return it so that this object
+
+is also returned by this function.
+
+And then in getTodo I want to return the result
+
+of reaching out to TODOS,
+
+and finding an element in there
+
+with the built in find method,
+
+which will go through all items in TODOS,
+
+and give me the item where the result of this function.
+
+So, the return value of this function I pass to find is true
+
+and in this functional therefore compare the ID
+
+of every Todo in the TODOS array
+
+with the ID I'm receiving here as an argument
+
+to this function,
+
+and where this yields true find will return the Todo object
+
+for which this was true.
+
+I'll also add a function,
+
+delete or remove Todo, where I also want to get an ID.
+
+And then here I want to edit it my TODOS array here.
+
+And actually I'll set it to a variable instead of a constant
+
+so that I can simply override it,
+
+and set the new TODOS to the old TODOS,
+
+after calling filter, which is another built-in method.
+
+Filter also takes a function
+
+which automatically receives every Todo step by step
+
+after each Java,
+
+and where this function returns true, the item will be kept,
+
+where it returns false, the item will be dropped.
+
+So, I wanna return false for the TODO
+
+where I have this ID which I'm receiving as an argument.
+
+So, if ID is not equal to this ID,
+
+so that for the one item where the IDs would be equal,
+
+this will yield false
+
+and the Todo will therefore be dropped.
+
+This is a nice way of creating a new TODOS array
+
+based on the old array after filtering out
+
+the one Todo where the IDs were equal.
+
+I also want to add one other function here.
+
+I get TODOS function which simply returns
+
+the entire TODOS array just like that,
+
+so that we can also list all TODOS if we want to.
+
+And I want to add a update Todo function
+
+where I want to get the idea of the Todo
+
+that should be updated and the new text.
+
+And then I will simply go to my TODOS array
+
+and find the Todo as I did it here
+
+or therefore, we can actually also just call getTodo
+
+and pass the ID to it.
+
+And then since we're storing objects in this array
+
+and objects are reference values in JavaScript,
+
+we can simply override the text here
+
+and we'll change the text of the same item in memory
+
+to this new text here.
+
+Now I'm getting an error here
+
+because thankfully we're using TypeScript
+
+and it's warning us of potential problems like this.
+
+Where it tells me that to do is possibly undefined.
+
+Because of course when I call find here,
+
+this is not guaranteed to yield an existing Todo item.
+
+If we would have an invalid ID here,
+
+we would not get a Todo.
+
+So, that's why get Todo will actually
+
+not just return a Todo but also potentially undefined.
+
+Therefore down here where I aim to change the Todo
+
+we should check if is truthy
+
+and only if that's the case we should change it.
+
+Or we should check if it's not truthy
+
+and then maybe throw a new error,
+
+where we say Todo not found something like this.
+
+Alternatively,
+
+we could also add this check here
+
+where we try to get a Todo,
+
+instead of immediately returning it,
+
+we can store it in a constant,
+
+then check if it's maybe falsey
+
+and in that case throw an error
+
+and only thereafter return it.
+
+By doing that,
+
+we ensure that getTodo we'll always return a Todo
+
+because if we don't find one it will not return anything
+
+but instead throw an error.
+
+That way we can safely access it here.
+
+Sure, we might get an error
+
+and we'll have to handle that somewhere,
+
+but if we succeed here, we will have a Todo
+
+and just a Todo and we can then change its text
+
+and then potentially returned a changed todo.
+
+And that is how we can use some TypeScript
+
+in a node express application.
+
+Though of course, this code
+
+has essentially nothing node express specific about it.
+
+That's just some standard JavaScript TypeScript code
+
+as you already saw it,
+
+plenty of times throughout this course.
+
+But it's the foundation for this basic demo app
+
+with which we'll continue in the next lectures
+
+and where we will now use some Node.js
+
+and express specific code.
+

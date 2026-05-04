@@ -1,0 +1,336 @@
+Another very interesting kind of type
+
+and type manipulation offered by TypeScript
+
+are template literal types,
+
+and this name, maybe like all these features,
+
+might sound a bit weird.
+
+What are template literal types?
+
+Well, first, before diving into template literal types,
+
+let's dive into template literals,
+
+or template literal values, in vanilla JavaScript,
+
+which is a feature that exists totally independent
+
+of TypeScript, because in vanilla JavaScript,
+
+you could have, let's say, a username, Max,
+
+and here, I'm getting an error,
+
+because I'm already using this identifier
+
+in some other file here in this project,
+
+so I'll rename it to main username here
+
+to avoid this naming conflict,
+
+and then let's say you have some string
+
+where this variable should be used, like greeting,
+
+where you want to say "Hi there," and then main username.
+
+Of course, you could concatenate strings like this.
+
+That would work, but in vanilla JavaScript,
+
+you can also create a template literal instead
+
+and inject the value that's stored in this constant here
+
+into this string by replacing the quotes with backticks,
+
+and that's a special character on your keyboard.
+
+These are not single quotes, these are backticks,
+
+a special character, and a special JavaScript feature,
+
+because by using backticks, you still create a string,
+
+but you create a string
+
+where you can now use this syntax here,
+
+dollar sign, curly braces,
+
+to inject a value into the string
+
+instead of using string concatenation
+
+or something like this.
+
+And here, you can inject any expression in here,
+
+like one plus one or simply main username.
+
+So this will inject main username into the string
+
+and create a new string that contains the value
+
+of this constant.
+
+And that's just JavaScript,
+
+has nothing to do with TypeScript,
+
+but I added this short introduction here
+
+because it turns out that TypeScript actually offers a type,
+
+not a value, but a type that works in a very similar way,
+
+and to explore this type, let me first introduce you
+
+to a potential problem you might face
+
+in certain TypeScript projects.
+
+Let's say you have some literal types,
+
+like read permissions, which could be no read or read,
+
+so a union type of two string literal types,
+
+and you also might have write permissions,
+
+which could be no write and write, like this.
+
+And then you might want to create a new type,
+
+file permissions, which in the end,
+
+contains all possible combinations, and with that,
+
+I don't mean that we add another union type like this,
+
+but instead, I want to have new string literals
+
+here in file permissions
+
+which combine all these string literal values.
+
+So here, I want to have values like no read write
+
+to kind of describe the state
+
+where a user can't read a file, but can write to it,
+
+read no write, no read no write, and read write.
+
+I wanna have all these combinations in file permissions,
+
+combinations of all these string literal values,
+
+of all the text values, if you wanna call them like this,
+
+that are stored in the string literal types up here.
+
+Well, of course, we could do it by hand like this,
+
+but we could instead also use
+
+this template literal type feature offered by TypeScript,
+
+and you do that by adding the backticks here again,
+
+but now we're not defining some JavaScript value here.
+
+Instead, we're in TypeScript land,
+
+because we're on the right side of the equal sign
+
+after using the type keyword,
+
+so we are defining a type here.
+
+Nonetheless, we use the backtick characters here,
+
+and then you can use the same syntax you saw before
+
+in the JavaScript example, dollar sign, curly braces,
+
+to inject some other type here into this string type
+
+to ultimately convert it to a string type, of course.
+
+For example, here, you can inject read permissions,
+
+so this union type, which consists
+
+of two string literal types,
+
+then maybe a dash or an underscore,
+
+doesn't matter, it's up to you,
+
+but here, I'll go for a dash, and then in my case here,
+
+I'll also inject write permissions.
+
+And this is now a valid type definition,
+
+even though it might not look like this.
+
+But what this will do is it will force TypeScript
+
+to create a new string literal type,
+
+and since we're injecting union types here into our string,
+
+it will actually get TypeScript
+
+to create multiple new string literal types here,
+
+and you can see them if you hover over file permissions.
+
+You see, these are the kind of string literal types
+
+that have been created by TypeScript,
+
+so file permissions is now one big union type,
+
+consisting of multiple string literal types,
+
+created thanks to this feature here,
+
+this template literal type feature.
+
+And that's just one way of using this feature,
+
+a common way, though.
+
+Another situation where this template literal type feature
+
+would be useful would be if you had some object type,
+
+data file, for example,
+
+where you might have some data, which is a string,
+
+and maybe some permissions, which could be of that type
+
+of file permissions, doesn't matter.
+
+And now let's say you wanna add a new type,
+
+data file events, that should contain a bunch of methods
+
+where the method names are related
+
+to these property names here.
+
+Well, you could achieve this
+
+by creating a new type, data file event names.
+
+It's just a little helper type I'm creating here
+
+to keep things simple,
+
+and this helper type is now a template literal type
+
+using the backtick character.
+
+where we want to use the property names of data file,
+
+which we can by injecting them here with key of data file.
+
+This will give us the property names of the properties
+
+of this object type.
+
+That's what the key of operator does, as you learned,
+
+and we can combine this with the word changed, for example.
+
+What this will do is it will give us a union type
+
+that contains data changed and permissions changed
+
+as string literal types.
+
+It's a union type of these two string literal types,
+
+and these string literal types have been created
+
+with the template literal type feature provided
+
+by TypeScript, and it's a union type here
+
+because we have multiple keys,
+
+so multiple string literals are created,
+
+just as multiple string literals have been created up here.
+
+So now we have this union type of these names here,
+
+of these string literals.
+
+We can now use this here to create a mapped type
+
+by using the square brackets,
+
+and in this case, not some generic mapped type,
+
+but instead, a very specific mapped type,
+
+which is also possible, which does map these properties here
+
+with new names to new values,
+
+and this can be achieved by, again, using this in keyword
+
+and some placeholder of your choice,
+
+some name of your choice here, like key,
+
+and then in data file event names.
+
+So we're going through all the values
+
+of this union type here, which is created
+
+with help of key of and the template literal type feature,
+
+and we're then adding these names here
+
+as key names to this mapped type,
+
+and then we can assign any value of our choice,
+
+like, for example, that we wanna store some functions
+
+as values here so that we could define
+
+some event handler functions in this mapped type here
+
+or in values that are based on that type,
+
+because data file events is now an object type
+
+that has these two properties which store functions
+
+as values, and the property names are created
+
+with help of this template literal type feature.
+
+So another pretty advanced TypeScript feature,
+
+which you, as always, won't need all the time,
+
+and which can be tricky to wrap your head around at first,
+
+but which can also be pretty useful,
+
+as you can hopefully see here.
+

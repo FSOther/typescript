@@ -1,0 +1,426 @@
+Now sending a requests is possible
+
+without a third party package.
+
+In modern JavaScript in modern browsers,
+
+you have to fetch API.
+
+This is built into browsers,
+
+it's a globally available function and you can use it
+
+to send requests to URLs.
+
+Now there's nothing that speaks against this API,
+
+besides the fact that error handling
+
+can be a bit clunky with it.
+
+But I also want to practice the usage
+
+of third party libraries.
+
+Therefore, we will use the very popular axios package.
+
+This is a package you can use in JavaScript
+
+and therefore also in TypeScript to send HTTP requests.
+
+So we just need to install axios to start using it.
+
+For this in our project where we can use NPM
+
+to manage dependencies, we can run npm install,
+
+dash, dash save axios just like this
+
+and this will now install the axios package.
+
+With this installed, we can now import axios here,
+
+import axios from axios,
+
+and you will see something interesting.
+
+If I now start using this and I type a dot here,
+
+I get autocompletion.
+
+And for example, you have a get method here
+
+which will send a get request to a URL.
+
+So here we actually got built-in TypeScript support.
+
+And if we go to node modules and we have a look
+
+at the axios package, here it is.
+
+You will see that in there, there is an index.dts file.
+
+So the axios library authors already bundled their library
+
+together with such a TypeScript translation package.
+
+In there, everything is explained to TypeScript.
+
+This package or this file here basically explains
+
+to TypeScript what this JavaScript library is able to do
+
+and which types it uses.
+
+Now some libraries do that and axios is one of them.
+
+You can tell pretty fast if a library does this or not,
+
+if you start using it.
+
+If you get no autocompletion support
+
+and you got a lot of compilation errors,
+
+you probably need to install extra types.
+
+If you get good support like we do here
+
+and you will get no compilation errors thereafter,
+
+well then you already got a library
+
+with built in type translations.
+
+And hence, you don't need to install any extra types.
+
+Good to know and here we have a great example.
+
+So since we have built in support,
+
+we can start using access right away.
+
+And I wanna send a HTTP request to this URL now.
+
+So let's copy this URL and let's enter it here.
+
+And I will enter it between backticks
+
+to create a template literal,
+
+so that they can easily swap parts of this string
+
+for dynamic for other values.
+
+So let's paste in that string, it is quite long
+
+and let's start by replacing your API key at the end
+
+with our Google API key which we stored in this constant.
+
+For this, since this is a template literal,
+
+we can add dollar sign, curly braces,
+
+and then point at Google API key to use this constant.
+
+In addition, let's swap this address.
+
+Here we got a dummy address entered
+
+and of course there I want to use
+
+the address the user entered.
+
+Now just one important note, this address, of course,
+
+is exactly the text the user entered
+
+and they offered can contain special characters,
+
+whitespace, commas, and much more.
+
+And not all these characters
+
+and symbols are supported in URLs.
+
+So we need to convert this entered string
+
+into a URL compatible string.
+
+And thankfully, TypeScript and JavaScript specifically
+
+has a built-in function that helps us with that,
+
+the encode URI function.
+
+We can call that and pass a string to it
+
+and this will convert this string
+
+to a URL compatible string.
+
+With that we got the finished URL
+
+to which we can send the request
+
+to get back our coordinates.
+
+Now get gives us a promise because of course,
+
+sending such a request as an asynchronous task.
+
+And there we have a then log if this succeeds
+
+or catch if we have a technical error
+
+or an error response code.
+
+So here we'll console log any errors we might be getting
+
+at this point, because normally we should succeed.
+
+And therefore here, I will expect my response
+
+in the then block and I also want to log this response then.
+
+So now with that, I'd say, let's see what this gives us.
+
+Let's rerun NPM start to bring up that webpack process again
+
+and start building this.
+
+And let's go back to our application
+
+and enter a place here like Sixth Avenue.
+
+If I hit Search Address, you'll see after a while
+
+you get an output here.
+
+And there you should have a status code of 200
+
+which means that the request succeeded.
+
+And you have a data field which holds the data
+
+the server replies with.
+
+That data field has a results field
+
+and in there we have an array, as you can tell.
+
+In that array, we got a couple of items, the number varies.
+
+And these are basically the results Google found.
+
+And the first result is typically the best one.
+
+So if you have a look at that, we see for example,
+
+the formatted address.
+
+So the address which Google found
+
+for this address we entered,
+
+it's a bit more complete than what we entered.
+
+And we got the geometry key here.
+
+And if we expand this, we see that in turn
+
+has a location key and this finally is an object
+
+with the coordinates we are interested in,
+
+a latitude and a longitude.
+
+So in the end, we have to drill into data, results
+
+and then there the first result, geometry, location
+
+and we will have an object with a latitude and longitude.
+
+And we will be able to then render this latitude
+
+and longitude on a map later.
+
+So for now, let's just extract this
+
+and let's get our coordinates
+
+by accessing response dot data dot results.
+
+And then there the first result dot geometry dot location,
+
+so really drilling into this.
+
+Now what you will notice of course,
+
+is that whilst TypeScript does not complain here,
+
+we also got no good TypeScript support here, right?
+
+If I type a dot here, it's not suggesting
+
+that there is a results property.
+
+And indeed, I could try to access anything here,
+
+even something which does not exist on the response
+
+and that makes sense.
+
+How would TypeScript know what will be in the response
+
+of any URL I'm sending a request to?
+
+TypeScript does not go ahead
+
+and send the request during development
+
+to find out what's in there,
+
+that would also not be that good.
+
+But we can tell TypeScript what we expect
+
+to be in the response because this get method
+
+actually is a generic method and there is any thing here,
+
+that is actually the type of the response we expect to get.
+
+So here, I can add my response type
+
+and I can tell TypeScript that what I expect is an object
+
+which has a results key, which then in turn,
+
+is an array full of objects,
+
+where every object has a geometry key,
+
+which then in turn is an object,
+
+which has a location key, which then in turn is an object,
+
+which has a latitude, which is a number,
+
+and a longitude, which is a number.
+
+So definitely quite a complex type.
+
+But with that, if we type a dot here, I get autocompletion
+
+and TypeScript understands what I'm accessing here.
+
+And of course, we can also pull this type out of here
+
+and create our own type alias.
+
+Maybe here, Google geocoding response.
+
+That would be my custom type here,
+
+and then I can tell TypeScript that here I expect
+
+to get that Google geocoding response.
+
+Now, of course, actually the response contains more
+
+than just the results array, it also has a status code
+
+and it also has multiple other fields
+
+in each item of the results array, then the geometry.
+
+Now, of course, you can simply add all these fields
+
+to your custom type here, but here I really just want
+
+to focus on the values I'm actively interested in.
+
+And therefore there is actually one other field
+
+which I will add, and that is the status next to results.
+
+So right here on the top level, we got status
+
+and that will be a string
+
+which tells us whether Google succeeded or not.
+
+And status will actually either be okay
+
+or a couple of other values.
+
+This is basically a status message Google responds with
+
+to tell us whether it succeeded fetching coordinates
+
+for this address or not.
+
+And of course, in the official docs we can learn
+
+which kind of responses we might get back here.
+
+If you scroll down a little bit
+
+and click on understand the response,
+
+you learn what's inside the response you get back
+
+and therefore click on geocoding responses.
+
+And then on status codes, we learn
+
+about the available status codes.
+
+For example, we all got zero results if nothing was found.
+
+We got a couple of other codes as well,
+
+but here I really only care about these two.
+
+So I tell TypeScript that here, I get a status code
+
+which is one of these two values.
+
+Now again, it might have a number value as well,
+
+but this is good for me here.
+
+As I said, you can of course write this
+
+in a more complete way.
+
+Now with that added, down there in the then block,
+
+we can check if response dot data dot status is not okay,
+
+which means something went wrong and in that case,
+
+we can throw an error here and therefore we will end up
+
+in the catch block where we could
+
+set up some error handling.
+
+So here we'll throw an error could not fetch location.
+
+And then here in the error handler to do something,
+
+we can throw an alert where we output
+
+the error message at least.
+
+This is of course, just some very basic error handling.
+
+Otherwise if we have a success response,
+
+we fetch our coordinates here and now we can use
+
+these coordinates to output them on a map.
+

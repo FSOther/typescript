@@ -1,0 +1,228 @@
+[Maximilian Schwarzmuller] Now one last feature,
+
+one last operator actually,
+
+which I want to cover in this section here
+
+is the knowledge coalescing operator,
+
+the double question mark operator.
+
+Now it's important to note
+
+that this operator is actually not TypeScript specific,
+
+standard modern JavaScript also supports it.
+
+Nonetheless, it's an interesting operator
+
+also when using TypeScript.
+
+For that, let's say we have some input,
+
+for example, some user input,
+
+which could be an empty string.
+
+It could also be null if the user did not provide
+
+any value at all.
+
+So if they did not submit an empty input field
+
+and therefore provide an empty string, for example,
+
+but they did not submit data at all,
+
+if you're building an application and that might happen.
+
+Or of course it might be a string
+
+with some text in it, some characters in it.
+
+And of course this is again, still a made up example
+
+to dive into these core features.
+
+Now, what's the purpose of knowledge coalescing
+
+of this operator?
+
+Well, let's say you have some other constant
+
+or variable that depends on this input
+
+and depending on whether the input is null or not,
+
+you might want to assign a different value
+
+to this constant.
+
+For example, we could have a Boolean here did provide input,
+
+and that should be false if input is null,
+
+but it should be true if input is an empty string
+
+because the user did submit input, it's just empty,
+
+or if it's a string with characters.
+
+And what you could try to do is use input
+
+and then use the logical OR operator,
+
+the double pipe symbols here,
+
+and assign an alternative fallback value.
+
+That might be a little trick you might know
+
+from JavaScript.
+
+So we could say here,
+
+we either have a value here in input
+
+or we set did provide input to false,
+
+so did provide input in this case here,
+
+therefore is always of type false
+
+because TypeScript understands
+
+that input in this demo here is hardcoded and set to null,
+
+and therefore this here will always yield false.
+
+Now watch what happens though if I change
+
+input to an empty string.
+
+In that case, TypeScript for one is not able
+
+to determine whether it's false or a string
+
+because it can't look into that string.
+
+But we as a developer actually can know
+
+that in that case here did provide input,
+
+actually will hold false as a value.
+
+Because when using this trick,
+
+this shortcut here in JavaScript
+
+of using the logical OR operator to assign a value,
+
+this operator will check whether the left side is falsy,
+
+not false, but falsy, which is a JavaScript concept.
+
+And if the value here is falsy
+
+and the value is falsy, if it's false or null or undefined
+
+or zero as a number
+
+or an empty string as a string, which is the case here.
+
+So this is a falsy value that's fed into input
+
+or that's fed to the left side here.
+
+And in that case, the OR operator
+
+will assign the right side here.
+
+That's why false would be stored in did provide input
+
+in this case when providing an empty string.
+
+But what if you actually want this to be set to true
+
+if you got a string, no matter if it's empty or not?
+
+Well that's now finally
+
+where this knowledge coalescing operator can help you.
+
+If you replace the double pipe here, the OR operator
+
+with two question marks,
+
+you get kind of the similar behavior.
+
+But then again, you don't
+
+because with this operator used
+
+the check performed by JavaScript
+
+and therefore also TypeScript will be a bit different.
+
+This operator just checks whether the left side of it,
+
+so the value stored in input is null or undefined.
+
+And it only looks for that.
+
+It does not look for falsy values.
+
+It just looks for null or undefined.
+
+And if it finds null or undefined,
+
+then the value on the right side is stored in this constant
+
+is returned by this expression.
+
+But in this case here where we have an empty string,
+
+this input is actually not null or undefined,
+
+therefore, the fallback value will not be used.
+
+And instead the value here in input will be kept around.
+
+And you can prove that
+
+if you use the browser developer tools
+
+and you paste that code in there
+
+because it works in just JavaScript as well,
+
+it's not TypeScript specific.
+
+You will see that an empty string was output here,
+
+not undefined, that's something else,
+
+but instead this is the output of console log here,
+
+an empty string.
+
+So the empty string was stored as a value and input.
+
+If on the other hand I were to repeat that code,
+
+but used this OR operator as I showed you before,
+
+you see false output here.
+
+And that's why this operator can be very useful.
+
+And again, it's not TypeScript specific,
+
+but it can of course also be used in TypeScript code.
+
+And it is a JavaScript feature that's often overlooked
+
+by many developers.
+
+Therefore, I also wanted to include it here.
+

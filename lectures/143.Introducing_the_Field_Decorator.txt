@@ -1,0 +1,182 @@
+So this was a method, decorator.
+
+The last kind of decorator I wanna explore together
+
+with you is the field decorator,
+
+so a decorator that can be added to fields like name here.
+
+And for that, I'll create another new function
+
+because a decorator is still a function
+
+and I'll simply name it fieldLogger
+
+because I wanna keep this decorator simple
+
+and just log something again.
+
+Now, like before, we add it with the @ symbol,
+
+and like before,
+
+we must accept the appropriate amount of arguments.
+
+So for that here, we need a target and a context.
+
+And the type of target here
+
+for fields will actually always be undefined
+
+because the decorator code will be executed
+
+before the field is done initializing.
+
+That's important.
+
+That's why the target, the value of the field,
+
+will be undefined.
+
+The value of the greet method was the function,
+
+the actual method function.
+
+The value of the class
+
+for the class decorator was the finished class.
+
+But the value, the target of the field decorator,
+
+fieldLogger here will be before it's been initialized
+
+and it will therefore always be undefined.
+
+That's just something to keep in mind.
+
+When creating an ECMAScript field decorator,
+
+target will be undefined.
+
+The context, however, will not be undefined.
+
+Instead that will be a ClassFieldDecoratorContext object.
+
+And just as before, we can simply have a look at it,
+
+both target and context
+
+to understand what's inside there.
+
+So with this code added
+
+and with this code added here,
+
+if you compile and execute this,
+
+you will see that here at the very beginning,
+
+undefined is logged, as I explained.
+
+And then this context object here.
+
+And in there we again have the kind of decorator,
+
+the field name, if it's static or private,
+
+an access object, which we can use to check,
+
+get or set that field indirectly.
+
+And an addInitializer function in case we wanted
+
+to manipulate this field
+
+from inside the constructor, so to say.
+
+Now, just as with class and method decorators,
+
+you can also return something here
+
+to change the thing you're attaching the decorator to.
+
+So to change the field or to be precise, it's value.
+
+For that, here in fieldLogger,
+
+you don't return a value though,
+
+as you see with that, I would be getting an error.
+
+Instead, you have to return a function,
+
+and that's a function that will be executed
+
+for you by JavaScript.
+
+It is a function
+
+that will actually receive the initial value
+
+and that should return the value you wanna set instead.
+
+So it is a function that will be executed for you
+
+after the field to which this decorator has been attached,
+
+has been initialized.
+
+So if you need to get access to the actual value
+
+that's stored in the field inside of your decorator,
+
+you can do so with help of this returned function
+
+because here you'll get the actual value.
+
+So I can console.log(initialValue)
+
+and I can then change it by simply returning a new value
+
+that should be set instead.
+
+And here I'll set this to an empty string, let's say.
+
+And that's how you can overwrite the value
+
+of the field the decorator is added to.
+
+And this again, could be useful,
+
+especially if you're doing more than I'm doing here,
+
+if you're fetching some value from a database
+
+or anything like that.
+
+With those changes made here though,
+
+you will see that again, if I compile this
+
+and I execute it, I log, "Hi, I am" nothing down here
+
+because I changed the field value to an empty string.
+
+This Max log, which you see here,
+
+that's the initial value being logged,
+
+but then I return an empty string.
+
+So that's the value that will be used in that instance
+
+of the class I'm creating for all the other code,
+
+like here for this greeting.
+
+And that's therefore another powerful feature,
+
+being able to change the value of a field with help
+
+of a field decorator.
+

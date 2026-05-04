@@ -1,0 +1,146 @@
+So we got the basics
+
+about generics down hopefully,
+
+now let's dive a bit deeper into constraints,
+
+or into one specific type of constraint,
+
+which you can add.
+
+For that I'll trade yet another function,
+
+a generic function, which I' ll name extractAndConvert.
+
+The idea of this function here is that we get
+
+an object as a first argument,
+
+and the second parameter is,
+
+in the end, a key.
+
+Now I want to return the value for that key in the object,
+
+which we can do with this default JavaScript notation.
+
+Using the square brackets
+
+to exe as a property in a object,
+
+but that's nothing TypeScript specific,
+
+that's Vanilla JavaScript again.
+
+Now therefore here we could say
+
+that here we want to have an object,
+
+and for the key we want to have a string, let's say.
+
+Now here I'm getting an error, though,
+
+because what we don't know here in the end,
+
+is whether the object we're getting here
+
+really will have that key.
+
+That's the end what TypeScript is telling us
+
+with this strange error.
+
+For example here,
+
+I could console log the result of calling this
+
+with let's say, an empty object and then name.
+
+And here by the way I'm calling this extractAndConvert,
+
+because I want to call this without console log
+
+and simply say Value, colon, plus.
+
+But that's just a side note
+
+I'm returning us stray in the end with that retrieved data.
+
+But the main problem here is,
+
+I could call it like this
+
+and it would pass in an object as a first parameter,
+
+and then a string as a second.
+
+But correctly, TypeScript tells me
+
+that in the end it's not guaranteed
+
+that this key exists in this object.
+
+Now to guarantee this, we can again use generic types here.
+
+We could say we've got a type T,
+
+and that will be our object here.
+
+We can say, extends object.
+
+But we also gotta type U.
+
+Our key here let's say, which in the end,
+
+has to be a key of our T-type though.
+
+So of this object, we wanna guarantee
+
+that what we get here as a second parameter as a key
+
+is a property of that first type.
+
+And for that we can say extends key of T.
+
+And now you see the error is gone here,
+
+and instead I got the error down there,
+
+because now I'm informing TypeScript here,
+
+that the first parameter should be any kind of object,
+
+and the second parameter
+
+should be any kind of key in that object.
+
+And here, yes we're passing in any kind of object,
+
+but we don't have a name key in there.
+
+This error will only go away as soon as I add a name key.
+
+So this is all the times for we can use generic types for
+
+with this keyoff keyword here also, to tell TypeScript
+
+that we want to ensure that we have this correct structure,
+
+and that's of course really useful,
+
+because it allows us to ensure
+
+that we don't make dumb mistakes,
+
+where we try to call this function, which in the end,
+
+we tried to exe as a property that doesn't exist.
+
+So this works.
+
+But if I try to exe as 'age' here,
+
+I again get an error, for example.
+
+So let's switch this back to 'name' therefore.
+

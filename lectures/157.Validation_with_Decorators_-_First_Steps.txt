@@ -1,0 +1,300 @@
+So now that we saw another nice example
+
+for how we can work with decorators,
+
+there's one last example which I wanna dive into.
+
+And that is decorators for validation.
+
+For that, at the bottom of the file,
+
+I will add yet another new class here.
+
+That could be a course.
+
+Now a course should have a title, which is a string.
+
+And maybe a price, which is a number.
+
+Then here we have a constructor where
+
+we get both values here
+
+and I'm deliberately not using the shortcut here,
+
+so that I can easily add property decorators.
+
+Then, I set this title equal to t,
+
+and this price equal to p.
+
+Now, of course now when we want to instantiate this course,
+
+we have to pass in a valid title and a valid price.
+
+But one common scenario you might encounter
+
+in some applications is that you fetch data,
+
+let's say from a web resource and you get data where
+
+you guess you have a couple of courses let's say,
+
+but you don't know for sure.
+
+Or, another possible scenario, you let users enter the data
+
+and you simply want to assign that data
+
+and trade a new course with the user-entered data
+
+and you assume it's right, but you are not guaranteed
+
+that it's right and therefore you want
+
+to validate the input.
+
+That's the scenario I wanna fake here.
+
+Lets say in our index html file, we get a simple form here
+
+and I'll not style it, so it will now be that beautiful,
+
+but we have a simple form here with the input of type text
+
+and a placeholder of title, woops, course, title
+
+and an id of let's say title and below that
+
+we have a number input where the type is all the text,
+
+but it's the course price and the id is price.
+
+And then we have our button where we submit this.
+
+So the button is of type submit.
+
+So a very simple form and as I said it's not that beautiful
+
+if we have a look at it here,
+
+but it has everything we need.
+
+Now, let's hook up a listener to the form here.
+
+So here I got my courseForm which I can get with document,
+
+querySelector, form and I add the exclamation mark because
+
+I know I will get one so this will not be null,
+
+and then on the form we can addEventListener,
+
+the submit event listener and then we get the event object
+
+passed into the function which I assigned automatically.
+
+There I wanna call event preventDefault, so that we don't
+
+submit the form and sent no http request.
+
+And then we want to extract the data for title
+
+and for the price.
+
+So, the title can be extracted by reaching out to document,
+
+querySelector, or actually since we assigned an id,
+
+getElementById, title and we know that
+
+this will be an HTMLInputElement so we can use typecasting
+
+to let typescript know about this,
+
+and the price is document, getElementById, price
+
+and we can also convert this to an InputElement.
+
+And I actually there for these are the elements
+
+so we'll rename the constants to titleEL and priceEl
+
+and to get the concrete title we can now go to titleEl,
+
+access to value property and to get the price,
+
+we can do the same for the priceElement
+
+and get the value there too,
+
+and I want to have to add as a number,
+
+so I add the plus in front of it to convert it to a number.
+
+Now, that's that, but now I want to create new course
+
+with that information.
+
+So, here we have the created course where
+
+I can call new course and I pass in title and price.
+
+Now typescript accepts this, because title will be a string
+
+and since I convert this input to a number,
+
+price will be a number.
+
+So, if I then console log, the created course thereafter,
+
+we can check if this works.
+
+Let's save that, reload, maybe clear the console so
+
+that we can clearly see the output,
+
+and then add a new course here.
+
+Javascript the complete guide cost $199
+
+and this seems to work.
+
+Now, unfortunately this only works though if
+
+I don't enter anything.
+
+If I now click save, we see this course is created.
+
+Now, this technically is a valid course
+
+but of course, it's not really valid for our application.
+
+We probably wanna have a title which is not empty
+
+and a price which is greater than zero.
+
+So we wanna add validation.
+
+Of course we can simply add a if check here
+
+and check if title, trim, length is greater than zero,
+
+which means it is not empty
+
+and where we also validate the price.
+
+But that means that whenever we create a new course,
+
+we have to add the validation logic here before we add it.
+
+Wouldn't it be nice if the validation logic
+
+would be included in the course class,
+
+with the help of decorators, maybe?
+
+And that's exactly what I wanna do here.
+
+Now I will only provide a basic idea
+
+of how we could implement this,
+
+in the next module I will show you an example package
+
+which does this in a way more elaborate way
+
+and which we then will all use there
+
+to play around with it a bit.
+
+Now however here I want to implement
+
+this with my own decorators
+
+and I will add a decorator required here
+
+and we'll add another decorator function
+
+which I'll name PositiveNumber.
+
+So I got two decorators here.
+
+And now my idea is that we can add them here
+
+to our properties, for example Required in front of title,
+
+and positiveNumber in front of the price and typescript kind
+
+of registers this somewhere and then
+
+we got a third function, validate to which we can pass
+
+a object so any object and typescript then has a look
+
+at the project, finds any validation we registered
+
+on this class for this object earlier
+
+and applies our validation logic.
+
+That's the idea I have here.
+
+So, this could be part of a third-party library
+
+we're exposing to you and then you just import required
+
+positive number and validate to first set up the validators
+
+and then at some point call validate.
+
+So for example here when we created the course,
+
+we can call validate and pass in the createdCourse
+
+and if this is not true, so let's say
+
+this should return true or false,
+
+if this is not true, then we throw an error
+
+or show an alert, invalid input please try again
+
+and only otherwise we continue.
+
+So that's my idea.
+
+That we can call validate, this returns true or false.
+
+True if it's valid, false if it's not valid
+
+and we can therefore use the result.
+
+So therefore we get a couple of things to do.
+
+We need to make sure that when we add a decorator here,
+
+this is somehow stored somewhere.
+
+Again, keep in mind this could be part
+
+of our own third-party library,
+
+so in there we could have some kind of storage
+
+that's stores that for this class and this title property
+
+for example, we want it to be required.
+
+And in validate, we can then check if in the storage
+
+for the object we got, for the class the object is based on
+
+we do have a validator registered for the title,
+
+for the price and so on.
+
+And we then run our validation logic.
+
+That's my idea here.
+

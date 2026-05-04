@@ -1,0 +1,180 @@
+So this enum feature can be really useful
+
+if you have a set number of choices you want to use
+
+in your code.
+
+There also is an alternative to using an enum though,
+
+which arguably is a bit more popular.
+
+So you might find enums in certain code bases,
+
+but there also are developers who try to avoid them.
+
+In the end, it comes down to personal preferences,
+
+but it's important to know
+
+about the arguably more popular alternative to enums.
+
+So instead of defining such a role enum here,
+
+so instead of using that,
+
+you could also use a union type here
+
+for the userRole variable
+
+combined with another TypeScript feature
+
+you haven't learned about yet: literal types.
+
+Because in TypeScript you cannot just set up
+
+general types like number or string, you could say,
+
+but you can also define very specific values as types.
+
+For example, you could set the string admin
+
+as a type for userRole.
+
+Now this might look very weird
+
+because this very much looks like a string value,
+
+and it would be if it were on the right side
+
+of the equal sign.
+
+But here on the left side of the equal sign
+
+after this colon, no matter if you're using it
+
+on a variable or a parameter, in a function
+
+or anywhere else, this thing here
+
+is actually not a value but a type.
+
+And it tells TypeScript that the allowed value
+
+for userRole is this very specific string.
+
+So if I were to store the string guest in there,
+
+I would get an error that the type guest
+
+is not assignable to this very specific string type.
+
+Now you might wonder what the use of this
+
+very specific string type is.
+
+After all, this does not give us any flexibility at all.
+
+Well, it gets more useful if you turn it into a union type
+
+and you tell TypeScript that userRole
+
+should either be the string admin or the string editor,
+
+let's say, or the string guest.
+
+Now we can initialize this to admin,
+
+but later on, instead of using an enum,
+
+we can change it to guest.
+
+And I'm even getting auto-completion in my IDE here
+
+because it understands which options we have.
+
+And that's another very convenient way
+
+of working with options.
+
+And as mentioned, it's arguably more popular
+
+in the TypeScript community than using an enum.
+
+But you can use both alternatives
+
+for many of the same problems,
+
+and it comes down to personal preference as mentioned.
+
+But it's definitely a very elegant way
+
+of defining different options
+
+for a certain variable or parameter.
+
+You're also not limited to just strings.
+
+Instead, you might recall that earlier I mentioned
+
+that we could be a bit more specific
+
+when working with this tuple here,
+
+where I wanted to accept two numbers.
+
+Well, at the moment here in this code,
+
+I do enforce possible results to be an array
+
+with exactly two elements, where both elements are numbers,
+
+but any kind of numbers would be allowed,
+
+not just one and minus one.
+
+Well, now with our newly gained knowledge
+
+about literal types, we can fine-tune this code.
+
+So I'll bring it over to the choices.ts file
+
+and I'll refind this tuple.
+
+And I'll do that by changing number to a literal type
+
+where I say that the first element in this tuple
+
+should be either one or minus one,
+
+because when dealing with literal types,
+
+you are not limited to just strings,
+
+you can use numbers as well.
+
+A literal type in the end is really just a type
+
+where you set very specific values as types.
+
+Typically, you use this feature
+
+in combination with union types
+
+so that you don't enforce one very specific value,
+
+but you instead give the developer multiple options.
+
+So here for example, it would be one
+
+and minus one for both elements.
+
+Therefore, possible results can still be written like this.
+
+But if I were to add a five here, I'd get an error.
+
+And that's another use case where literal types
+
+combined with this union types feature
+
+can be extremely helpful.
+
