@@ -1,1 +1,2 @@
 {"ts": "2026-05-04T16:35:56+07:00", "cmd": "/viec setup", "args": "setup", "mode": "setup", "project": "typescript", "task_context": "", "summary": "Setup hoàn tất: beads embedded mode, prefix typescript, self-explores/ tạo xong", "result": "done"}
+{"ts": "2026-05-04T23:40:46+07:00", "cmd": "/viec samples 8", "args": "samples 8", "mode": "samples", "project": "typescript", "task_context": "typescript-1tu", "summary": "3 modes ready (speed 97%, practice 95%, expert 94%), 6 beads tasks created, all files generated", "result": "done"}
